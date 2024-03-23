@@ -1,0 +1,6 @@
+﻿@{
+    var tenant = new Tenant(Context.Request.Host.Value);
+}
+
+<h1 class="display-3"><a href="/" alt="@tenant.Title">@tenant.Title</a></h1>
+<p class="aka">Aka <a href="@tenant.AkaUri" title="@tenant.Aka">@tenant.Aka</a></p>

@@ -1,8 +1,8 @@
 ﻿using Azure.Identity;
+using Eric.Jansen.Client.Configuration;
 using Microsoft.Extensions.Azure;
 
-
-namespace EricJansen.Client.Configuration;
+namespace Eric.Jansen.Client.Configuration;
 
 public static class WebApplicationBuilderExtensions
 {
@@ -10,12 +10,18 @@ public static class WebApplicationBuilderExtensions
     {
         var credentialOptions = GetDefaultAzureCredentialOptions(builder);
 
+        var queueServiceUri = builder.Configuration
+            .GetSection(AzureStorageQueueOptions.SectionName)
+            .GetValue<string>(AzureStorageQueueOptions.ServiceUri) ?? string.Empty;
+
         builder.Services
             .AddAzureClients(clientBuilder => {
                 clientBuilder
                     .UseCredential(new DefaultAzureCredential(credentialOptions));
                 clientBuilder
                     .AddBlobServiceClient(builder.Configuration.GetSection(AzureStorageOptions.SectionName));
+            clientBuilder
+                    .AddQueueServiceClient(new Uri(queueServiceUri));
                 clientBuilder
                     .ConfigureDefaults(builder.Configuration.GetSection(AzureDefaultsOptions.SectionName));
             });

@@ -18,4 +18,9 @@
 		<PackageReference Include="NuGet.Common" Version="6.9.1" />
 	</ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Eric.Jansen.Application\Eric.Jansen.Application.csproj" />
+    <ProjectReference Include="..\Eric.Jansen.Infrastructure\Eric.Jansen.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>

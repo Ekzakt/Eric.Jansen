@@ -9,6 +9,7 @@ html, body {
     display: flex;
     flex-direction: column;
     min-height: 100%;
+    justify-content: center;
 }
 
 .content {
@@ -17,14 +18,27 @@ html, body {
 
 header {
     text-align: center;
-}
+    padding-bottom: 1rem;
 
-header > h1 > a, footer > p > a{
-    background-color: inherit;
-    color: inherit;
-    text-decoration: none;
-    font-weight: inherit;
 }
+    header > h1{
+        padding-top: 1rem;
+        padding-bottom: 0;
+        margin-bottom: 0;
+    }
+    header > h1 > a, footer > p > a{
+        background-color: inherit;
+        color: inherit;
+        text-decoration: none;
+        font-weight: inherit;
+    }
+    header .aka {
+        font-size: calc(0.6rem + 0.5vw);
+        font-weight: lighter;
+    }
+        header .aka a{
+            text-decoration: none;
+        }
 
 
 h2{

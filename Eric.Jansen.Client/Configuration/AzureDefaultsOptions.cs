@@ -1,4 +1,4 @@
-﻿namespace EricJansen.Client.Configuration;
+﻿namespace Eric.Jansen.Client.Configuration;
 
 public class AzureDefaultsOptions
 {

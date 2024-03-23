@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace EricJansen.Client.Models;
+namespace Eric.Jansen.Application.Models;
 
 public class ContactViewModel
 {
