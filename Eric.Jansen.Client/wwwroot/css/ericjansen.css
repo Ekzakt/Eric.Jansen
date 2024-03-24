@@ -58,11 +58,10 @@ a {
 }
 
 .field-validation-error {
-    margin-top: 1rem;
     background-color: rgba(204,0,0,0.9);
     border-radius: 0.375em;
     padding: 0.2rem 0.5rem;
-    line-height: 2.5rem;
+    line-height: 2.4rem;
 }
 
 .binary {
