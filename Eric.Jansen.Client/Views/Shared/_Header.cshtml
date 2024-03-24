@@ -2,5 +2,16 @@
     var tenant = new Tenant(Context.Request.Host.Value);
 }
 
-<h1 class="display-3"><a href="/" alt="@tenant.Title">@tenant.Title</a></h1>
-<p class="aka">Aka <a href="@tenant.AkaUri" title="@tenant.Aka">@tenant.Aka</a></p>
+<header>
+
+    <div class="d-flex justify-content-between">
+        <div class="align-self-center">
+            <h1 class="display-1"><a href="/" alt="@tenant.Title">@tenant.Title</a></h1>
+        </div>
+
+        <div class="align-self-center">
+            <a class="btn btn-outline-secondary rounded-pill" href="/contact" role="button">Drop me a line</a>
+        </div>
+    </div>
+
+</header>

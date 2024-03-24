@@ -3,18 +3,25 @@ using Eric.Jansen.Application.Models;
 using Eric.Jansen.Infrastructure.Extensions;
 using Eric.Jansen.Infrastructure.Queueing;
 using Eric.Jansen.Infrastructure.Services;
+using FluentValidation;
+using FluentValidation.AspNetCore;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Eric.Jansen.Client.Controllers;
 
 public class ContactController : Controller
 {
+    private IValidator<ContactViewModel> _validator;
     private readonly EmailSenderService _emailSender;
     private readonly QueueService _queueService;
 
-
-    public ContactController(EmailSenderService emailSenderService, QueueService queueService)
+    public ContactController(
+        IValidator<ContactViewModel> validator,
+        EmailSenderService emailSenderService, 
+        QueueService queueService)
     {
+        _validator = validator;
         _emailSender = emailSenderService ?? throw new ArgumentNullException(nameof(emailSenderService));
         _queueService = queueService;
     }
@@ -32,11 +39,16 @@ public class ContactController : Controller
     }
 
 
-    [HttpPost("contact")]
+    [HttpPost("/Contact")]
     public async Task<ActionResult> Send(ContactViewModel model)
     {
-        if (!ModelState.IsValid)
+
+        ValidationResult result = await _validator.ValidateAsync(model);
+
+        if (!result.IsValid)
         {
+            result.AddToModelState(this.ModelState);
+
             return View("Index", model);
         }
 
@@ -49,7 +61,7 @@ public class ContactController : Controller
                 UserAgent = HttpContext.GetUserAgent()
             };
 
-            if (await _queueService.SendMessageAsync(QueueNames.TEST_QUEUE, message))
+            if (await _queueService.SendMessageAsync(QueueNames.CONTACTFORM_REQUESTS, message))
             {
                 return View(model);
             }

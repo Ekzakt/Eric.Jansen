@@ -11,7 +11,7 @@ namespace Eric.Jansen.Client.Controllers
         }
 
 
-        [Route("Privacy")]
+        [Route("/privacy")]
         public IActionResult Privacy()
         {
             return View();

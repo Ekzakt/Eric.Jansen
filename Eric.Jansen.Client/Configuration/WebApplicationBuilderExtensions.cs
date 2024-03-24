@@ -11,15 +11,15 @@ public static class WebApplicationBuilderExtensions
         var credentialOptions = GetDefaultAzureCredentialOptions(builder);
 
         var queueServiceUri = builder.Configuration
-            .GetSection(AzureStorageQueueOptions.SectionName)
-            .GetValue<string>(AzureStorageQueueOptions.ServiceUri) ?? string.Empty;
+            .GetSection(AzureStorageQueuesOptions.SectionName)
+            .GetValue<string>(AzureStorageQueuesOptions.ServiceUri) ?? string.Empty;
 
         builder.Services
             .AddAzureClients(clientBuilder => {
                 clientBuilder
                     .UseCredential(new DefaultAzureCredential(credentialOptions));
                 clientBuilder
-                    .AddBlobServiceClient(builder.Configuration.GetSection(AzureStorageOptions.SectionName));
+                    .AddBlobServiceClient(builder.Configuration.GetSection(AzureStorageBlobsOptions.SectionName));
             clientBuilder
                     .AddQueueServiceClient(new Uri(queueServiceUri));
                 clientBuilder

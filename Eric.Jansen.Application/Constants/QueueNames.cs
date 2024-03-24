@@ -2,5 +2,5 @@
 
 public class QueueNames
 {
-    public const string TEST_QUEUE = "testqueue";
+    public const string CONTACTFORM_REQUESTS = "contactformrequests";
 }

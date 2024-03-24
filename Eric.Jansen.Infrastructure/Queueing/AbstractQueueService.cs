@@ -42,7 +42,7 @@ public abstract class AbstractQueueService : IQueueService
         {
             if (_queueClient is null || _queueClient?.Name != queuenName)
             {
-                _queueClient = _queueServiceClient.GetQueueClient(queuenName + "dmfs");
+                _queueClient = _queueServiceClient.GetQueueClient(queuenName);
             }
         }
         catch (Exception ex)

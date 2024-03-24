@@ -1,8 +1,8 @@
 ﻿namespace Eric.Jansen.Client.Configuration;
 
-public class AzureStorageOptions
+public class AzureStorageBlobsOptions
 {
-    public const string SectionName = "Azure:Storage";
+    public const string SectionName = "Azure:StorageBlobs";
 
     public string? ServiceUri { get; init; }
 
