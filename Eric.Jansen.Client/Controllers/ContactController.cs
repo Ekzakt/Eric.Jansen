@@ -39,7 +39,7 @@ public class ContactController : Controller
     }
 
 
-    [HttpPost("/Contact")]
+    [HttpPost("/contact")]
     public async Task<ActionResult> Send(ContactViewModel model)
     {
 
