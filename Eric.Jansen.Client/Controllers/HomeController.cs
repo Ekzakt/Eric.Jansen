@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace EricJansen.Client.Controllers
+namespace Eric.Jansen.Client.Controllers
 {
     public class HomeController : Controller
     {
@@ -11,7 +11,7 @@ namespace EricJansen.Client.Controllers
         }
 
 
-        [Route("Privacy")]
+        [Route("/privacy")]
         public IActionResult Privacy()
         {
             return View();

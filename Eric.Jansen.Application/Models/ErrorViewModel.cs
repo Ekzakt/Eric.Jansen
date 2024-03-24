@@ -1,4 +1,4 @@
-namespace EricJansen.Client.Models
+namespace Eric.Jansen.Application.Models
 {
     public class ErrorViewModel
     {

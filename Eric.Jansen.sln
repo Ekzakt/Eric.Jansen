@@ -9,6 +9,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eric.Jansen.Infrastructure", "Eric.Jansen.Infrastructure\Eric.Jansen.Infrastructure.csproj", "{236FEA80-DA1E-4483-A564-87E61769184B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eric.Jansen.Application", "Eric.Jansen.Application\Eric.Jansen.Application.csproj", "{55112A8A-D28E-4817-86C9-BAB305DEF4F5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +23,14 @@ Global
 		{F4495DB9-385B-43B1-88B3-A0EE74447498}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F4495DB9-385B-43B1-88B3-A0EE74447498}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F4495DB9-385B-43B1-88B3-A0EE74447498}.Release|Any CPU.Build.0 = Release|Any CPU
+		{236FEA80-DA1E-4483-A564-87E61769184B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{236FEA80-DA1E-4483-A564-87E61769184B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{236FEA80-DA1E-4483-A564-87E61769184B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{236FEA80-DA1E-4483-A564-87E61769184B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55112A8A-D28E-4817-86C9-BAB305DEF4F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55112A8A-D28E-4817-86C9-BAB305DEF4F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55112A8A-D28E-4817-86C9-BAB305DEF4F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55112A8A-D28E-4817-86C9-BAB305DEF4F5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
