@@ -6,7 +6,10 @@
 
 <h2>@ViewData["Title"]</h2>
 
+<p>Hey there! If you've got something to ask, anything at all, feel free to drop me a line here. Seriously, I'm all ears! Just a heads-up though, if your question involves me being your fairy godparent for cash, I'm afraid I don't grant those wishes.</p>
 <div class="row text-start">
+
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="16" height="16" aria-hidden="true" class="_24ydrq0 _1286nb11m _1286nb12q9 _1286nb11sl _1286nb11vr"><path d="m256 275.6-92.3-92.3c-9.8-9.8-25.6-9.8-35.4 0s-9.8 25.6 0 35.4l110 110c4.9 4.9 11.3 7.3 17.7 7.3s12.8-2.4 17.7-7.3l110-110c9.8-9.8 9.8-25.6 0-35.4s-25.6-9.8-35.4 0z"></path></svg>
 
     <div class="col">
         <form asp-action="Send" method="post">
@@ -14,17 +17,17 @@
             <div class="mb-3">
                 <label asp-for="Name" class="form-label">What is your name:</label>
                 <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
+                <span asp-validation-for="Name" class="text-white"></span>
             </div>
             <div class="mb-3">
                 <label asp-for="Email" class="form-label">And of course, what is your email:</label>
                 <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
+                <span asp-validation-for="Email" class="text-white"></span>
             </div>
             <div class="mb-3">
                 <label asp-for="Message" class="form-label">Tell me what's up:</label>
                 <textarea asp-for="Message" class="form-control" rows="6"></textarea>
-                <span asp-validation-for="Message" class="text-danger"></span>
+                <span asp-validation-for="Message" class="text-white"></span>
             </div>
             <button type="submit" class="btn btn-primary rounded-pill">Get in touch</button>
         </form>
