@@ -1,0 +1,17 @@
+﻿@{
+    var tenant = new Tenant(Context.Request.Host.Value);
+}
+
+<header>
+
+    <div class="d-flex justify-content-between">
+        <div class="align-self-center">
+            <h1 class="display-1"><a href="/" alt="@tenant.Title">@tenant.Title</a></h1>
+        </div>
+
+        <div class="align-self-center">
+            <a class="btn btn-outline-secondary rounded-pill" href="/contact" role="button">Drop me a line</a>
+        </div>
+    </div>
+
+</header>

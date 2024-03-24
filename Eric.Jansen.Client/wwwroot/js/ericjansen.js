@@ -48,15 +48,15 @@ $(function () {
     var gdprAccepted = Cookies.get(GDPR_ACCEPTED);
 
     if (!gdprAccepted) {
-        gdprElement.show();
+        gdprElement.slideDown();
     }
 
     $('#accept-btn').on('click', function () {
-        gdprElement.hide();
+        gdprElement.slideUp();
         Cookies.set(GDPR_ACCEPTED, 'true', { expires: 1 });
     });
 
     $('#reject-btn').on('click', function () {
-        gdprElement.hide();
+        gdprElement.slideUp();
     });
 });

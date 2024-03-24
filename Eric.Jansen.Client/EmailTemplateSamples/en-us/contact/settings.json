@@ -1,0 +1,31 @@
+{
+  "TemplateName": "contact",
+  "Emails": [
+    {
+      "RecipientType": "admin",
+      "Email": {
+        "Subject": "Your request to Eric Jansen.",
+        "Tos": [
+          {
+            "Address": "mail@ericjansen.com",
+            "Name": "Eric Jansen"
+          }
+        ]
+      }
+    },
+    {
+      "RecipientType": "user",
+      "Email": {
+        "Subject": "Your request to Eric Jansen.",
+        "Tos": [
+          {
+            "Address": "mail@ericjansen.com",
+            "Name": "Eric Jansen"
+          }
+        ]
+
+      }
+    }
+  ]
+}
+

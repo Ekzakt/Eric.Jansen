@@ -1,20 +1,31 @@
-﻿using Ekzakt.EmailSender.Core.Contracts;
-using Ekzakt.EmailSender.Core.Models;
-using Ekzakt.EmailSender.Smtp.Configuration;
-using EricJansen.Client.Models;
+﻿using Eric.Jansen.Application.Constants;
+using Eric.Jansen.Application.Models;
+using Eric.Jansen.Infrastructure.Extensions;
+using Eric.Jansen.Infrastructure.Queueing;
+using Eric.Jansen.Infrastructure.Services;
+using FluentValidation;
+using FluentValidation.AspNetCore;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
 
-namespace EricJansen.Client.Controllers;
+namespace Eric.Jansen.Client.Controllers;
 
-public class ContactController(
-    IEmailSenderService emailSender,
-    IConfiguration configuration,
-    IOptions<SmtpEmailSenderOptions> emailOptions) : Controller
+public class ContactController : Controller
 {
-    private readonly IEmailSenderService _emailSender = emailSender;
-    private readonly IConfiguration _configuration = configuration;
-    private readonly SmtpEmailSenderOptions _emailOptions = emailOptions.Value;
+    private IValidator<ContactViewModel> _validator;
+    private readonly EmailSenderService _emailSender;
+    private readonly QueueService _queueService;
+
+    public ContactController(
+        IValidator<ContactViewModel> validator,
+        EmailSenderService emailSenderService, 
+        QueueService queueService)
+    {
+        _validator = validator;
+        _emailSender = emailSenderService ?? throw new ArgumentNullException(nameof(emailSenderService));
+        _queueService = queueService;
+    }
+
 
     public IActionResult Index()
     {
@@ -28,43 +39,39 @@ public class ContactController(
     }
 
 
-    [HttpPost("contact")]
+    [HttpPost("/Contact")]
     public async Task<ActionResult> Send(ContactViewModel model)
     {
-        if (!ModelState.IsValid)
+
+        ValidationResult result = await _validator.ValidateAsync(model);
+
+        if (!result.IsValid)
         {
+            result.AddToModelState(this.ModelState);
+
             return View("Index", model);
         }
 
         try
         {
-            
-            SendEmailRequest request = new();
-
-            request.Tos.Add(new EmailAddress(_emailOptions.SenderAddress, _emailOptions.SenderDisplayName));
-            request.Subject = "Contact form ericjansen.com";
-            request.Body.Html = model.Message;
-            request.Body.PlainText = model.Message;
-
-            var result = await _emailSender.SendAsync(request);
-
-            if (result.IsSuccess)
+            var message = new QueueMessage<ContactViewModel>(model)
             {
-                ViewBag.Message = "Email sent successfully!";
-                RedirectToAction("Index", model);
-            }
-            else
+                CultureName = Thread.CurrentThread.CurrentCulture.Name,
+                IpAddress = HttpContext.GetIpAddress(),
+                UserAgent = HttpContext.GetUserAgent()
+            };
+
+            if (await _queueService.SendMessageAsync(QueueNames.CONTACTFORM_REQUESTS, message))
             {
-                ViewBag.Message = $"Something went wrong while contacting me: {result.ServerResponse}";
-                RedirectToAction("Index", model);
+                return View(model);
             }
+
+            return View();
         }
         catch (Exception ex)
         {
             ViewBag.Message = "Woops, I fucked up this time.  Something went seriously wrong." + ex.Message;
-            RedirectToAction("Index", model);
+            throw;
         }
-
-        return View(model);
     }
 }
