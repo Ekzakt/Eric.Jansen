@@ -63,10 +63,10 @@ public class ContactController : Controller
 
             if (await _queueService.SendMessageAsync(QueueNames.CONTACTFORM_REQUESTS, message))
             {
-                return View(model);
+                return View("Success", model);
             }
 
-            return View();
+            return View("Error", model);
         }
         catch (Exception ex)
         {
