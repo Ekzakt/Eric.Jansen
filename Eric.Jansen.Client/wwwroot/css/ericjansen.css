@@ -57,6 +57,19 @@ a {
     color: inherit;
 }
 
+.field-validation-error {
+<<<<<<<<< Temporary merge branch 1
+    background-color: rgba(255,0,0,0.9);
+=========
+<<<<<<<<< Temporary merge branch 1
+    background-color: rgba(255,0,0,0.9);
+=========
+    background-color: rgba(204,0,0,0.9);
+    border-radius: 0.375em;
+    padding: 0.2rem 0.5rem;
+    line-height: 2.4rem;
+}
+
 .binary {
     font-family: Courier New, Courier, monospace;
     font-size: 0.7rem;
