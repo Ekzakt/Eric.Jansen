@@ -12,7 +12,7 @@
 		<PackageReference Include="Azure.Storage.Queues" Version="12.17.1" />
 		<PackageReference Include="Ekzakt.EmailSender.Smtp" Version="0.2.3" />
 		<PackageReference Include="Ekzakt.EmailTemplateProvider.Io" Version="0.0.14" />
-		<PackageReference Include="Ekzakt.FileManager.AzureBlob" Version="0.0.31" />
+		<PackageReference Include="Ekzakt.FileManager.AzureBlob" Version="0.0.34" />
 		<PackageReference Include="Ekzakt.Utilities" Version="0.2.17" />
 		<PackageReference Include="Microsoft.Extensions.Azure" Version="1.7.2" />
 	</ItemGroup>
