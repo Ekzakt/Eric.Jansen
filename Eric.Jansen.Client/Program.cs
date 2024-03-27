@@ -12,6 +12,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddOptions<EricJansenOptions>();
 builder.Services.AddEkzaktSmtpEmailSender();
 builder.Services.AddAzureBlobFileManager();
 builder.Services.AddEkzaktEmailTemplateProviderIo();
@@ -26,6 +27,7 @@ builder.Services.AddValidatorsFromAssemblyContaining<ContactViewModelValidator>(
 
 builder.Services.AddProblemDetails();
 
+builder.AddEricJansenOptions();
 builder.AddAzureClientServices();
 builder.AddAzureKeyVault();
 

@@ -1,5 +1,6 @@
 ﻿using Azure.Identity;
 using Eric.Jansen.Client.Configuration;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.Extensions.Azure;
 
 namespace Eric.Jansen.Client.Configuration;
@@ -53,6 +54,13 @@ public static class WebApplicationBuilderExtensions
     }
 
 
+    public static WebApplicationBuilder AddEricJansenOptions(this WebApplicationBuilder builder)
+    {
+        builder.Services.Configure<EricJansenOptions>(
+            builder.Configuration.GetSection(EricJansenOptions.SectionName));
+
+        return builder;
+    }
 
     #region Helpers
 

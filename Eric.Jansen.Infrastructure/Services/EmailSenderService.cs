@@ -1,4 +1,5 @@
 ﻿using Ekzakt.EmailSender.Core.Contracts;
+using Ekzakt.EmailSender.Core.EventArguments;
 using Ekzakt.EmailSender.Core.Models.Requests;
 using Ekzakt.EmailSender.Core.Models.Responses;
 using Ekzakt.EmailSender.Smtp.Configuration;
@@ -6,13 +7,12 @@ using Ekzakt.EmailTemplateProvider.Core.Contracts;
 using Ekzakt.EmailTemplateProvider.Core.Models;
 using Ekzakt.EmailTemplateProvider.Core.Requests;
 using Ekzakt.FileManager.Core.Contracts;
+using Ekzakt.FileManager.Core.Models.Requests;
 using Ekzakt.Utilities;
+using Ekzakt.Utilities.Helpers;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using System.Text.Json;
-using Ekzakt.Utilities.Helpers;
-using Ekzakt.FileManager.Core.Models.Requests;
-using Ekzakt.EmailSender.Core.EventArguments;
 
 namespace Eric.Jansen.Infrastructure.Services;
 
@@ -39,7 +39,6 @@ public class EmailSenderService : AbstractEmailSenderService, IDisposable
 
         _emailSender.BeforeEmailSentAsync += OnBeforeEmailSentAsync;
         _emailSender.AfterEmailSentAsync += OnAfterEmailSentAsync;
-
     }
 
 
