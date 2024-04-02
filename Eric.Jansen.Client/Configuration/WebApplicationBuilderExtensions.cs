@@ -1,5 +1,5 @@
 ﻿using Azure.Identity;
-using Eric.Jansen.Client.Configuration;
+using Eric.Jansen.Infrastructure.Configuration;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.Extensions.Azure;
 
@@ -9,7 +9,7 @@ public static class WebApplicationBuilderExtensions
 {
     public static WebApplicationBuilder AddAzureClientServices(this WebApplicationBuilder builder)
     {
-        var credentialOptions = GetDefaultAzureCredentialOptions(builder);
+        var credentialOptions = GetDefaultAzureCredentialOptions();
 
         var queueServiceUri = builder.Configuration
             .GetSection(AzureStorageQueuesOptions.SectionName)
@@ -64,7 +64,7 @@ public static class WebApplicationBuilderExtensions
 
     #region Helpers
 
-    private static DefaultAzureCredentialOptions GetDefaultAzureCredentialOptions(WebApplicationBuilder builder)
+    private static DefaultAzureCredentialOptions GetDefaultAzureCredentialOptions()
     {
         var credentials = new DefaultAzureCredentialOptions
         {

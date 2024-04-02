@@ -1,8 +1,7 @@
 ﻿using Eric.Jansen.Application.Models;
-using Eric.Jansen.Client.Configuration;
+using Eric.Jansen.Infrastructure.Configuration;
 using Eric.Jansen.Infrastructure.Extensions;
 using Eric.Jansen.Infrastructure.Queueing;
-using Eric.Jansen.Infrastructure.Services;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using FluentValidation.Results;
@@ -13,20 +12,17 @@ namespace Eric.Jansen.Client.Controllers;
 
 public class ContactController : Controller
 {
-    private IValidator<ContactViewModel> _validator;
-    private EricJansenOptions _options;
-    private readonly EmailSenderService _emailSender;
-    private readonly QueueService _queueService;
+    private readonly IValidator<ContactViewModel> _validator;
+    private readonly EricJansenOptions _options;
+    private readonly IQueueService _queueService;
 
     public ContactController(
         IValidator<ContactViewModel> validator,
         IOptions<EricJansenOptions> options,
-        EmailSenderService emailSenderService, 
-        QueueService queueService)
+        IQueueService queueService)
     {
         _options = options?.Value ?? throw new ArgumentNullException(nameof(options));
         _validator = validator ?? throw new ArgumentNullException(nameof(validator));
-        _emailSender = emailSenderService ?? throw new ArgumentNullException(nameof(emailSenderService));
         _queueService = queueService ?? throw new ArgumentNullException(nameof(queueService));
     }
 
@@ -46,7 +42,6 @@ public class ContactController : Controller
     [HttpPost("/contact")]
     public async Task<ActionResult> Send(ContactViewModel model)
     {
-
         ValidationResult result = await _validator.ValidateAsync(model);
 
         if (!result.IsValid)
@@ -60,14 +55,12 @@ public class ContactController : Controller
         {
             var message = new QueueMessage<ContactViewModel>(model)
             {
-                CultureName = Thread.CurrentThread.CurrentCulture.Name,
+                CultureName = Thread.CurrentThread.CurrentCulture.Name.ToLower(),
                 IpAddress = HttpContext.GetIpAddress(),
                 UserAgent = HttpContext.GetUserAgent()
             };
 
-            var x = _options.QueueNames;
-
-            if (await _queueService.SendMessageAsync(x.ContactForm ?? string.Empty, message))
+            if (await _queueService.SendMessageAsync(_options?.QueueNames?.ContactForm ?? string.Empty, message))
             {
                 return View("Success", model);
             }

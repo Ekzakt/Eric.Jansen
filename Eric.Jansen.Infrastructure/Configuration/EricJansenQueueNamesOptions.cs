@@ -1,4 +1,4 @@
-﻿namespace Eric.Jansen.Client.Configuration;
+﻿namespace Eric.Jansen.Infrastructure.Configuration;
 
 public class EricJansenQueueNamesOptions
 {
