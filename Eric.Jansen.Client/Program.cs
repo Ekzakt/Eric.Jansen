@@ -16,6 +16,12 @@ builder.Services.AddEkzaktFileManagerAzure();
 builder.Services.AddEkzaktEmailTemplateProviderIo();
 builder.Services.AddEkzaktSmtpEmailSender();
 
+builder.Services.Configure<HostOptions>(options =>
+{
+    options.ServicesStartConcurrently = true;
+    options.ServicesStopConcurrently = true;
+});
+
 builder.Services.AddTransient<IQueueService, QueueService>();
 
 builder.Services.AddHostedService<ContactFormQueueBackgroundService>();
