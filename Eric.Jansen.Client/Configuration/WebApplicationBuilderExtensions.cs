@@ -1,6 +1,5 @@
 ﻿using Azure.Identity;
 using Eric.Jansen.Infrastructure.Configuration;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.Extensions.Azure;
 
 namespace Eric.Jansen.Client.Configuration;
@@ -42,7 +41,7 @@ public static class WebApplicationBuilderExtensions
             .GetSection(AzureKeyVaultOptions.SectionName)
             .Bind(azureKeyVaultOptions);
 
-        var credentialOptions = GetDefaultAzureCredentialOptions(builder);
+        var credentialOptions = GetDefaultAzureCredentialOptions();
 
         builder.Configuration.AddAzureKeyVault(
             new Uri(azureKeyVaultOptions.VaultUri),
