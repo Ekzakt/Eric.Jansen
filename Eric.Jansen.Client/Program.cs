@@ -1,6 +1,7 @@
 using Ekzakt.EmailSender.Smtp.Configuration;
 using Ekzakt.EmailTemplateProvider.Io.Configuration;
 using Ekzakt.FileManager.AzureBlob.Configuration;
+using Eric.Jansen.Application.Contracts;
 using Eric.Jansen.Application.Validators;
 using Eric.Jansen.Client.Configuration;
 using Eric.Jansen.Client.Extensions;
@@ -8,6 +9,7 @@ using Eric.Jansen.Infrastructure.BackgroundServices;
 using Eric.Jansen.Infrastructure.Constants;
 using Eric.Jansen.Infrastructure.Queueing;
 using Eric.Jansen.Infrastructure.ScopedServices;
+using Eric.Jansen.Infrastructure.Services;
 using FluentValidation;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -23,7 +25,9 @@ builder.Services.Configure<HostOptions>(options =>
     options.ServicesStopConcurrently = true;
 });
 
-builder.Services.AddTransient<IQueueService, QueueService>();
+builder.Services.AddScoped<ITenantProvider, TenantProvider>();
+builder.Services.AddScoped<ITenantService, TenantService>();
+builder.Services.AddScoped<IQueueService, QueueService>();
 
 builder.Services.AddHostedService<ContactFormQueueBackgroundService>();
 builder.Services.AddKeyedScoped<IScopedService, ContactFormService>(ProcessingServiceKeys.CONTACT_FORM);
