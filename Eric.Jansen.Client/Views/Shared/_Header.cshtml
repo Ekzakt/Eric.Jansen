@@ -1,12 +1,8 @@
-﻿@{
-    var tenant = new Tenant(Context.Request.Host.Value);
-}
-
-<header>
+﻿<header>
 
     <div class="d-flex justify-content-between">
         <div class="align-self-center">
-            <h1 class="display-1"><a href="/" alt="@tenant.Title">@tenant.Title</a></h1>
+            <h1 class="display-1"><a href="/" alt="@_tenantProvider.Tenant?.Name">@_tenantProvider.Tenant?.Name</a></h1>
         </div>
 
         <div class="navigation align-self-center ms-4">

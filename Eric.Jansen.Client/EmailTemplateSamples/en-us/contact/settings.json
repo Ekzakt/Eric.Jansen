@@ -5,7 +5,7 @@
     {
       "RecipientType": "admin",
       "Email": {
-        "Subject": "[ContactForm] ericjansen.com by {{ContactName}}",
+        "Subject": "[ContactForm] {{TenantHostName}} by {{ContactName}}",
         "Tos": [
           {
             "Address": "mail@ericjansen.com",

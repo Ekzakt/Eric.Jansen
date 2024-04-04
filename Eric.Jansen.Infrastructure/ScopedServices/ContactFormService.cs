@@ -50,7 +50,7 @@ public class ContactFormService : IScopedService
         {
             count++;
 
-            var messages = await _queueService.GetMessagesAsync<QueueMessage<ContactViewModel>>(_contactFormRequestsQueueName);
+            var messages = await _queueService.GetMessagesAsync<ContactFormQueueMessage<ContactViewModel>>(_contactFormRequestsQueueName);
 
             var delayMs = IntHelpers.GetRandomIntBetween(2000, 5000);
 
@@ -65,7 +65,7 @@ public class ContactFormService : IScopedService
 
     #region Helpers
 
-    private async Task ProcessMessagesAsync(List<(QueueMessage<ContactViewModel> Message, string MessageId, string PopReceipt)>? queueMessages)
+    private async Task ProcessMessagesAsync(List<(ContactFormQueueMessage<ContactViewModel> Message, string MessageId, string PopReceipt)>? queueMessages)
     {
         if (queueMessages is null || queueMessages?.Count == 0)
         {
@@ -93,7 +93,7 @@ public class ContactFormService : IScopedService
     }
 
 
-    private async Task<bool> ProcessMessageAsync(QueueMessage<ContactViewModel> message)
+    private async Task<bool> ProcessMessageAsync(ContactFormQueueMessage<ContactViewModel> message)
     {
         var templateRequest = new EmailTemplateRequest
         {
@@ -113,6 +113,7 @@ public class ContactFormService : IScopedService
         var replacer = new StringReplacer();
 
         replacer.AddReplacement("IpAddress", message?.IpAddress ?? string.Empty);
+        replacer.AddReplacement("TenantHostName", message?.TenantHostName ?? string.Empty);
         replacer.AddReplacement("UserAgent", message?.UserAgent ?? string.Empty);
         replacer.AddReplacement("DateSent", message?.Date.ToString() ?? string.Empty);
         replacer.AddReplacement("CultureName", message?.CultureName ?? string.Empty);

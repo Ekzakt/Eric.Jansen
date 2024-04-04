@@ -2,17 +2,10 @@
 
 public class Tenant
 {
-    public Tenant(string hostName)
-    {
-        if (hostName.Contains("rixke"))
-        {
-            Title = "Rixke";
-            Aka = "Eric Jansen";
-            AkaUri = new Uri("https://ericjansen.com");
-        }
-    }
+    public string HostName { get; set; } = string.Empty;
 
-    public string Title { get; set; } = "Eric Jansen";
-    public string Aka { get; set; } = "Rixke";
-    public Uri AkaUri { get; set; } = new Uri("https://rixke.be");
+    public string Name { get; set; } = string.Empty;
+
+    public string ShortName { get; set; } = string.Empty;
+
 }

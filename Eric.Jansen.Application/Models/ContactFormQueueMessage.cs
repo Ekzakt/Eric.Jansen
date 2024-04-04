@@ -1,8 +1,8 @@
 ﻿namespace Eric.Jansen.Application.Models;
 
-public class QueueMessage<T> where T : class?
+public class ContactFormQueueMessage<T> where T : class?
 {
-    public QueueMessage(T? message)
+    public ContactFormQueueMessage(T? message)
     {
         Message = message;
         Date = DateTime.UtcNow;
@@ -13,6 +13,8 @@ public class QueueMessage<T> where T : class?
     public DateTime Date { get; init; }
 
     public string? CultureName { get; set; }
+
+    public string? TenantHostName { get; set; }
 
     public string? IpAddress { get; set; }
 
