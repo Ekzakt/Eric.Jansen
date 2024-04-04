@@ -1,5 +1,33 @@
+<p>This is a request from the <a href="https://ericjansen.com/contact">contact form</a> from ericjansen.com.</p>
 <ul>
-    <li>Name: {{ContactName}}</li>
-    <li>Email: <a href="mailto: {{ContactEmail}}"{{ContactEmail}}></a></li>
-    <li>Message: {{ContactMessage}}</li>
+    <li>
+        <strong><u>Name</u>:</strong><br />
+        {{ContactName}}<br /><br />
+    </li>
+    <li>
+        <strong><u>Email</u>:</strong><br />
+        <a href="mailto: {{ContactEmail}}">{{ContactEmail}}</a><br /><br />
+    </li>
+    <li>
+        <strong><u>Message</u>:</strong><br />
+        {{ContactMessage}}<br /><br />
+    </li>
+    <li>
+        <strong><u>Ip address</u>:</strong><br />
+        {{IpAddress}}<br />
+        Check on: <a href="https://iplocation.io/ip/{{IpAddress}}/">iplocation.io</a><br />
+        Check on: <a href="https://www.whatismyip.com/ip/{{IpAddress}}/">whatismyip.com</a><br /><br />
+    </li>
+    <li>
+        <strong><u>Useragent</u>:</strong><br />
+        {{UserAgent}}<br /><br />
+    </li>
+    <li>
+        <strong><u>Date sent</u>:</strong><br />
+        {{DateSent}}<br /><br />
+    </li>
+    <li>
+        <strong><u>Original culture name</u>:</strong><br />
+        {{CultureName}}<br /><br />
+    </li>
 </ul>

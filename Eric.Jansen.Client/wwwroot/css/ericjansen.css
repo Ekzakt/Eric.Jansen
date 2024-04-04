@@ -20,44 +20,56 @@ header {
     text-align: left;
     padding: 3rem 0;
 }
-    header > h1{
-        font-size: larger;
-        padding-top: 1rem;
-        padding-bottom: 0;
-        margin-bottom: 0;
-    }
-    header h1 > a, footer > p > a{
-        background-color: inherit;
-        color: inherit;
-        text-decoration: none;
-        font-weight: inherit;
-    }
     header .aka {
         color: #b0b0b0;
         font-size: calc(0.6rem + 0.5vw);
         font-weight: lighter;
     }
-        header .aka a{
-            text-decoration: none;
-        }
+    header .aka a {
+        text-decoration: none;
+    }
 
+h1 {
+    font-size: larger;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+    h1 > a {
+        background-color: inherit;
+        color: inherit;
+        text-decoration: none;
+    }
+    h1 > a:hover {
+        text-decoration: none;
+    }
 
-h2{
-    padding: 0rem 0rem 1.4rem 0;
+h2 {
+    padding: 0 0 1.4rem 0;
     font-size: 1.8rem;
     font-weight: lighter;
 }
-h3{
+
+h3 {
     font-size: 1.4rem;
     font-weight: lighter;
     padding: 1.2rem 0;
 }
 
-a {
-    color: inherit;
+.navigation a:first-child{
+    margin-right: 1rem;
 }
 
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+    a:hover {
+        text-decoration: underline;
+    }
+
 .field-validation-error {
+    background-color: #cc0000;
     background-color: rgba(204,0,0,0.9);
     border-radius: 0.375em;
     padding: 0.2rem 0.5rem;
@@ -68,7 +80,8 @@ a {
     font-family: Courier New, Courier, monospace;
     font-size: 0.7rem;
 }
-    .binary span:hover{
+
+    .binary span:hover {
         font-weight: bold;
         cursor: pointer;
     }
@@ -85,14 +98,19 @@ a {
     text-align: center;
 }
 
+footer > p > a {
+    background-color: inherit;
+    color: inherit;
+    text-decoration: none;
+    font-weight: inherit;
+}
+
 .gdpr-consent {
     text-align: center;
     background-color: #000000;
     display: none;
 }
-    .gdpr-message a{
-        color: inherit;
-    }
+
 
 .visible {
     display: block;

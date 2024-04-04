@@ -1,11 +1,11 @@
 {
   "CultureName": "en-us",
   "TemplateName": "contact",
-  "EmailSettings": [
+  "EmailInfos": [
     {
       "RecipientType": "admin",
       "Email": {
-        "Subject": "Sample - Admin",
+        "Subject": "[ContactForm] ericjansen.com by {{ContactName}}",
         "Tos": [
           {
             "Address": "mail@ericjansen.com",

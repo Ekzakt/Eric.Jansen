@@ -1,5 +1,5 @@
-﻿using Ekzakt.EmailTemplateProvider.Core.Contracts;
-using Ekzakt.EmailTemplateProvider.Core.Extensions;
+﻿using Ekzakt.EmailSender.Core.Extensions;
+using Ekzakt.EmailTemplateProvider.Core.Contracts;
 using Ekzakt.EmailTemplateProvider.Core.Requests;
 using Ekzakt.FileManager.Core.Contracts;
 using Ekzakt.Utilities;
@@ -11,12 +11,12 @@ using Eric.Jansen.Infrastructure.Queueing;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace Eric.Jansen.Infrastructure.BackgroundServices;
+namespace Eric.Jansen.Infrastructure.ScopedServices;
 
-public class ContactFormScopedProcessingService : IScopedProcessingService
+public class ContactFormService : IScopedService
 {
     private readonly EricJansenOptions? _options;
-    private readonly ILogger<ContactFormScopedProcessingService> _logger;
+    private readonly ILogger<ContactFormService> _logger;
     private readonly IQueueService _queueService;
     private readonly IEkzaktEmailTemplateProvider _emailTemplateProvider;
     private readonly IEkzaktFileManager _fileManager;
@@ -24,16 +24,16 @@ public class ContactFormScopedProcessingService : IScopedProcessingService
     private readonly string _contactFormRequestsQueueName;
     private readonly string _emailsQueueName;
 
-    public ContactFormScopedProcessingService(
+    public ContactFormService(
         IOptions<EricJansenOptions> options,
-        ILogger<ContactFormScopedProcessingService> logger,
+        ILogger<ContactFormService> logger,
         IQueueService queueService,
         IEkzaktEmailTemplateProvider emailTemplateProvider,
         IEkzaktFileManager fileManager)
     {
         _options = options?.Value ?? throw new ArgumentNullException(nameof(options));
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
-        _queueService = queueService ?? throw new ArgumentNullException(nameof(queueService));    
+        _queueService = queueService ?? throw new ArgumentNullException(nameof(queueService));
         _emailTemplateProvider = emailTemplateProvider ?? throw new ArgumentNullException(nameof(emailTemplateProvider));
         _fileManager = fileManager ?? throw new ArgumentNullException(nameof(fileManager));
 
@@ -44,16 +44,17 @@ public class ContactFormScopedProcessingService : IScopedProcessingService
 
     public async Task ExecuteAsync(CancellationToken cancellationToken)
     {
-        int count = 0;
+        Int64 count = 0;
 
         while (!cancellationToken.IsCancellationRequested)
         {
             count++;
 
             var messages = await _queueService.GetMessagesAsync<QueueMessage<ContactViewModel>>(_contactFormRequestsQueueName);
+
             var delayMs = IntHelpers.GetRandomIntBetween(2000, 5000);
 
-            _logger.LogInformation("Executing {ServiceName} #{Count} - Messages read: {MessageCount} - Delay: {Delay}.", nameof(ContactFormScopedProcessingService), count, messages?.Count ?? 0, delayMs);
+            _logger.LogInformation("Executing {ServiceName} #{Count} - Messages read: {MessageCount} - Delay: {Delay}.", nameof(ContactFormService), count, messages?.Count ?? 0, delayMs);
 
             await ProcessMessagesAsync(messages);
 
@@ -70,23 +71,23 @@ public class ContactFormScopedProcessingService : IScopedProcessingService
         {
             return;
         }
-        
-        foreach (var queueMessage in queueMessages!) 
+
+        foreach (var queueMessage in queueMessages!)
         {
             if (await ProcessMessageAsync(queueMessage.Message))
             {
                 await _queueService.DeleteMessageAsync(
-                    _contactFormRequestsQueueName, 
-                    queueMessage.MessageId, 
+                    _contactFormRequestsQueueName,
+                    queueMessage.MessageId,
                     queueMessage.PopReceipt);
             }
             else
             {
                 await _queueService.UpdateMessageAsync(
                     _contactFormRequestsQueueName,
-                    queueMessage.MessageId, 
+                    queueMessage.MessageId,
                     queueMessage.PopReceipt,
-                    0);
+                    1);
             }
         }
     }
@@ -94,18 +95,20 @@ public class ContactFormScopedProcessingService : IScopedProcessingService
 
     private async Task<bool> ProcessMessageAsync(QueueMessage<ContactViewModel> message)
     {
-        var templatesRequest = new EmailTemplateRequest
+        var templateRequest = new EmailTemplateRequest
         {
             TemplateName = EmailTemplateNames.CONTACTFORM,
             CultureName = message.CultureName ?? string.Empty
         };
 
-        var templates = await _emailTemplateProvider.GetEmailTemplateAsync(templatesRequest);
+        var templateResponse = await _emailTemplateProvider.GetEmailTemplateAsync(templateRequest);
 
-        if (templates is null || !templates.IsSuccess || message is null)
+        if (templateResponse is null || !templateResponse.IsSuccess || message is null)
         {
             return false;
         }
+
+        var templateInfo = templateResponse.EmailTemplateInfo;
 
         var replacer = new StringReplacer();
 
@@ -117,13 +120,15 @@ public class ContactFormScopedProcessingService : IScopedProcessingService
         replacer.AddReplacement("ContactEmail", message?.Message?.Email ?? string.Empty);
         replacer.AddReplacement("ContactMessage", message?.Message?.Message ?? string.Empty);
 
-        var emailSettings = templates!.Templates!.ApplyReplacements(replacer);
-
         var result = false;
 
-        foreach(var emailSetting in emailSettings!.EmailSettings!)
+        foreach (var emailInfo in templateInfo!.EmailInfos!)
         {
-            result |= await _queueService.SendMessageAsync(_emailsQueueName, emailSetting);
+            var email = emailInfo.Email;
+
+            email = email!.ApplyReplacements(replacer);
+
+            result |= await _queueService.SendMessageAsync(_emailsQueueName, emailInfo!);
         }
 
         return result;

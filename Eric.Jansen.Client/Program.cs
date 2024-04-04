@@ -6,20 +6,23 @@ using Eric.Jansen.Client.Configuration;
 using Eric.Jansen.Infrastructure.BackgroundServices;
 using Eric.Jansen.Infrastructure.Constants;
 using Eric.Jansen.Infrastructure.Queueing;
+using Eric.Jansen.Infrastructure.ScopedServices;
 using FluentValidation;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
-builder.Services.AddAzureBlobFileManager();
+builder.Services.AddEkzaktFileManagerAzure();
 builder.Services.AddEkzaktEmailTemplateProviderIo();
 builder.Services.AddEkzaktSmtpEmailSender();
 
-builder.Services.AddScoped<IQueueService, QueueService>();
+builder.Services.AddTransient<IQueueService, QueueService>();
+
 builder.Services.AddHostedService<ContactFormQueueBackgroundService>();
-builder.Services.AddHostedService<EmailQueueBackgroundService>();
-builder.Services.AddKeyedScoped<IScopedProcessingService, ContactFormScopedProcessingService>(ProcessingServiceKeys.CONTACT_FORM);
-builder.Services.AddKeyedScoped<IScopedProcessingService, EmailScopedProcessingService>(ProcessingServiceKeys.EMAILS);
+builder.Services.AddKeyedScoped<IScopedService, ContactFormService>(ProcessingServiceKeys.CONTACT_FORM);
+
+builder.Services.AddKeyedScoped<IScopedService, EmailService>(ProcessingServiceKeys.EMAILS);
+builder.Services.AddHostedService<EmailBgService>();
 
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 

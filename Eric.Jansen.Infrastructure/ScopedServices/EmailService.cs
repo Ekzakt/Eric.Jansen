@@ -11,12 +11,12 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using System.Text.Json;
 
-namespace Eric.Jansen.Infrastructure.BackgroundServices;
+namespace Eric.Jansen.Infrastructure.ScopedServices;
 
-public class EmailScopedProcessingService : IScopedProcessingService
+public class EmailService : IScopedService
 {
     private readonly EricJansenOptions? _options;
-    private readonly ILogger<EmailScopedProcessingService> _logger;
+    private readonly ILogger<EmailService> _logger;
     private readonly IQueueService _queueService;
     private readonly IEkzaktEmailSenderService _emailSender;
     private readonly IEkzaktFileManager _fileManager;
@@ -25,9 +25,9 @@ public class EmailScopedProcessingService : IScopedProcessingService
     private readonly string _emailsBaseLocation;
     private readonly JsonSerializerOptions _jsonSerializerOptions = new();
 
-    public EmailScopedProcessingService(
+    public EmailService(
         IOptions<EricJansenOptions> options,
-        ILogger<EmailScopedProcessingService> logger,
+        ILogger<EmailService> logger,
         IQueueService queueService,
         IEkzaktEmailSenderService emailSender,
         IEkzaktFileManager fileManager)
@@ -47,19 +47,18 @@ public class EmailScopedProcessingService : IScopedProcessingService
 
     public async Task ExecuteAsync(CancellationToken cancellationToken)
     {
-        int count = 0;
+        Int64 count = 0;
 
         while (!cancellationToken.IsCancellationRequested)
         {
             count++;
 
-            var messages = await _queueService.GetMessagesAsync<EmailSettings>(_emailsQueueName);
-            var delayMs = IntHelpers.GetRandomIntBetween(2000, 10000);
+            var messages = await _queueService.GetMessagesAsync<EmailInfo>(_emailsQueueName);
+            var delayMs = IntHelpers.GetRandomIntBetween(5000, 60000);
 
-            _logger.LogInformation("Executing {ServiceName} #{Count} - Messages read: {MessageCount} - Delay: {Delay}.", nameof(EmailScopedProcessingService), count, messages?.Count ?? 0, delayMs);
+            _logger.LogInformation("Executing {ServiceName} #{Count} - Messages read: {MessageCount} - Delay: {Delay}.", nameof(EmailService), count, messages?.Count ?? 0, delayMs);
 
             await ProcessMessagesAsync(messages);
-
 
             await Task.Delay(delayMs, cancellationToken);
         }
@@ -68,40 +67,40 @@ public class EmailScopedProcessingService : IScopedProcessingService
 
     #region Helpers
 
-    private async Task ProcessMessagesAsync(List<(EmailSettings Message, string MessageId, string PopReceipt)>? queueMessages)
+    private async Task ProcessMessagesAsync(List<(EmailInfo Message, string MessageId, string PopReceipt)>? queueMessages)
     {
         if (queueMessages is null || queueMessages?.Count == 0)
         {
             return;
         }
-        
-        foreach (var queueMessage in queueMessages!) 
+
+        foreach (var queueMessage in queueMessages!)
         {
             if (await ProcessMessageAsync(queueMessage.Message))
             {
                 await _queueService.DeleteMessageAsync(
-                    _emailsQueueName, 
-                    queueMessage.MessageId, 
+                    _emailsQueueName,
+                    queueMessage.MessageId,
                     queueMessage.PopReceipt);
             }
             else
             {
                 await _queueService.UpdateMessageAsync(
                     _emailsQueueName,
-                    queueMessage.MessageId, 
+                    queueMessage.MessageId,
                     queueMessage.PopReceipt,
-                    0);
+                    1);
             }
         }
     }
 
 
-    private async Task<bool> ProcessMessageAsync(EmailSettings message)
+    private async Task<bool> ProcessMessageAsync(EmailInfo emailInfo)
     {
         var sendRequest = new SendEmailRequest
         {
-            Email = message.Email!,
-            RecipientType = message.RecipientType,
+            Email = emailInfo.Email!,
+            RecipientType = emailInfo.RecipientType,
             TemplateName = EmailTemplateNames.CONTACTFORM,
         };
 
@@ -114,16 +113,17 @@ public class EmailScopedProcessingService : IScopedProcessingService
         var saveRequest = new SaveFileRequest
         {
             BaseLocation = _emailsBaseLocation,
-            FileName = $"{message.Email?.Id}.{message.RecipientType}.{(sendResponse.IsSuccess ? "_OK" : "_NOK")}",
+            FileName = $"{emailInfo.Email?.Id}_{emailInfo.RecipientType}_{(sendResponse.IsSuccess ? "OK" : "NOK")}.json",
             FileStream = stream,
             InitialFileSize = stream.Length
         };
 
         var saveResponse = await _fileManager.SaveFileAsync(saveRequest);
 
-        var result = sendResponse.IsSuccess && saveResponse.IsSuccess();
+        var output = sendResponse.IsSuccess && saveResponse.IsSuccess();
 
-        return result;
+        return output;
+
     }
 
     #endregion Helpers

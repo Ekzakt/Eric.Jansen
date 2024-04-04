@@ -88,7 +88,7 @@ public class QueueService : IQueueService
     {
         EnsureQueueClient(queueName);
 
-        await _queueClient!.DeleteMessageAsync(messageId, popReceipt);
+        var response = await _queueClient!.DeleteMessageAsync(messageId, popReceipt);
     }
 
 

@@ -1,24 +1,25 @@
 ﻿using Eric.Jansen.Infrastructure.Constants;
+using Eric.Jansen.Infrastructure.ScopedServices;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
 namespace Eric.Jansen.Infrastructure.BackgroundServices;
 
-public class ContactFormQueueBackgroundService : BackgroundService
+public class EmailBgService : BackgroundService
 {
-    private readonly ILogger<ContactFormQueueBackgroundService> _logger;
+    private readonly ILogger<EmailBgService> _logger;
     private readonly IServiceScopeFactory _serviceScopeFactory;
 
 
-    public ContactFormQueueBackgroundService(
-        ILogger<ContactFormQueueBackgroundService> logger,
+    public EmailBgService(
+        ILogger<EmailBgService> logger,
         IServiceScopeFactory serviceScopeFactory)
     {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         _serviceScopeFactory = serviceScopeFactory ?? throw new ArgumentNullException(nameof(serviceScopeFactory));
 
-        _logger.LogInformation("Initializing {BackgroundService}.", nameof(ContactFormQueueBackgroundService));
+        _logger.LogInformation("Initializing {BackgroundService}.", nameof(EmailBgService));
     }
 
 
@@ -26,8 +27,8 @@ public class ContactFormQueueBackgroundService : BackgroundService
     {
         using IServiceScope scope = _serviceScopeFactory.CreateScope();
 
-        IScopedProcessingService scopedProcessingService =
-            scope.ServiceProvider.GetRequiredKeyedService<IScopedProcessingService>(ProcessingServiceKeys.CONTACT_FORM);
+        IScopedService scopedProcessingService =
+            scope.ServiceProvider.GetRequiredKeyedService<IScopedService>(ProcessingServiceKeys.EMAILS);
 
         await scopedProcessingService.ExecuteAsync(cancellsationToken);
     }
