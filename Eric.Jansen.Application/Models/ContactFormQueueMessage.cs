@@ -1,8 +1,8 @@
 ﻿namespace Eric.Jansen.Application.Models;
 
-public class QueueMessage<T> where T : class?
+public class ContactFormQueueMessage<T> where T : class?
 {
-    public QueueMessage(T? message)
+    public ContactFormQueueMessage(T? message)
     {
         Message = message;
         Date = DateTime.UtcNow;

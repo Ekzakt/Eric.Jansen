@@ -53,7 +53,7 @@ public class ContactController : Controller
 
         try
         {
-            var message = new QueueMessage<ContactViewModel>(model)
+            var message = new ContactFormQueueMessage<ContactViewModel>(model)
             {
                 CultureName = Thread.CurrentThread.CurrentCulture.Name.ToLower(),
                 IpAddress = HttpContext.GetIpAddress(),
