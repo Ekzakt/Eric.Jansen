@@ -1,4 +1,5 @@
-﻿using Eric.Jansen.Application.Models;
+﻿using Eric.Jansen.Application.Contracts;
+using Eric.Jansen.Application.Models;
 using Eric.Jansen.Infrastructure.Configuration;
 using Eric.Jansen.Infrastructure.Extensions;
 using Eric.Jansen.Infrastructure.Queueing;
@@ -15,15 +16,18 @@ public class ContactController : Controller
     private readonly IValidator<ContactViewModel> _validator;
     private readonly EricJansenOptions _options;
     private readonly IQueueService _queueService;
+    private readonly ITenantProvider _tenantProvider;
 
     public ContactController(
         IValidator<ContactViewModel> validator,
         IOptions<EricJansenOptions> options,
-        IQueueService queueService)
+        IQueueService queueService,
+        ITenantProvider tenantProvider)
     {
         _options = options?.Value ?? throw new ArgumentNullException(nameof(options));
         _validator = validator ?? throw new ArgumentNullException(nameof(validator));
         _queueService = queueService ?? throw new ArgumentNullException(nameof(queueService));
+        _tenantProvider = tenantProvider ?? throw new ArgumentNullException(nameof(tenantProvider));
     }
 
 
@@ -57,6 +61,7 @@ public class ContactController : Controller
             {
                 CultureName = Thread.CurrentThread.CurrentCulture.Name.ToLower(),
                 IpAddress = HttpContext.GetIpAddress(),
+                TenantHostName = _tenantProvider.Tenant?.HostName,
                 UserAgent = HttpContext.GetUserAgent()
             };
 

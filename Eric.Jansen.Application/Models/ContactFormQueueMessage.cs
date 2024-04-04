@@ -14,6 +14,8 @@ public class ContactFormQueueMessage<T> where T : class?
 
     public string? CultureName { get; set; }
 
+    public string? TenantHostName { get; set; }
+
     public string? IpAddress { get; set; }
 
     public T? Message { get; set; }

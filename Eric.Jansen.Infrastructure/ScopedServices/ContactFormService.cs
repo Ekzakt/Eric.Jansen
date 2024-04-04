@@ -113,6 +113,7 @@ public class ContactFormService : IScopedService
         var replacer = new StringReplacer();
 
         replacer.AddReplacement("IpAddress", message?.IpAddress ?? string.Empty);
+        replacer.AddReplacement("TenantHostName", message?.TenantHostName ?? string.Empty);
         replacer.AddReplacement("UserAgent", message?.UserAgent ?? string.Empty);
         replacer.AddReplacement("DateSent", message?.Date.ToString() ?? string.Empty);
         replacer.AddReplacement("CultureName", message?.CultureName ?? string.Empty);
