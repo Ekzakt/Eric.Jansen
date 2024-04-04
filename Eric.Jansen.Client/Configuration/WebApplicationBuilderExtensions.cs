@@ -1,5 +1,5 @@
 ﻿using Azure.Identity;
-using Eric.Jansen.Client.Configuration;
+using Eric.Jansen.Infrastructure.Configuration;
 using Microsoft.Extensions.Azure;
 
 namespace Eric.Jansen.Client.Configuration;
@@ -8,7 +8,7 @@ public static class WebApplicationBuilderExtensions
 {
     public static WebApplicationBuilder AddAzureClientServices(this WebApplicationBuilder builder)
     {
-        var credentialOptions = GetDefaultAzureCredentialOptions(builder);
+        var credentialOptions = GetDefaultAzureCredentialOptions();
 
         var queueServiceUri = builder.Configuration
             .GetSection(AzureStorageQueuesOptions.SectionName)
@@ -41,7 +41,7 @@ public static class WebApplicationBuilderExtensions
             .GetSection(AzureKeyVaultOptions.SectionName)
             .Bind(azureKeyVaultOptions);
 
-        var credentialOptions = GetDefaultAzureCredentialOptions(builder);
+        var credentialOptions = GetDefaultAzureCredentialOptions();
 
         builder.Configuration.AddAzureKeyVault(
             new Uri(azureKeyVaultOptions.VaultUri),
@@ -53,10 +53,17 @@ public static class WebApplicationBuilderExtensions
     }
 
 
+    public static WebApplicationBuilder AddEricJansenOptions(this WebApplicationBuilder builder)
+    {
+        builder.Services.Configure<EricJansenOptions>(
+            builder.Configuration.GetSection(EricJansenOptions.SectionName));
+
+        return builder;
+    }
 
     #region Helpers
 
-    private static DefaultAzureCredentialOptions GetDefaultAzureCredentialOptions(WebApplicationBuilder builder)
+    private static DefaultAzureCredentialOptions GetDefaultAzureCredentialOptions()
     {
         var credentials = new DefaultAzureCredentialOptions
         {
