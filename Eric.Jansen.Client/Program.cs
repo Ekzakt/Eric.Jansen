@@ -3,6 +3,7 @@ using Ekzakt.EmailTemplateProvider.Io.Configuration;
 using Ekzakt.FileManager.AzureBlob.Configuration;
 using Eric.Jansen.Application.Validators;
 using Eric.Jansen.Client.Configuration;
+using Eric.Jansen.Client.Extensions;
 using Eric.Jansen.Infrastructure.BackgroundServices;
 using Eric.Jansen.Infrastructure.Constants;
 using Eric.Jansen.Infrastructure.Queueing;
@@ -68,6 +69,7 @@ app.Use(async (context, next) =>
 });
 
 app.UseRouting();
+app.UseTenantDetector();
 
 app.UseAuthorization();
 
