@@ -9,3 +9,12 @@ Message:
 
 IP-Address:
 {{IpAddress}}
+
+Useragent:
+{{UserAgent}}
+
+Date sent:
+{{DateSent}}
+
+Original culture name:
+{{CultureName}}
