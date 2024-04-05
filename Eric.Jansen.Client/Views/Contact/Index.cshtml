@@ -15,12 +15,12 @@
         <form asp-action="Send" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="mb-3">
-                <label asp-for="Name" class="form-label">What is your name:</label>
+                <label asp-for="Name" class="form-label">What is your name?</label>
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-white"></span>
             </div>
             <div class="mb-3">
-                <label asp-for="Email" class="form-label">And of course, what is your email:</label>
+                <label asp-for="Email" class="form-label">And of course, what is your email?</label>
                 <input asp-for="Email" class="form-control" />
                 <span asp-validation-for="Email" class="text-white"></span>
             </div>
