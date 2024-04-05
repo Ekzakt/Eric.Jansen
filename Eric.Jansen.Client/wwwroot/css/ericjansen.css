@@ -1,8 +1,9 @@
 html, body {
-    font-size: 1rem;
+    font-size: 1.1rem;
     background-color: #212529;
     color: #f8f9fa;
     height: 100%;
+    font-weight: lighter;
 }
 
 .wrapper {
@@ -20,14 +21,6 @@ header {
     text-align: left;
     padding: 3rem 0;
 }
-    header .aka {
-        color: #b0b0b0;
-        font-size: calc(0.6rem + 0.5vw);
-        font-weight: lighter;
-    }
-    header .aka a {
-        text-decoration: none;
-    }
 
 h1 {
     font-size: larger;
@@ -55,15 +48,10 @@ h3 {
     padding: 1.2rem 0;
 }
 
-.navigation a:first-child{
-    margin-right: 1rem;
-}
-
 a {
     color: inherit;
     text-decoration: none;
 }
-
     a:hover {
         text-decoration: underline;
     }
