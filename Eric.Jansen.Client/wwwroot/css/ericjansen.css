@@ -25,14 +25,18 @@ header h1 {
     font-size: larger;
     padding-bottom: 0;
     margin-bottom: 0;
+    font-weight: lighter;
 }
     header h1 > a {
         text-decoration: none;
+        font-weight: lighter;
     }
     header h1 > a:hover {
         text-decoration: none;
     }
-
+    header a{
+        text-decoration: none;
+    }
 h2 {
     padding: 0 0 1.4rem 0;
     font-size: 1.8rem;
@@ -47,11 +51,13 @@ h3 {
 
 a {
     color: inherit;
+    text-decoration: underline;
+}
+
+.nav-link {
+    color: #ffffff;
     text-decoration: none;
 }
-    a:hover {
-        text-decoration: underline;
-    }
 
 .field-validation-error {
     background-color: #cc0000;
@@ -65,7 +71,6 @@ a {
     font-family: Courier New, Courier, monospace;
     font-size: 0.7rem;
 }
-
     .binary span:hover {
         font-weight: bold;
         cursor: pointer;
@@ -96,7 +101,6 @@ footer > p > a {
     display: none;
 }
 
-
 .visible {
     display: block;
 }
@@ -104,3 +108,10 @@ footer > p > a {
 .invisible {
     display: none;
 }
+
+.btn {
+    font-weight: lighter;
+}
+    .btn-lg{
+        font-size: 1.1rem;
+    }
