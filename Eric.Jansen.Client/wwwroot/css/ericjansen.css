@@ -34,7 +34,9 @@ header h1 {
     header h1 > a:hover {
         text-decoration: none;
     }
-
+    header a{
+        text-decoration: none;
+    }
 h2 {
     padding: 0 0 1.4rem 0;
     font-size: 1.8rem;
