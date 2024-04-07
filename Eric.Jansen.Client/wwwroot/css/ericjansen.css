@@ -51,7 +51,7 @@ header h1 {
         text-decoration: none;
     }
 
-.nav-item {
+.nav-item a {
     color: #ffffff;
 }
 .nav-item a:hover {
@@ -76,10 +76,6 @@ h3 {
     border-radius: 0.375em;
     padding: 0.2rem 0.5rem;
     line-height: 2.4rem;
-}
-
-img .me{
-    border: 1px solid red;
 }
 
 .binary {
