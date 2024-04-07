@@ -18,16 +18,20 @@ html, body {
 }
 
 a {
-    color: #f8f9fa;
+    color: white;
     font-weight: bolder;
     text-decoration: none;
 }
-    a:hover{
-        color: deeppink;
+    a:hover {
+        color: cornflowerblue;
     }
 
 header {
     text-align: left;
+}
+
+.offcanvas{
+    color: blue;
 }
 
 header h1 {
@@ -47,11 +51,11 @@ header h1 {
         text-decoration: none;
     }
 
-.nav-link {
-    color: #f8f9fa;
+.nav-item {
+    color: #ffffff;
 }
 .nav-item a:hover {
-    color: deeppink;
+    color: cornflowerblue;
 }
 
 h2 {
@@ -75,7 +79,6 @@ h3 {
 }
 
 img .me{
-    max-width: 5%;
     border: 1px solid red;
 }
 
