@@ -6,6 +6,7 @@ using Ekzakt.FileManager.Core.Models.Requests;
 using Ekzakt.Utilities.Helpers;
 using Eric.Jansen.Infrastructure.Configuration;
 using Eric.Jansen.Infrastructure.Constants;
+using Eric.Jansen.Infrastructure.Extensions;
 using Eric.Jansen.Infrastructure.Queueing;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -16,6 +17,7 @@ namespace Eric.Jansen.Infrastructure.ScopedServices;
 public class EmailService : IScopedService
 {
     private readonly EricJansenOptions? _options;
+    private readonly EricJansenBackgroundServiceOptions? _bgOptions;
     private readonly ILogger<EmailService> _logger;
     private readonly IQueueService _queueService;
     private readonly IEkzaktEmailSenderService _emailSender;
@@ -40,27 +42,28 @@ public class EmailService : IScopedService
 
         _emailsQueueName = _options?.QueueNames?.Emails ?? string.Empty;
         _emailsBaseLocation = _options?.BaseLocations?.Emails ?? string.Empty;
+        _bgOptions = _options?.BackgroundServices.First(x => x.Name.Equals(ProcessingServiceKeys.EMAILS));
         _jsonSerializerOptions.WriteIndented = true;
-
     }
 
 
     public async Task ExecuteAsync(CancellationToken cancellationToken)
     {
-        Int64 count = 0;
+        var count = 0;
+        var delay = 0;
 
         while (!cancellationToken.IsCancellationRequested)
         {
             count++;
+            delay = _bgOptions!.Interval.GetInterval();
 
             var messages = await _queueService.GetMessagesAsync<EmailInfo>(_emailsQueueName);
-            var delayMs = IntHelpers.GetRandomIntBetween(5000, 60000);
-
-            _logger.LogInformation("Executing {ServiceName} #{Count} - Messages read: {MessageCount} - Delay: {Delay}.", nameof(EmailService), count, messages?.Count ?? 0, delayMs);
 
             await ProcessMessagesAsync(messages);
 
-            await Task.Delay(delayMs, cancellationToken);
+            _logger.LogInformation("Executing {ServiceName} #{Count} - Messages read: {MessageCount} - Next execution in {Delay} ms.", nameof(ContactFormService), count, messages?.Count ?? 0, delay);
+
+            await Task.Delay(delay, cancellationToken);
         }
     }
 
