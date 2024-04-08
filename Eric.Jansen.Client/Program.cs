@@ -1,3 +1,4 @@
+using Azure.Monitor.OpenTelemetry.AspNetCore;
 using Ekzakt.EmailSender.Smtp.Configuration;
 using Ekzakt.EmailTemplateProvider.Io.Configuration;
 using Ekzakt.FileManager.AzureBlob.Configuration;
@@ -13,6 +14,8 @@ using Eric.Jansen.Infrastructure.Services;
 using FluentValidation;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.AddOpenTelemetry();
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddEkzaktFileManagerAzure();
@@ -35,9 +38,7 @@ builder.Services.AddKeyedScoped<IScopedService, ContactFormService>(ProcessingSe
 builder.Services.AddKeyedScoped<IScopedService, EmailService>(ProcessingServiceKeys.EMAILS);
 
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
-
 builder.Services.AddValidatorsFromAssemblyContaining<ContactViewModelValidator>();
-
 builder.Services.AddProblemDetails();
 
 builder.AddEricJansenOptions();
