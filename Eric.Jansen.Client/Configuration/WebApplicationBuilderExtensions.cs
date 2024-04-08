@@ -1,4 +1,5 @@
 ﻿using Azure.Identity;
+using Azure.Monitor.OpenTelemetry.AspNetCore;
 using Eric.Jansen.Infrastructure.Configuration;
 using Microsoft.Extensions.Azure;
 
@@ -60,6 +61,20 @@ public static class WebApplicationBuilderExtensions
 
         return builder;
     }
+
+
+    public static WebApplicationBuilder AddOpenTelemetry(this WebApplicationBuilder builder)
+    {
+        if (builder.Environment.IsProduction())
+        {
+            builder.Services
+            .AddOpenTelemetry()
+            .UseAzureMonitor();
+        }
+
+        return builder;
+    }
+
 
     #region Helpers
 
