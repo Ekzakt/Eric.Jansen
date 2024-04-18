@@ -18,7 +18,7 @@ namespace Eric.Jansen.Infrastructure.ScopedServices;
 public class ContactFormService : IScopedService
 {
     private readonly EricJansenOptions? _options;
-    private readonly EricJansenBackgroundServiceOptions? _bgOptions;
+    private readonly BgServiceOptions? _bgOptions;
     private readonly ILogger<ContactFormService> _logger;
     private readonly IQueueService _queueService;
     private readonly IEkzaktEmailTemplateProvider _emailTemplateProvider;

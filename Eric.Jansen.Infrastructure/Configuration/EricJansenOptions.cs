@@ -4,9 +4,9 @@ public class EricJansenOptions
 {
     public const string SectionName = "EricJansen";
 
-    public EricJansenQueueNamesOptions QueueNames { get; init; } = new();
+    public QueueNamesOptions QueueNames { get; init; } = new();
 
-    public EricJansenBaseLocationOptions BaseLocations { get; init; } = new();
+    public StorageBaseLocationOptions BaseLocations { get; init; } = new();
 
-    public List<EricJansenBackgroundServiceOptions> BackgroundServices { get; init; } = [];
+    public List<BgServiceOptions> BackgroundServices { get; init; } = [];
 }

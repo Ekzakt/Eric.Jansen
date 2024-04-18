@@ -17,7 +17,7 @@ namespace Eric.Jansen.Infrastructure.ScopedServices;
 public class EmailService : IScopedService
 {
     private readonly EricJansenOptions? _options;
-    private readonly EricJansenBackgroundServiceOptions? _bgOptions;
+    private readonly BgServiceOptions? _backgroundOptions;
     private readonly ILogger<EmailService> _logger;
     private readonly IQueueService _queueService;
     private readonly IEkzaktEmailSenderService _emailSender;
@@ -42,7 +42,7 @@ public class EmailService : IScopedService
 
         _emailsQueueName = _options?.QueueNames?.Emails ?? string.Empty;
         _emailsBaseLocation = _options?.BaseLocations?.Emails ?? string.Empty;
-        _bgOptions = _options?.BackgroundServices.First(x => x.Name.Equals(ProcessingServiceKeys.EMAILS));
+        _backgroundOptions = _options?.BackgroundServices.First(x => x.Name.Equals(ProcessingServiceKeys.EMAILS));
         _jsonSerializerOptions.WriteIndented = true;
     }
 
@@ -55,7 +55,7 @@ public class EmailService : IScopedService
         while (!cancellationToken.IsCancellationRequested)
         {
             count++;
-            delay = _bgOptions!.Interval.GetInterval();
+            delay = _backgroundOptions!.Interval.GetInterval();
 
             var messages = await _queueService.GetMessagesAsync<EmailInfo>(_emailsQueueName);
 

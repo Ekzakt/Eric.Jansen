@@ -1,6 +1,6 @@
 ﻿namespace Eric.Jansen.Infrastructure.Configuration;
 
-public class EricJansenQueueNamesOptions
+public class QueueNamesOptions
 {
     public const string SectionPath = "EricJansen:QueueNames";
 

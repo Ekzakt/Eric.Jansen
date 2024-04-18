@@ -1,6 +1,6 @@
 ﻿namespace Eric.Jansen.Infrastructure.Configuration;
 
-public class EricJansenBackgroundServiceIntervalOptions
+public class BgServiceIntervalOptions
 {
     public int Value { get; init; } = 0;
 
