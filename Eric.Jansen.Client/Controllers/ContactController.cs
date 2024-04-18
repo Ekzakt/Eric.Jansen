@@ -1,7 +1,7 @@
 ﻿using Eric.Jansen.Application.Contracts;
 using Eric.Jansen.Application.Models;
+using Eric.Jansen.Client.Extensions;
 using Eric.Jansen.Infrastructure.Configuration;
-using Eric.Jansen.Infrastructure.Extensions;
 using Eric.Jansen.Infrastructure.Queueing;
 using FluentValidation;
 using FluentValidation.AspNetCore;

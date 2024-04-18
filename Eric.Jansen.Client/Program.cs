@@ -32,7 +32,7 @@ builder.Services.AddScoped<ITenantProvider, TenantProvider>();
 builder.Services.AddScoped<ITenantService, TenantService>();
 builder.Services.AddScoped<IQueueService, QueueService>();
 
-builder.Services.AddHostedService<ContactFormQueueBackgroundService>();
+builder.Services.AddHostedService<ContactFormQueueBgService>();
 builder.Services.AddHostedService<EmailBgService>();
 builder.Services.AddKeyedScoped<IScopedService, ContactFormService>(ProcessingServiceKeys.CONTACT_FORM);
 builder.Services.AddKeyedScoped<IScopedService, EmailService>(ProcessingServiceKeys.EMAILS);

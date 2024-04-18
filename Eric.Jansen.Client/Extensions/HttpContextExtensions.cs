@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-
-namespace Eric.Jansen.Infrastructure.Extensions;
+﻿namespace Eric.Jansen.Client.Extensions;
 
 public static class HttpContextExtensions
 {
@@ -10,6 +8,7 @@ public static class HttpContextExtensions
 
         return ipAddress;
     }
+    
 
     public static string? GetUserAgent(this HttpContext httpContext)
     {

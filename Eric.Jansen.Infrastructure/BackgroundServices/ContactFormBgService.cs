@@ -6,20 +6,20 @@ using Microsoft.Extensions.Logging;
 
 namespace Eric.Jansen.Infrastructure.BackgroundServices;
 
-public class ContactFormQueueBackgroundService : BackgroundService
+public class ContactFormQueueBgService : BackgroundService
 {
-    private readonly ILogger<ContactFormQueueBackgroundService> _logger;
+    private readonly ILogger<ContactFormQueueBgService> _logger;
     private readonly IServiceScopeFactory _serviceScopeFactory;
 
 
-    public ContactFormQueueBackgroundService(
-        ILogger<ContactFormQueueBackgroundService> logger,
+    public ContactFormQueueBgService(
+        ILogger<ContactFormQueueBgService> logger,
         IServiceScopeFactory serviceScopeFactory)
     {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         _serviceScopeFactory = serviceScopeFactory ?? throw new ArgumentNullException(nameof(serviceScopeFactory));
 
-        _logger.LogInformation("Initializing {BackgroundService}.", nameof(ContactFormQueueBackgroundService));
+        _logger.LogInformation("Initializing {BackgroundService}.", nameof(ContactFormQueueBgService));
     }
 
 
@@ -36,7 +36,7 @@ public class ContactFormQueueBackgroundService : BackgroundService
 
     public override async Task StopAsync(CancellationToken cancellationToken)
     {
-        _logger.LogInformation("Stopping {BackgroundService}.", nameof(ContactFormQueueBackgroundService));
+        _logger.LogInformation("Stopping {BackgroundService}.", nameof(ContactFormQueueBgService));
 
         await base.StopAsync(cancellationToken);
     }

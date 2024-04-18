@@ -36,7 +36,7 @@ public class EmailBgService : BackgroundService
 
     public override async Task StopAsync(CancellationToken cancellationToken)
     {
-        _logger.LogInformation("Stopping {BackgroundService}.", nameof(ContactFormQueueBackgroundService));
+        _logger.LogInformation("Stopping {BackgroundService}.", nameof(ContactFormQueueBgService));
 
         await base.StopAsync(cancellationToken);
     }

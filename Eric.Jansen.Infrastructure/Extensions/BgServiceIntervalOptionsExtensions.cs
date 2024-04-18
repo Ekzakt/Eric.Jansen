@@ -3,9 +3,9 @@ using Eric.Jansen.Infrastructure.Configuration;
 
 namespace Eric.Jansen.Infrastructure.Extensions;
 
-public static class EricJansenBackgroundServiceIntervalOptionsExtensions
+public static class BgServiceIntervalOptionsExtensions
 {
-    public static int GetInterval(this EricJansenBackgroundServiceIntervalOptions options)
+    public static int GetInterval(this BgServiceIntervalOptions options)
     {
         var DEFAULT_INTERVAL = 60000;
 
