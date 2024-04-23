@@ -2,16 +2,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34525.116
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Eric.Jansen.Client", "Eric.Jansen.Client\Eric.Jansen.Client.csproj", "{F4495DB9-385B-43B1-88B3-A0EE74447498}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ej.Client", "Ej.Client\Ej.Client.csproj", "{F4495DB9-385B-43B1-88B3-A0EE74447498}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8295347D-6583-419A-8BA0-9DC969AE625F}"
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eric.Jansen.Infrastructure", "Eric.Jansen.Infrastructure\Eric.Jansen.Infrastructure.csproj", "{236FEA80-DA1E-4483-A564-87E61769184B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ej.Infrastructure", "Ej.Infrastructure\Ej.Infrastructure.csproj", "{236FEA80-DA1E-4483-A564-87E61769184B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eric.Jansen.Application", "Eric.Jansen.Application\Eric.Jansen.Application.csproj", "{55112A8A-D28E-4817-86C9-BAB305DEF4F5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ej.Application", "Ej.Application\Ej.Application.csproj", "{55112A8A-D28E-4817-86C9-BAB305DEF4F5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
