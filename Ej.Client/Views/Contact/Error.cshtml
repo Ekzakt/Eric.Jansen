@@ -5,28 +5,32 @@
     ViewData["MetaTitle"] = "Error while handling your request";
 }
 
-<div class="mb-5 text-center">
-    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 30 30">
-        <path fill="#f78f8f" d="M15,28.5C7.556,28.5,1.5,22.444,1.5,15S7.556,1.5,15,1.5S28.5,7.556,28.5,15S22.444,28.5,15,28.5z"></path>
-        <path fill="#c74343" d="M15,2c7.168,0,13,5.832,13,13s-5.832,13-13,13S2,22.168,2,15S7.832,2,15,2 M15,1 C7.268,1,1,7.268,1,15s6.268,14,14,14s14-6.268,14-14S22.732,1,15,1L15,1z"></path>
-        <path fill="#fff" d="M14 8H16V22H14z" transform="rotate(134.999 15 15)"></path>
-        <path fill="#fff" d="M14 8H16V22H14z" transform="rotate(-134.999 15 15)"></path>
-    </svg>
-</div>
+<section class="error">
 
-<h2>@ViewData["Title"],</h2>
+    <div class="mb-5 text-center">
+        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 30 30">
+            <path fill="#f78f8f" d="M15,28.5C7.556,28.5,1.5,22.444,1.5,15S7.556,1.5,15,1.5S28.5,7.556,28.5,15S22.444,28.5,15,28.5z"></path>
+            <path fill="#c74343" d="M15,2c7.168,0,13,5.832,13,13s-5.832,13-13,13S2,22.168,2,15S7.832,2,15,2 M15,1 C7.268,1,1,7.268,1,15s6.268,14,14,14s14-6.268,14-14S22.732,1,15,1L15,1z"></path>
+            <path fill="#fff" d="M14 8H16V22H14z" transform="rotate(134.999 15 15)"></path>
+            <path fill="#fff" d="M14 8H16V22H14z" transform="rotate(-134.999 15 15)"></path>
+        </svg>
+    </div>
 
-<p>
-    My bad! 
-    It seems like there has been a major hiccup while handling your request. I might have missed your message 
-    altogether. 
-</p>
-<p>
-    Everything has gone into meltdown mode here, with alarms and sirens blaring, so 
-    don't sweat it though, a solution on it's way!
-</p>
-<p>
-    I'm sorry, but you'll have to try again <a href="/contact" title="Contact">here</a>.
-</p>
-<p>Ciao,</p>
-<p>@_tenantProvider.Tenant?.ShortName</p>
+    <h2>@ViewData["Title"],</h2>
+
+    <p>
+        My bad! 
+        It seems like there has been a major hiccup while handling your request. I might have missed your message 
+        altogether. 
+    </p>
+    <p>
+        Everything has gone into meltdown mode here, with alarms and sirens blaring, so 
+        don't sweat it though, a solution on it's way!
+    </p>
+    <p>
+        I'm sorry, but you'll have to try again <a href="/contact" title="Contact">here</a>.
+    </p>
+    <p>Ciao,</p>
+    <p>@_tenantProvider.Tenant?.ShortName</p>
+
+</section>

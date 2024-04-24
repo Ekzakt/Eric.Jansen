@@ -36,20 +36,20 @@
 
 
 $(function () {
-
     const GDPR_ACCEPTED = 'gdpr_accepted';
-    
-    var gdprElement = $('#gdpr-consent');
 
+    var gdprAccepted = Cookies.get(GDPR_ACCEPTED);
+
+    if (gdprAccepted) {
+        return;
+    }
+
+    var gdprElement = $('#gdpr-consent');
     if (!gdprElement) {
         return;
     }
 
-    var gdprAccepted = Cookies.get(GDPR_ACCEPTED);
-
-    if (!gdprAccepted) {
-        gdprElement.slideDown();
-    }
+    gdprElement.slideDown();
 
     $('#accept-btn').on('click', function () {
         gdprElement.slideUp();
