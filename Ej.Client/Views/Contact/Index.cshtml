@@ -9,30 +9,34 @@
 
 <p>Need some help or have a question? Don't hesitate to shoot me a message. I'm here to lend a hand and answer any queries you might have. Just give me a shout, and I'll be happy to assist you!</p>
 
-<div class="row text-start">
+<section class="contact">
 
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="16" height="16" aria-hidden="true" class="_24ydrq0 _1286nb11m _1286nb12q9 _1286nb11sl _1286nb11vr"><path d="m256 275.6-92.3-92.3c-9.8-9.8-25.6-9.8-35.4 0s-9.8 25.6 0 35.4l110 110c4.9 4.9 11.3 7.3 17.7 7.3s12.8-2.4 17.7-7.3l110-110c9.8-9.8 9.8-25.6 0-35.4s-25.6-9.8-35.4 0z"></path></svg>
+    <div class="row text-start">
 
-    <div class="col">
-        <form asp-action="Send" method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="mb-3">
-                <label asp-for="Name" class="form-label">What is your name?</label>
-                <input asp-for="Name" type="text" class="form-control" />
-                <span asp-validation-for="Name" class="text-white"></span>
-            </div>
-            <div class="mb-3">
-                <label asp-for="Email" class="form-label">And of course, what is your email?</label>
-                <input asp-for="Email" type="email" class="form-control" />
-                <span asp-validation-for="Email" class="text-white"></span>
-            </div>
-            <div class="mb-3">
-                <label asp-for="Message" class="form-label">Tell me what's up:</label>
-                <textarea asp-for="Message" class="form-control" rows="6"></textarea>
-                <span asp-validation-for="Message" class="text-white"></span>
-            </div>
-            <button type="submit" class="btn btn-lg btn-primary rounded-pill mt-2">Get in touch</button>
-        </form>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="16" height="16" aria-hidden="true" class="_24ydrq0 _1286nb11m _1286nb12q9 _1286nb11sl _1286nb11vr"><path d="m256 275.6-92.3-92.3c-9.8-9.8-25.6-9.8-35.4 0s-9.8 25.6 0 35.4l110 110c4.9 4.9 11.3 7.3 17.7 7.3s12.8-2.4 17.7-7.3l110-110c9.8-9.8 9.8-25.6 0-35.4s-25.6-9.8-35.4 0z"></path></svg>
+
+        <div class="col">
+            <form asp-action="Send" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="mb-3">
+                    <label asp-for="Name" class="form-label">What is your name?</label>
+                    <input asp-for="Name" type="text" class="form-control" />
+                    <span asp-validation-for="Name" class="text-white"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Email" class="form-label">And of course, what is your email?</label>
+                    <input asp-for="Email" type="email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-white"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Message" class="form-label">Tell me what's up:</label>
+                    <textarea asp-for="Message" class="form-control" rows="6"></textarea>
+                    <span asp-validation-for="Message" class="text-white"></span>
+                </div>
+                <button type="submit" class="btn btn-primary rounded-pill mt-2">Get in touch</button>
+            </form>
+        </div>
+
     </div>
 
-</div>
+</section>
