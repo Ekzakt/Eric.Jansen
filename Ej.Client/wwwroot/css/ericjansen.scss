@@ -1,0 +1,132 @@
+﻿/*--------------------------------------------------------------
+# General
+--------------------------------------------------------------*/
+$ej-bg-color: #212529;
+$ej-color: #f8f9fa;
+
+html, body {
+    font-size: 1.1rem;
+    background-color: $ej-bg-color;
+    color: $ej-color;
+    height: 100%;
+    font-weight: lighter;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    justify-content: center;
+}
+
+.content {
+    flex: 1;
+}
+
+h2 {
+    padding: 0 0 1.4rem 0;
+    font-size: 1.8rem;
+    font-weight: lighter;
+}
+
+h3 {
+    font-size: 1.4rem;
+    font-weight: lighter;
+    padding: 1.2rem 0;
+}
+
+a {
+    color: white;
+    font-weight: bolder;
+    text-decoration: none;
+}
+
+a:hover {
+    color: cornflowerblue;
+}
+
+.visible {
+    display: block;
+}
+
+.invisible {
+    display: none;
+}
+
+
+/*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
+
+.header {
+    text-align: left;
+}
+
+.header h1 {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    font-weight: lighter;
+}
+
+.header h1 > a {
+    text-decoration: none;
+    font-weight: lighter;
+}
+
+.header a {
+    text-decoration: none;
+}
+
+
+/*--------------------------------------------------------------
+# Navigation
+--------------------------------------------------------------*/
+.nav-item a {
+    color: #ffffff;
+}
+
+.nav-item a:hover {
+    color: cornflowerblue;
+}
+
+
+/*--------------------------------------------------------------
+# Contact Section
+--------------------------------------------------------------*/
+
+.contact .field-validation-error {
+    background-color: #cc0000;
+    background-color: rgba(204, 0, 0, 0.9);
+    border-radius: 0.375em;
+    padding: 0.2rem 0.5rem;
+    line-height: 2.4rem;
+}
+
+
+/*--------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
+
+.footer {
+    font-size: 0.75rem;
+    flex-shrink: 0;
+    text-align: center;
+}
+
+footer > p > a {
+    background-color: inherit;
+    color: inherit;
+    text-decoration: none;
+    font-weight: inherit;
+}
+
+
+/*--------------------------------------------------------------
+# GDPR-Consent Section
+--------------------------------------------------------------*/
+
+.gdpr-consent {
+    text-align: center;
+    background-color: #000000;
+    display: none;
+}

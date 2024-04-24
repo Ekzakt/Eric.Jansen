@@ -46,7 +46,6 @@ builder.AddAzureClientServices();
 builder.AddAzureKeyVault();
 
 
-
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
