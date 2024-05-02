@@ -60,12 +60,24 @@
     "css": {
       "enabled": true,
       "termSemicolons": true,
-      "gzip": true
+      "gzip": false
     },
     "javascript": {
       "enabled": true,
       "termSemicolons": true,
       "gzip": false
     }
-  }
+  },
+  "formats": [
+    "es6",
+    {
+      "extensions": [ ".js" ],
+      "compiler": null,
+      "minifier": {
+        "name": "javascript",
+        "output": ".min.js",
+        "map": ".js.map"
+      }
+    }
+  ]
 }

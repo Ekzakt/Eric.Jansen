@@ -1,6 +1,8 @@
-﻿[
+[
   {
     "outputFile": "wwwroot/css/ericjansen.css",
-    "inputFile": "wwwroot/css/ericjansen.scss"
+    "inputFile": "wwwroot/css/ericjansen.scss",
+    "sourceMap": false,
+    "useNodeSass": false
   }
 ]
