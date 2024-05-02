@@ -1,11 +1,14 @@
 ﻿namespace Ej.Application.Models;
 
+#nullable disable
+
 public class Tenant
 {
-    public string HostName { get; set; } = string.Empty;
+    public string HostName { get; set; }
 
-    public string Name { get; set; } = string.Empty;
+    public string Name { get; set; }
 
-    public string ShortName { get; set; } = string.Empty;
+    public string ShortName { get; set; }
 
+    public Dictionary<string, string> OpenGraphTags { get; set; } = [];
 }
