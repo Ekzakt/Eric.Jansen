@@ -1,15 +1,13 @@
-﻿using Ekzakt.EmailSender.Core.Extensions;
-using Ekzakt.EmailTemplateProvider.Core.Contracts;
-using Ekzakt.EmailTemplateProvider.Core.Requests;
-using Ekzakt.FileManager.Core.Contracts;
-using Ekzakt.Utilities;
-using Ekzakt.Utilities.Helpers;
-using Ej.Application.Models;
+﻿using Ej.Application.Models;
 using Ej.Infrastructure.Configuration;
 using Ej.Infrastructure.Constants;
 using Ej.Infrastructure.Extensions;
 using Ej.Infrastructure.Queueing;
-using Microsoft.Extensions.Azure;
+using Ekzakt.EmailSender.Core.Extensions;
+using Ekzakt.EmailTemplateProvider.Core.Contracts;
+using Ekzakt.EmailTemplateProvider.Core.Requests;
+using Ekzakt.FileManager.Core.Contracts;
+using Ekzakt.Utilities;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 

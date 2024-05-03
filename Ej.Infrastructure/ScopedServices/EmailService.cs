@@ -102,9 +102,7 @@ public class EmailService : IScopedService
     {
         var sendRequest = new SendEmailRequest
         {
-            Email = emailInfo.Email!,
-            RecipientType = emailInfo.RecipientType,
-            TemplateName = EmailTemplateNames.CONTACTFORM
+            Email = emailInfo.Email!
         };
 
         var sendResponse = await _emailSender.SendAsync(sendRequest);
