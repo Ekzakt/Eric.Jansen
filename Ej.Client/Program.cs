@@ -19,7 +19,7 @@ builder.AddOpenTelemetry();
 builder.Services.AddControllersWithViews();
 builder.Services.AddEkzaktFileManagerAzure();
 builder.Services.AddEkzaktEmailTemplateProviderIo();
-builder.Services.AddEkzaktSmtpEmailSender();
+builder.Services.AddEkzaktEmailSenderSmtp();
 
 builder.Services.Configure<HostOptions>(options =>
 {
