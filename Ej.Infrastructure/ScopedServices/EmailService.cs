@@ -17,7 +17,7 @@ namespace Ej.Infrastructure.ScopedServices;
 public class EmailService : IScopedService
 {
     private readonly EricJansenOptions? _options;
-    private readonly BgServiceOptions? _backgroundOptions;
+    private readonly BgServiceOptions? _bgServiceOptions;
     private readonly ILogger<EmailService> _logger;
     private readonly IQueueService _queueService;
     private readonly IEkzaktEmailSenderService _emailSender;
@@ -42,7 +42,7 @@ public class EmailService : IScopedService
 
         _emailsQueueName = _options?.QueueNames?.Emails ?? string.Empty;
         _emailsBaseLocation = _options?.BaseLocations?.Emails ?? string.Empty;
-        _backgroundOptions = _options?.BackgroundServices.First(x => x.Name.Equals(ProcessingServiceKeys.EMAILS));
+        _bgServiceOptions = _options?.BackgroundServices.First(x => x.Name.Equals(ProcessingServiceKeys.EMAILS));
         _jsonSerializerOptions.WriteIndented = true;
     }
 
@@ -55,7 +55,7 @@ public class EmailService : IScopedService
         while (!cancellationToken.IsCancellationRequested)
         {
             count++;
-            delay = _backgroundOptions!.Interval.GetInterval();
+            delay = _bgServiceOptions!.Interval.GetInterval();
 
             var messages = await _queueService.GetMessagesAsync<EmailInfo>(_emailsQueueName);
 
@@ -102,9 +102,7 @@ public class EmailService : IScopedService
     {
         var sendRequest = new SendEmailRequest
         {
-            Email = emailInfo.Email!,
-            RecipientType = emailInfo.RecipientType,
-            TemplateName = EmailTemplateNames.CONTACTFORM,
+            Email = emailInfo.Email!
         };
 
         var sendResponse = await _emailSender.SendAsync(sendRequest);
