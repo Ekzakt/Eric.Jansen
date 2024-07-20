@@ -1,4 +1,6 @@
-﻿@{
+﻿@using System.Globalization;
+
+@{
     ViewData["Title"] = "Home";
     ViewData["MetaTitle"] = "Home";
 }
@@ -22,7 +24,7 @@
     <p>
         This site is intentionally kept discreet to maintain privacy, but
         I appreciate your visit nonetheless. If you have any inquiries or just
-        want to say hello, you can drop me a line <a href="/contact" title="Contact">here</a>.
+        want to say hello, you can drop me a line <a asp-controller="Contact" asp-action="Index" asp-route-culture="@CultureInfo.CurrentCulture.Name" title="Contact">here</a>.
     </p>
     <p>
         Thank you for stopping by!

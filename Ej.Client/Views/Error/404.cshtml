@@ -1,4 +1,6 @@
-﻿@{
+﻿@using System.Globalization
+
+@{
     ViewData["Title"] = "Page not found (404)";
     ViewData["MetaTitle"] = "Page not found";
 }
@@ -24,7 +26,7 @@
         This should not be happening of course. I apologize.
     </p>
     <p>
-        Please return to the <a href="/" title="Home">home page</a>.
+        Please return to the <a asp-controller="Home" asp-action="Index" asp-route-culture="@CultureInfo.CurrentCulture.Name" title="Home">Home</a>home page</a>.
     </p>
     <p>@_tenantProvider.Tenant?.ShortName</p>
 

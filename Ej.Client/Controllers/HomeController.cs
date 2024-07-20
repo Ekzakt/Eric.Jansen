@@ -1,20 +1,19 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace Ej.Client.Controllers
+namespace Ej.Client.Controllers;
+
+public class HomeController : BaseController
 {
-    public class HomeController : Controller
+    [Route("")]
+    [Route("{culture:culture}")]
+    public IActionResult Index()
     {
-        [Route("")]
-        public IActionResult Index()
-        {
-            return View();
-        }
+        return View();
+    }
 
-
-        [Route("/privacy-policy")]
-        public IActionResult Privacy()
-        {
-            return View("Privacy");
-        }
+    [Route("{culture:culture}/privacy-policy")]
+    public IActionResult Privacy()
+    {
+        return View("Privacy");
     }
 }

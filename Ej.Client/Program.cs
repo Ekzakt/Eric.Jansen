@@ -11,10 +11,31 @@ using Ej.Infrastructure.Queueing;
 using Ej.Infrastructure.ScopedServices;
 using Ej.Infrastructure.Services;
 using FluentValidation;
+using Microsoft.AspNetCore.Localization;
+using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.AddOpenTelemetry();
+
+builder.Services.Configure<RequestLocalizationOptions>(requestLocalizationOptions =>
+{
+    var supportedCultures = new[]
+    {
+        new CultureInfo("en-US"),
+        new CultureInfo("fr-FR")
+    };
+
+    requestLocalizationOptions.DefaultRequestCulture = new RequestCulture("en-US");
+    requestLocalizationOptions.SupportedCultures = supportedCultures;
+    requestLocalizationOptions.SupportedUICultures = supportedCultures;
+});
+
+builder.Services.Configure<RouteOptions>(options =>
+{
+    options.ConstraintMap.Add("culture", typeof(CultureRouteConstraint));
+});
+
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddEkzaktFileManagerAzure();
@@ -47,6 +68,19 @@ builder.AddAzureKeyVault();
 
 var app = builder.Build();
 
+var supportedCultures = new[]
+        {
+            new CultureInfo("en-US"),
+            new CultureInfo("fr-FR")
+        };
+
+var localizationOptions = new RequestLocalizationOptions()
+    .SetDefaultCulture("en-US")
+    .AddSupportedCultures(supportedCultures.Select(c => c.Name).ToArray())
+    .AddSupportedUICultures(supportedCultures.Select(c => c.Name).ToArray());
+
+app.UseRequestLocalization(localizationOptions);
+
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
@@ -56,6 +90,7 @@ else
     app.UseExceptionHandler();
     app.UseHsts();
 }
+
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
@@ -75,6 +110,9 @@ app.UseTenantDetector();
 
 app.UseAuthorization();
 
-app.MapControllerRoute(name: "default", pattern: "{controller=Home}/{action=Index}/{id?}");
+app.MapControllerRoute(
+    name: "default", 
+    pattern: "{culture=en-US}/{controller=Home}/{action=Index}/{id?}",
+    constraints: new { culture = new CultureRouteConstraint() });
 
 app.Run();
