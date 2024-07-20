@@ -12,7 +12,6 @@ using Ej.Infrastructure.ScopedServices;
 using Ej.Infrastructure.Services;
 using FluentValidation;
 using Microsoft.AspNetCore.Localization;
-using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
 
