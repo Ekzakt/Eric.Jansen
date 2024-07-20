@@ -1,6 +1,6 @@
 ﻿using Ej.Application.Contracts;
 
-namespace Ej.Client.Middlewaares;
+namespace Ej.Client.Middlewares;
 
 public class TenantDetectorMiddleware
 {
