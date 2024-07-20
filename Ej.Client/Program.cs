@@ -11,29 +11,11 @@ using Ej.Infrastructure.Queueing;
 using Ej.Infrastructure.ScopedServices;
 using Ej.Infrastructure.Services;
 using FluentValidation;
-using Microsoft.AspNetCore.Localization;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.AddOpenTelemetry();
-
-builder.Services.Configure<RequestLocalizationOptions>(requestLocalizationOptions =>
-{
-    var supportedCultures = new[]
-    {
-        new CultureInfo("en-US"),
-        new CultureInfo("fr-FR")
-    };
-
-    requestLocalizationOptions.DefaultRequestCulture = new RequestCulture("en-US");
-    requestLocalizationOptions.SupportedCultures = supportedCultures;
-    requestLocalizationOptions.SupportedUICultures = supportedCultures;
-});
-
-builder.Services.Configure<RouteOptions>(options =>
-{
-    options.ConstraintMap.Add("culture", typeof(CultureRouteConstraint));
-});
+builder.AddRequestLocalization();
 
 
 builder.Services.AddControllersWithViews();
