@@ -1,6 +1,7 @@
 ﻿using Azure.Identity;
 using Azure.Monitor.OpenTelemetry.AspNetCore;
 using Ej.Infrastructure.Configuration;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Azure;
 
 namespace Ej.Client.Configuration;
@@ -71,6 +72,30 @@ public static class WebApplicationBuilderExtensions
                 .AddOpenTelemetry()
                 .UseAzureMonitor();
         }
+
+        return builder;
+    }
+
+
+    public static WebApplicationBuilder AddRequestLocalization(this WebApplicationBuilder builder)
+    {
+        builder.Services.Configure<RequestLocalizationOptions>(requestLocalizationOptions =>
+        {
+            var supportedCultures = new[]
+            {
+                new CultureInfo("en-US"),
+                new CultureInfo("fr-FR")
+            };
+
+            requestLocalizationOptions.DefaultRequestCulture = new RequestCulture("en-US");
+            requestLocalizationOptions.SupportedCultures = supportedCultures;
+            requestLocalizationOptions.SupportedUICultures = supportedCultures;
+        });
+
+        builder.Services.Configure<RouteOptions>(options =>
+        {
+            options.ConstraintMap.Add("culture", typeof(CultureRouteConstraint));
+        });
 
         return builder;
     }
