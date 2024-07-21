@@ -11,6 +11,8 @@ using Ej.Infrastructure.Queueing;
 using Ej.Infrastructure.ScopedServices;
 using Ej.Infrastructure.Services;
 using FluentValidation;
+using Ej.Infrastructure.Configuration;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -48,18 +50,12 @@ builder.AddAzureKeyVault();
 
 var app = builder.Build();
 
-var supportedCultures = new[]
-        {
-            new CultureInfo("en-US"),
-            new CultureInfo("fr-FR")
-        };
+var globalizationOptions = app.Services.GetRequiredService<IOptions<LocalizationOptions>>().Value;
 
-var localizationOptions = new RequestLocalizationOptions()
-    .SetDefaultCulture("en-US")
-    .AddSupportedCultures(supportedCultures.Select(c => c.Name).ToArray())
-    .AddSupportedUICultures(supportedCultures.Select(c => c.Name).ToArray());
-
-app.UseRequestLocalization(localizationOptions);
+app.UseRequestLocalization(new RequestLocalizationOptions()
+    .SetDefaultCulture(globalizationOptions!.DefaultCulture!.Name)
+    .AddSupportedCultures(globalizationOptions!.SupportedCultures!.Select(c => c.Name).ToArray())
+    .AddSupportedUICultures(globalizationOptions!.SupportedCultures!.Select(c => c.Name).ToArray()));
 
 if (app.Environment.IsDevelopment())
 {
@@ -70,7 +66,6 @@ else
     app.UseExceptionHandler();
     app.UseHsts();
 }
-
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();

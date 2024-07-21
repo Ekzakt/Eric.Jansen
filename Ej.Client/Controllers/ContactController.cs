@@ -19,10 +19,11 @@ public class ContactController : BaseController
     private readonly ITenantProvider _tenantProvider;
 
     public ContactController(
+        IOptions<LocalizationOptions> globalizationOptions,
         IValidator<ContactViewModel> validator,
         IOptions<EricJansenOptions> options,
         IQueueService queueService,
-        ITenantProvider tenantProvider)
+        ITenantProvider tenantProvider) : base(globalizationOptions)
     {
         _options = options?.Value ?? throw new ArgumentNullException(nameof(options));
         _validator = validator ?? throw new ArgumentNullException(nameof(validator));
