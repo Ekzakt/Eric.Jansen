@@ -1,4 +1,4 @@
-﻿using Ej.Infrastructure.Configuration;
+﻿using Ej.Application.Configuration;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 

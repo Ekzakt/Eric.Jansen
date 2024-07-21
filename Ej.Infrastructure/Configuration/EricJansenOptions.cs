@@ -1,4 +1,6 @@
-﻿namespace Ej.Infrastructure.Configuration;
+﻿using Ej.Application.Configuration;
+
+namespace Ej.Infrastructure.Configuration;
 
 public class EricJansenOptions
 {

@@ -1,5 +1,6 @@
 ﻿using Azure.Identity;
 using Azure.Monitor.OpenTelemetry.AspNetCore;
+using Ej.Application.Configuration;
 using Ej.Infrastructure.Configuration;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Azure;

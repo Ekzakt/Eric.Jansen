@@ -11,8 +11,8 @@ using Ej.Infrastructure.Queueing;
 using Ej.Infrastructure.ScopedServices;
 using Ej.Infrastructure.Services;
 using FluentValidation;
-using Ej.Infrastructure.Configuration;
 using Microsoft.Extensions.Options;
+using Ej.Application.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 

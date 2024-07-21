@@ -1,4 +1,5 @@
-﻿using Ej.Application.Contracts;
+﻿using Ej.Application.Configuration;
+using Ej.Application.Contracts;
 using Ej.Application.Models;
 using Ej.Client.Extensions;
 using Ej.Infrastructure.Configuration;
