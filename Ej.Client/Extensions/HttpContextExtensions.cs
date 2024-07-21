@@ -6,7 +6,7 @@ public static class HttpContextExtensions
     {
         var ipAddress = httpContext.Connection.RemoteIpAddress?.ToString();
 
-        return ipAddress;
+        return ipAddress ?? "Unknown";
     }
     
 
@@ -14,6 +14,6 @@ public static class HttpContextExtensions
     {
         var userAgent = httpContext.Request.Headers.UserAgent.FirstOrDefault()?.ToString();
 
-        return userAgent;
+        return userAgent ?? "Unknown";
     }
 }

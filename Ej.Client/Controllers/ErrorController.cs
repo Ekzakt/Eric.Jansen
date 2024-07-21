@@ -1,9 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Ej.Application.Configuration;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 
 namespace Ej.Client.Controllers;
 
-public class ErrorController : Controller
+public class ErrorController : BaseController
 {
+    public ErrorController(IOptions<LocalizationOptions> globalizationOptions) : base(globalizationOptions)
+    {
+    }
+
     [Route("/Error/500")]
     public IActionResult InternalServerError()
     {

@@ -1,20 +1,24 @@
+using Ej.Application.Configuration;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Ej.Client.Controllers
+namespace Ej.Client.Controllers;
+
+public class HomeController : BaseController
 {
-    public class HomeController : Controller
+    public HomeController(IOptions<LocalizationOptions> globalizationOptions) : base(globalizationOptions)
     {
-        [Route("")]
-        public IActionResult Index()
-        {
-            return View();
-        }
+    }
 
+    [Route("")]
+    [Route("{culture:culture}")]
+    public IActionResult Index()
+    {
+        return View();
+    }
 
-        [Route("/privacy-policy")]
-        public IActionResult Privacy()
-        {
-            return View("Privacy");
-        }
+    [Route("{culture:culture}/privacy-policy")]
+    public IActionResult Privacy()
+    {
+        return View("Privacy");
     }
 }

@@ -1,11 +1,20 @@
-﻿@{
+﻿@using Ej.Application.Configuration
+
+@{
     ViewData["Title"] = "Home";
     ViewData["MetaTitle"] = "Home";
 }
 
+@inject IOptions<LocalizationOptions> _localizationOptions
+
 <section id="hero">
     <img src="~/img/face-headphones-400x400.jpg" width="250px" width="250px" class="img-fluid mx-auto d-block rounded-circle mb-4" alt="Eric Jansen" />
 </section>
+
+<h5>
+    DefaultCulture: @_localizationOptions!.Value!.DefaultCulture!.Name
+    SupportedCultures: @string.Join(", ", _localizationOptions!.Value!.SupportedCultures!.Select(c => c.Name))
+</h5>
 
 <section id="about">
     <h2>Hello,</h2>
@@ -22,7 +31,7 @@
     <p>
         This site is intentionally kept discreet to maintain privacy, but
         I appreciate your visit nonetheless. If you have any inquiries or just
-        want to say hello, you can drop me a line <a href="/contact" title="Contact">here</a>.
+        want to say hello, you can drop me a line <a asp-controller="Contact" asp-action="Index" asp-route-culture="@CultureInfo.CurrentCulture.Name" title="Contact">here</a>.
     </p>
     <p>
         Thank you for stopping by!

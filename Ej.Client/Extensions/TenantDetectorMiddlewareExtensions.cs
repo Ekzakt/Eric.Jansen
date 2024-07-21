@@ -1,4 +1,4 @@
-﻿using Ej.Client.Middlewaares;
+﻿using Ej.Client.Middlewares;
 
 namespace Ej.Client.Extensions;
 

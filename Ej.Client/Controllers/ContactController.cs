@@ -1,4 +1,5 @@
-﻿using Ej.Application.Contracts;
+﻿using Ej.Application.Configuration;
+using Ej.Application.Contracts;
 using Ej.Application.Models;
 using Ej.Client.Extensions;
 using Ej.Infrastructure.Configuration;
@@ -11,7 +12,7 @@ using Microsoft.Extensions.Options;
 
 namespace Ej.Client.Controllers;
 
-public class ContactController : Controller
+public class ContactController : BaseController
 {
     private readonly IValidator<ContactViewModel> _validator;
     private readonly EricJansenOptions _options;
@@ -19,10 +20,11 @@ public class ContactController : Controller
     private readonly ITenantProvider _tenantProvider;
 
     public ContactController(
+        IOptions<LocalizationOptions> globalizationOptions,
         IValidator<ContactViewModel> validator,
         IOptions<EricJansenOptions> options,
         IQueueService queueService,
-        ITenantProvider tenantProvider)
+        ITenantProvider tenantProvider) : base(globalizationOptions)
     {
         _options = options?.Value ?? throw new ArgumentNullException(nameof(options));
         _validator = validator ?? throw new ArgumentNullException(nameof(validator));
@@ -31,20 +33,22 @@ public class ContactController : Controller
     }
 
 
+    [Route("{culture:culture}/contact")]
     public IActionResult Index()
     {
         return View();
     }
 
 
-    public IActionResult Send()
-    {
-        return View();
-    }
+    //public IActionResult Send()
+    //{
+    //    return View();
+    //}
 
 
-    [HttpPost("/contact")]
-    public async Task<ActionResult> Send(ContactViewModel model)
+    [HttpPost]
+    [Route("{culture:culture}/contact")]
+    public async Task<ActionResult> Post(ContactViewModel model)
     {
         ValidationResult result = await _validator.ValidateAsync(model);
 

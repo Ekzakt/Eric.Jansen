@@ -27,7 +27,7 @@
         Of course, this should not be happening and I apologize for the inconvenience.
     </p>
     <p>
-        Please return to the <a href="/" title="Home">home page</a> and try again.
+        Please return to the <a asp-controller="Home" asp-action="Index" asp-route-culture="@CultureInfo.CurrentCulture.Name" title="Home">home page</a> and try again.
     </p>
     <p>@_tenantProvider.Tenant?.ShortName</p>
 

@@ -1,4 +1,6 @@
-﻿namespace Ej.Infrastructure.Configuration;
+﻿using Ej.Application.Configuration;
+
+namespace Ej.Infrastructure.Configuration;
 
 public class EricJansenOptions
 {
@@ -9,4 +11,6 @@ public class EricJansenOptions
     public StorageBaseLocationOptions BaseLocations { get; init; } = new();
 
     public List<BgServiceOptions> BackgroundServices { get; init; } = [];
+
+    public LocalizationOptions Globalization { get; init; } = new();
 }

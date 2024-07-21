@@ -28,7 +28,7 @@
         don't sweat it though, a solution on it's way!
     </p>
     <p>
-        I'm sorry, but you'll have to try again <a href="/contact" title="Contact">here</a>.
+        I'm sorry, but you'll have to try again <a asp-controller="Contact" asp-action="Index" asp-route-culture="@CultureInfo.CurrentCulture.Name" title="Contact">here</a>.
     </p>
     <p>Ciao,</p>
     <p>@_tenantProvider.Tenant?.ShortName</p>

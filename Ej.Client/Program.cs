@@ -11,10 +11,13 @@ using Ej.Infrastructure.Queueing;
 using Ej.Infrastructure.ScopedServices;
 using Ej.Infrastructure.Services;
 using FluentValidation;
+using Microsoft.Extensions.Options;
+using Ej.Application.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.AddOpenTelemetry();
+builder.AddRequestLocalization();
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddEkzaktFileManagerAzure();
@@ -47,6 +50,13 @@ builder.AddAzureKeyVault();
 
 var app = builder.Build();
 
+var globalizationOptions = app.Services.GetRequiredService<IOptions<LocalizationOptions>>().Value;
+
+app.UseRequestLocalization(new RequestLocalizationOptions()
+    .SetDefaultCulture(globalizationOptions!.DefaultCulture!.Name)
+    .AddSupportedCultures(globalizationOptions!.SupportedCultures!.Select(c => c.Name).ToArray())
+    .AddSupportedUICultures(globalizationOptions!.SupportedCultures!.Select(c => c.Name).ToArray()));
+
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
@@ -75,6 +85,9 @@ app.UseTenantDetector();
 
 app.UseAuthorization();
 
-app.MapControllerRoute(name: "default", pattern: "{controller=Home}/{action=Index}/{id?}");
+app.MapControllerRoute(
+    name: "default", 
+    pattern: "{culture=en-US}/{controller=Home}/{action=Index}/{id?}",
+    constraints: new { culture = new CultureRouteConstraint() });
 
 app.Run();

@@ -1,6 +1,8 @@
 ﻿using Azure.Identity;
 using Azure.Monitor.OpenTelemetry.AspNetCore;
+using Ej.Application.Configuration;
 using Ej.Infrastructure.Configuration;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Azure;
 
 namespace Ej.Client.Configuration;
@@ -59,6 +61,9 @@ public static class WebApplicationBuilderExtensions
         builder.Services.Configure<EricJansenOptions>(
             builder.Configuration.GetSection(EricJansenOptions.SectionName));
 
+        builder.Services.Configure<LocalizationOptions>(
+            builder.Configuration.GetSection(LocalizationOptions.SectionName));
+
         return builder;
     }
 
@@ -71,6 +76,30 @@ public static class WebApplicationBuilderExtensions
                 .AddOpenTelemetry()
                 .UseAzureMonitor();
         }
+
+        return builder;
+    }
+
+
+    public static WebApplicationBuilder AddRequestLocalization(this WebApplicationBuilder builder)
+    {
+        builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
+
+        var globalizationOptions = builder.Configuration
+            .GetSection(LocalizationOptions.SectionName)
+            .Get<LocalizationOptions>();
+
+        builder.Services.Configure<RequestLocalizationOptions>(requestLocalizationOptions =>
+        {
+            requestLocalizationOptions.DefaultRequestCulture = new RequestCulture(globalizationOptions!.DefaultCulture!);
+            requestLocalizationOptions.SupportedCultures = globalizationOptions.SupportedCultures;
+            requestLocalizationOptions.SupportedUICultures = globalizationOptions.SupportedCultures;
+        });
+
+        builder.Services.Configure<RouteOptions>(options =>
+        {
+            options.ConstraintMap.Add("culture", typeof(CultureRouteConstraint));
+        });
 
         return builder;
     }
