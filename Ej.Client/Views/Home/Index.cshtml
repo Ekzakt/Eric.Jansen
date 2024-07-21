@@ -14,6 +14,8 @@
 <h5>
     DefaultCulture: @_localizationOptions!.Value!.DefaultCulture!.Name
     SupportedCultures: @string.Join(", ", _localizationOptions!.Value!.SupportedCultures!.Select(c => c.Name))
+    Date: @DateTime.Now
+    Date Long: @DateTime.Now.ToLongDateString()
 </h5>
 
 <section id="about">

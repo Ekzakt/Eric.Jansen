@@ -3,7 +3,10 @@ using Azure.Monitor.OpenTelemetry.AspNetCore;
 using Ej.Application.Configuration;
 using Ej.Infrastructure.Configuration;
 using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Localization.Routing;
 using Microsoft.Extensions.Azure;
+using Microsoft.Extensions.Options;
+using System.Collections.Immutable;
 
 namespace Ej.Client.Configuration;
 
@@ -94,6 +97,11 @@ public static class WebApplicationBuilderExtensions
             requestLocalizationOptions.DefaultRequestCulture = new RequestCulture(globalizationOptions!.DefaultCulture!);
             requestLocalizationOptions.SupportedCultures = globalizationOptions.SupportedCultures;
             requestLocalizationOptions.SupportedUICultures = globalizationOptions.SupportedCultures;
+
+            requestLocalizationOptions.SupportedCultures!.Clear();
+            requestLocalizationOptions.RequestCultureProviders.Add( new CookieRequestCultureProvider());
+            requestLocalizationOptions.RequestCultureProviders.Add( new AcceptLanguageHeaderRequestCultureProvider());
+            requestLocalizationOptions.RequestCultureProviders.Add( new RouteDataRequestCultureProvider());
         });
 
         builder.Services.Configure<RouteOptions>(options =>

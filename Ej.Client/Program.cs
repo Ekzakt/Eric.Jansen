@@ -11,7 +11,6 @@ using Ej.Infrastructure.Queueing;
 using Ej.Infrastructure.ScopedServices;
 using Ej.Infrastructure.Services;
 using FluentValidation;
-using Microsoft.Extensions.Options;
 using Ej.Application.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -50,12 +49,15 @@ builder.AddAzureKeyVault();
 
 var app = builder.Build();
 
-var globalizationOptions = app.Services.GetRequiredService<IOptions<LocalizationOptions>>().Value;
+var localizationOptions = app.Services.GetRequiredService<IOptions<LocalizationOptions>>().Value;
+var requestLocalizationOptions = app.Services.GetRequiredService<IOptions<RequestLocalizationOptions>>().Value;
 
-app.UseRequestLocalization(new RequestLocalizationOptions()
-    .SetDefaultCulture(globalizationOptions!.DefaultCulture!.Name)
-    .AddSupportedCultures(globalizationOptions!.SupportedCultures!.Select(c => c.Name).ToArray())
-    .AddSupportedUICultures(globalizationOptions!.SupportedCultures!.Select(c => c.Name).ToArray()));
+app.UseRequestLocalization(requestLocalizationOptions);
+
+//app.UseRequestLocalization(new RequestLocalizationOptions()
+//    .SetDefaultCulture(localizationOptions!.DefaultCulture!.Name)
+//    .AddSupportedCultures(localizationOptions!.SupportedCultures!.Select(c => c.Name).ToArray())
+//    .AddSupportedUICultures(localizationOptions!.SupportedCultures!.Select(c => c.Name).ToArray()));
 
 if (app.Environment.IsDevelopment())
 {
@@ -87,7 +89,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default", 
-    pattern: "{culture=en-US}/{controller=Home}/{action=Index}/{id?}",
+    pattern: "{culture=en-us}/{controller=Home}/{action=Index}/{id?}",
     constraints: new { culture = new CultureRouteConstraint() });
 
 app.Run();
