@@ -2,7 +2,7 @@
 
 namespace Ej.Application.Configuration;
 
-public class LocalizationOptions
+public class CultureOptions
 {
     public const string SectionName = "Localization";
 

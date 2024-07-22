@@ -1,12 +1,11 @@
 ﻿using Ej.Application.Configuration;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
 
 namespace Ej.Client.Controllers;
 
 public class ErrorController : BaseController
 {
-    public ErrorController(IOptions<LocalizationOptions> globalizationOptions) : base(globalizationOptions)
+    public ErrorController(IOptions<CultureOptions> cultureOptions) : base(cultureOptions)
     {
     }
 

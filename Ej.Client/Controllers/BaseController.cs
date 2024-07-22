@@ -6,18 +6,18 @@ namespace Ej.Client.Controllers;
 
 public class BaseController : Controller
 {
-    private readonly LocalizationOptions _globalizationOptions;
+    private readonly CultureOptions _cultureOptions;
 
-    public BaseController(IOptions<LocalizationOptions> globalizationOptions)
+    public BaseController(IOptions<CultureOptions> cultureOptions)
     {
-        _globalizationOptions = globalizationOptions.Value;
+        _cultureOptions = cultureOptions.Value;
     }
 
     public override void OnActionExecuting(ActionExecutingContext context)
     {
         var routeCultureData = (string?)RouteData.Values["culture"];
 
-        var culture = routeCultureData ?? _globalizationOptions!.DefaultCulture!.Name;
+        var culture = routeCultureData ?? _cultureOptions!.DefaultCulture!.Name;
         var cultureInfo = new CultureInfo(culture);
 
         CultureInfo.CurrentCulture = cultureInfo;
