@@ -12,5 +12,5 @@ public class EricJansenOptions
 
     public List<BgServiceOptions> BackgroundServices { get; init; } = [];
 
-    public LocalizationOptions Globalization { get; init; } = new();
+    public CultureOptions Globalization { get; init; } = new();
 }

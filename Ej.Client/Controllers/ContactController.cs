@@ -8,7 +8,6 @@ using FluentValidation;
 using FluentValidation.AspNetCore;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
 
 namespace Ej.Client.Controllers;
 
@@ -20,11 +19,11 @@ public class ContactController : BaseController
     private readonly ITenantProvider _tenantProvider;
 
     public ContactController(
-        IOptions<LocalizationOptions> globalizationOptions,
+        IOptions<CultureOptions> cultureOptions,
         IValidator<ContactViewModel> validator,
         IOptions<EricJansenOptions> options,
         IQueueService queueService,
-        ITenantProvider tenantProvider) : base(globalizationOptions)
+        ITenantProvider tenantProvider) : base(cultureOptions)
     {
         _options = options?.Value ?? throw new ArgumentNullException(nameof(options));
         _validator = validator ?? throw new ArgumentNullException(nameof(validator));
@@ -38,12 +37,6 @@ public class ContactController : BaseController
     {
         return View();
     }
-
-
-    //public IActionResult Send()
-    //{
-    //    return View();
-    //}
 
 
     [HttpPost]

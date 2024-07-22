@@ -1,9 +1,10 @@
 ﻿using Azure.Identity;
 using Azure.Monitor.OpenTelemetry.AspNetCore;
-using Ej.Application.Configuration;
 using Ej.Infrastructure.Configuration;
 using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Localization.Routing;
 using Microsoft.Extensions.Azure;
+using CultureOptions = Ej.Application.Configuration.CultureOptions;
 
 namespace Ej.Client.Configuration;
 
@@ -61,8 +62,8 @@ public static class WebApplicationBuilderExtensions
         builder.Services.Configure<EricJansenOptions>(
             builder.Configuration.GetSection(EricJansenOptions.SectionName));
 
-        builder.Services.Configure<LocalizationOptions>(
-            builder.Configuration.GetSection(LocalizationOptions.SectionName));
+        builder.Services.Configure<CultureOptions>(
+            builder.Configuration.GetSection(CultureOptions.SectionName));
 
         return builder;
     }
@@ -83,17 +84,25 @@ public static class WebApplicationBuilderExtensions
 
     public static WebApplicationBuilder AddRequestLocalization(this WebApplicationBuilder builder)
     {
-        builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
+        builder.Services.AddLocalization(localizationOptions =>
+            localizationOptions.ResourcesPath = "Resources");
 
-        var globalizationOptions = builder.Configuration
-            .GetSection(LocalizationOptions.SectionName)
-            .Get<LocalizationOptions>();
+        var cultureOptions = builder.Configuration
+            .GetSection(CultureOptions.SectionName)
+            .Get<CultureOptions>();
 
         builder.Services.Configure<RequestLocalizationOptions>(requestLocalizationOptions =>
         {
-            requestLocalizationOptions.DefaultRequestCulture = new RequestCulture(globalizationOptions!.DefaultCulture!);
-            requestLocalizationOptions.SupportedCultures = globalizationOptions.SupportedCultures;
-            requestLocalizationOptions.SupportedUICultures = globalizationOptions.SupportedCultures;
+            requestLocalizationOptions.DefaultRequestCulture = new RequestCulture(cultureOptions!.DefaultCulture!);
+            requestLocalizationOptions.SupportedCultures = cultureOptions.SupportedCultures;
+            requestLocalizationOptions.SupportedUICultures = cultureOptions.SupportedCultures;
+
+            requestLocalizationOptions.RequestCultureProviders =
+            [
+                new CookieRequestCultureProvider(),
+                new AcceptLanguageHeaderRequestCultureProvider(),
+                new RouteDataRequestCultureProvider()
+            ];
         });
 
         builder.Services.Configure<RouteOptions>(options =>

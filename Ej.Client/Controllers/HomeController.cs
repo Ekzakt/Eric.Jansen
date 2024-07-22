@@ -5,7 +5,7 @@ namespace Ej.Client.Controllers;
 
 public class HomeController : BaseController
 {
-    public HomeController(IOptions<LocalizationOptions> globalizationOptions) : base(globalizationOptions)
+    public HomeController(IOptions<CultureOptions> cultureOptions) : base(cultureOptions)
     {
     }
 

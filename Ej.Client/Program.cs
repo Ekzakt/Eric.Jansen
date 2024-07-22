@@ -4,22 +4,25 @@ using Ekzakt.FileManager.AzureBlob.Configuration;
 using Ej.Application.Contracts;
 using Ej.Application.Validators;
 using Ej.Client.Configuration;
-using Ej.Client.Extensions;
 using Ej.Infrastructure.BackgroundServices;
 using Ej.Infrastructure.Constants;
 using Ej.Infrastructure.Queueing;
 using Ej.Infrastructure.ScopedServices;
 using Ej.Infrastructure.Services;
 using FluentValidation;
-using Microsoft.Extensions.Options;
 using Ej.Application.Configuration;
+using Ej.Client.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.AddOpenTelemetry();
+
 builder.AddRequestLocalization();
 
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews()
+                .AddViewLocalization()
+                .AddDataAnnotationsLocalization();
+
 builder.Services.AddEkzaktFileManagerAzure();
 builder.Services.AddEkzaktEmailTemplateProviderIo();
 builder.Services.AddEkzaktEmailSenderSmtp();
@@ -50,12 +53,13 @@ builder.AddAzureKeyVault();
 
 var app = builder.Build();
 
-var globalizationOptions = app.Services.GetRequiredService<IOptions<LocalizationOptions>>().Value;
+var cultureOptions = app.Services.GetRequiredService<IOptions<CultureOptions>>().Value;
+var requestLocalizationOptions = app.Services.GetRequiredService<IOptions<RequestLocalizationOptions>>().Value;
 
 app.UseRequestLocalization(new RequestLocalizationOptions()
-    .SetDefaultCulture(globalizationOptions!.DefaultCulture!.Name)
-    .AddSupportedCultures(globalizationOptions!.SupportedCultures!.Select(c => c.Name).ToArray())
-    .AddSupportedUICultures(globalizationOptions!.SupportedCultures!.Select(c => c.Name).ToArray()));
+    .SetDefaultCulture(cultureOptions!.DefaultCulture!.Name)
+    .AddSupportedCultures(cultureOptions!.SupportedCultures!.Select(c => c.Name).ToArray())
+    .AddSupportedUICultures(cultureOptions!.SupportedCultures!.Select(c => c.Name).ToArray()));
 
 if (app.Environment.IsDevelopment())
 {
@@ -81,13 +85,14 @@ app.Use(async (context, next) =>
 });
 
 app.UseRouting();
-app.UseTenantDetector();
+
+app.UseMiddleware<TenantDetectorMiddleware>();
 
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default", 
-    pattern: "{culture=en-US}/{controller=Home}/{action=Index}/{id?}",
+    pattern: "{culture=en-us}/{controller=Home}/{action=Index}/{id?}",
     constraints: new { culture = new CultureRouteConstraint() });
 
 app.Run();

@@ -1,9 +1,11 @@
+@inject IHtmlLocalizer<SharedResource> _htmlLocalizer
+
 <footer class="footer pt-5 pb-3">
 
     <p>
         &copy; @DateTime.UtcNow.Year -
         <a asp-controller="Home" asp-action="Index" asp-route-culture="@CultureInfo.CurrentCulture.Name" title="@_tenantProvider.Tenant?.Name Home">@_tenantProvider.Tenant?.Name</a> - 
-        <a asp-controller="Home" asp-action="Privacy" asp-route-culture="@CultureInfo.CurrentCulture.Name" title="Privacy Policy">Privacy Policy</a>
+        <a asp-controller="Home" asp-action="Privacy" asp-route-culture="@CultureInfo.CurrentCulture.Name" title="@_htmlLocalizer["__NavItem_PrivacyPolicy"]">@_htmlLocalizer["__NavItem_PrivacyPolicy"]</a>
     </p>
 
 </footer>

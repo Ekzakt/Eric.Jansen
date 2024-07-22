@@ -1,23 +1,18 @@
 ﻿@using Ej.Application.Configuration
 
+@inject IStringLocalizer<HomeController> _localizer
+
 @{
     ViewData["Title"] = "Home";
     ViewData["MetaTitle"] = "Home";
 }
 
-@inject IOptions<LocalizationOptions> _localizationOptions
-
 <section id="hero">
     <img src="~/img/face-headphones-400x400.jpg" width="250px" width="250px" class="img-fluid mx-auto d-block rounded-circle mb-4" alt="Eric Jansen" />
 </section>
 
-<h5>
-    DefaultCulture: @_localizationOptions!.Value!.DefaultCulture!.Name
-    SupportedCultures: @string.Join(", ", _localizationOptions!.Value!.SupportedCultures!.Select(c => c.Name))
-</h5>
-
 <section id="about">
-    <h2>Hello,</h2>
+    <h2>@_localizer["__Hello"],</h2>
     <p>
         I'm a resident (he/him) of the beautiful country of Belgium, and this
         website serves as a minimalistic online presence for me.
