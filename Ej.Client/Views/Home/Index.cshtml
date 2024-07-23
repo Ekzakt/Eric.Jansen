@@ -1,35 +1,19 @@
 ﻿@using Ej.Application.Configuration
 
-@inject IStringLocalizer<HomeController> _localizer
+@inject ITenantProvider _tenantProvider
+@inject IHtmlLocalizer<HomeController> _localizer
 
 @{
-    ViewData["Title"] = "Home";
-    ViewData["MetaTitle"] = "Home";
+    ViewData["Title"] = _localizer["__View_Index_Title"];
+    ViewData["MetaTitle"] = _localizer["__View_Index_MetaTitle"];
 }
 
 <section id="hero">
-    <img src="~/img/face-headphones-400x400.jpg" width="250px" width="250px" class="img-fluid mx-auto d-block rounded-circle mb-4" alt="Eric Jansen" />
+    <img src="~/img/face-headphones-400x400.jpg" width="250px" width="250px" class="img-fluid mx-auto d-block rounded-circle mb-4" alt="@_tenantProvider?.Tenant?.Name" />
 </section>
 
 <section id="about">
     <h2>@_localizer["__Hello"],</h2>
-    <p>
-        I'm a resident (he/him) of the beautiful country of Belgium, and this
-        website serves as a minimalistic online presence for me.
-    </p>
-    <p>
-        While there
-        isn't much to see here, and this website isn't the most fancy out there 
-        - that's because I like simplicity - 
-        feel free to explore and get a glimpse into my digital corner.
-    </p>
-    <p>
-        This site is intentionally kept discreet to maintain privacy, but
-        I appreciate your visit nonetheless. If you have any inquiries or just
-        want to say hello, you can drop me a line <a asp-controller="Contact" asp-action="Index" asp-route-culture="@CultureInfo.CurrentCulture.Name" title="Contact">here</a>.
-    </p>
-    <p>
-        Thank you for stopping by!
-    </p>
+    @_localizer["__View_Index_Content"]
 </section>
 

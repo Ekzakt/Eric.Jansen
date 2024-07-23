@@ -16,12 +16,10 @@ using Ej.Client.Middlewares;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.AddOpenTelemetry();
-
 builder.AddRequestLocalization();
 
 builder.Services.AddControllersWithViews()
-                .AddViewLocalization()
-                .AddDataAnnotationsLocalization();
+                .AddViewLocalization();
 
 builder.Services.AddEkzaktFileManagerAzure();
 builder.Services.AddEkzaktEmailTemplateProviderIo();
@@ -77,9 +75,10 @@ app.UseStaticFiles();
 app.Use(async (context, next) =>
 {
     await next();
+
     if (context.Response.StatusCode == 404)
     {
-        context.Request.Path = "/error/404";
+        context.Request.Path = $"/{CultureInfo.CurrentCulture.Name}/error/404";
         await next();
     }
 });

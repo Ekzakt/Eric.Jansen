@@ -1,13 +1,8 @@
 ﻿@model ContactViewModel
 
-@{
-    ViewData["Title"] = "Contact";
-    ViewData["MetaTitle"] = "Contact";
-}
+<h2>@ViewBag.PageTitle</h2>
 
-<h2>@ViewData["Title"]</h2>
-
-<p>Need some help or have a question? Don't hesitate to shoot me a message. I'm here to lend a hand and answer any queries you might have. Just give me a shout, and I'll be happy to assist you!</p>
+@Html.Raw(ViewBag.Content)
 
 <section class="contact">
 
@@ -19,21 +14,21 @@
             <form method="post">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="mb-3">
-                    <label asp-for="Name" class="form-label">What is your name?</label>
+                    <label asp-for="Name" class="form-label">@ViewBag.FormName</label>
                     <input asp-for="Name" type="text" class="form-control" autocomplete="given-name" />
                     <span asp-validation-for="Name" class="text-white"></span>
                 </div>
                 <div class="mb-3">
-                    <label asp-for="Email" class="form-label">And of course, what is your email?</label>
+                    <label asp-for="Email" class="form-label">@ViewBag.FormEmail</label>
                     <input asp-for="Email" type="email" class="form-control" autocomplete="email" />
                     <span asp-validation-for="Email" class="text-white"></span>
                 </div>
                 <div class="mb-3">
-                    <label asp-for="Message" class="form-label">Tell me what's up:</label>
+                    <label asp-for="Message" class="form-label">@ViewBag.FormMessage</label>
                     <textarea asp-for="Message" class="form-control" rows="6"></textarea>
                     <span asp-validation-for="Message" class="text-white"></span>
                 </div>
-                <button type="submit" class="btn btn-primary rounded-pill mt-2">Get in touch</button>
+                <button type="submit" class="btn btn-primary rounded-pill mt-2">@ViewBag.FormSubmit</button>
             </form>
         </div>
 

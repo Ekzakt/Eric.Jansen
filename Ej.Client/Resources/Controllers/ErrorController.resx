@@ -117,7 +117,45 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="__Hello" xml:space="preserve">
-    <value>Bonjour</value>
+  <data name="__View_404_Content" xml:space="preserve">
+    <value>&lt;p&gt;
+    Oops, I couldn't find the page you requested. Most likely, this is
+    caused by a page that has been removed or a typo that slipped into the code.
+&lt;/p&gt;
+&lt;p&gt;
+    This should not be happening of course. I apologize.
+&lt;/p&gt;
+&lt;p&gt;
+    Please return to the &lt;a asp-controller="Home" asp-action="Index" asp-route-culture="@CultureInfo.CurrentCulture.Name" title="Home"&gt;Home&lt;/a&gt;home page&lt;/a&gt;.
+&lt;/p&gt;
+&lt;p&gt;{{Tenant_ShortName}}&lt;/p&gt;</value>
+  </data>
+  <data name="__View_404_MetaTitle" xml:space="preserve">
+    <value>Page not found</value>
+  </data>
+  <data name="__View_404_Title" xml:space="preserve">
+    <value>Page not found (404)</value>
+  </data>
+  <data name="__View_500_Content" xml:space="preserve">
+    <value>&lt;p&gt;
+    Oops, something serious went wrong behind the scenes.
+&lt;/p&gt;
+&lt;p&gt;
+    Everything has gone into meltdown mode here, with alarms and sirens blaring, so
+    don't sweat it though, a solution is on it's way!
+&lt;/p&gt;
+&lt;p&gt;
+    Of course, this should not be happening and I apologize for the inconvenience.
+&lt;/p&gt;
+&lt;p&gt;
+    Please return to the &lt;a asp-controller="Home" asp-action="Index" asp-route-culture="@CultureInfo.CurrentCulture.Name" title="Home"&gt;home page&lt;/a&gt; and try again.
+&lt;/p&gt;
+&lt;p&gt;{{Tenant_ShortName}}&lt;/p&gt;</value>
+  </data>
+  <data name="__View_500_MetaTitle" xml:space="preserve">
+    <value>Serious Problem</value>
+  </data>
+  <data name="__View_500_Title" xml:space="preserve">
+    <value>Serious Problem (500)</value>
   </data>
 </root>
