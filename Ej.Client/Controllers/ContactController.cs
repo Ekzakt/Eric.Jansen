@@ -38,8 +38,6 @@ public class ContactController : BaseController
     [Route("{culture:culture}/contact")]
     public IActionResult Index()
     {
-        throw new ArgumentException("This is a test exception.");
-
         ViewData["Title"] = _localizer["__View_Index_Title"].Value;
         ViewData["MetaTitle"] = _localizer["__View_Index_MetaTitle"].Value;
 
