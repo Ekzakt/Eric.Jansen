@@ -21,6 +21,7 @@
 		<PackageReference Include="Azure.Identity" Version="1.12.0" />
 		<PackageReference Include="Azure.Monitor.OpenTelemetry.AspNetCore" Version="1.2.0" />
 		<PackageReference Include="Azure.Storage.Blobs" Version="12.20.0" />
+		<PackageReference Include="Ekzakt.Utilities" Version="0.2.25" />
 		<PackageReference Include="Microsoft.Extensions.Azure" Version="1.7.4" />
 		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.2" />
 	</ItemGroup>

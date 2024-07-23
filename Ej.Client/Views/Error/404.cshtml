@@ -1,9 +1,4 @@
-﻿@{
-    ViewData["Title"] = "Page not found (404)";
-    ViewData["MetaTitle"] = "Page not found";
-}
-
-<section class="error">
+﻿<section class="error">
 
     <div class="mb-5 text-center">
         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 30 30">
@@ -16,16 +11,6 @@
 
     <h2>@ViewData["Title"]</h2>
 
-    <p>
-        Oops, I couldn't find the page you requested. Most likely, this is
-        caused by a page that has been removed or a typo that slipped into the code.
-    </p>
-    <p>
-        This should not be happening of course. I apologize.
-    </p>
-    <p>
-        Please return to the <a asp-controller="Home" asp-action="Index" asp-route-culture="@CultureInfo.CurrentCulture.Name" title="Home">Home</a>home page</a>.
-    </p>
-    <p>@_tenantProvider.Tenant?.ShortName</p>
+    @Html.Raw(ViewBag.Content)
 
 </section>

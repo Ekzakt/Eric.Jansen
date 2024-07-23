@@ -1,9 +1,6 @@
 ﻿@model ContactViewModel
 
-@{
-    ViewData["Title"] = $"Hi {Model.Name}";
-    ViewData["MetaTitle"] = "Error while handling your request";
-}
+@inject IHtmlLocalizer<ContactController> _localizer
 
 <section class="error">
 
@@ -16,21 +13,8 @@
         </svg>
     </div>
 
-    <h2>@ViewData["Title"],</h2>
+    <h2>@ViewBag.PageTitle</h2>
 
-    <p>
-        My bad! 
-        It seems like there has been a major hiccup while handling your request. I might have missed your message 
-        altogether. 
-    </p>
-    <p>
-        Everything has gone into meltdown mode here, with alarms and sirens blaring, so 
-        don't sweat it though, a solution on it's way!
-    </p>
-    <p>
-        I'm sorry, but you'll have to try again <a asp-controller="Contact" asp-action="Index" asp-route-culture="@CultureInfo.CurrentCulture.Name" title="Contact">here</a>.
-    </p>
-    <p>Ciao,</p>
-    <p>@_tenantProvider.Tenant?.ShortName</p>
+    @Html.Raw(ViewBag.Content)
 
 </section>

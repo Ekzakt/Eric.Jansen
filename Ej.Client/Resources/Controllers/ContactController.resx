@@ -117,7 +117,64 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="__Hello" xml:space="preserve">
-    <value>Hallo</value>
+  <data name="__View_Error_Content" xml:space="preserve">
+    <value>&lt;p&gt;
+        My bad! 
+        It seems like there has been a major hiccup while handling your request. I might have missed your message 
+        altogether. 
+    &lt;/p&gt;
+    &lt;p&gt;
+        Everything has gone into meltdown mode here, with alarms and sirens blaring, so 
+        don't sweat it though, a solution on it's way!
+    &lt;/p&gt;
+    &lt;p&gt;
+        I'm sorry, but you'll have to try again &lt;a href="/en/contact" title="Contact"&gt;here&lt;/a&gt;.
+    &lt;/p&gt;
+    &lt;p&gt;Ciao,&lt;/p&gt;
+    &lt;p&gt;{{Tenant_ShortName}}&lt;/p&gt;</value>
+  </data>
+  <data name="__View_Error_MetaTitle" xml:space="preserve">
+    <value>An error occured while sending your request.</value>
+  </data>
+  <data name="__View_Error_PageTitle" xml:space="preserve">
+    <value>Hi {{Contact_Name}},</value>
+  </data>
+  <data name="__View_Error_Title" xml:space="preserve">
+    <value>Contact error</value>
+  </data>
+  <data name="__View_Index_Content" xml:space="preserve">
+    <value>&lt;p&gt;Need some help or have a question? Don't hesitate to shoot me a message. I'm here to lend a hand and answer any queries you might have. Just give me a shout, and I'll be happy to assist you!&lt;/p&gt;</value>
+  </data>
+  <data name="__View_Index_Form_Email" xml:space="preserve">
+    <value>And of course, what is your email?</value>
+  </data>
+  <data name="__View_Index_Form_Message" xml:space="preserve">
+    <value>Tell me what's up:</value>
+  </data>
+  <data name="__View_Index_Form_Name" xml:space="preserve">
+    <value>What is your name?</value>
+  </data>
+  <data name="__View_Index_Form_Submit" xml:space="preserve">
+    <value>Get in touch</value>
+  </data>
+  <data name="__View_Index_MetaTitle" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="__View_Index_Title" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="__View_Success_Content" xml:space="preserve">
+    <value>&lt;p&gt;Thank you for reaching out to me.  I'll get back to you from the moment I read your message.&lt;/p&gt;
+&lt;p&gt;Ciao,&lt;/p&gt;
+&lt;p&gt;{{Tenant_ShortName}}&lt;/p&gt;</value>
+  </data>
+  <data name="__View_Success_MetaTitle" xml:space="preserve">
+    <value>Your reques has been sent successfully.</value>
+  </data>
+  <data name="__View_Success_PageTitle" xml:space="preserve">
+    <value>Hi {{Contact_Name}},</value>
+  </data>
+  <data name="__View_Success_Title" xml:space="preserve">
+    <value>Contact success</value>
   </data>
 </root>
