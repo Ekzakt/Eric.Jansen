@@ -19,10 +19,18 @@ public class HomeController : BaseController
         _localizer = localizer;
     }
 
+
     [Route("")]
     [Route("{culture:culture}")]
     public IActionResult Index()
     {
+        ViewData["Title"] = _localizer["__View_Index_Title"];
+        ViewData["MetaTitle"] = _localizer["__View_Index_MetaTitle"];
+
+        ViewBag.PageTitle = _localizer["__View_Index_PageTitle"].Value;
+        ViewBag.Content = _localizer["__View_Index_Content"].Value;
+        ViewBag.TenantName = _tenantProvider.Tenant?.Name;  
+
         return View();
     }
 
@@ -30,6 +38,9 @@ public class HomeController : BaseController
     [Route("{culture:culture}/privacy-policy")]
     public IActionResult Privacy()
     {
+        ViewData["Title"] = _localizer["__View_Privacy_Title"];
+        ViewData["MetaTitle"] = _localizer["__View_Privacy_MetaTitle"];
+
         var content = _localizer["__View_Privacy_Content"].Value;
 
         ViewBag.Content = new StringReplacer().ReplaceTenantProperties(_tenantProvider.Tenant!, content);
