@@ -1,12 +1,14 @@
 ﻿using Ej.Application.Constants;
 using Ej.Application.Contracts;
 using Ej.Application.Models;
+using Microsoft.Extensions.Localization;
 
 namespace Ej.Infrastructure.Services;
 
 public class TenantService : ITenantService
 {
     private readonly List<Tenant> _tenantList = [];
+    private readonly IStringLocalizer<TenantService> _localizer;
 
     public TenantService()
     {
@@ -21,7 +23,7 @@ public class TenantService : ITenantService
                 { OpenGraphTags.TITLE, "Eric Jansen" },
                 { OpenGraphTags.SITE_NAME, "ericjansen.com" },
                 { OpenGraphTags.URL, "https://ericjansen.com" },
-                { OpenGraphTags.DESCRIPTION, "This is the personal website website of Eric Jansen and serves as as his minimalistic online presence." },
+                { OpenGraphTags.DESCRIPTION, "This is the personal website of Eric Jansen and serves as as his minimalistic online presence." },
                 { OpenGraphTags.LOCALE, "en_US" },
                 { OpenGraphTags.IMAGE, "https://ericjansen.com/img/face-headphones-original-1000x1000.jpg" },
                 { OpenGraphTags.IMAGE_HEIGHT, "1000" },
@@ -40,7 +42,7 @@ public class TenantService : ITenantService
                 { OpenGraphTags.TITLE, "Rixke" },
                 { OpenGraphTags.SITE_NAME, "rixke.be" },
                 { OpenGraphTags.URL, "https://rixke.be" },
-                { OpenGraphTags.DESCRIPTION, "This is the personal website website of Rixke and serves as as his minimalistic online presence." },
+                { OpenGraphTags.DESCRIPTION, "This is the personal website of Rixke and serves as as his minimalistic online presence." },
                 { OpenGraphTags.LOCALE, "en_US" },
                 { OpenGraphTags.IMAGE, "https://rixke.be/img/face-headphones-original-1000x1000.jpg" },
                 { OpenGraphTags.IMAGE_HEIGHT, "1000" },
