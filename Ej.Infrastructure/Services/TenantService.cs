@@ -1,16 +1,35 @@
 ﻿using Ej.Application.Constants;
 using Ej.Application.Contracts;
 using Ej.Application.Models;
-using Microsoft.Extensions.Localization;
 
 namespace Ej.Infrastructure.Services;
 
 public class TenantService : ITenantService
 {
     private readonly List<Tenant> _tenantList = [];
-    private readonly IStringLocalizer<TenantService> _localizer;
 
     public TenantService()
+    {
+        InitTenantList();
+    }
+
+
+    public Tenant GetByHostName(string hostName)
+    {
+        var output = _tenantList.FirstOrDefault(t => t.HostName.StartsWith(hostName));
+
+        if (output is null)
+        {
+            output = _tenantList.First();
+        }
+
+        return output;
+    }
+
+
+    #region Helpers
+
+    private void InitTenantList()
     {
         _tenantList.Add(new Tenant
         {
@@ -51,16 +70,5 @@ public class TenantService : ITenantService
         });
     }
 
-
-    public Tenant GetByHostName(string hostName)
-    {
-        var output = _tenantList.FirstOrDefault(t => t.HostName.StartsWith(hostName));
-
-        if (output is null)
-        {
-            output = _tenantList.First();
-        }
-
-        return output;
-    }
+    #endregion Helpers
 }

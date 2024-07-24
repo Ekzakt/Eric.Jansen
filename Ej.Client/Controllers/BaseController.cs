@@ -7,6 +7,7 @@ namespace Ej.Client.Controllers;
 public class BaseController : Controller
 {
     private readonly CultureOptions _cultureOptions;
+    
 
     public BaseController(IOptions<CultureOptions> cultureOptions)
     {

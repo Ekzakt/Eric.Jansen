@@ -31,7 +31,7 @@
 
     foreach (var ogTag in ogTags)
     {
-        <meta property="@ogTag.Key" content="@ogTag.Value" />
+        <meta property="@ogTag.Key" content="@(ViewData[ogTag.Key] ?? ogTag.Value)" />
     }
 }
 
