@@ -117,8 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="__Hello" xml:space="preserve">
-    <value>Hello</value>
+  <data name="__Tag_Index_og:description" xml:space="preserve">
+    <value>-This is the personal website of {{Tenant_Name}} and serves as as his minimalistic online presence.</value>
+  </data>
+  <data name="__Tag_Index_og:title" xml:space="preserve">
+    <value>-{{Tenant_Name}}'s personal website</value>
+  </data>
+  <data name="__Tag_Privacy_og:description" xml:space="preserve">
+    <value>Taking your privacy seriously, please read my Privacy Policy.</value>
+  </data>
+  <data name="__Tag_Privacy_og:title" xml:space="preserve">
+    <value>{{Tenant_Name}}'s privacy policy</value>
   </data>
   <data name="__View_Index_Content" xml:space="preserve">
     <value>&lt;p&gt;
@@ -142,6 +151,9 @@
   </data>
   <data name="__View_Index_MetaTitle" xml:space="preserve">
     <value>Home</value>
+  </data>
+  <data name="__View_Index_PageTitle" xml:space="preserve">
+    <value>Hello</value>
   </data>
   <data name="__View_Index_Title" xml:space="preserve">
     <value>Home</value>

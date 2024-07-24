@@ -1,19 +1,11 @@
 ﻿@using Ej.Application.Configuration
 
-@inject ITenantProvider _tenantProvider
-@inject IHtmlLocalizer<HomeController> _localizer
-
-@{
-    ViewData["Title"] = _localizer["__View_Index_Title"];
-    ViewData["MetaTitle"] = _localizer["__View_Index_MetaTitle"];
-}
-
 <section id="hero">
-    <img src="~/img/face-headphones-400x400.jpg" width="250px" width="250px" class="img-fluid mx-auto d-block rounded-circle mb-4" alt="@_tenantProvider?.Tenant?.Name" />
+    <img src="~/img/face-headphones-400x400.jpg" width="250px" width="250px" class="img-fluid mx-auto d-block rounded-circle mb-4" alt="@ViewBag.TenantName" />
 </section>
 
 <section id="about">
-    <h2>@_localizer["__Hello"],</h2>
-    @_localizer["__View_Index_Content"]
+    <h2>@ViewBag.PageTitle,</h2>
+    @Html.Raw(ViewBag.Content)
 </section>
 

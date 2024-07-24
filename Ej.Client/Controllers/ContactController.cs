@@ -8,6 +8,7 @@ using FluentValidation.AspNetCore;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 using Ekzakt.Utilities;
+using Ej.Application.Constants;
 
 namespace Ej.Client.Controllers;
 
@@ -38,15 +39,7 @@ public class ContactController : BaseController
     [Route("{culture:culture}/contact")]
     public IActionResult Index()
     {
-        ViewData["Title"] = _localizer["__View_Index_Title"].Value;
-        ViewData["MetaTitle"] = _localizer["__View_Index_MetaTitle"].Value;
-
-        ViewBag.PageTitle = _localizer["__View_Index_Title"].Value;
-        ViewBag.Content = _localizer["__View_Index_Content"].Value;
-        ViewBag.FormName = _localizer["__View_Index_Form_Name"].Value;
-        ViewBag.FormEmail = _localizer["__View_Index_Form_Email"].Value;
-        ViewBag.FormMessage = _localizer["__View_Index_Form_Message"].Value;
-        ViewBag.FormSubmit = _localizer["__View_Index_Form_Submit"].Value;
+        SetIndexViewLocalizationData();
 
         return View();
     }
@@ -56,11 +49,12 @@ public class ContactController : BaseController
     [Route("{culture:culture}/contact")]
     public async Task<ActionResult> Post(ContactViewModel model)
     {
-        StringReplacer stringReplacer = new();
         ValidationResult result = await _validator.ValidateAsync(model);
 
         if (!result.IsValid)
         {
+            SetIndexViewLocalizationData();
+
             result.AddToModelState(this.ModelState);
 
             return View("Index", model);
@@ -70,7 +64,7 @@ public class ContactController : BaseController
         {
             var message = new ContactFormQueueMessage<ContactViewModel>(model)
             {
-                CultureName = Thread.CurrentThread.CurrentCulture.Name.ToLower(),
+                CultureName = CultureInfo.CurrentCulture.Name.ToLower(),
                 IpAddress = HttpContext.GetIpAddress(),
                 TenantHostName = _tenantProvider.Tenant?.HostName,
                 UserAgent = HttpContext.GetUserAgent()
@@ -78,21 +72,11 @@ public class ContactController : BaseController
 
             if (await _queueService.SendMessageAsync(_options?.QueueNames?.ContactForm ?? string.Empty, message))
             {
-                ViewData["Title"] = _localizer["__View_Success_Title"].Value;
-                ViewData["MetaTitle"] = _localizer["__View_Success_MetaTitle"];
-
-                ViewBag.PageTitle = ReplaceTitleContent(stringReplacer, _localizer["__View_Success_PageTitle"].Value, model.Name);
-                ViewBag.Content = ReplacePageContent(stringReplacer, _localizer["__View_Success_Content"].Value, _tenantProvider.Tenant!);
-
+                SetSuccessViewLocalizationData(model);
                 return View("Success", model);
             }
 
-            ViewData["Title"] = _localizer["__View_Error_Title"].Value;
-            ViewData["MetaTitle"] = _localizer["__View_Error_MetaTitle"];
-
-            ViewBag.PageTitle = ReplaceTitleContent(stringReplacer, _localizer["__View_Error_PageTitle"].Value, model.Name);
-            ViewBag.Content = ReplacePageContent(stringReplacer, _localizer["__View_Error_Content"].Value, _tenantProvider.Tenant!);
-
+            SetErrorViewLocalizationData(model);
             return View("Error", model);
         }
         catch (Exception)
@@ -104,6 +88,48 @@ public class ContactController : BaseController
 
     #region Helpers
 
+    private void SetIndexViewLocalizationData()
+    {
+        StringReplacer stringReplacer = new();
+
+        ViewData["Title"] = _localizer["__View_Index_Title"].Value;
+        ViewData[MetaTags.TITLE] = _localizer["__View_Index_MetaTitle"].Value;
+        ViewData[OpenGraphTags.TITLE] = stringReplacer.ReplaceTenantProperties(_tenantProvider.Tenant!, _localizer["__Tag_Index_og:title"].Value);
+        ViewData[OpenGraphTags.DESCRIPTION] = stringReplacer.ReplaceTenantProperties(_tenantProvider.Tenant!, _localizer["__Tag_Index_og:description"].Value);
+
+        ViewBag.PageTitle = _localizer["__View_Index_Title"].Value;
+        ViewBag.Content = _localizer["__View_Index_Content"].Value;
+        ViewBag.FormName = _localizer["__View_Index_Form_Name"].Value;
+        ViewBag.FormEmail = _localizer["__View_Index_Form_Email"].Value;
+        ViewBag.FormMessage = _localizer["__View_Index_Form_Message"].Value;
+        ViewBag.FormSubmit = _localizer["__View_Index_Form_Submit"].Value;
+    }
+
+
+    private void SetSuccessViewLocalizationData(ContactViewModel model)
+    {
+        StringReplacer stringReplacer = new();
+
+        ViewData["Title"] = _localizer["__View_Success_Title"].Value;
+        ViewData["MetaTitle"] = _localizer["__View_Success_MetaTitle"];
+
+        ViewBag.PageTitle = ReplaceTitleContent(stringReplacer, _localizer["__View_Success_PageTitle"].Value, model.Name);
+        ViewBag.Content = ReplaceTenantInPageContent(stringReplacer, _localizer["__View_Success_Content"].Value, _tenantProvider.Tenant!);
+    }
+
+
+    private void SetErrorViewLocalizationData(ContactViewModel model)
+    {
+        StringReplacer stringReplacer = new();
+
+        ViewData["Title"] = _localizer["__View_Error_Title"].Value;
+        ViewData["MetaTitle"] = _localizer["__View_Error_MetaTitle"];
+
+        ViewBag.PageTitle = ReplaceTitleContent(stringReplacer, _localizer["__View_Error_PageTitle"].Value, model.Name);
+        ViewBag.Content = ReplaceTenantInPageContent(stringReplacer, _localizer["__View_Error_Content"].Value, _tenantProvider.Tenant!);
+    }
+
+
     private string ReplaceTitleContent(StringReplacer stringReplacer, string title, string replacement)
     {
         stringReplacer.AddReplacement("Contact_Name", replacement);
@@ -112,7 +138,7 @@ public class ContactController : BaseController
     }
 
 
-    private string ReplacePageContent(StringReplacer stringReplacer, string content, Tenant tenant)
+    private string ReplaceTenantInPageContent(StringReplacer stringReplacer, string content, Tenant tenant)
     {
         return stringReplacer.ReplaceTenantProperties(tenant, content);
     }
