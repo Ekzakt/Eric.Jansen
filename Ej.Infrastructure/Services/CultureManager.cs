@@ -1,7 +1,6 @@
 ﻿using Ej.Application.Configuration;
 using Ej.Application.Contracts;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using System.Globalization;
@@ -49,8 +48,16 @@ public class CultureManager : ICultureManager
 
     public List<CultureInfo>? GetSelectableCultures(CultureInfo currentCulture)
     {
-        var output = _cultureOptions.SupportedCultures?.Where(c => c.Name != currentCulture.Name).ToList() ?? null;
+        var output = _cultureOptions.SupportedCultures?
+            .Where(c => c.Name != currentCulture.Name)
+            .ToList() ?? null;
 
         return output;
+    }
+
+
+    public List<CultureInfo>? GetAllSupportedCultures()
+    {
+        return _cultureOptions.SupportedCultures ?? null;
     }
 }
