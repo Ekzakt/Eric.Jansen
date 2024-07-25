@@ -49,7 +49,9 @@ public class CultureManager : ICultureManager
 
     public List<CultureInfo>? GetSelectableCultures(CultureInfo currentCulture)
     {
-        var output = _cultureOptions.SupportedCultures?.Where(c => c.Name != currentCulture.Name).ToList() ?? null;
+        var output = _cultureOptions.SupportedCultures?
+            .Where(c => c.Name != currentCulture.Name)
+            .ToList() ?? null;
 
         return output;
     }
