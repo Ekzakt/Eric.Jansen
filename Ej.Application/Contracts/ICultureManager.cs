@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using System.Globalization;
+﻿using System.Globalization;
 
 namespace Ej.Application.Contracts;
 
@@ -9,5 +8,5 @@ public interface ICultureManager
 
     List<CultureInfo>? GetSelectableCultures(CultureInfo currentCulture);
 
-    //List<CultureInfo>? GetAllSupportedCultures();
+    List<CultureInfo>? GetAllSupportedCultures();
 }

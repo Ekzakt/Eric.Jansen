@@ -1,7 +1,6 @@
 ﻿using Ej.Application.Configuration;
 using Ej.Application.Contracts;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using System.Globalization;
@@ -54,5 +53,11 @@ public class CultureManager : ICultureManager
             .ToList() ?? null;
 
         return output;
+    }
+
+
+    public List<CultureInfo>? GetAllSupportedCultures()
+    {
+        return _cultureOptions.SupportedCultures ?? null;
     }
 }
