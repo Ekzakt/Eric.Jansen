@@ -59,6 +59,8 @@ app.UseRequestLocalization(new RequestLocalizationOptions()
     .AddSupportedCultures(cultureOptions!.SupportedCultures!.Select(c => c.Name).ToArray())
     .AddSupportedUICultures(cultureOptions!.SupportedCultures!.Select(c => c.Name).ToArray()));
 
+app.UseMiddleware<TenantDetectorMiddleware>();
+
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
@@ -85,13 +87,13 @@ app.Use(async (context, next) =>
 
 app.UseRouting();
 
-app.UseMiddleware<TenantDetectorMiddleware>();
-
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default", 
     pattern: "{culture=en-us}/{controller=Home}/{action=Index}/{id?}",
     constraints: new { culture = new CultureRouteConstraint() });
+
+app.UseMiddleware<RedirectionMiddleWare>();
 
 app.Run();
