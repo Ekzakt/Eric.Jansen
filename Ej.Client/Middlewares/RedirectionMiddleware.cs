@@ -1,6 +1,5 @@
 ﻿using Ej.Application.Configuration;
 using Ej.Application.Contracts;
-using System.Runtime.CompilerServices;
 
 namespace Ej.Client.Middlewares;
 

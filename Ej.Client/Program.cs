@@ -1,22 +1,23 @@
-using Ekzakt.EmailSender.Smtp.Configuration;
-using Ekzakt.EmailTemplateProvider.Io.Configuration;
-using Ekzakt.FileManager.AzureBlob.Configuration;
 using Ej.Application.Contracts;
 using Ej.Application.Validators;
 using Ej.Client.Configuration;
+using Ej.Client.Middlewares;
 using Ej.Infrastructure.BackgroundServices;
 using Ej.Infrastructure.Constants;
 using Ej.Infrastructure.Queueing;
 using Ej.Infrastructure.ScopedServices;
 using Ej.Infrastructure.Services;
+using Ekzakt.EmailSender.Smtp.Configuration;
+using Ekzakt.EmailTemplateProvider.Io.Configuration;
+using Ekzakt.FileManager.AzureBlob.Configuration;
 using FluentValidation;
-using Ej.Application.Configuration;
-using Ej.Client.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.AddOpenTelemetry();
 builder.AddRequestLocalization();
+
+builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddControllersWithViews()
                 .AddViewLocalization();
@@ -34,6 +35,7 @@ builder.Services.Configure<HostOptions>(options =>
 builder.Services.AddScoped<ITenantProvider, TenantProvider>();
 builder.Services.AddScoped<ITenantService, TenantService>();
 builder.Services.AddScoped<IQueueService, QueueService>();
+builder.Services.AddScoped<ICultureManager, CultureManager>();
 
 builder.Services.AddHostedService<ContactFormQueueBgService>();
 builder.Services.AddHostedService<EmailBgService>();
