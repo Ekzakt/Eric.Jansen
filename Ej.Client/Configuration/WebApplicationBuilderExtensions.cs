@@ -99,9 +99,7 @@ public static class WebApplicationBuilderExtensions
 
             requestLocalizationOptions.RequestCultureProviders =
             [
-                new CookieRequestCultureProvider(),
-                new AcceptLanguageHeaderRequestCultureProvider(),
-                new RouteDataRequestCultureProvider()
+                new RouteDataRequestCultureProvider { Options = requestLocalizationOptions }
             ];
         });
 

@@ -6,8 +6,7 @@ public class TenantDetectorMiddleware
 {
     private readonly RequestDelegate _next;
 
-    public TenantDetectorMiddleware(
-        RequestDelegate next)
+    public TenantDetectorMiddleware(RequestDelegate next)
     {
         _next = next ?? throw new ArgumentNullException(nameof(next));
     }
