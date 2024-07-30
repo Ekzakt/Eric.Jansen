@@ -11,8 +11,6 @@
 
     <ul class="dropdown-menu dropdown-menu-end" data-bs-theme="dark">
 
-        <p class="dropdown-header">@_localizer["__NavItem_Language_Header"]</p>
-
         @foreach (var culture in _cultureManager.GetSelectableCultures(@CultureInfo.CurrentCulture) ?? [])
         {
             var path = _cultureManager.ReplaceCultureNameInUrl(Context!.Request.GetDisplayUrl(), culture.Name);
