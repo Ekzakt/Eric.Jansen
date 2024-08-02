@@ -1,13 +1,12 @@
 ﻿using Ej.Application.Contracts;
 
-namespace Ej.Client.Middlewaares;
+namespace Ej.Client.Middlewares;
 
 public class TenantDetectorMiddleware
 {
     private readonly RequestDelegate _next;
 
-    public TenantDetectorMiddleware(
-        RequestDelegate next)
+    public TenantDetectorMiddleware(RequestDelegate next)
     {
         _next = next ?? throw new ArgumentNullException(nameof(next));
     }

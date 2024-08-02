@@ -1,34 +1,44 @@
-﻿<header class="header mb-5">
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@using System.Globalization
+
+@inject IHtmlLocalizer<SharedResource> _htmlLocalizer
+
+<header class="header mb-5">
 
     <nav class="navbar navbar-dark">
 
-        <h1 class="display-1"><a href="/" alt="@_tenantProvider.Tenant?.Name" title="@_tenantProvider.Tenant?.Name Home">@_tenantProvider.Tenant?.Name</a></h1>
+        <h1 class="display-1"><a asp-controller="Home" asp-action="Index" asp-route-culture="@CultureInfo.CurrentCulture.Name" title="@_tenantProvider.Tenant?.Name Home">@_tenantProvider.Tenant?.Name</a></h1>
 
         <div class="d-none d-md-block pt-2">
-            <a class="me-3" aria-current="page" href="/" title="Home">Home</a>
-            <a aria-current="page" href="/contact" title="Contact">Contact</a>
+            <a class="me-3" asp-controller="Home" asp-action="Index" asp-route-culture="@CultureInfo.CurrentCulture.Name" title="Home">@_htmlLocalizer["__NavItem_Home"]</a>
+            <a class="me-3" asp-controller="Contact" asp-action="Index" asp-route-culture="@CultureInfo.CurrentCulture.Name" title="Contact">@_htmlLocalizer["__NavItem_Contact"]</a>
+            <partial name="_LanguageSelectorDropDown" />
         </div>
 
         <div class="d-block d-md-none pt-2">
-            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Show Menu">
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="@_htmlLocalizer["__AriaLabel_ShowMenu"]">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="offcanvas w-auto offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
                 <div class="offcanvas-header align-content-end">
                     <p class="offcanvas-title me-5" id="offcanvasDarkNavbarLabel">&nbsp;</p>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close" aria-label="Close Menu"></button>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="@_htmlLocalizer["__AriaLabel_CloseMenu"]"></button>
                 </div>
                 <div class="offcanvas-body mx-3">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="/" title="Home">Home</a>
+                            <a class="nav-link" asp-controller="Home" asp-action="Index" asp-route-culture="@CultureInfo.CurrentCulture.Name" title="@_htmlLocalizer["__NavItem_Home"]">@_htmlLocalizer["__NavItem_Home"]</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="/contact" title="Contact">Contact</a>
+                            <a class="nav-link" asp-controller="Contact" asp-action="Index" asp-route-culture="@CultureInfo.CurrentCulture.Name" title="@_htmlLocalizer["__NavItem_Contact"]">@_htmlLocalizer["__NavItem_Contact"]</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="/privacy-policy" title="Privacy Policy">Privacy Policy</a>
+                            <a class="nav-link" asp-controller="Home" asp-action="Privacy" asp-route-culture="@CultureInfo.CurrentCulture.Name" title="@_htmlLocalizer["__NavItem_PrivacyPolicy"]">@_htmlLocalizer["__NavItem_PrivacyPolicy"]</a>
                         </li>
+                        <li>
+                            <hr />
+                        </li>
+                        <partial name="_LanguageSelectorSideBar" />
                     </ul>
                 </div>
             </div>

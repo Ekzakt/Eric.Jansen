@@ -1,9 +1,4 @@
-﻿@{
-    ViewData["Title"] = "Serious Problem (500)";
-    ViewData["MetaTitle"] = "Serious Problem";
-}
-
-<section class="error">
+﻿<section class="error">
 
     <div class="mb-5 text-center">
         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 30 30">
@@ -16,19 +11,6 @@
 
     <h2>@ViewData["Title"]</h2>
 
-    <p>
-        Oops, something serious went wrong behind the scenes.
-    </p>
-    <p>
-        Everything has gone into meltdown mode here, with alarms and sirens blaring, so
-        don't sweat it though, a solution is on it's way!
-    </p>
-    <p>
-        Of course, this should not be happening and I apologize for the inconvenience.
-    </p>
-    <p>
-        Please return to the <a href="/" title="Home">home page</a> and try again.
-    </p>
-    <p>@_tenantProvider.Tenant?.ShortName</p>
+    @Html.Raw(ViewBag.Content)
 
 </section>

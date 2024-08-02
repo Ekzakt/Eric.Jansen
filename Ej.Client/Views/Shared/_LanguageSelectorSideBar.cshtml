@@ -1,0 +1,13 @@
+﻿@using Microsoft.AspNetCore.Http.Extensions;
+
+@inject ICultureManager _cultureManager
+
+@foreach (var culture in _cultureManager.GetAllSupportedCultures() ?? [])
+{
+    var path = _cultureManager.ReplaceCultureNameInUrl(Context!.Request.GetDisplayUrl(), culture.Name);
+    var isDisabled = culture.Name == CultureInfo.CurrentCulture.Name ? "disabled" : string.Empty;
+
+    <li class="nav-item">
+        <a class="nav-link @isDisabled" href="@path" title="@culture.NativeName">@culture.NativeName</a>
+    </li>
+}

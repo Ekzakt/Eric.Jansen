@@ -1,31 +1,11 @@
-﻿@{
-    ViewData["Title"] = "Home";
-    ViewData["MetaTitle"] = "Home";
-}
+﻿@using Ej.Application.Configuration
 
 <section id="hero">
-    <img src="~/img/face-headphones-400x400.jpg" width="250px" width="250px" class="img-fluid mx-auto d-block rounded-circle mb-4" alt="Eric Jansen" />
+    <img src="~/img/face-headphones-400x400.jpg" width="250px" width="250px" class="img-fluid mx-auto d-block rounded-circle mb-4" alt="@ViewBag.TenantName" />
 </section>
 
 <section id="about">
-    <h2>Hello,</h2>
-    <p>
-        I'm a resident (he/him) of the beautiful country of Belgium, and this
-        website serves as a minimalistic online presence for me.
-    </p>
-    <p>
-        While there
-        isn't much to see here, and this website isn't the most fancy out there 
-        - that's because I like simplicity - 
-        feel free to explore and get a glimpse into my digital corner.
-    </p>
-    <p>
-        This site is intentionally kept discreet to maintain privacy, but
-        I appreciate your visit nonetheless. If you have any inquiries or just
-        want to say hello, you can drop me a line <a href="/contact" title="Contact">here</a>.
-    </p>
-    <p>
-        Thank you for stopping by!
-    </p>
+    <h2>@ViewBag.PageTitle,</h2>
+    @Html.Raw(ViewBag.Content)
 </section>
 

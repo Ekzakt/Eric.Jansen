@@ -1,16 +1,18 @@
-﻿<section>
+﻿@inject IHtmlLocalizer<SharedResource> _sharedLocalizer
+
+<section>
 
     <div id="gdpr-consent" class="p-4 gdpr-consent alert-dismissable alert-dismissible fade show fixed-bottom" role="alert">
         <div class="container">
             <div class="row align-items-center pb-4">
                 <div class="col">
-                    This website uses one cookie. By using this website, you agree to our <a href="/privacy-policy" title="Privacy Policy">Privacy Policy</a>.
+                    @_sharedLocalizer["__Gdpr_ConsentMessage"]
                 </div>
             </div>
             <div class="row align-items-center">
                 <div class="col">
-                    <button id="accept-btn" class="btn btn-primary rounded-pill">Accept</button>
-                    <button id="reject-btn" class="btn btn-secondary ms-2 rounded-pill">Reject</button>
+                    <button id="accept-btn" class="btn btn-primary rounded-pill">@_sharedLocalizer["__Gdpr_Button_Accept"]</button>
+                    <button id="reject-btn" class="btn btn-secondary ms-2 rounded-pill">@_sharedLocalizer["__Gdpr_Button_Reject"]</button>
                 </div>
             </div>
         </div>

@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="__Tag_Index_og:description" xml:space="preserve">
+    <value>Dit is de persoonlijke website van {{Tenant_Name}} en dient als mijn minimalistische aanwezigheid.</value>
+  </data>
+  <data name="__Tag_Index_og:title" xml:space="preserve">
+    <value>{{Tenant_Name}}s persoonlijke website</value>
+  </data>
+  <data name="__Tag_Privacy_og:description" xml:space="preserve">
+    <value>Lees mijn privacybeleid hier, ik neem je privacy serieus.</value>
+  </data>
+  <data name="__Tag_Privacy_og:title" xml:space="preserve">
+    <value>{{Tenant_Name}}s privacybeleid</value>
+  </data>
+  <data name="__View_Index_Content" xml:space="preserve">
+    <value>&lt;p&gt;
+    Ik ben een inwoner (hij/hem) van België en deze website is mijn minimalistische online aanwezigheid.
+&lt;/p&gt;
+&lt;p&gt;
+	Deze website site is bewust bescheiden gehouden om mijn privacy te beschermen, maar ik waardeer je bezoek. Als je vragen hebt of gewoon hallo wilt zeggen, kun je me &lt;a href="/nl/contact" title="Contact"&gt;hier&lt;/a&gt; een bericht sturen.
+&lt;/p&gt;
+&lt;p&gt;
+    Bedankt voor je interesse!
+&lt;/p&gt;</value>
+  </data>
+  <data name="__View_Index_MetaTitle" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="__View_Index_PageTitle" xml:space="preserve">
+    <value>Hallo</value>
+  </data>
+  <data name="__View_Index_Title" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="__View_Privacy_Content" xml:space="preserve">
+    <value>&lt;p&gt;
+    Ik, {{Tenant_Name}}, ben toegewijd aan het beschermen van de privacy van bezoekers van mijn website, &lt;a href="/nl" title="{{Tenant_Name}}"&gt;{{Tenant_Name}}&lt;/a&gt;. Dit Privacybeleid schetst de soorten informatie die ik verzamel van bezoekers van mijn website, hoe ik die informatie gebruik en uw rechten met betrekking tot uw persoonlijke gegevens. Dit Privacybeleid is in overeenstemming met de Algemene Verordening Gegevensbescherming (AVG) van de EU, beter bekend onder de Engelse term GDPR.
+&lt;/p&gt;
+
+&lt;article&gt;
+    &lt;h3&gt;1. Informatie die ik verzamel&lt;/h3&gt;
+    &lt;p&gt;
+        Wanneer u mijn website bezoekt, verzamel ik automatisch een beetje informatie over uw apparaat, waaronder informatie over uw webbrowser, IP-adres, maar geen van de cookies die op uw apparaat zijn geïnstalleerd. Daarnaast verzamel ik, terwijl u de site doorbladert, informatie over de individuele webpagina's die u bekijkt, welke websites of zoektermen u naar de site hebben verwezen, en informatie over hoe u met de site omgaat.
+    &lt;/p&gt;
+    &lt;h3&gt;2. Gebruik van cookies&lt;/h3&gt;
+    &lt;p&gt;
+        Ik gebruik één cookie op mijn website. Een cookie is een klein tekstbestand dat op uw computer of mobiele apparaat wordt opgeslagen wanneer u een website bezoekt. De enige cookie die ik opsla is een bevestiging of u toestemming heeft gegeven voor mijn AVG-bericht. Ik gebruik cookies niet om inhoud en advertenties te personaliseren, sociale media-functies te bieden en het verkeer te analyseren.
+    &lt;/p&gt;
+    &lt;h3&gt;3. Uw toestemming&lt;/h3&gt;
+    &lt;p&gt;
+        Door mijn website te gebruiken, stemt u in met de voorwaarden van dit Privacybeleid en gaat u akkoord met de verzameling en het gebruik van informatie zoals hierin beschreven.
+    &lt;/p&gt;
+    &lt;h3&gt;4. Uw rechten&lt;/h3&gt;
+    &lt;p&gt;
+        Onder de AVG heeft u bepaalde rechten met betrekking tot uw persoonlijke gegevens, inclusief het recht op toegang, correctie of verwijdering van uw persoonlijke informatie. U heeft ook het recht om bepaalde soorten verwerking te beperken of er bezwaar tegen te maken. Als u een van deze rechten wilt uitoefenen, neem dan contact met mij op via de onderstaande informatie.
+    &lt;/p&gt;
+    &lt;h3&gt;5. Contact met mij opnemen&lt;/h3&gt;
+    &lt;p&gt;
+		Als u vragen heeft over dit Privacybeleid of uw rechten met betrekking tot uw persoonlijke gegevens wilt uitoefenen, neem dan contact met mij op via deze &lt;a href="/nl/contact" title="Contact"&gt;contactpagina&lt;/a&gt;.
+    &lt;/p&gt;
+    &lt;h3&gt;6. Wijzigingen in dit Privacybeleid&lt;/h3&gt;
+    &lt;p&gt;
+        Ik behoud mij het recht voor om dit Privacybeleid op elk moment bij te werken of te wijzigen. Eventuele wijzigingen worden onmiddellijk van kracht na het plaatsen van het gewijzigde Privacybeleid op de website. Ik moedig u aan om dit Privacybeleid periodiek te bekijken voor updates of wijzigingen.
+    &lt;/p&gt;
+    &lt;p&gt;Dank u voor het bezoeken van mijn website.&lt;/p&gt;
+    &lt;p&gt;{{Tenant_ShortName}}&lt;/p&gt;
+&lt;/article&gt;</value>
+  </data>
+  <data name="__View_Privacy_MetaTitle" xml:space="preserve">
+    <value>Privacybeleid</value>
+  </data>
+  <data name="__View_Privacy_Title" xml:space="preserve">
+    <value>Privacybeleid</value>
+  </data>
+</root>
