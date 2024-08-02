@@ -4,7 +4,6 @@ using Ej.Infrastructure.Configuration;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Localization.Routing;
 using Microsoft.Extensions.Azure;
-using CultureOptions = Ej.Application.Configuration.CultureOptions;
 
 namespace Ej.Client.Configuration;
 
@@ -85,7 +84,7 @@ public static class WebApplicationBuilderExtensions
     public static WebApplicationBuilder AddRequestLocalization(this WebApplicationBuilder builder)
     {
         builder.Services.AddLocalization(localizationOptions =>
-            localizationOptions.ResourcesPath = "Resources");
+            localizationOptions.ResourcesPath = Path.Combine("Localization", "Resources"));
 
         var cultureOptions = builder.Configuration
             .GetSection(CultureOptions.SectionName)

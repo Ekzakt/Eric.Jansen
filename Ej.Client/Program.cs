@@ -1,7 +1,6 @@
 using Ej.Application.Contracts;
-using Ej.Application.Validators;
-using Ej.Client.Configuration;
 using Ej.Client.Middlewares;
+using Ej.Client.Validators;
 using Ej.Infrastructure.BackgroundServices;
 using Ej.Infrastructure.Constants;
 using Ej.Infrastructure.Queueing;
@@ -19,17 +18,19 @@ builder.AddRequestLocalization();
 
 builder.Services.AddHttpContextAccessor();
 
-builder.Services.AddControllersWithViews()
-                .AddViewLocalization();
+builder.Services
+    .AddControllersWithViews(mvcOptions =>
+        mvcOptions.ModelValidatorProviders.Clear())
+    .AddViewLocalization();
 
 builder.Services.AddEkzaktFileManagerAzure();
 builder.Services.AddEkzaktEmailTemplateProviderIo();
 builder.Services.AddEkzaktEmailSenderSmtp();
 
-builder.Services.Configure<HostOptions>(options =>
+builder.Services.Configure<HostOptions>(hostOptions =>
 {
-    options.ServicesStartConcurrently = true;
-    options.ServicesStopConcurrently = true;
+    hostOptions.ServicesStartConcurrently = true;
+    hostOptions.ServicesStopConcurrently = true;
 });
 
 builder.Services.AddScoped<ITenantProvider, TenantProvider>();

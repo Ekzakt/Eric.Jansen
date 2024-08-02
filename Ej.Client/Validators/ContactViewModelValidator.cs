@@ -1,7 +1,9 @@
 ﻿using Ej.Application.Models;
+using Ekzakt.Utilities.Validation.Regex;
 using FluentValidation;
+using Microsoft.Extensions.Localization;
 
-namespace Ej.Application.Validators;
+namespace Ej.Client.Validators;
 
 public class ContactViewModelValidator : AbstractValidator<ContactViewModel>
 {
@@ -15,13 +17,11 @@ public class ContactViewModelValidator : AbstractValidator<ContactViewModel>
             .Length(2, 100)
                 .WithMessage("Your name should be between 2 and 100 characters long.");
 
-
         RuleFor(x => x.Email)
             .NotEmpty()
                 .WithMessage(REQUIRED)
-            .EmailAddress()
+            .Matches(Internet.EMAIL_ADDRESS)
                 .WithMessage("This is not valid email address.");
-
 
         RuleFor(x => x.Message)
             .NotEmpty()

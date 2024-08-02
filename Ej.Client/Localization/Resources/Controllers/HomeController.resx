@@ -118,13 +118,13 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="__Tag_Index_og:description" xml:space="preserve">
-    <value>-This is the personal website of {{Tenant_Name}} and serves as as his minimalistic online presence.</value>
+    <value>This is the personal website of {{Tenant_Name}} and serves as as his minimalistic online presence.</value>
   </data>
   <data name="__Tag_Index_og:title" xml:space="preserve">
-    <value>-{{Tenant_Name}}'s personal website</value>
+    <value>{{Tenant_Name}}'s personal website</value>
   </data>
   <data name="__Tag_Privacy_og:description" xml:space="preserve">
-    <value>Taking your privacy seriously, please read my Privacy Policy.</value>
+    <value>Taking your privacy seriously. Please read my Privacy Policy here.</value>
   </data>
   <data name="__Tag_Privacy_og:title" xml:space="preserve">
     <value>{{Tenant_Name}}'s privacy policy</value>
@@ -143,7 +143,7 @@
 &lt;p&gt;
     This site is intentionally kept discreet to maintain privacy, but
     I appreciate your visit nonetheless. If you have any inquiries or just
-    want to say hello, you can drop me a line &lt;a asp-controller="Contact" asp-action="Index" asp-route-culture="@CultureInfo.CurrentCulture.Name" title="Contact"&gt;here&lt;/a&gt;.
+    want to say hello, you can drop me a line &lt;a href="/en/contact" title="Contact"&gt;here&lt;/a&gt;.
 &lt;/p&gt;
 &lt;p&gt;
     Thank you for stopping by!
