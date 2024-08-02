@@ -138,9 +138,6 @@
   <data name="__NavItem_Home" xml:space="preserve">
     <value>Home</value>
   </data>
-  <data name="__NavItem_Language_Header" xml:space="preserve">
-    <value>Select language</value>
-  </data>
   <data name="__NavItem_PrivacyPolicy" xml:space="preserve">
     <value>Privacy Policy</value>
   </data>
