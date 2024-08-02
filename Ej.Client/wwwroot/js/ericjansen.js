@@ -53,7 +53,7 @@ $(function () {
 
     $('#accept-btn').on('click', function () {
         gdprElement.slideUp();
-        Cookies.set(GDPR_ACCEPTED, 'true', { expires: 1 });
+        Cookies.set(GDPR_ACCEPTED, 'true', { expires: 30 });
     });
 
     $('#reject-btn').on('click', function () {
