@@ -153,11 +153,29 @@
   <data name="__View_Index_Form_Email" xml:space="preserve">
     <value>And of course, what is your email?</value>
   </data>
+  <data name="__View_Index_Form_Email_Invalid" xml:space="preserve">
+    <value>This email address is invalid.</value>
+  </data>
+  <data name="__View_Index_Form_Email_Required" xml:space="preserve">
+    <value>The email address is required.</value>
+  </data>
   <data name="__View_Index_Form_Message" xml:space="preserve">
     <value>Tell me what's up:</value>
   </data>
+  <data name="__View_Index_Form_Message_InvalidLength" xml:space="preserve">
+    <value>Your message should be between 2 and 2000 characters long.</value>
+  </data>
+  <data name="__View_Index_Form_Message_Required" xml:space="preserve">
+    <value>The message field is required.</value>
+  </data>
   <data name="__View_Index_Form_Name" xml:space="preserve">
     <value>What is your name?</value>
+  </data>
+  <data name="__View_Index_Form_Name_InvalidLength" xml:space="preserve">
+    <value>Your name should be between 2 and 100 characters long.</value>
+  </data>
+  <data name="__View_Index_Form_Name_Required" xml:space="preserve">
+    <value>Your name is a required field.</value>
   </data>
   <data name="__View_Index_Form_Submit" xml:space="preserve">
     <value>Get in touch</value>
@@ -169,7 +187,7 @@
     <value>Contact</value>
   </data>
   <data name="__View_Success_Content" xml:space="preserve">
-    <value>&lt;p&gt;Thank you for reaching out to me.  I'll get back to you from the moment I read your message.&lt;/p&gt;
+    <value>&lt;p&gt;Thank you for reaching out to me. I'll get back to you from the moment I read your message.&lt;/p&gt;
 &lt;p&gt;Ciao,&lt;/p&gt;
 &lt;p&gt;{{Tenant_ShortName}}&lt;/p&gt;</value>
   </data>

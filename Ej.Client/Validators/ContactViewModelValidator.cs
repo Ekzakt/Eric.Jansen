@@ -1,4 +1,5 @@
 ﻿using Ej.Application.Models;
+using Ej.Client.Controllers;
 using Ekzakt.Utilities.Validation.Regex;
 using FluentValidation;
 using Microsoft.Extensions.Localization;
@@ -7,26 +8,26 @@ namespace Ej.Client.Validators;
 
 public class ContactViewModelValidator : AbstractValidator<ContactViewModel>
 {
-    private const string REQUIRED = "This field is required.";
-
-    public ContactViewModelValidator()
+    public ContactViewModelValidator(IStringLocalizer<ContactController> localizer)
     {
+        var x = CultureInfo.CurrentUICulture.Name;
+
         RuleFor(x => x.Name)
             .NotEmpty()
-                .WithMessage(REQUIRED)
+                .WithMessage(x => localizer["__View_Index_Form_Name_Required"])
             .Length(2, 100)
-                .WithMessage("Your name should be between 2 and 100 characters long.");
+                .WithMessage(x => localizer["__View_Index_Form_Name_InvalidLength"]);
 
         RuleFor(x => x.Email)
             .NotEmpty()
-                .WithMessage(REQUIRED)
+                .WithMessage(x => localizer["__View_Index_Form_Email_Required"])
             .Matches(Internet.EMAIL_ADDRESS)
-                .WithMessage("This is not valid email address.");
+                .WithMessage(x => localizer["__View_Index_Form_Email_Invalid"]);
 
         RuleFor(x => x.Message)
             .NotEmpty()
-                .WithMessage(REQUIRED)
+                .WithMessage(x => localizer["__View_Index_Form_Message_Required"])
             .Length(2, 2000)
-                .WithMessage("Your message should be between 2 and 2000 characters long.");
+                .WithMessage(x => localizer["__View_Index_Form_Message_InvalidLength"]);
     }
 }
