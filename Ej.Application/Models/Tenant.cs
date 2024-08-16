@@ -1,4 +1,6 @@
-﻿namespace Ej.Application.Models;
+﻿using Microsoft.AspNetCore.Http;
+
+namespace Ej.Application.Models;
 
 #nullable disable
 
