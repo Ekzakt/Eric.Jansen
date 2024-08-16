@@ -160,7 +160,7 @@
   </data>
   <data name="__View_Privacy_Content" xml:space="preserve">
     <value>&lt;p&gt;
-    I, {{Tenant_Name}}, am committed to protecting the privacy of visitors to my website, &lt;a href="/en" title="{{Tenant_Name}}"&gt;{{Tenant_Name}}&lt;/a&gt;. This Privacy Policy outlines the types of information I collect from visitors to my website, how I use that information, and your rights regarding your personal data. This Privacy Policy is in accordance with the EU General Data Protection Regulation (GDPR).
+    I, {{Tenant_Name}}, am committed to protecting the privacy of visitors to my website, &lt;a href="/en" title="{{Tenant_HostName}}"&gt;{{Tenant_HostName}}&lt;/a&gt;. This Privacy Policy outlines the types of information I collect from visitors to my website, how I use that information, and your rights regarding your personal data. This Privacy Policy is in accordance with the EU General Data Protection Regulation (GDPR).
 &lt;/p&gt;
 
 &lt;article&gt;
