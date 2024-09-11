@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive SVG Tree with Clickable Words</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        /* Responsive container */
+        .svg-container {
+            width: 100%;
+            height: auto;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Ensure the SVG scales correctly */
+        svg {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Text styles for scaling */
+        text {
+            cursor: pointer;
+            font-family: Arial, sans-serif;
+            font-size: 16px; /* Base size, will scale with SVG */
+            fill: blue; /* Adjust text color */
+        }
+        text:hover {
+            fill: red;
+            transition-duration: 0.5s;
+        }
+        text:not(:hover) {
+            transition-duration: 1s
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Responsive SVG Container -->
+    <div class="svg-container">
+        <!-- Inline SVG with Tree and Clickable Words -->
+        <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+            <!-- Simple Tree Representation -->
+            <circle cx="200" cy="250" r="120" fill="green" />
+            <rect x="180" y="370" width="40" height="100" fill="brown" />
+
+            <!-- Clickable Words as Text Elements -->
+            <text id="word1" x="160" y="120" font-size="20">Root</text>
+            <text id="word2" x="100" y="180" font-size="18">Branch 1</text>
+            <text id="word3" x="250" y="180" font-size="18">Branch 2</text>
+            <text id="word4" x="70" y="240" font-size="16">Branch 3</text>
+            <text id="word5" x="280" y="240" font-size="16">Branch 4</text>
+            <text id="word6" x="140" y="320" font-size="14">Leaf 1</text>
+            <text id="word7" x="230" y="320" font-size="14">Leaf 2</text>
+        </svg>
+    </div>
+
+    <!-- Bootstrap Modal for Clickable Words -->
+    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabel">Word Clicked</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    You clicked on a word in the tree.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script to Handle Click Events for Words -->
+    <script>
+        // Function to display the modal with a custom message
+        function showModal(message) {
+            document.querySelector('.modal-body').textContent = message;
+            $('#myModal').modal('show');
+        }
+
+        // Attach click listeners to the words
+        document.getElementById('word1').addEventListener('click', function () {
+            showModal('You clicked on Root!');
+        });
+
+        document.getElementById('word2').addEventListener('click', function () {
+            showModal('You clicked on Branch 1!');
+        });
+
+        document.getElementById('word3').addEventListener('click', function () {
+            showModal('You clicked on Branch 2!');
+        });
+
+        document.getElementById('word4').addEventListener('click', function () {
+            showModal('You clicked on Branch 3!');
+        });
+
+        document.getElementById('word5').addEventListener('click', function () {
+            showModal('You clicked on Branch 4!');
+        });
+
+        document.getElementById('word6').addEventListener('click', function () {
+            showModal('You clicked on Leaf 1!');
+        });
+
+        document.getElementById('word7').addEventListener('click', function () {
+            showModal('You clicked on Leaf 2!');
+        });
+    </script>
+
+</body>
+</html>

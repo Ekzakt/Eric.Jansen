@@ -6,6 +6,7 @@ using Ej.Infrastructure.Constants;
 using Ej.Infrastructure.Queueing;
 using Ej.Infrastructure.ScopedServices;
 using Ej.Infrastructure.Services;
+using Ej.Karus.Extenstions;
 using Ekzakt.EmailSender.Smtp.Configuration;
 using Ekzakt.EmailTemplateProvider.Io.Configuration;
 using Ekzakt.FileManager.AzureBlob.Configuration;
@@ -15,6 +16,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.AddOpenTelemetry();
 builder.AddRequestLocalization();
+builder.AddKarusOptions();
 
 builder.Services.AddHttpContextAccessor();
 
@@ -51,7 +53,6 @@ builder.AddEricJansenOptions();
 builder.AddAzureClientServices();
 builder.AddAzureKeyVault();
 
-
 var app = builder.Build();
 
 var cultureOptions = app.Services.GetRequiredService<IOptions<CultureOptions>>().Value;
@@ -63,6 +64,7 @@ app.UseRequestLocalization(new RequestLocalizationOptions()
     .AddSupportedUICultures(cultureOptions!.SupportedCultures!.Select(c => c.Name).ToArray()));
 
 app.UseMiddleware<TenantDetectorMiddleware>();
+//app.UseMiddleware<KarusIpCheckMiddleware>();
 
 if (app.Environment.IsDevelopment())
 {
@@ -76,17 +78,6 @@ else
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
-app.Use(async (context, next) =>
-{
-    await next();
-
-    if (context.Response.StatusCode == 404)
-    {
-        context.Request.Path = $"/{CultureInfo.CurrentCulture.Name}/error/404";
-        await next();
-    }
-});
 
 app.UseRouting();
 

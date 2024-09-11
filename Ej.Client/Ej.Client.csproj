@@ -30,6 +30,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Ej.Application\Ej.Application.csproj" />
     <ProjectReference Include="..\Ej.Infrastructure\Ej.Infrastructure.csproj" />
+    <ProjectReference Include="..\Ej.Karus\Ej.Karus.csproj" />
   </ItemGroup>
 
   <ItemGroup>
