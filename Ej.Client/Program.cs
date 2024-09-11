@@ -64,7 +64,7 @@ app.UseRequestLocalization(new RequestLocalizationOptions()
     .AddSupportedUICultures(cultureOptions!.SupportedCultures!.Select(c => c.Name).ToArray()));
 
 app.UseMiddleware<TenantDetectorMiddleware>();
-//app.UseMiddleware<KarusIpCheckMiddleware>();
+app.UseMiddleware<KarusIpCheckMiddleware>();
 
 if (app.Environment.IsDevelopment())
 {

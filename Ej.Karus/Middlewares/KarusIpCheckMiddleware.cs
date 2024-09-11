@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using System.Globalization;
 
 public class KarusIpCheckMiddleware
 {
@@ -24,30 +25,38 @@ public class KarusIpCheckMiddleware
     {
         var isKarusUri = context.Request.Path.ToString().Contains("karus", StringComparison.OrdinalIgnoreCase);
 
+        SetKarusCookie(context);
 
         if (!isKarusUri)
         {
             await _next(context); // If URL doesn't contain 'karus', continue to the next middleware
             return;
         }
-
-        // Check if the IP address is allowed
-        if (IsIpValid(context))
-        {
-            SetCookie(context.Response, true); // IP is valid, show content
-            await _next(context);
-        }
         else
         {
-            
-            SetCookie(context.Response, false); // IP is invalid, show 404
-
-            context.Response.StatusCode = StatusCodes.Status404NotFound;
-            await context.Response.WriteAsync("404 Page Not Found");
+            if (IsIpValid(context))
+            {
+                await _next(context);
+                return;
+            }
+            else
+            {
+                context.Response.Redirect($"/{CultureInfo.CurrentCulture.Name}/error/404");
+                return;
+            }
         }
     }
 
+
     #region Helpers
+
+    private void SetKarusCookie(HttpContext context)
+    {
+        var isIpValid = IsIpValid(context);
+
+        SetCookie(context.Response, isIpValid);
+    }
+
 
     private void SetCookie(HttpResponse httpResponse, bool showKarus)
     {

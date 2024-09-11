@@ -29,7 +29,6 @@ public class RedirectionMiddleWare
         if (uriFragments.Count == 0)
         {
             context.Response.Redirect($"/{CultureInfo.CurrentCulture.Name}/error/404");
-
             return;
         }
 
@@ -42,7 +41,6 @@ public class RedirectionMiddleWare
             var redirectUri = $"/{culture}{context.Request.Path}".Trim('/');
 
             context.Response.Redirect(redirectUri);
-
             return;
         }
 
