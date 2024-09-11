@@ -62,7 +62,7 @@ public class KarusIpCheckMiddleware
     {
         var cookieOptions = new CookieOptions
         {
-            Expires = DateTime.Now.AddSeconds(30),
+            Expires = DateTime.Now.AddHours(12),
             HttpOnly = true,
             Secure = true
         };
