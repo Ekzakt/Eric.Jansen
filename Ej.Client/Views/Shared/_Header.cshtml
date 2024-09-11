@@ -1,7 +1,19 @@
 ﻿@using Microsoft.AspNetCore.Mvc.Localization
 @using System.Globalization
+@using Microsoft.AspNetCore.Http
 
 @inject IHtmlLocalizer<SharedResource> _htmlLocalizer
+@inject IHttpContextAccessor _context
+
+@{
+    bool showKarus = false;
+
+    if (_context!.HttpContext!.Request.Cookies.TryGetValue("show_karus", out string? cookieValue))
+    {
+        showKarus = cookieValue == "true";
+    }
+}
+
 
 <header class="header mb-5">
 
@@ -12,6 +24,9 @@
         <div class="d-none d-md-block pt-2">
             <a class="me-3" asp-controller="Home" asp-action="Index" asp-route-culture="@CultureInfo.CurrentCulture.Name" title="Home">@_htmlLocalizer["__NavItem_Home"]</a>
             <a class="me-3" asp-controller="Contact" asp-action="Index" asp-route-culture="@CultureInfo.CurrentCulture.Name" title="Contact">@_htmlLocalizer["__NavItem_Contact"]</a>
+            @if (showKarus){
+                <a class="me-3" asp-controller="Karus" asp-action="Index" asp-route-culture="@CultureInfo.CurrentCulture.Name" title="Karus">Karus</a>
+            }
             <partial name="_LanguageSelectorDropDown" />
         </div>
 
@@ -32,6 +47,11 @@
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="Contact" asp-action="Index" asp-route-culture="@CultureInfo.CurrentCulture.Name" title="@_htmlLocalizer["__NavItem_Contact"]">@_htmlLocalizer["__NavItem_Contact"]</a>
                         </li>
+                        @if (showKarus){
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Karus" asp-action="Index" asp-route-culture="@CultureInfo.CurrentCulture.Name" title="Karus">Karus</a>
+                            </li>
+                        }
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="Home" asp-action="Privacy" asp-route-culture="@CultureInfo.CurrentCulture.Name" title="@_htmlLocalizer["__NavItem_PrivacyPolicy"]">@_htmlLocalizer["__NavItem_PrivacyPolicy"]</a>
                         </li>
