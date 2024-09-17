@@ -1,8 +1,16 @@
-[
+﻿[
   {
-    "outputFile": "wwwroot/css/ericjansen.css",
+    "outputFile": "wwwroot/css/ericjansen.min.css",
     "inputFile": "wwwroot/css/ericjansen.scss",
-    "sourceMap": false,
-    "useNodeSass": false
+    "minify": {
+      "enabled": true
+    }
+  },
+  {
+    "outputFile": "wwwroot/css/karus.min.css",
+    "inputFile": "wwwroot/css/karus.scss",
+    "minify": {
+      "enabled": true
+    }
   }
 ]
