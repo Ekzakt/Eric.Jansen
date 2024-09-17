@@ -16,7 +16,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.AddOpenTelemetry();
 builder.AddRequestLocalization();
-builder.AddKarusOptions();
+builder.AddKarusServices();
 
 builder.Services.AddHttpContextAccessor();
 
