@@ -1,0 +1,25 @@
+﻿<h2>@ViewData["Title"]</h2>
+
+<section class="karus">
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        <div class="col">
+            <div class="card">
+                <img src="~/karus/waardenboom-card.jpg" />
+
+                <div class="card-body">
+                    <h5 class="card-title"><a class="stretched-link" asp-controller="Karus" asp-action="Waardenboom" asp-route-culture="@CultureInfo.CurrentCulture.Name" title="Waardenboom">Waardenboom</a></h5>
+                    <p class="card-text">Bladzijde 32</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <i class="bi bi-box"></i>
+                <div class="card-body">
+                    <h5 class="card-title">Crisisbox</h5>
+                    <p class="card-text">Bladzijde 20</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

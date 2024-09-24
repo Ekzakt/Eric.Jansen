@@ -1,5 +1,4 @@
-﻿using Ej.Application.Configuration;
-using Ej.Application.Contracts;
+﻿using Ej.Application.Contracts;
 
 namespace Ej.Client.Middlewares;
 
@@ -24,15 +23,24 @@ public class RedirectionMiddleWare
     {
         var uriFragments = context.Request.RouteValues;
 
+        var x = context.Response.StatusCode;
+
+        // No fragments means 404
+        if (uriFragments.Count == 0)
+        {
+            context.Response.Redirect($"/{CultureInfo.CurrentCulture.Name}/error/404");
+            return;
+        }
+
+
         if (!uriFragments.ContainsKey("culture") && IsWebPageRequest(context))
         {
-            _logger.LogInformation("Culture not found in request path. Redirecting to default culture ({DefaultCulture}).", _options?.DefaultCulture?.Name);
+            _logger.LogInformation("Culture not found in request path. Redirecting to default culture ({DefaultCulture}) {Path}.", _options?.DefaultCulture?.Name, context.Request.Path);
 
             var culture = _options?.DefaultCulture?.Name;
             var redirectUri = $"/{culture}{context.Request.Path}".Trim('/');
 
             context.Response.Redirect(redirectUri);
-
             return;
         }
 

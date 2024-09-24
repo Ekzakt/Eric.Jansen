@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ej.Infrastructure", "Ej.Inf
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ej.Application", "Ej.Application\Ej.Application.csproj", "{55112A8A-D28E-4817-86C9-BAB305DEF4F5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ej.Karus", "Ej.Karus\Ej.Karus.csproj", "{32C2F98E-3289-4862-843B-898786BC27A6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{55112A8A-D28E-4817-86C9-BAB305DEF4F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55112A8A-D28E-4817-86C9-BAB305DEF4F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{55112A8A-D28E-4817-86C9-BAB305DEF4F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32C2F98E-3289-4862-843B-898786BC27A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32C2F98E-3289-4862-843B-898786BC27A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32C2F98E-3289-4862-843B-898786BC27A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32C2F98E-3289-4862-843B-898786BC27A6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

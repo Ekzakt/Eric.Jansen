@@ -1,0 +1,17 @@
+﻿.karus {
+    text {
+        cursor: pointer;
+        font-family: Arial, sans-serif;
+        font-size: 4rem;
+        fill: green;
+        text-anchor: middle;
+        border: 100px;
+    }
+    text:hover {
+        fill: red;
+        transition-duration: 0.5s;
+    }
+    text:not(:hover) {
+        transition-duration: 1s
+    }   
+}

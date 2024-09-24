@@ -1,0 +1,1 @@
+﻿.karus text{cursor:pointer;font-family:Arial,sans-serif;font-size:4rem;fill:green;text-anchor:middle;border:100px;}.karus text:hover{fill:red;transition-duration:.5s;}.karus text:not(:hover){transition-duration:1s;}
