@@ -1,45 +1,45 @@
 [
   {
     "id": 1,
-    "name": "Vrijheid",
+    "name": "Vriendschap",
     "x": 300,
-    "y": 350
+    "y": 100
   },
   {
     "id": 2,
-    "name": "Value 2",
-    "x": 300,
+    "name": "Betrouwbaarheid",
+    "x": 700,
     "y": 200
   },
   {
     "id": 3,
-    "name": "Value 3",
-    "x": 400,
-    "y": 400
+    "name": "Innovatie",
+    "x": 200,
+    "y": 300
   },
   {
     "id": 4,
-    "name": "Value 4",
-    "x": 400,
+    "name": "Bescheidenheid",
+    "x": 600,
     "y": 400
   },
   {
     "id": 5,
-    "name": "Value 5",
-    "x": 400,
-    "y": 400
+    "name": "Avontuur",
+    "x": 730,
+    "y": 530
   },
   {
     "id": 6,
-    "name": "Value 6",
-    "x": 400,
-    "y": 400
+    "name": "Vrijheid",
+    "x": 280,
+    "y": 550
   },
   {
     "id": 7,
-    "name": "Value 7",
-    "x": 400,
-    "y": 400
+    "name": "Loyaliteit",
+    "x": 620,
+    "y": 700
   }
 ]
 
