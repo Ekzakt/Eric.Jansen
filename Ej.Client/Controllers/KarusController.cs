@@ -31,5 +31,14 @@ namespace Ej.Client.Controllers
 
             return View(waardenboomValues);
         }
+
+
+        [Route("{culture:culture}/karus/crisisbox")]
+        public async Task<IActionResult> Crisisbox()
+        {
+            ViewData["Title"] = "Karus - Crisisbox";
+
+            return View();
+        }
     }
 }

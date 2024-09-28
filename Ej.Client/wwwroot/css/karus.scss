@@ -31,3 +31,11 @@
         transform: scale(1.02);
     }
 }
+
+.waardenboom_value p:first-of-type {
+    font-weight: bolder;
+    margin-bottom: 0.5rem;
+}
+.waardenboom_value p:last-of-type {
+    margin-bottom: 2rem;
+}
