@@ -1,17 +1,41 @@
 ﻿.karus {
     text {
         cursor: pointer;
-        font-family: Arial, sans-serif;
+        font-weight: bolder;
         font-size: 4rem;
-        fill: green;
+        fill: #7CFC00;
         text-anchor: middle;
         border: 100px;
     }
+
     text:hover {
         fill: red;
         transition-duration: 0.5s;
     }
+
     text:not(:hover) {
         transition-duration: 1s
-    }   
+    }
+
+    .card {
+        transition: transform 0.3s ease;
+
+        h5 {
+            a {
+                color: black;
+            }
+        }
+    }
+
+    .card:hover {
+        transform: scale(1.02);
+    }
+}
+
+.waardenboom_value p:first-of-type {
+    font-weight: bolder;
+    margin-bottom: 0.5rem;
+}
+.waardenboom_value p:last-of-type {
+    margin-bottom: 2rem;
 }
