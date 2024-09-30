@@ -9,63 +9,63 @@ public class WaardenboomValuesService : IWaardenboomValuesService
 {
     private readonly ILogger<WaardenboomValuesService> _logger;
     private readonly IWebHostEnvironment _environment;
+    private readonly IFileReader _fileReader;
+    private List<WaardenboomValue>? _waardenboomValues;
 
-    public WaardenboomValuesService(ILogger<WaardenboomValuesService> logger, IWebHostEnvironment environment)
+    public WaardenboomValuesService(
+        ILogger<WaardenboomValuesService> logger, 
+        IWebHostEnvironment environment,
+        IFileReader fileReader)
     {
         _logger = logger;
         _environment = environment;
+        _fileReader = fileReader;
+        _waardenboomValues = [];
     }
 
 
     public async Task<List<WaardenboomValue>> GetWaardenboomValuesAsync()
     {
-        var jsonFilePath = Path.Combine(_environment.WebRootPath, "karus", "data", "waardenboom", "values.json");
-        var waardenboomValues = new List<WaardenboomValue>();
+        var jsonData = await _fileReader.ReadWebroothPathFileAsync("waardenboom", "values.json");
 
-        if (File.Exists(jsonFilePath))
+        if (string.IsNullOrEmpty(jsonData))
         {
-            var jsonData = await File.ReadAllTextAsync(jsonFilePath);
-            waardenboomValues = JsonSerializer.Deserialize<List<WaardenboomValue>>(jsonData, new JsonSerializerOptions { PropertyNameCaseInsensitive = true } );
-
-            ReadContentFiles(ref waardenboomValues!, Path.Combine(_environment.WebRootPath, "karus", "data", "waardenboom"));
-
-            if (waardenboomValues == null)
-            {
-                _logger.LogWarning("Failed to deserialize WaardenboomValues from file: {JsonFilePath}", jsonFilePath);
-            }
-        }
-        else
-        {
-            _logger.LogWarning("WaardenboomValues file not found: {JsonFilePath}", jsonFilePath);
+            return [];
         }
 
-        return waardenboomValues ?? [];
+        _waardenboomValues = JsonSerializer.Deserialize<List<WaardenboomValue>>(jsonData!, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+
+        if (_waardenboomValues == null)
+        {
+            _logger.LogWarning("Failed to deserialize WaardenboomValues.");
+            return [];
+        }
+
+        await ReadContentFilesAsync(Path.Combine(_environment.WebRootPath, "karus", "data", "waardenboom"));
+
+        return _waardenboomValues ?? [];
     }
 
 
     #region Helpers
 
-    private void ReadContentFiles(ref List<WaardenboomValue> waardenboomValues, string filePath)
+    private async Task ReadContentFilesAsync(string filePath)
     {
-        foreach (var value in waardenboomValues)
+        foreach (var value in _waardenboomValues ?? [])
         {
-            value.Content = ReadFile(Path.Combine(filePath, $"content-{value.Id}.html"));
+            var fileName = $"content-{value.Id}.html";
+            var content = await _fileReader.ReadWebroothPathFileAsync(Path.Combine(filePath, fileName));
+
+            if (string.IsNullOrEmpty(content))
+            {
+                _logger.LogWarning("Failed to deserialize WaardenboomValues.");
+                continue;
+            }
+
+            value.Content = content;
+
         }
     }
 
-
-    private string? ReadFile(string filePath)
-    {
-        if (File.Exists(filePath))
-        {
-            return File.ReadAllText(filePath);
-        }
-        else
-        {
-            _logger.LogWarning("File not found: {File}", filePath);
-
-            return null;
-        }
-    }
     #endregion Helpers
 }
