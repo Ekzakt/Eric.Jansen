@@ -6,37 +6,50 @@ namespace Ej.Client.Controllers
     public class KarusController : Controller
     {
         private IWaardenboomValuesService _waardenboomValuesService;
+        private IOpdrachtValuesService _opdrachtenService;
 
-        public KarusController(IWaardenboomValuesService waardenboomValuesService)
+        public KarusController(IWaardenboomValuesService waardenboomValuesService, IOpdrachtValuesService opdrachtenService)
         {
             _waardenboomValuesService = waardenboomValuesService;
+            _opdrachtenService = opdrachtenService;
         }
 
 
         [Route("{culture:culture}/karus")]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            ViewData["Title"] = "Karus";
+            var opdrachtValues = await _opdrachtenService.GetOprachtValuesAsync();
 
-            return View();
+            ViewData["Title"] = "Karus - Mijn Balans";
+
+            return View(opdrachtValues);
         }
 
 
         [Route("{culture:culture}/karus/waardenboom")]
         public async Task<IActionResult> Waardenboom()
         {
-            ViewData["Title"] = "Karus - Waardenboom";
-
             var waardenboomValues = await _waardenboomValuesService.GetWaardenboomValuesAsync();
+
+            ViewData["Title"] = "Karus - Waardenboom";
 
             return View(waardenboomValues);
         }
 
 
         [Route("{culture:culture}/karus/crisisbox")]
-        public async Task<IActionResult> Crisisbox()
+        public IActionResult Crisisbox()
         {
             ViewData["Title"] = "Karus - Crisisbox";
+
+            return View();
+        }
+
+
+        [Route("{culture:culture}/karus/mijn-balans")]
+        public IActionResult MijnBalans()
+        {
+            ViewData["Title"] = "Karus - Mijn Balans";
 
             return View();
         }

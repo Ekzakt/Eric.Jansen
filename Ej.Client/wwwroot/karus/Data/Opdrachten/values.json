@@ -1,0 +1,20 @@
+[
+  {
+    "CardImageUri": "/karus/card-waardenboom.webp",
+    "Name": "Waardenboom",
+    "ControllerAction": "Waardenboom",
+    "Description": "Je zeven levensvragen"
+  },
+  {
+    "CardImageUri": "/karus/card-crisisbox.webp",
+    "Name": "Crisisbox",
+    "ControllerAction": "Crisisbox",
+    "Description": "Je toolkit voor het managen van cravings en herval."
+  },
+  {
+    "CardImageUri": "/karus/card-mijnbalans.webp",
+    "Name": "Mijn Balans",
+    "ControllerAction": "MijnBalans",
+    "Description": "Je zeven levensvrage.n"
+  }
+]

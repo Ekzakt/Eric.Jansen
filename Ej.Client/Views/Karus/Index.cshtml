@@ -1,30 +1,31 @@
-﻿<h2>@ViewData["Title"]</h2>
+﻿@model List<OpdrachtValue>
+
+<h2>@ViewData["Title"]</h2>
 
 <section class="karus">
-    <div class="card mb-3 mt-3">
-        <div class="row no-gutters">
-            <div class="col-4 col-md-3">
-                <img src="~/karus/card-waardenboom.png" class="card-img" alt="...">
-            </div>
-            <div class="col-8 col-md-9">
-                <div class="card-body">
-                    <h5 class="card-title"><a class="stretched-link" asp-controller="Karus" asp-action="Waardenboom" asp-route-culture="@CultureInfo.CurrentCulture.Name" title="Waardenboom">Waardenboom</a></h5>
-                    <p class="card-text">Je zeven levenswaarden.</p>
+    <div class="container p-0">
+        <div class="row g g-3 row-cols-1 row-cols-lg-2">
+            @foreach (var opdrachtValue in Model)
+            {
+                <div class="col">
+                    <div class="card">
+                        <div class="row">
+                            <div class="col-4 col-md-3 col-lg-4">
+                                <img src="@opdrachtValue.CardImageUri" class="card-img" alt="@opdrachtValue.Name">
+                            </div>
+                            <div class="col-8 col-md-9 col-lg-8">
+                                <div class="card-body">
+                                    <h5 class="card-title"><a class="stretched-link" asp-controller="Karus" asp-action="@opdrachtValue.ControllerAction" asp-route-culture="@CultureInfo.CurrentCulture.Name" title="@opdrachtValue.Name">@opdrachtValue.Name</a></h5>
+                                    @if (!string.IsNullOrEmpty(opdrachtValue.Description))
+                                    {
+                                        <p class="card-text">@opdrachtValue.Description</p>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
-    <div class="card mb-3 mt-3">
-        <div class="row no-gutters">
-            <div class="col-4 col-md-3">
-                <img src="~/karus/card-crisisbox.png" class="card-img" alt="...">
-            </div>
-            <div class="col-8 col-md-9">
-                <div class="card-body">
-                    <h5 class="card-title"><a class="stretched-link" asp-controller="Karus" asp-action="Crisisbox" asp-route-culture="@CultureInfo.CurrentCulture.Name" title="Crisisbox">Crisisbox</a></h5>
-                    <p class="card-text">Je toolkit voor het managen van cravings en herval.</p>
-                </div>
-            </div>
+            }
         </div>
     </div>
 </section>

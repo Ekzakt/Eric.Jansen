@@ -7,6 +7,7 @@ using Ej.Infrastructure.Queueing;
 using Ej.Infrastructure.ScopedServices;
 using Ej.Infrastructure.Services;
 using Ej.Karus.Extenstions;
+using Ej.Karus.Services;
 using Ekzakt.EmailSender.Smtp.Configuration;
 using Ekzakt.EmailTemplateProvider.Io.Configuration;
 using Ekzakt.FileManager.AzureBlob.Configuration;
@@ -39,6 +40,9 @@ builder.Services.AddScoped<ITenantProvider, TenantProvider>();
 builder.Services.AddScoped<ITenantService, TenantService>();
 builder.Services.AddScoped<IQueueService, QueueService>();
 builder.Services.AddScoped<ICultureManager, CultureManager>();
+builder.Services.AddScoped<IFileReader, FileReader>();
+builder.Services.AddScoped<IOpdrachtValuesService, OpdrachtValuesService>();
+builder.Services.AddScoped<IWaardenboomValuesService, WaardenboomValuesService>();
 
 builder.Services.AddHostedService<ContactFormQueueBgService>();
 builder.Services.AddHostedService<EmailBgService>();
