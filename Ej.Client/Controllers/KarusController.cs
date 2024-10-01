@@ -6,21 +6,23 @@ namespace Ej.Client.Controllers
     public class KarusController : Controller
     {
         private IWaardenboomValuesService _waardenboomValuesService;
-        private IOpdrachtValuesService _opdrachtenService;
+        private IOpdrachtValuesService _opdrachtValuesService;
+        private List<OpdrachtValue>? _opdrachtValues;
+
 
         public KarusController(IWaardenboomValuesService waardenboomValuesService, IOpdrachtValuesService opdrachtenService)
         {
             _waardenboomValuesService = waardenboomValuesService;
-            _opdrachtenService = opdrachtenService;
+            _opdrachtValuesService = opdrachtenService;
         }
 
 
         [Route("{culture:culture}/karus")]
         public async Task<IActionResult> Index()
         {
-            var opdrachtValues = await _opdrachtenService.GetOprachtValuesAsync();
+            var opdrachtValues = await _opdrachtValuesService.GetOprachtValuesAsync();
 
-            ViewData["Title"] = "Karus - Mijn Balans";
+            ViewData["Title"] = "Karus";
 
             return View(opdrachtValues);
         }
@@ -32,26 +34,52 @@ namespace Ej.Client.Controllers
             var waardenboomValues = await _waardenboomValuesService.GetWaardenboomValuesAsync();
 
             ViewData["Title"] = "Karus - Waardenboom";
+            ViewData["SubTitle"] = await SetViewBagSubTitle(nameof(Waardenboom));
 
             return View(waardenboomValues);
         }
 
 
         [Route("{culture:culture}/karus/crisisbox")]
-        public IActionResult Crisisbox()
+        public async Task<IActionResult> Crisisbox()
         {
             ViewData["Title"] = "Karus - Crisisbox";
+            ViewData["SubTitle"] = await SetViewBagSubTitle(nameof(Crisisbox));
 
             return View();
         }
 
 
-        [Route("{culture:culture}/karus/mijn-balans")]
-        public IActionResult MijnBalans()
+        [Route("{culture:culture}/karus/balans")]
+        public async Task<IActionResult> Balans()
         {
-            ViewData["Title"] = "Karus - Mijn Balans";
+            ViewData["Title"] = "Karus - Balans";
+            ViewData["SubTitle"] = await SetViewBagSubTitle(nameof(Balans));
 
             return View();
         }
+
+
+        [Route("{culture:culture}/karus/cirkel-van-verandering")]
+        public async Task<IActionResult> CirkelVanVerandering()
+        {
+            ViewData["Title"] = "Karus - Cirkel van Verandering";
+            ViewData["SubTitle"] = await SetViewBagSubTitle(nameof(CirkelVanVerandering));
+
+            return View();
+        }
+
+
+        #region Helpers
+
+        public async Task<string> SetViewBagSubTitle(string controllerAction)
+        {
+            var opdrachtValues = await _opdrachtValuesService.GetOprachtValuesAsync();
+            var subTitle = opdrachtValues.FirstOrDefault(x => x.ControllerAction == controllerAction)?.Description;
+
+            return subTitle ?? string.Empty;
+        }
+
+        #endregion
     }
 }

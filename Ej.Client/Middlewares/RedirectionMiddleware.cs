@@ -9,7 +9,7 @@ public class RedirectionMiddleWare
     private readonly CultureOptions _options;
 
     public RedirectionMiddleWare(
-        RequestDelegate next, 
+        RequestDelegate next,
         ILogger<RedirectionMiddleWare> logger,
         IOptions<CultureOptions> options)
     {
@@ -22,8 +22,14 @@ public class RedirectionMiddleWare
     public async Task InvokeAsync(HttpContext context, ITenantProvider tenantProvider)
     {
         var uriFragments = context.Request.RouteValues;
+        var acceptHeader = context.Request.Headers["Accept"].ToString();
+        var isWebPage = acceptHeader.Contains("text/html");
 
-        var x = context.Response.StatusCode;
+        if (!isWebPage)
+        {
+            await _next(context);
+            return;
+        }
 
         // No fragments means 404
         if (uriFragments.Count == 0)
