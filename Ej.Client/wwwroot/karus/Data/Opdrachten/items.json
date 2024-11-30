@@ -18,9 +18,21 @@
     "Description": "Je voor- en nadelen van alcoholgebruik."
   },
   {
-    "CardImageUri": "/karus/card-cirkelvanverandering.webp",
+    "CardImageUri": "",
     "Name": "Cirkel van Verandering",
     "ControllerAction": "CirkelVanVerandering",
     "Description": "Het cirkelmodel van de stadia van persoonlijke verandering."
+  },
+  {
+    "CardImageUri": "",
+    "Name": "De Muur",
+    "ControllerAction": "Muur",
+    "Description": ""
+  },
+  {
+    "CardImageUri": "",
+    "Name": "Flitskaart",
+    "ControllerAction": "Flitskaart",
+    "Description": "Verbreed je perspectief in een flits!"
   }
 ]
