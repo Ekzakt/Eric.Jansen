@@ -8,6 +8,13 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Compile Remove="wwwroot\karus\Data\Balansgroep\**" />
+	  <Content Remove="wwwroot\karus\Data\Balansgroep\**" />
+	  <EmbeddedResource Remove="wwwroot\karus\Data\Balansgroep\**" />
+	  <None Remove="wwwroot\karus\Data\Balansgroep\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <Content Remove="compilerconfig.json" />
 	  <Content Remove="wwwroot\css\ericjansen.scss" />
 	</ItemGroup>
@@ -42,7 +49,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\karus\Data\Balansgroep\" />
     <Folder Include="wwwroot\karus\Data\CirkelVanVerandering\" />
   </ItemGroup>
 

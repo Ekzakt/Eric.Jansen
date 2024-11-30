@@ -41,8 +41,9 @@ builder.Services.AddScoped<ITenantService, TenantService>();
 builder.Services.AddScoped<IQueueService, QueueService>();
 builder.Services.AddScoped<ICultureManager, CultureManager>();
 builder.Services.AddScoped<IFileReader, FileReader>();
-builder.Services.AddScoped<IOpdrachtValuesService, OpdrachtValuesService>();
-builder.Services.AddScoped<IWaardenboomValuesService, WaardenboomValuesService>();
+builder.Services.AddScoped<IBalansItemsService, BalansItemsService>();
+builder.Services.AddScoped<IOpdrachtItemsService, OpdrachtItemsService>();
+builder.Services.AddScoped<IWaardenboomItemsService, WaardenboomItemsService>();
 
 builder.Services.AddHostedService<ContactFormQueueBgService>();
 builder.Services.AddHostedService<EmailBgService>();
@@ -88,7 +89,7 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapControllerRoute(
-    name: "default", 
+    name: "default",
     pattern: "{culture=en-us}/{controller=Home}/{action=Index}/{id?}",
     constraints: new { culture = new CultureRouteConstraint() });
 
