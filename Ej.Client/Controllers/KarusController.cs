@@ -1,4 +1,4 @@
-﻿using Ej.Karus.Services;
+using Ej.Karus.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Ej.Client.Controllers
