@@ -68,6 +68,31 @@ $bs-body-color: #f8f9fa;
             }
         }
     }
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+
+        li {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        li i {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    }
+
+    ul.advantages li i {
+        color: $karus-advantages-bg;
+    }
+
+    ul.disadvantages li i {
+        color: $karus-disadvantages-bg;
+    }
 }
 
 .waardenboom_value p:first-of-type {

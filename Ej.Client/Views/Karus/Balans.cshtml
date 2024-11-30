@@ -20,19 +20,19 @@
                         <div class="row">
                             <div class="col col-sm-12 col-lg-6">
                                 <h6>Short term</h6>
-                                <ul class="">
+                                <ul class="@item.CssClass">
                                     @foreach(var value in item.ShortTermValues ?? [])
                                     {
-                                        <li>@value</li>
+                                        <li><i class="bi bi-check-lg"></i>@value</li>
                                     }
                                 </ul>
                             </div>
                             <div class="col col-sm-12 col-lg-6">
                                 <h6>Long term</h6>
-                                <ul>
+                                <ul class="@item.CssClass">
                                     @foreach (var value in item.LongTermValues ?? [])
                                     {
-                                        <li>@value</li>
+                                        <li><i class="bi bi-check-lg"></i>@value</li>
                                     }
                                 </ul>
                             </div>
