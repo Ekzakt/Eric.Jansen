@@ -42,7 +42,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\karus\Data\Balansgroep\" />
     <Folder Include="wwwroot\karus\Data\CirkelVanVerandering\" />
   </ItemGroup>
 

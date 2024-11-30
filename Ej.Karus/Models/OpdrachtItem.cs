@@ -2,7 +2,7 @@
 
 #nullable disable
 
-public class OpdrachtValue
+public class OpdrachtItem
 {
     public string Name { get; set; }
 
