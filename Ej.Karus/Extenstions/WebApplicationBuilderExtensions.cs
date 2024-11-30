@@ -11,7 +11,7 @@ public static class WebApplicationBuilderExtensions
     {
         builder.AddKarusOptions();
 
-        builder.Services.AddScoped<IWaardenboomItemsService, WaardenboomItemsService>();
+        builder.Services.AddScoped<IWaardenboomValuesService, WaardenboomValuesService>();
 
         return builder;
     }

@@ -1,12 +1,4 @@
-﻿$karus-advantages-bg: #5D9C59;
-$karus-advantages-color: white;
-$karus-disadvantages-bg: #DF2E38;
-$karus-disadvantages-color: white;
-$bs-body-bg: #212529;
-$bs-body-color: #f8f9fa;
-
-.karus {
-    
+﻿.karus {
     text {
         cursor: pointer;
         font-weight: bolder;
@@ -40,41 +32,10 @@ $bs-body-color: #f8f9fa;
     }
 }
 
-.karus_balans {
-    .accordion {
-        .accordion-item {
-            h2 {
-                padding: 0;
-            }
-
-            .accordion-button.advantages:not(.collapsed) {
-                color: $karus-advantages-color;
-                background-color: $karus-advantages-bg;
-            }
-
-            .accordion-button.advantages.collapsed {
-                color: $karus-advantages-color;
-                background-color: $karus-advantages-bg;
-            }
-
-            .accordion-button.disadvantages {
-                color: $karus-disadvantages-color;
-                background-color: $karus-disadvantages-bg;
-            }
-
-            .accordion-body {
-                background-color: $bs-body-bg;
-                color: $bs-body-color;
-            }
-        }
-    }
-}
-
 .waardenboom_value p:first-of-type {
     font-weight: bolder;
     margin-bottom: 0.5rem;
 }
-
 .waardenboom_value p:last-of-type {
     margin-bottom: 2rem;
 }

@@ -2,7 +2,7 @@
 
 #nullable disable
 
-public class WaardenboomItem
+public class WaardenboomValue
 {
     public int Id { get; set; }
 

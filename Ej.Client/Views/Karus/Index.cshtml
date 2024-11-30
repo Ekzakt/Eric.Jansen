@@ -1,13 +1,10 @@
-﻿@model List<OpdrachtItem>
+﻿@model List<OpdrachtValue>
 
 <h2>@ViewData["Title"]</h2>
 
 <section class="karus">
-
     <div class="container p-0">
-
-        <div class="row g-3 row-cols-1 row-cols-lg-2">
-
+        <div class="row g g-3 row-cols-1 row-cols-lg-2">
             @foreach (var opdrachtValue in Model)
             {
                 <div class="col">

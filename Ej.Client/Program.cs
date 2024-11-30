@@ -41,8 +41,8 @@ builder.Services.AddScoped<ITenantService, TenantService>();
 builder.Services.AddScoped<IQueueService, QueueService>();
 builder.Services.AddScoped<ICultureManager, CultureManager>();
 builder.Services.AddScoped<IFileReader, FileReader>();
-builder.Services.AddScoped<IOpdrachtItemsService, OpdrachtItemsService>();
-builder.Services.AddScoped<IWaardenboomItemsService, WaardenboomItemsService>();
+builder.Services.AddScoped<IOpdrachtValuesService, OpdrachtValuesService>();
+builder.Services.AddScoped<IWaardenboomValuesService, WaardenboomValuesService>();
 
 builder.Services.AddHostedService<ContactFormQueueBgService>();
 builder.Services.AddHostedService<EmailBgService>();

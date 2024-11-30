@@ -5,15 +5,15 @@ using System.Text.Json;
 
 namespace Ej.Karus.Services;
 
-public class WaardenboomItemsService : IWaardenboomItemsService
+public class WaardenboomValuesService : IWaardenboomValuesService
 {
-    private readonly ILogger<WaardenboomItemsService> _logger;
+    private readonly ILogger<WaardenboomValuesService> _logger;
     private readonly IWebHostEnvironment _environment;
     private readonly IFileReader _fileReader;
-    private List<WaardenboomItem>? _waardenboomValues;
+    private List<WaardenboomValue>? _waardenboomValues;
 
-    public WaardenboomItemsService(
-        ILogger<WaardenboomItemsService> logger, 
+    public WaardenboomValuesService(
+        ILogger<WaardenboomValuesService> logger, 
         IWebHostEnvironment environment,
         IFileReader fileReader)
     {
@@ -24,16 +24,16 @@ public class WaardenboomItemsService : IWaardenboomItemsService
     }
 
 
-    public async Task<List<WaardenboomItem>> GetWaardenboomItemsAsync()
+    public async Task<List<WaardenboomValue>> GetWaardenboomValuesAsync()
     {
-        var jsonData = await _fileReader.ReadWebroothPathFileAsync("waardenboom", "items.json");
+        var jsonData = await _fileReader.ReadWebroothPathFileAsync("waardenboom", "values.json");
 
         if (string.IsNullOrEmpty(jsonData))
         {
             return [];
         }
 
-        _waardenboomValues = JsonSerializer.Deserialize<List<WaardenboomItem>>(jsonData!, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+        _waardenboomValues = JsonSerializer.Deserialize<List<WaardenboomValue>>(jsonData!, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
 
         if (_waardenboomValues == null)
         {

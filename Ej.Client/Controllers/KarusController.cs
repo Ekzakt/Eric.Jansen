@@ -5,12 +5,12 @@ namespace Ej.Client.Controllers
 {
     public class KarusController : Controller
     {
-        private IWaardenboomItemsService _waardenboomValuesService;
-        private IOpdrachtItemsService _opdrachtValuesService;
-        private List<OpdrachtItem>? _opdrachtValues;
+        private IWaardenboomValuesService _waardenboomValuesService;
+        private IOpdrachtValuesService _opdrachtValuesService;
+        private List<OpdrachtValue>? _opdrachtValues;
 
 
-        public KarusController(IWaardenboomItemsService waardenboomValuesService, IOpdrachtItemsService opdrachtenService)
+        public KarusController(IWaardenboomValuesService waardenboomValuesService, IOpdrachtValuesService opdrachtenService)
         {
             _waardenboomValuesService = waardenboomValuesService;
             _opdrachtValuesService = opdrachtenService;
@@ -20,7 +20,7 @@ namespace Ej.Client.Controllers
         [Route("{culture:culture}/karus")]
         public async Task<IActionResult> Index()
         {
-            var opdrachtValues = await _opdrachtValuesService.GetOprachtItemsAsync();
+            var opdrachtValues = await _opdrachtValuesService.GetOprachtValuesAsync();
 
             ViewData["Title"] = "Karus";
 
@@ -31,7 +31,7 @@ namespace Ej.Client.Controllers
         [Route("{culture:culture}/karus/waardenboom")]
         public async Task<IActionResult> Waardenboom()
         {
-            var waardenboomValues = await _waardenboomValuesService.GetWaardenboomItemsAsync();
+            var waardenboomValues = await _waardenboomValuesService.GetWaardenboomValuesAsync();
 
             ViewData["Title"] = "Karus - Waardenboom";
             ViewData["SubTitle"] = await SetViewBagSubTitle(nameof(Waardenboom));
@@ -74,7 +74,7 @@ namespace Ej.Client.Controllers
 
         public async Task<string> SetViewBagSubTitle(string controllerAction)
         {
-            var opdrachtValues = await _opdrachtValuesService.GetOprachtItemsAsync();
+            var opdrachtValues = await _opdrachtValuesService.GetOprachtValuesAsync();
             var subTitle = opdrachtValues.FirstOrDefault(x => x.ControllerAction == controllerAction)?.Description;
 
             return subTitle ?? string.Empty;
