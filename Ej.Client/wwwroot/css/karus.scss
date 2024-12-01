@@ -9,6 +9,14 @@ $bs-body-color: #f8f9fa;
 
 .karus {
 
+    p, li {
+        line-height: 1.8rem;
+    }
+
+    h4 > p:last-item{
+
+    }
+
     text {
         cursor: pointer;
         font-weight: bolder;

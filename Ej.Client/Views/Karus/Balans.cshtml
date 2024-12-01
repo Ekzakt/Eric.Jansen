@@ -1,11 +1,11 @@
 ﻿@model List<BalansItem>
 
-<h2>@ViewData["Title"]</h2>
-<h3>@ViewData["SubTitle"]</h3>
-
 <section class="karus karus_balans">
 
-    <div class="accordion" id="accordionPanelsStayOpenExample">
+    <h2>@ViewData["Title"]</h2>
+    <h3>@ViewData["SubTitle"]</h3>
+
+    <div class="accordion mb-4" id="accordionPanelsStayOpenExample">
         @foreach(var item in Model ?? [])
         {
         <div class="accordion-item">
@@ -44,6 +44,66 @@
         }
     </div>
 
-</section>
+    <h3>Mijn eigen balans</h3>
+    <h4>1. Het grootste voordeel van mijn gebruik</h4>
+    <p>
+        <strong>Even blij voelen, even de roes voelen:</strong>
+        Het grootste voordeel dat ik ervaar als ik drink, is dat ik me even blij en ontspannen voel.
+        Alcohol geeft me voor een uur of twee een goed gevoel, tot de comateuze toestanden volgen.
+    </p>
+    <h4>2. Het grootste nadeel van mijn gebruik</h4>
+    <p>
+        <strong>Verlies van controle:</strong> Het grootste nadeel van mijn alcoholgebruik is dat 
+        ik de controle over mezelf verlies. Dit leidt tot gevaarlijke en beschamende situaties.
+    </p>
+    <p>
+        <strong>De andere ik die wakker wordt:</strong> als ik drink ben ik helemaal Eric niet meer, en ik
+        wil niet meer dat mensen rondom mij die ooit nog te zien krijgen. Ik ben alleen héél 
+        scherp van tong dan, en da's héél pijnlijk voor de mensen rondom mij.
+    </p>
+    <p>
+        <strong>Mogelijk verlies van vrienden:</strong> als die enkele goeie vrienden die ik heb al dan niet definitief
+        afstand zouden nemen, dan doe ik mezelf iets aan denk ik. Dan zou ik het écht niet meer weten.
+    </p>
+    <h4>3. Het grootste voordeel van veranderen of het belangrijkste wat ik bereik zonder te gebruiken</h4>
+    <p>
+        <strong>Duidelijk denken en beter voelen:</strong>
+        Het belangrijkste voordeel van stoppen met drinken is dat ik weer helder kan denken en me beter voel. Ik kan echt genieten 
+        van leven zonder alcohol, en ik voel me gelukkiger en gezonder. Ik was voor dit herval 10 maanden nuchter, dus ik heb het ervaren wat het is om nuchter te leven, en dat is het beste wat er is. Alles gaat dan min of meer normaal, en er worden dingen ondernomen.
+    </p>
+    <h4>4. De drempels om te stoppen met mijn gebruik (Wat maakt het moeilijk om te stoppen)</h4>
+    <p>
+        <ul>
+            <li>
+                <i class="bi bi-check-lg"></i>
+                <strong>Altijd alcohol beschikbaar:</strong> Het grootste probleem is dat alcohol overal
+                makkelijk te krijgen is. Het is bijna onmogelijk om alcohol helemaal te vermijden
+            </li>
+            <li>
+                <i class="bi bi-check-lg"></i>
+                <strong>Terugval:</strong> Zelfs op plekken waar alcohol moeilijk te vinden is,
+                kan ik toch terugvallen. Dit maakt het moeilijk om helemaal te stoppen.
+            </li>
+            <li>
+                <i class="bi bi-check-lg"></i>
+                <strong>Geen echte obstakels:</strong> Eigenlijk zouden er geen grote obstakels moeten zijn, maar de
+                beschikbaarheid van alcohol maakt het toch lastig.
+            </li>
+        </ul>
+    </p>
+    <h4>5. Conclusie</h4>
+    <p>
+        <strong>Volledig stoppen is de enige weg vooruit:</strong> De enige manier om terug een vrij, gezond
+        en min of meer gelukkig leven te leiden is door helemaal geen alcohol meer te drinken. 
+        Wanneer ik drink, komt er een andere kant van mezelf naar boven waarvan ik niet meer wil 
+        dat andere mensen die zien. Ik ben er genoeg van en wil echt definitief stoppen en den 
+        kans op herval proberen helemaal uit te sluiten. Ik heb al te vaak hervallen, dus ik ben 
+        vastbesloten om alles te doen wat nodig is om succesvol te stoppen, en hier alle 
+        registers open te trekken. Ik heb  ondersteuning en nazorg, en ik gebruik deze om 
+        mijn herstel te versterken. Ik ben er van overtuigd dat het me uiteindelijk zal lukken.
+    </p>
+    <p>
+        <strong>Tenslotte:</strong> Je kan niet vrij zijn als je jezelf niet onder controle kan houden.
+    </p>
 
-<h3>Mijn eigen balans</h3>
+</section>
