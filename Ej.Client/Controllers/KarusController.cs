@@ -5,38 +5,42 @@ namespace Ej.Client.Controllers
 {
     public class KarusController : Controller
     {
-        private IWaardenboomValuesService _waardenboomValuesService;
-        private IOpdrachtValuesService _opdrachtValuesService;
-        private List<OpdrachtValue>? _opdrachtValues;
+        private IWaardenboomItemsService _waardenboomItemsService;
+        private IOpdrachtItemsService _opdrachtItemsService;
+        private IBalansItemsService _balansItemsService;
 
 
-        public KarusController(IWaardenboomValuesService waardenboomValuesService, IOpdrachtValuesService opdrachtenService)
+        public KarusController(
+            IWaardenboomItemsService waardenboomItemsService, 
+            IOpdrachtItemsService opdrachtItemsService,
+            IBalansItemsService balansItemsService)
         {
-            _waardenboomValuesService = waardenboomValuesService;
-            _opdrachtValuesService = opdrachtenService;
+            _waardenboomItemsService = waardenboomItemsService;
+            _opdrachtItemsService = opdrachtItemsService;
+            _balansItemsService = balansItemsService;
         }
 
 
         [Route("{culture:culture}/karus")]
         public async Task<IActionResult> Index()
         {
-            var opdrachtValues = await _opdrachtValuesService.GetOprachtValuesAsync();
+            var opdrachtItems = await _opdrachtItemsService.GetOprachtItemsAsync();
 
             ViewData["Title"] = "Karus";
 
-            return View(opdrachtValues);
+            return View(opdrachtItems);
         }
 
 
         [Route("{culture:culture}/karus/waardenboom")]
         public async Task<IActionResult> Waardenboom()
         {
-            var waardenboomValues = await _waardenboomValuesService.GetWaardenboomValuesAsync();
+            var waardenboomItems = await _waardenboomItemsService.GetWaardenboomItemsAsync();
 
             ViewData["Title"] = "Karus - Waardenboom";
             ViewData["SubTitle"] = await SetViewBagSubTitle(nameof(Waardenboom));
 
-            return View(waardenboomValues);
+            return View(waardenboomItems);
         }
 
 
@@ -53,10 +57,12 @@ namespace Ej.Client.Controllers
         [Route("{culture:culture}/karus/balans")]
         public async Task<IActionResult> Balans()
         {
+            var balansItems = await _balansItemsService.GetBalansItemsAsync();
+
             ViewData["Title"] = "Karus - Balans";
             ViewData["SubTitle"] = await SetViewBagSubTitle(nameof(Balans));
 
-            return View();
+            return View(balansItems);
         }
 
 
@@ -74,7 +80,7 @@ namespace Ej.Client.Controllers
 
         public async Task<string> SetViewBagSubTitle(string controllerAction)
         {
-            var opdrachtValues = await _opdrachtValuesService.GetOprachtValuesAsync();
+            var opdrachtValues = await _opdrachtItemsService.GetOprachtItemsAsync();
             var subTitle = opdrachtValues.FirstOrDefault(x => x.ControllerAction == controllerAction)?.Description;
 
             return subTitle ?? string.Empty;

@@ -22,5 +22,17 @@
     "Name": "Cirkel van Verandering",
     "ControllerAction": "CirkelVanVerandering",
     "Description": "Het cirkelmodel van de stadia van persoonlijke verandering."
+  },
+  {
+    "CardImageUri": "/karus/card-demuur.webp",
+    "Name": "De Muur",
+    "ControllerAction": "Muur",
+    "Description": ""
+  },
+  {
+    "CardImageUri": "/karus/card-flitskaartje.webp",
+    "Name": "Flitskaart",
+    "ControllerAction": "Flitskaart",
+    "Description": "Verbreed je perspectief in een flits!"
   }
 ]
