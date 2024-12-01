@@ -2,6 +2,8 @@
 $karus-advantages-color: white;
 $karus-disadvantages-bg: #DF2E38;
 $karus-disadvantages-color: white;
+$karus-waardenboomvalue-color: $karus-advantages-bg;
+$karus-waardenboomvalue-transition-color: $karus-disadvantages-bg;
 $bs-body-bg: #212529;
 $bs-body-color: #f8f9fa;
 
@@ -11,13 +13,13 @@ $bs-body-color: #f8f9fa;
         cursor: pointer;
         font-weight: bolder;
         font-size: 4rem;
-        fill: #7CFC00;
+        fill: $karus-waardenboomvalue-color;
         text-anchor: middle;
         border: 100px;
     }
 
     text:hover {
-        fill: red;
+        fill: $karus-waardenboomvalue-transition-color;
         transition-duration: 0.5s;
     }
 
