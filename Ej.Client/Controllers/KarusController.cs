@@ -8,7 +8,6 @@ namespace Ej.Client.Controllers
         private IWaardenboomItemsService _waardenboomItemsService;
         private IOpdrachtItemsService _opdrachtItemsService;
         private IBalansItemsService _balansItemsService;
-        private List<OpdrachtItem>? _opdrachtValues;
 
 
         public KarusController(
