@@ -104,12 +104,22 @@ $bs-body-color: #f8f9fa;
 .karus_emergency_contacts {
     a:hover {
         font-weight: bold;
-        transform: scale(1.2);
+    }
+
+    img {
+        transition: transform 0.1s ease;
+    }
+
+    img:hover {
+        transform: scale(1.03);
+    }
+
+    .contact-name {
+        margin: 0;
     }
 
     a {
         color: #fff;
-        transition: transform 0.3s ease;
     }
 }
 

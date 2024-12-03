@@ -2,24 +2,24 @@
 @{
     var emergencyContacts = new List<EmergencyContact> {
         new EmergencyContact {
-            ImageUri = "/img/face-aquarel-400x400.jpg",
+            ImageUri = "/karus/crisisbox/emergencycontact-joke.webp",
             Name = "Joke",
-            PhoneNumber = "+32495511254"
+            PhoneNumber = "32477971857"
         },
         new EmergencyContact {
-            ImageUri = "/img/face-aquarel-400x400.jpg",
+            ImageUri = "/karus/crisisbox/emergencycontact-bart.webp",
             Name = "Bart",
-            PhoneNumber = "+32495511254"
+            PhoneNumber = "32491171817"
         },
         new EmergencyContact {
-            ImageUri = "/img/face-aquarel-400x400.jpg",
+            ImageUri = "/karus/crisisbox/emergencycontact-ann.webp",
             Name = "Ann",
-            PhoneNumber = "+32495511254"
+            PhoneNumber = "32468264636"
         },
          new EmergencyContact {
-            ImageUri = "/img/face-aquarel-400x400.jpg",
+            ImageUri = "/karus/crisisbox/emergencycontact-karus.webp",
             Name = "Karus",
-            PhoneNumber = "+32495511254"
+            PhoneNumber = "32495511254"
         }
     };
 }
@@ -28,13 +28,13 @@
     <div class="card-body">
         <h5 class="text-center">Emergency contacts</h5>
         <div class="container mt-4">
-            <div class="row g-3">
+            <div class="row g-2">
                 @foreach(var contact in emergencyContacts)
                 {
                     <div class="col col-3 text-center">
-                        <a href="https://wa.me/306976419329" title="Bel @contact.Name">
+                        <a href="https://wa.me/@contact.PhoneNumber" title="Bel @contact.Name">
                             <img src="@contact.ImageUri" class="img-fluid img-thumbnail rounded-circle" />
-                            <p>@contact.Name</p>
+                            <p class="contact-name">@contact.Name</p>
                         </a>
                     </div>
                 }

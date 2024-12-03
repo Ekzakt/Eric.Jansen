@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="256"
+   height="256"
+   viewBox="0 0 67.733325 67.733325"
+   version="1.1"
+   id="svg448"
+   inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
+   sodipodi:docname="karus-logo-minimalistic.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview450"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     showgrid="false"
+     inkscape:zoom="2.1518347"
+     inkscape:cx="144.76019"
+     inkscape:cy="138.02176"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="1072"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs445" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       class="st4"
+       d="M 33.677664,33.800866 49.207548,10.966674 c 0.263217,-0.329019 0.263217,-0.789655 0.06581,-1.1844825 C 49.075955,9.3873639 48.681115,9.1899377 48.220484,9.1899377 H 16.765881 c -0.658045,0 -1.184482,0.5264451 -1.184482,1.1844823 v 46.984484 c 0,0.658062 0.526437,1.184482 1.184482,1.184482 h 34.218391 c 0.460631,0 0.855459,-0.26321 1.052872,-0.658037 0.197402,-0.394828 0.131618,-0.855464 -0.131617,-1.250292 z"
+       id="path12"
+       style="fill:#c90045;stroke-width:0.658045" />
+  </g>
+</svg>
