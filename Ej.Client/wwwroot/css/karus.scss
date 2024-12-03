@@ -17,24 +17,6 @@ $bs-body-color: #f8f9fa;
         line-height: 1.8rem;
     }
 
-    text {
-        cursor: pointer;
-        font-weight: bolder;
-        font-size: 4rem;
-        fill: $karus-waardenboomvalue-color;
-        text-anchor: middle;
-        border: 100px;
-    }
-
-    text:hover {
-        fill: $karus-waardenboomvalue-transition-color;
-        transition-duration: 0.5s;
-    }
-
-    text:not(:hover) {
-        transition-duration: 1s
-    }
-
     .card.task {
         transition: transform 0.3s ease;
 
@@ -54,45 +36,65 @@ $bs-body-color: #f8f9fa;
 /*--------------------------------------------------------------
 # KARUS WAARDENBOOM
 --------------------------------------------------------------*/
-.waardenboom_value p:first-of-type {
-    font-weight: bolder;
-    margin-bottom: 0.5rem;
-}
+.karus_waardenboom {
 
-.waardenboom_value p:last-of-type {
-    margin-bottom: 2rem;
-}
+    text {
+        cursor: pointer;
+        font-weight: bolder;
+        font-size: 4rem;
+        fill: $karus-waardenboomvalue-color;
+        text-anchor: middle;
+        border: 100px;
+    }
 
+    text:hover {
+        fill: $karus-waardenboomvalue-transition-color;
+        transition-duration: 0.5s;
+    }
+
+    text:not(:hover) {
+        transition-duration: 1s
+    }
+
+    .waardenboom_value {
+        p:first-of-type {
+            font-weight: bolder;
+            margin-bottom: 0.5rem;
+        }
+
+        p:last-of-type {
+            margin-bottom: 2rem;
+        }
+    }
+}
 
 /*--------------------------------------------------------------
 # KARUS BALANS
 --------------------------------------------------------------*/
 .karus_balans {
-    .accordion {
-        .accordion-item {
-            h2 {
-                padding: 0;
-            }
+    .accordion-item {
+        h2 {
+            padding: 0;
+        }
 
-            .accordion-button.advantages:not(.collapsed) {
-                color: $karus-advantages-color;
-                background-color: $karus-advantages-bg;
-            }
+        .accordion-button.advantages:not(.collapsed) {
+            color: $karus-advantages-color;
+            background-color: $karus-advantages-bg;
+        }
 
-            .accordion-button.advantages.collapsed {
-                color: $karus-advantages-color;
-                background-color: $karus-advantages-bg;
-            }
+        .accordion-button.advantages.collapsed {
+            color: $karus-advantages-color;
+            background-color: $karus-advantages-bg;
+        }
 
-            .accordion-button.disadvantages {
-                color: $karus-disadvantages-color;
-                background-color: $karus-disadvantages-bg;
-            }
+        .accordion-button.disadvantages {
+            color: $karus-disadvantages-color;
+            background-color: $karus-disadvantages-bg;
+        }
 
-            .accordion-body {
-                background-color: $bs-body-bg;
-                color: $bs-body-color;
-            }
+        .accordion-body {
+            background-color: $bs-body-bg;
+            color: $bs-body-color;
         }
     }
 
@@ -120,11 +122,17 @@ $bs-body-color: #f8f9fa;
     ul.disadvantages li i {
         color: $karus-disadvantages-bg;
     }
+
+    .mijnbalans-item {
+        p:last-of-type {
+            margin-bottom: 2.5rem;
+        }
+    }
 }
 
 
 /*--------------------------------------------------------------
-# KARUS EMERGENCY CONTACTS
+# KARUS CRISISBOX EMERGENCY CONTACTS
 --------------------------------------------------------------*/
 .karus_emergency_contacts {
     a:hover {
@@ -148,5 +156,7 @@ $bs-body-color: #f8f9fa;
     }
 }
 
-
+/*--------------------------------------------------------------
+# KARUS CRISISBOX MONEYCOUNTER
+--------------------------------------------------------------*/
 
