@@ -13,10 +13,6 @@ $bs-body-color: #f8f9fa;
         line-height: 1.8rem;
     }
 
-    h4 > p:last-item{
-
-    }
-
     text {
         cursor: pointer;
         font-weight: bolder;
@@ -35,7 +31,7 @@ $bs-body-color: #f8f9fa;
         transition-duration: 1s
     }
 
-    .card {
+    .card.task {
         transition: transform 0.3s ease;
 
         h5 {
@@ -45,7 +41,7 @@ $bs-body-color: #f8f9fa;
         }
     }
 
-    .card:hover {
+    .card.task:hover {
         transform: scale(1.02);
     }
 }
@@ -102,6 +98,18 @@ $bs-body-color: #f8f9fa;
 
     ul.disadvantages li i {
         color: $karus-disadvantages-bg;
+    }
+}
+
+.karus_emergency_contacts {
+    a:hover {
+        font-weight: bold;
+        transform: scale(1.2);
+    }
+
+    a {
+        color: #fff;
+        transition: transform 0.3s ease;
     }
 }
 

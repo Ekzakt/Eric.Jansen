@@ -1,6 +1,17 @@
 <h2>@ViewData["Title"]</h2>
 <p>@ViewData["SubTitle"]</p>
 
-<section class="karus crisisbox">
-    <p>Crisisbox</p>
+<section class="karus karus_crisisbox">
+
+    <div class="container p-0">
+        <div class="row g-3">
+            <div class="col col-12 col-md-6">
+                <partial name="_Crisisbox_Index" />
+            </div>
+            <div class="col col-12 col-md-6">
+                <partial name="_Crisisbox_EmergencyContacts" />
+            </div>
+        </div>
+    </div>
+
 </section>

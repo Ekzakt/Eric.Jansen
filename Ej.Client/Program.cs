@@ -24,7 +24,11 @@ builder.Services.AddHttpContextAccessor();
 builder.Services
     .AddControllersWithViews(mvcOptions =>
         mvcOptions.ModelValidatorProviders.Clear())
-    .AddViewLocalization();
+    .AddViewLocalization()
+    .AddRazorOptions(razorOptions =>
+    {
+        razorOptions.ViewLocationExpanders.Add(new KarusViewLocationExpander());
+    });
 
 builder.Services.AddEkzaktFileManagerAzure();
 builder.Services.AddEkzaktEmailTemplateProviderIo();
