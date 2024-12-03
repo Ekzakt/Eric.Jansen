@@ -7,6 +7,10 @@ $karus-waardenboomvalue-transition-color: $karus-disadvantages-bg;
 $bs-body-bg: #212529;
 $bs-body-color: #f8f9fa;
 
+
+/*--------------------------------------------------------------
+# KARUS GENERAL
+--------------------------------------------------------------*/
 .karus {
 
     p, li {
@@ -46,6 +50,23 @@ $bs-body-color: #f8f9fa;
     }
 }
 
+
+/*--------------------------------------------------------------
+# KARUS WAARDENBOOM
+--------------------------------------------------------------*/
+.waardenboom_value p:first-of-type {
+    font-weight: bolder;
+    margin-bottom: 0.5rem;
+}
+
+.waardenboom_value p:last-of-type {
+    margin-bottom: 2rem;
+}
+
+
+/*--------------------------------------------------------------
+# KARUS BALANS
+--------------------------------------------------------------*/
 .karus_balans {
     .accordion {
         .accordion-item {
@@ -101,6 +122,10 @@ $bs-body-color: #f8f9fa;
     }
 }
 
+
+/*--------------------------------------------------------------
+# KARUS EMERGENCY CONTACTS
+--------------------------------------------------------------*/
 .karus_emergency_contacts {
     a:hover {
         font-weight: bold;
@@ -123,11 +148,5 @@ $bs-body-color: #f8f9fa;
     }
 }
 
-.waardenboom_value p:first-of-type {
-    font-weight: bolder;
-    margin-bottom: 0.5rem;
-}
 
-.waardenboom_value p:last-of-type {
-    margin-bottom: 2rem;
-}
+
