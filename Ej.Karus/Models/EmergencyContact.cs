@@ -9,4 +9,6 @@ public class EmergencyContact
     public string PhoneNumber { get; set; }
 
     public string ImageUri { get; set; }
+
+    public int SortNumber { get; set; }
 }

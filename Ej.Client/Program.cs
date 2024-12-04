@@ -48,6 +48,7 @@ builder.Services.AddScoped<IFileReader, FileReader>();
 builder.Services.AddScoped<IBalansItemsService, BalansItemsService>();
 builder.Services.AddScoped<IOpdrachtItemsService, OpdrachtItemsService>();
 builder.Services.AddScoped<IWaardenboomItemsService, WaardenboomItemsService>();
+builder.Services.AddScoped<ISpotifyService, SpotifyService>();
 
 builder.Services.AddHostedService<ContactFormQueueBgService>();
 builder.Services.AddHostedService<EmailBgService>();

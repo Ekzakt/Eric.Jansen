@@ -12,5 +12,19 @@
     "minify": {
       "enabled": true
     }
+  },
+  {
+    "outputFile": "wwwroot/js/ericjansen.min.js",
+    "inputFile": "wwwroot/js/ericjansen.js",
+    "minify": {
+      "enabled": true
+    }
+  },
+  {
+    "outputFile": "wwwroot/js/karus.moneymaker.min.js",
+    "inputFile": "wwwroot/js/karus.moneymaker.js",
+    "minify": {
+      "enabled": true
+    }
   }
 ]

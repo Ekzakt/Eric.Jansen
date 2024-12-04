@@ -8,16 +8,19 @@ namespace Ej.Client.Controllers
         private IWaardenboomItemsService _waardenboomItemsService;
         private IOpdrachtItemsService _opdrachtItemsService;
         private IBalansItemsService _balansItemsService;
+        private ISpotifyService _spotifyService;
 
 
         public KarusController(
             IWaardenboomItemsService waardenboomItemsService, 
             IOpdrachtItemsService opdrachtItemsService,
-            IBalansItemsService balansItemsService)
+            IBalansItemsService balansItemsService,
+            ISpotifyService spotifyService)
         {
             _waardenboomItemsService = waardenboomItemsService;
             _opdrachtItemsService = opdrachtItemsService;
             _balansItemsService = balansItemsService;
+            _spotifyService = spotifyService;
         }
 
 
@@ -40,17 +43,19 @@ namespace Ej.Client.Controllers
             ViewData["Title"] = "Karus - Waardenboom";
             ViewData["SubTitle"] = await SetViewBagSubTitle(nameof(Waardenboom));
 
-            return View(waardenboomItems);
+            return View();
         }
 
 
         [Route("{culture:culture}/karus/crisisbox")]
         public async Task<IActionResult> Crisisbox()
         {
+            var spotifyItems = await _spotifyService.GetItemsAsync();
+
             ViewData["Title"] = "Karus - Crisisbox";
             ViewData["SubTitle"] = await SetViewBagSubTitle(nameof(Crisisbox));
 
-            return View();
+            return View(new { SpotifyItems = spotifyItems });
         }
 
 
