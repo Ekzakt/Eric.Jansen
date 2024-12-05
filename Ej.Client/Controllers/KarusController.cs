@@ -47,7 +47,7 @@ namespace Ej.Client.Controllers
             ViewData["Title"] = "Karus - Waardenboom";
             ViewData["SubTitle"] = await SetViewBagSubTitle(nameof(Waardenboom));
 
-            return View();
+            return View(waardenboomItems ?? []);
         }
 
 
