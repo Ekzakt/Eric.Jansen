@@ -4,5 +4,9 @@
 
 public class CrisisboxViewModel
 {
-    public List<SpotifyItem> SpotifyItems { get; set; }
+    public CrisisboxSpotifyItemViewModel SpotifyMusic { get; set; }
+
+    public CrisisboxSpotifyItemViewModel SpotifyShows { get; set; }
+
+    public List<EmergencyContact> EmergencyContacts { get; set; }
 }

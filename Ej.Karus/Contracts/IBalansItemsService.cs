@@ -1,6 +1,6 @@
 ﻿using Ej.Karus.Models;
 
-namespace Ej.Karus.Services;
+namespace Ej.Karus.Contracts;
 
 public interface IBalansItemsService
 {

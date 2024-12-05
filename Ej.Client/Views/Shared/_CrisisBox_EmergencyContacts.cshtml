@@ -1,46 +1,27 @@
 ﻿@model List<EmergencyContact>
-@{
-    var emergencyContacts = new List<EmergencyContact> {
-        new EmergencyContact {
-            ImageUri = "/karus/crisisbox/emergencycontact-joke.webp",
-            Name = "Joke",
-            PhoneNumber = "32477971857",
-            SortNumber = 40
-        },
-        new EmergencyContact {
-            ImageUri = "/karus/crisisbox/emergencycontact-bart.webp",
-            Name = "Bart",
-            PhoneNumber = "32491171817",
-            SortNumber = 20
-        },
-        new EmergencyContact {
-            ImageUri = "/karus/crisisbox/emergencycontact-ann.webp",
-            Name = "Ann",
-            PhoneNumber = "32468264636",
-            SortNumber = 30
-        },
-         new EmergencyContact {
-            ImageUri = "/karus/crisisbox/emergencycontact-karus.webp",
-            Name = "Karus",
-            PhoneNumber = "32495511254",
-            SortNumber = 10
-        }
-    };
-}
 
 <div class="card bg-danger text-white karus_emergency_contacts">
     <div class="card-body">
         <h5>Emergency contacts</h5>
         <div class="container">
             <div class="row g-2">
-                @foreach(var contact in emergencyContacts!.OrderBy(c => c.SortNumber))
+                @if (Model is null)
                 {
-                    <div class="col col-3 text-center">
-                        <a href="https://wa.me/@contact.PhoneNumber" title="Bel @contact.Name">
-                            <img src="@contact.ImageUri" class="img-fluid img-thumbnail rounded-circle" />
-                            <p class="contact-name">@contact.Name</p>
-                        </a>
+                    <div class="col">
+                        <p>Geen emergency contacten gevonden.</p>
                     </div>
+                }
+                else
+                {
+                    @foreach(var contact in Model!.OrderBy(c => c.SortNumber))
+                    {
+                        <div class="col col-3 text-center">
+                            <a href="https://wa.me/@contact.PhoneNumber" title="Bel @contact.Name">
+                                <img src="@contact.ImageUri" class="img-fluid img-thumbnail rounded-circle" />
+                                <p class="contact-name">@contact.Name</p>
+                            </a>
+                        </div>
+                    }
                 }
             </div>
         </div>

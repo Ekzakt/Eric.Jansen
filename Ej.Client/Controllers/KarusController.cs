@@ -1,4 +1,5 @@
-using Ej.Karus.Services;
+using Ej.Client.ViewModels;
+using Ej.Karus.Contracts;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Ej.Client.Controllers
@@ -51,11 +52,32 @@ namespace Ej.Client.Controllers
         public async Task<IActionResult> Crisisbox()
         {
             var spotifyItems = await _spotifyService.GetItemsAsync();
+            var spotifyMusic = new CrisisboxSpotifyItemViewModel();
+            var spotifyShows = new CrisisboxSpotifyItemViewModel();
 
             ViewData["Title"] = "Karus - Crisisbox";
             ViewData["SubTitle"] = await SetViewBagSubTitle(nameof(Crisisbox));
 
-            return View(new { SpotifyItems = spotifyItems });
+            if (spotifyItems != null)
+            {
+                spotifyMusic = new CrisisboxSpotifyItemViewModel 
+                {
+                    Title = "Spotify Music",
+                    Items = spotifyItems.Where(x => x.Type != SpotifyItemType.show).ToList() ?? []
+                };
+
+                spotifyShows = new CrisisboxSpotifyItemViewModel
+                {
+                    Title = "Spotify Podcasts",
+                    Items = spotifyItems.Where(x => x.Type == SpotifyItemType.show).ToList() ?? []
+                };
+            }
+
+
+            return View(new CrisisboxViewModel { 
+                SpotifyMusic = spotifyMusic, 
+                SpotifyShows = spotifyShows 
+            });
         }
 
 

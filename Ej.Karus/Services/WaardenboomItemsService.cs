@@ -1,4 +1,5 @@
-﻿using Ej.Karus.Models;
+﻿using Ej.Karus.Contracts;
+using Ej.Karus.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Logging;
 using System.Text.Json;

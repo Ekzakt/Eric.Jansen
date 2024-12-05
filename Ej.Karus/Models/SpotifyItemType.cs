@@ -9,12 +9,9 @@ namespace Ej.Karus.Models;
 /// </summary>
 public enum SpotifyItemType
 {
-    [EnumMember(Value = "playlist")]
-    Playlist,
+    playlist,
 
-    [EnumMember(Value = "show")]
-    Show,
+    show,
 
-    [EnumMember(Value = "track")]
-    Track
+    track
 }

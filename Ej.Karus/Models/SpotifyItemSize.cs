@@ -4,9 +4,7 @@ namespace Ej.Karus.Models;
 
 public enum SpotifyItemSize
 {
-    [EnumMember(Value = "small")]
-    Small = 152,
+    small = 152,
 
-    [EnumMember(Value = "large")]
-    Large = 352
+    large = 352
 }

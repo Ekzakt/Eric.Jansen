@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using Ej.Karus.JsonConverters;
+using System.Text.Json.Serialization;
 
 namespace Ej.Karus.Models;
 
@@ -14,9 +15,11 @@ public class SpotifyItem
 
     public bool IsInvisible { get; set; }
 
+    [JsonConverter(typeof(SpotifyItemTypeJsonConverter))]
     public SpotifyItemType Type { get; set; }
 
-    public SpotifyItemSize Size { get; set; } = SpotifyItemSize.Small;
+    [JsonConverter(typeof(SpotifyItemSizeJsonConverter))]
+    public SpotifyItemSize Size { get; set; } = SpotifyItemSize.small;
 
     public string Uri => $"https://open.spotify.com/embed/{Type}/{Id}?utm_source=generator&theme=0";
 

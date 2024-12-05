@@ -6,6 +6,7 @@ using Ej.Infrastructure.Constants;
 using Ej.Infrastructure.Queueing;
 using Ej.Infrastructure.ScopedServices;
 using Ej.Infrastructure.Services;
+using Ej.Karus.Contracts;
 using Ej.Karus.Extenstions;
 using Ej.Karus.Services;
 using Ekzakt.EmailSender.Smtp.Configuration;

@@ -1,4 +1,5 @@
-﻿using Ej.Karus.Models;
+﻿using Ej.Karus.Contracts;
+using Ej.Karus.Models;
 using Microsoft.Extensions.Logging;
 using System.Text.Json;
 
@@ -17,10 +18,11 @@ public class SpotifyService : ISpotifyService
         _fileReader = fileReader;
     }
 
-    public async Task<List<SpotifyItem>> GetItemsAsync(SpotifyItemType? type = null)
+
+    public async Task<List<SpotifyItem>> GetItemsAsync()
     {
         var spotifyItems = new List<SpotifyItem>();
-        var jsonData = await _fileReader.ReadWebroothPathFileAsync("spotify", "items.json");
+        var jsonData = await _fileReader.ReadWebroothPathFileAsync("crisisbox", "spotify-items.json");
 
         if (string.IsNullOrEmpty(jsonData))
         {
@@ -35,7 +37,7 @@ public class SpotifyService : ISpotifyService
             return [];
         }
 
-        spotifyItems = spotifyItems.Where(x => x.Type == type && x.IsInvisible == false).ToList();
+        spotifyItems = spotifyItems.Where(x => x.IsInvisible == false).ToList();
 
         return spotifyItems ?? [];
     }

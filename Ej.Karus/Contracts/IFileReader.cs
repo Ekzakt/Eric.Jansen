@@ -1,4 +1,4 @@
-﻿namespace Ej.Karus.Services;
+﻿namespace Ej.Karus.Contracts;
 
 public interface IFileReader
 {
