@@ -3,12 +3,21 @@
     "Id": "5OgDixGzWv9UnxRc5xBx2N",
     "Name": "Phil Collins",
     "Type": "playlist",
-    "Size": "large"
+    "Size": "small"
   },
   {
     "Id": "4X54O57AkqCyZeHwTfKrnx",
     "Name": "Tim Cools",
     "Type": "show",
-    "Size": "large"
+    "Size": "small"
+  },
+  {
+    "Id": "4T6wWDVbZQGfLWnrmql4il",
+    "Name": "Rixke",
+    "Type": "playlist",
+    "Size": "small"
   }
 ]
+
+
+

@@ -10,18 +10,21 @@ namespace Ej.Client.Controllers
         private IOpdrachtItemsService _opdrachtItemsService;
         private IBalansItemsService _balansItemsService;
         private ISpotifyService _spotifyService;
+        private IEmergencyContactsService _emergencyContactsService;
 
 
         public KarusController(
-            IWaardenboomItemsService waardenboomItemsService, 
+            IWaardenboomItemsService waardenboomItemsService,
             IOpdrachtItemsService opdrachtItemsService,
             IBalansItemsService balansItemsService,
-            ISpotifyService spotifyService)
+            ISpotifyService spotifyService,
+            IEmergencyContactsService emergencyContactsService)
         {
             _waardenboomItemsService = waardenboomItemsService;
             _opdrachtItemsService = opdrachtItemsService;
             _balansItemsService = balansItemsService;
             _spotifyService = spotifyService;
+            _emergencyContactsService = emergencyContactsService;
         }
 
 
@@ -52,13 +55,15 @@ namespace Ej.Client.Controllers
         public async Task<IActionResult> Crisisbox()
         {
             var spotifyItems = await _spotifyService.GetItemsAsync();
+            var emergencyContacts = await _emergencyContactsService.GetEmergencyContactsAsync();
+
             var spotifyMusic = new CrisisboxSpotifyItemViewModel();
             var spotifyShows = new CrisisboxSpotifyItemViewModel();
 
             ViewData["Title"] = "Karus - Crisisbox";
             ViewData["SubTitle"] = await SetViewBagSubTitle(nameof(Crisisbox));
 
-            if (spotifyItems != null)
+            if (spotifyItems is not null)
             {
                 spotifyMusic = new CrisisboxSpotifyItemViewModel 
                 {
@@ -73,10 +78,10 @@ namespace Ej.Client.Controllers
                 };
             }
 
-
             return View(new CrisisboxViewModel { 
                 SpotifyMusic = spotifyMusic, 
-                SpotifyShows = spotifyShows 
+                SpotifyShows = spotifyShows,
+                EmergencyContacts = emergencyContacts ?? []
             });
         }
 

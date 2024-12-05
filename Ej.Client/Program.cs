@@ -50,6 +50,7 @@ builder.Services.AddScoped<IBalansItemsService, BalansItemsService>();
 builder.Services.AddScoped<IOpdrachtItemsService, OpdrachtItemsService>();
 builder.Services.AddScoped<IWaardenboomItemsService, WaardenboomItemsService>();
 builder.Services.AddScoped<ISpotifyService, SpotifyService>();
+builder.Services.AddScoped<IEmergencyContactsService, EmergencyContactsService>();
 
 builder.Services.AddHostedService<ContactFormQueueBgService>();
 builder.Services.AddHostedService<EmailBgService>();
