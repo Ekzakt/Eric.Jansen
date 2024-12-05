@@ -1,4 +1,5 @@
 ﻿using Ej.Karus.Configuration;
+using Ej.Karus.Contracts;
 using Ej.Karus.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;

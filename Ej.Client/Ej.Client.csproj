@@ -50,6 +50,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\karus\Data\CirkelVanVerandering\" />
+    <Folder Include="wwwroot\karus\Assets\" />
   </ItemGroup>
 
 </Project>

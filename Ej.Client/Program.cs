@@ -6,6 +6,7 @@ using Ej.Infrastructure.Constants;
 using Ej.Infrastructure.Queueing;
 using Ej.Infrastructure.ScopedServices;
 using Ej.Infrastructure.Services;
+using Ej.Karus.Contracts;
 using Ej.Karus.Extenstions;
 using Ej.Karus.Services;
 using Ekzakt.EmailSender.Smtp.Configuration;
@@ -24,7 +25,11 @@ builder.Services.AddHttpContextAccessor();
 builder.Services
     .AddControllersWithViews(mvcOptions =>
         mvcOptions.ModelValidatorProviders.Clear())
-    .AddViewLocalization();
+    .AddViewLocalization()
+    .AddRazorOptions(razorOptions =>
+    {
+        razorOptions.ViewLocationExpanders.Add(new KarusViewLocationExpander());
+    });
 
 builder.Services.AddEkzaktFileManagerAzure();
 builder.Services.AddEkzaktEmailTemplateProviderIo();
@@ -44,6 +49,8 @@ builder.Services.AddScoped<IFileReader, FileReader>();
 builder.Services.AddScoped<IBalansItemsService, BalansItemsService>();
 builder.Services.AddScoped<IOpdrachtItemsService, OpdrachtItemsService>();
 builder.Services.AddScoped<IWaardenboomItemsService, WaardenboomItemsService>();
+builder.Services.AddScoped<ISpotifyService, SpotifyService>();
+builder.Services.AddScoped<IEmergencyContactsService, EmergencyContactsService>();
 
 builder.Services.AddHostedService<ContactFormQueueBgService>();
 builder.Services.AddHostedService<EmailBgService>();
