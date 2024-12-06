@@ -33,7 +33,7 @@ public class SpotifyService : ISpotifyService
 
         if (spotifyItems == null)
         {
-            _logger.LogWarning("Failed to deserialize SpotifyItems.");
+            _logger.LogWarning("Failed to deserialize spotifyItems.");
             return [];
         }
 

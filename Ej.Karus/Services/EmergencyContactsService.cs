@@ -21,7 +21,7 @@ public class EmergencyContactsService : IEmergencyContactsService
     public async Task<List<EmergencyContact>> GetEmergencyContactsAsync()
     {
         var emergencyContacts = new List<EmergencyContact>();
-        var jsonData = await _fileReader.ReadWebroothPathFileAsync("crisisbox", "emergencycontact-items.json");
+        var jsonData = await _fileReader.ReadWebroothPathFileAsync("crisisbox", "emergencycontacts.json");
 
         if (string.IsNullOrEmpty(jsonData))
         {
@@ -32,7 +32,7 @@ public class EmergencyContactsService : IEmergencyContactsService
 
         if (emergencyContacts == null)
         {
-            _logger.LogWarning("Failed to deserialize EmergencyContacts.");
+            _logger.LogWarning("Failed to deserialize emergencyContacts.");
             return [];
         }
 

@@ -32,7 +32,7 @@ public class BalansItemsService : IBalansItemsService
 
         if (balansItems == null)
         {
-            _logger.LogWarning("Failed to deserialize BalansItems.");
+            _logger.LogWarning("Failed to deserialize balansItems.");
             return [];
         }
 

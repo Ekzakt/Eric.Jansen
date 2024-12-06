@@ -7,7 +7,7 @@ using Ej.Infrastructure.Queueing;
 using Ej.Infrastructure.ScopedServices;
 using Ej.Infrastructure.Services;
 using Ej.Karus.Contracts;
-using Ej.Karus.Extenstions;
+using Ej.Karus.Extensions;
 using Ej.Karus.Services;
 using Ekzakt.EmailSender.Smtp.Configuration;
 using Ekzakt.EmailTemplateProvider.Io.Configuration;
@@ -51,6 +51,7 @@ builder.Services.AddScoped<IOpdrachtItemsService, OpdrachtItemsService>();
 builder.Services.AddScoped<IWaardenboomItemsService, WaardenboomItemsService>();
 builder.Services.AddScoped<ISpotifyService, SpotifyService>();
 builder.Services.AddScoped<IEmergencyContactsService, EmergencyContactsService>();
+builder.Services.AddScoped<IQuotesService, QuotesService>();
 
 builder.Services.AddHostedService<ContactFormQueueBgService>();
 builder.Services.AddHostedService<EmailBgService>();

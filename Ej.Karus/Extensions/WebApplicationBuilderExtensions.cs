@@ -4,7 +4,7 @@ using Ej.Karus.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Ej.Karus.Extenstions;
+namespace Ej.Karus.Extensions;
 
 public static class WebApplicationBuilderExtensions
 {

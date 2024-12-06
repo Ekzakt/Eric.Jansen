@@ -164,6 +164,7 @@ $bs-body-color: #f8f9fa;
     }
 }
 
+
 /*--------------------------------------------------------------
 # KARUS CRISISBOX MONEYCOUNTER
 --------------------------------------------------------------*/
@@ -192,8 +193,51 @@ $bs-body-color: #f8f9fa;
     }
 }
 
+
 /*--------------------------------------------------------------
 # KARUS CRISISBOX SPOTIFY PLAYLIST
 --------------------------------------------------------------*/
 .karus_spotify_playlist {
+}
+
+
+/*--------------------------------------------------------------
+# KARUS CRISISBOX QUOTES
+--------------------------------------------------------------*/
+.karus_quotes {
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+
+        li {
+            position: relative;
+            padding-left: 40px;
+            line-height: inherit;
+            margin-bottom: 1.8rem;
+
+            .quote-text {
+                font-style: italic;
+            }
+
+            .quote-signature {
+                display: block;
+                text-align: right;
+                font-size: small;
+                font-style: italic;
+            }
+        }
+
+        li:last-child {
+            margin-bottom: 0;
+        }
+
+        li i {
+            font-size: 2rem;
+            position: absolute;
+            left: 0;
+            top: -11px;
+        }
+    }
 }
