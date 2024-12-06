@@ -26,5 +26,9 @@
     "minify": {
       "enabled": true
     }
+  },
+  {
+    "outputFile": "wwwroot/js/karus.moneycounter.es5.js",
+    "inputFile": "wwwroot/js/karus.moneycounter.js"
   }
 ]

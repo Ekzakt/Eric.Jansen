@@ -24,7 +24,8 @@
         <div class="d-none d-md-block pt-2">
             <a class="me-3" asp-controller="Home" asp-action="Index" asp-route-culture="@CultureInfo.CurrentCulture.Name" title="Home">@_htmlLocalizer["__NavItem_Home"]</a>
             <a class="me-3" asp-controller="Contact" asp-action="Index" asp-route-culture="@CultureInfo.CurrentCulture.Name" title="Contact">@_htmlLocalizer["__NavItem_Contact"]</a>
-            @if (showKarus){
+            @if (showKarus)
+            {
                 <a class="me-3" asp-controller="Karus" asp-action="Index" asp-route-culture="@CultureInfo.CurrentCulture.Name" title="Karus">Karus</a>
             }
             <partial name="_LanguageSelectorDropDown" />
@@ -47,7 +48,8 @@
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="Contact" asp-action="Index" asp-route-culture="@CultureInfo.CurrentCulture.Name" title="@_htmlLocalizer["__NavItem_Contact"]">@_htmlLocalizer["__NavItem_Contact"]</a>
                         </li>
-                        @if (showKarus){
+                        @if (showKarus)
+                        {
                             <li class="nav-item">
                                 <a class="nav-link" asp-controller="Karus" asp-action="Index" asp-route-culture="@CultureInfo.CurrentCulture.Name" title="Karus">Karus</a>
                             </li>
