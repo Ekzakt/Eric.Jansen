@@ -60,7 +60,7 @@ namespace Ej.Client.Controllers
         {
             var spotifyItems = await _spotifyService.GetItemsAsync();
             var emergencyContacts = await _emergencyContactsService.GetEmergencyContactsAsync();
-            var quotes = await _quotesService.GetQuotesAsync();
+            var quotes = await _quotesService.GetRandomQuotesAsync();
 
             var spotifyMusic = new CrisisboxSpotifyItemViewModel();
             var spotifyShows = new CrisisboxSpotifyItemViewModel();

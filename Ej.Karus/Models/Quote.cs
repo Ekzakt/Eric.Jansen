@@ -10,7 +10,9 @@ public class Quote : BaseModel
 
     public string? Author { get; set; }
 
-    public DateOnly Date { get; set; }
+    public DateOnly? Date { get; set; }
+
+    public int? Year { get; set; }
 
     public string Location { get; set; }
 

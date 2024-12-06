@@ -1,4 +1,6 @@
-﻿@model List<Quote>
+﻿@using Ej.Karus.Extensions;
+
+@model List<Quote>
 @{
 }
 
@@ -10,7 +12,11 @@
             <ul>
                 @foreach (var quote in Model)
                 {
-                    <li>@quote.Text</li>
+                    <li>
+                        <i class="bi bi-quote"></i>
+                        <span class="quote-text">@quote.Text</span>
+                        <span class="quote-signature">@quote.GetSignature()</span>
+                    </li>
                 }
             </ul>
         }

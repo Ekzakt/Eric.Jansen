@@ -39,4 +39,17 @@ public class QuotesService : IQuotesService
 
         return quotes ?? [];
     }
+
+    public async Task<List<Quote>> GetRandomQuotesAsync()
+    {
+        var quotes = await GetQuotesAsync();
+        var random = new Random();
+
+        if (quotes is null)
+        {
+            return [];
+        }
+
+        return quotes.OrderBy(x => random.Next()).Take(5).ToList();
+    }
 }
