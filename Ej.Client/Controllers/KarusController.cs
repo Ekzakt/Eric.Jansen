@@ -1,5 +1,6 @@
 using Ej.Client.ViewModels;
 using Ej.Karus.Contracts;
+using Ej.Karus.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Ej.Client.Controllers
@@ -11,6 +12,7 @@ namespace Ej.Client.Controllers
         private IBalansItemsService _balansItemsService;
         private ISpotifyService _spotifyService;
         private IEmergencyContactsService _emergencyContactsService;
+        private IQuotesService _quotesService;
 
 
         public KarusController(
@@ -18,13 +20,15 @@ namespace Ej.Client.Controllers
             IOpdrachtItemsService opdrachtItemsService,
             IBalansItemsService balansItemsService,
             ISpotifyService spotifyService,
-            IEmergencyContactsService emergencyContactsService)
+            IEmergencyContactsService emergencyContactsService,
+            IQuotesService quotesService)
         {
             _waardenboomItemsService = waardenboomItemsService;
             _opdrachtItemsService = opdrachtItemsService;
             _balansItemsService = balansItemsService;
             _spotifyService = spotifyService;
             _emergencyContactsService = emergencyContactsService;
+            _quotesService = quotesService;
         }
 
 
@@ -56,6 +60,7 @@ namespace Ej.Client.Controllers
         {
             var spotifyItems = await _spotifyService.GetItemsAsync();
             var emergencyContacts = await _emergencyContactsService.GetEmergencyContactsAsync();
+            var quotes = await _quotesService.GetQuotesAsync();
 
             var spotifyMusic = new CrisisboxSpotifyItemViewModel();
             var spotifyShows = new CrisisboxSpotifyItemViewModel();
@@ -81,6 +86,7 @@ namespace Ej.Client.Controllers
             return View(new CrisisboxViewModel { 
                 SpotifyMusic = spotifyMusic, 
                 SpotifyShows = spotifyShows,
+                Quotes = quotes ?? [],
                 EmergencyContacts = emergencyContacts ?? []
             });
         }
