@@ -1,8 +1,10 @@
-﻿namespace Ej.Karus.Models;
+﻿using Ej.Karus.Contracts;
+
+namespace Ej.Karus.Models;
 
 #nullable disable
 
-public class OpdrachtItem
+public class OpdrachtItem : BaseModel
 {
     public string Name { get; set; }
 

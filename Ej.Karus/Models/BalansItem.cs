@@ -1,8 +1,10 @@
-﻿namespace Ej.Karus.Models;
+﻿using Ej.Karus.Contracts;
+
+namespace Ej.Karus.Models;
 
 #nullable disable
 
-public class BalansItem
+public class BalansItem : BaseModel
 {
     public int Id { get; set; }
 
