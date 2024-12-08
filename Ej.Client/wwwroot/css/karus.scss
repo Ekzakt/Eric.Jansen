@@ -103,7 +103,8 @@ footer > p > a {
 
         h5 {
             a {
-                color: black;
+                color: $karus-body-color;
+                text-decoration: none;
             }
         }
     }
@@ -301,8 +302,16 @@ footer > p > a {
 # CRISISBOX SPOTIFY PLAYLIST
 --------------------------------------------------------------*/
 .karus_spotify_playlist {
+
 }
 
+
+/*--------------------------------------------------------------
+# CRISISBOX FLITSKAART
+--------------------------------------------------------------*/
+.karus_flitskaart {
+
+}
 
 /*--------------------------------------------------------------
 # CRISISBOX QUOTES

@@ -112,6 +112,16 @@ namespace Ej.Client.Controllers
         }
 
 
+        [Route("{culture:culture}/karus/flitskaart")]
+        public async Task<IActionResult> Flitskaart()
+        {
+            ViewData["Title"] = "Flitskaart";
+            ViewData["SubTitle"] = await SetViewBagSubTitle(nameof(Flitskaart));
+
+            return View();
+        }
+
+
         #region Helpers
 
         public async Task<string> SetViewBagSubTitle(string controllerAction)
