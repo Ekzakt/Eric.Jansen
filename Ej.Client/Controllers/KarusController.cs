@@ -46,7 +46,7 @@ namespace Ej.Client.Controllers
         {
             var waardenboomItems = await _waardenboomItemsService.GetWaardenboomItemsAsync();
 
-            ViewData["Title"] = "Karus - Waardenboom";
+            ViewData["Title"] = "Waardenboom";
             ViewData["SubTitle"] = await SetViewBagSubTitle(nameof(Waardenboom));
 
             return View(waardenboomItems ?? []);
@@ -63,7 +63,7 @@ namespace Ej.Client.Controllers
             var spotifyMusic = new CrisisboxSpotifyItemViewModel();
             var spotifyShows = new CrisisboxSpotifyItemViewModel();
 
-            ViewData["Title"] = "Karus - Crisisbox";
+            ViewData["Title"] = "Crisisbox";
             ViewData["SubTitle"] = await SetViewBagSubTitle(nameof(Crisisbox));
 
             if (spotifyItems is not null)
@@ -105,7 +105,7 @@ namespace Ej.Client.Controllers
         [Route("{culture:culture}/karus/cirkel-van-verandering")]
         public async Task<IActionResult> CirkelVanVerandering()
         {
-            ViewData["Title"] = "Karus - Cirkel van Verandering";
+            ViewData["Title"] = "Cirkel van Verandering";
             ViewData["SubTitle"] = await SetViewBagSubTitle(nameof(CirkelVanVerandering));
 
             return View();
