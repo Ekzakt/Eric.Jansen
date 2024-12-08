@@ -37,7 +37,9 @@ public class SpotifyService : ISpotifyService
             return [];
         }
 
-        spotifyItems = spotifyItems.Where(x => x.IsInvisible == false).ToList();
+        spotifyItems = [.. spotifyItems
+            .Where(x => x.IsInvisible == false)
+            .OrderBy(x => x.SortNumber)];
 
         return spotifyItems ?? [];
     }
