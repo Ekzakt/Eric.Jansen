@@ -37,8 +37,6 @@ namespace Ej.Client.Controllers
         {
             var opdrachtItems = await _opdrachtItemsService.GetOprachtItemsAsync();
 
-            ViewData["Title"] = "Karus";
-
             return View(opdrachtItems);
         }
 
@@ -97,7 +95,7 @@ namespace Ej.Client.Controllers
         {
             var balansItems = await _balansItemsService.GetBalansItemsAsync();
 
-            ViewData["Title"] = "Karus - Balans";
+            ViewData["Title"] = "Balans";
             ViewData["SubTitle"] = await SetViewBagSubTitle(nameof(Balans));
 
             return View(balansItems);

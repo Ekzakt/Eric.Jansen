@@ -4,18 +4,78 @@ $karus-disadvantages-bg: #DF2E38;
 $karus-disadvantages-color: white;
 $karus-waardenboomvalue-color: $karus-advantages-bg;
 $karus-waardenboomvalue-transition-color: $karus-disadvantages-bg;
-$bs-body-bg: #212529;
-$bs-body-color: #f8f9fa;
+$karus-body-bg: #080000;
+$karus-body-color: var(--bs-gray-400);
 
 
 /*--------------------------------------------------------------
 # KARUS GENERAL
 --------------------------------------------------------------*/
-.karus {
+body, html {
+    background-color: $karus-body-bg;
+    color: $karus-body-color;
+}
 
-    p, li {
-        line-height: 1.8rem;
+body {
+    font-family: var(--bs-body-font-family);
+    font-size: 1.1rem;
+    font-weight: lighter;
+}
+
+.header {
+    text-align: center;
+
+    p.by {
+        font-weight: lighter;
+        font-size: smaller;
     }
+
+    img.display-1 {
+        max-width: 320px;
+        width: 100%;
+        height: auto;
+    }
+}
+
+p, li {
+    line-height: 1.35rem;
+}
+
+h1 {
+    text-align: center;
+    font-weight: lighter;
+    margin-bottom: 4rem;
+}
+h1:has(+ p) {
+    margin-bottom: 0rem;
+}
+h1 + p {
+    margin-bottom: 4rem;
+    text-align: center;
+    font-size: smaller;
+}
+
+/*--------------------------------------------------------------
+# FOOTER
+--------------------------------------------------------------*/
+
+.footer {
+    font-size: 0.75rem;
+    flex-shrink: 0;
+    text-align: center;
+}
+
+footer > p > a {
+    background-color: inherit;
+    color: inherit;
+    text-decoration: none;
+    font-weight: inherit;
+}
+
+/*--------------------------------------------------------------
+# KARUS TASKS (INDEX)
+--------------------------------------------------------------*/
+.karus_tasks {
 
     .card.task {
         transition: transform 0.3s ease;
@@ -94,8 +154,8 @@ $bs-body-color: #f8f9fa;
         }
 
         .accordion-body {
-            background-color: $bs-body-bg;
-            color: $bs-body-color;
+            background-color: $karus-body-bg;
+            color: $karus-body-color;
         }
     }
 
@@ -215,7 +275,7 @@ $bs-body-color: #f8f9fa;
             position: relative;
             padding-left: 40px;
             line-height: inherit;
-            margin-bottom: 1.8rem;
+            margin-bottom: 2rem;
 
             .quote-text {
                 font-style: italic;
@@ -226,6 +286,7 @@ $bs-body-color: #f8f9fa;
                 text-align: right;
                 font-size: small;
                 font-style: italic;
+                font-weight: bold;
             }
         }
 
@@ -234,10 +295,11 @@ $bs-body-color: #f8f9fa;
         }
 
         li i {
+            color: lightgrey;
             font-size: 2rem;
             position: absolute;
             left: 0;
-            top: -11px;
+            top: -20px;
         }
     }
 }

@@ -1,9 +1,13 @@
-﻿@model List<BalansItem>
+﻿@{
+    Layout = "~/Views/Shared/_Karus_Layout.cshtml";
+}
 
-<section class="karus karus_balans">
+@model List<BalansItem>
 
-    <h2>@ViewData["Title"]</h2>
-    <h3>@ViewData["SubTitle"]</h3>
+<h1>@ViewData["Title"]</h1>
+<p>@ViewData["SubTitle"]</p>
+
+<section class="karus_balans">
 
     <div class="accordion mb-4" id="accordionPanelsStayOpenExample">
         @foreach(var item in Model ?? [])
