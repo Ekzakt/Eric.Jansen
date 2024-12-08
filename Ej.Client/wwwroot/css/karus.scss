@@ -37,8 +37,12 @@ body {
     }
 }
 
-p, li {
-    line-height: 1.35rem;
+p {
+    line-height: 1.6rem;
+}
+
+li {
+    line-height: 1.8rem;
 }
 
 h1 {
@@ -55,10 +59,27 @@ h1 + p {
     font-size: smaller;
 }
 
+h2 {
+    font-weight: lighter;
+    margin-bottom: 1.5rem;
+}
+
+h3 {
+    font-weight: lighter;
+    margin-bottom: 1.1rem;
+}
+
+.modal {
+
+    .modal-content {
+        background-color: var(--bs-gray-900);
+    } 
+}
+
+
 /*--------------------------------------------------------------
 # FOOTER
 --------------------------------------------------------------*/
-
 .footer {
     font-size: 0.75rem;
     flex-shrink: 0;
@@ -120,6 +141,7 @@ footer > p > a {
         p:first-of-type {
             font-weight: bolder;
             margin-bottom: 0.5rem;
+            background-color: red;
         }
 
         p:last-of-type {
@@ -139,30 +161,13 @@ footer > p > a {
 # BALANS
 --------------------------------------------------------------*/
 .karus_balans {
-    .accordion-item {
-        h2 {
-            padding: 0;
-        }
 
-        .accordion-button.advantages:not(.collapsed) {
-            color: $karus-advantages-color;
-            background-color: $karus-advantages-bg;
-        }
+    section {
+        margin-bottom: 5rem;
+    }
 
-        .accordion-button.advantages.collapsed {
-            color: $karus-advantages-color;
-            background-color: $karus-advantages-bg;
-        }
-
-        .accordion-button.disadvantages {
-            color: $karus-disadvantages-color;
-            background-color: $karus-disadvantages-bg;
-        }
-
-        .accordion-body {
-            background-color: $karus-body-bg;
-            color: $karus-body-color;
-        }
+    section:last-child {
+        margin-bottom: 0;
     }
 
     ul {
@@ -172,7 +177,7 @@ footer > p > a {
 
         li {
             position: relative;
-            padding-left: 30px;
+            padding-left: 28px;
         }
 
         li i {
@@ -182,17 +187,49 @@ footer > p > a {
         }
     }
 
-    ul.advantages li i {
-        color: $karus-advantages-bg;
+
+    .voor-en-nadelen {
+
+        .accordion-item {
+
+            .accordion-button.advantages:not(.collapsed) {
+                color: $karus-advantages-color;
+                background-color: $karus-advantages-bg;
+            }
+
+            .accordion-button.advantages.collapsed {
+                color: $karus-advantages-color;
+                background-color: $karus-advantages-bg;
+            }
+
+            .accordion-button.disadvantages {
+                color: $karus-disadvantages-color;
+                background-color: $karus-disadvantages-bg;
+            }
+
+            .accordion-body {
+                background-color: $karus-body-bg;
+                color: $karus-body-color;
+            }
+        }
+
+        ul.advantages li i {
+            color: $karus-advantages-bg;
+        }
+
+        ul.disadvantages li i {
+            color: $karus-disadvantages-bg;
+        }
     }
 
-    ul.disadvantages li i {
-        color: $karus-disadvantages-bg;
-    }
 
-    .mijnbalans-item {
-        p:last-of-type {
-            margin-bottom: 2.5rem;
+    .mijn-balans {
+        .mijnbalans-item {
+            margin-bottom: 2.75rem;
+
+            p:last-of-type {
+                margin-bottom: 2.25rem;
+            }
         }
     }
 }
