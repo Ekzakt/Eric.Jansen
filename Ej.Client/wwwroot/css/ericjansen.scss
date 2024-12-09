@@ -10,7 +10,11 @@ html, body {
     background-color: $ej-bg-color;
     color: $ej-color;
     height: 100%;
+}
+
+body {
     font-weight: lighter;
+    line-height: 1.5rem;
 }
 
 h2 {

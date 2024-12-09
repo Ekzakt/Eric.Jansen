@@ -4,8 +4,12 @@
 
 @inject IHtmlLocalizer<SharedResource> _htmlLocalizer
 
-<header class="header mb-5">
-    <nav class="navbar navbar-dark">
-        <h1 class="display-1"><a asp-controller="Home" asp-action="Index" asp-route-culture="@CultureInfo.CurrentCulture.Name" title="@_tenantProvider.Tenant?.Name Home">@_tenantProvider.Tenant?.Name</a></h1>
-    </nav>
+<header class="header">
+    <div class="container-fluid">
+        <div class="py-5">
+            <a asp-controller="Karus" asp-action="Index" asp-route-culture="@CultureInfo.CurrentCulture.Name" title="Karus">
+                <img class="display-1 img-fluid mx-auto" src="~/karus/assets/karus-logo.svg" />
+            </a>
+        </div>
+    </div>
 </header>
