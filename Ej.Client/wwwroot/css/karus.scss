@@ -151,12 +151,28 @@ footer > p > a {
     }
 }
 
+
 /*--------------------------------------------------------------
 # CIRKEL VAN VERANDERING
 --------------------------------------------------------------*/
 .karus_cirkelvanverandering {
 
+    img {
+        margin: 3rem 0;
+    }
 }
+
+.karus_fasen_van_verandering {
+
+    h2 + p, section {
+        margin-bottom: 3rem;
+    }
+
+    section:last-child {
+        margin-bottom: 0;
+    }
+}
+
 
 /*--------------------------------------------------------------
 # BALANS
@@ -237,7 +253,7 @@ footer > p > a {
 
 
 /*--------------------------------------------------------------
-# CRISISBOX EMERGENCY CONTACTS
+# CRISISBOX
 --------------------------------------------------------------*/
 .karus_crisisbox {
     h5 {
@@ -246,9 +262,18 @@ footer > p > a {
     }
 }
 
+
+/*--------------------------------------------------------------
+# CRISISBOX EMERGENCY CONTACTS
+--------------------------------------------------------------*/
 .karus_emergency_contacts {
+
+    a {
+        text-decoration: none;
+    }
+
     a:hover {
-        font-weight: bold;
+        font-weight: bolder;
     }
 
     img {
@@ -261,6 +286,7 @@ footer > p > a {
 
     .contact-name {
         margin: 0;
+        text-decoration: none;
     }
 
     a {
