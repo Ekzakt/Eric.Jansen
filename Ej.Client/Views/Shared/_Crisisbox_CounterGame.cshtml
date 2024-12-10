@@ -1,0 +1,163 @@
+﻿@{
+}
+
+<div class="card karus_countergame">
+    <div class="card-body">
+        <h5>Counter Game</h5>
+        <div class="container p-0 text-center">
+            <div class="row mb-4">
+                <div class="col">
+                    <h6>Choose the Maximum Items to Count</h6>
+                    <div class="radio-group" id="maxCountGroup">
+                        <input type="radio" id="max5" name="maxCount" value="5">
+                        <label for="max5">5</label>
+
+                        <input type="radio" id="max10" name="maxCount" value="10">
+                        <label for="max10">10</label>
+
+                        <input type="radio" id="max20" name="maxCount" value="20">
+                        <label for="max20">20</label>
+
+                        <input type="radio" id="max50" name="maxCount" value="50">
+                        <label for="max50">50</label>
+
+                        <input type="radio" id="max100" name="maxCount" value="100">
+                        <label for="max100">100</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-4">
+                <div class="col">
+                    <h6>Choose the Type of Things to Count</h6>
+                    <div class="radio-group" id="countTypeGroup">
+                        <input type="radio" id="people" name="countType" value="people">
+                        <label for="people">People</label>
+
+                        <input type="radio" id="cars" name="countType" value="cars">
+                        <label for="cars">Cars</label>
+
+                        <input type="radio" id="tiles" name="countType" value="tiles">
+                        <label for="tiles">Tiles</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <button id="startGame" class="btn btn-primary" disabled>Start Game</button>
+                    <button id="resetGame" class="btn btn-secondary">Reset</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="counterModal" tabindex="-1" aria-labelledby="counterModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="counterModalLabel">Count the Items</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <div class="svg-container d-flex flex-wrap justify-content-center"></div>
+                <p class="mt-3">Count: <span id="countDisplay">0</span></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+        let maxCount = null;
+        let countType = null;
+        let currentCount = 0;
+
+        // Add event listeners to radio groups
+        document.getElementById('maxCountGroup').addEventListener('change', (event) => {
+            maxCount = parseInt(event.target.value);
+            checkStartGameEnabled();
+        });
+
+        document.getElementById('countTypeGroup').addEventListener('change', (event) => {
+            countType = event.target.value;
+            checkStartGameEnabled();
+        });
+
+        // Enable Start Game Button
+        function checkStartGameEnabled() {
+            const startGameBtn = document.getElementById('startGame');
+            if (maxCount && countType) {
+                startGameBtn.disabled = false;
+            } else {
+                startGameBtn.disabled = true;
+            }
+        }
+
+        // Start Game
+        document.getElementById('startGame').addEventListener('click', () => {
+            const modal = new bootstrap.Modal(document.getElementById('counterModal'));
+            modal.show();
+
+            // Wait until the modal is fully shown before manipulating the DOM
+            modal._element.addEventListener('shown.bs.modal', () => {
+                const svgContainer = document.querySelector('.svg-container');
+                const countDisplay = document.getElementById('countDisplay');
+                currentCount = 0;
+
+                // Clear previous content
+                if (svgContainer) {
+                    svgContainer.innerHTML = '';
+                }
+                if (countDisplay) {
+                    countDisplay.textContent = currentCount;
+                }
+
+                // Add SVG icons
+                for (let i = 0; i < maxCount; i++) {
+                    const img = document.createElement('img');
+                    img.src = `./icons/${countType}.svg`; // Replace with actual SVG path
+                    img.dataset.index = i;
+                    img.classList.add('svg-icon');
+                    svgContainer.appendChild(img);
+                }
+            });
+        });
+
+        // Handle modal clicks
+        document.querySelector('.modal-body').addEventListener('click', (event) => {
+            if (currentCount < maxCount && !event.target.classList.contains('btn-close')) {
+                currentCount++;
+                document.getElementById('countDisplay').textContent = currentCount;
+
+                // Update icon style
+                const svgIcons = document.querySelectorAll('.svg-container img');
+                if (svgIcons[currentCount - 1]) {
+                    svgIcons[currentCount - 1].classList.add('clicked');
+                }
+            }
+        });
+
+        // Reset Game
+        document.getElementById('resetGame').addEventListener('click', () => {
+            maxCount = null;
+            countType = null;
+            currentCount = 0;
+
+            // Reset radio buttons
+            document.querySelectorAll('input[type="radio"]').forEach((radio) => {
+                radio.checked = false;
+            });
+
+            // Reset buttons
+            document.getElementById('startGame').disabled = true;
+
+            // Clear modal content
+            document.querySelector('.svg-container').innerHTML = '';
+            document.getElementById('countDisplay').textContent = '0';
+        });
+    });
+</script>

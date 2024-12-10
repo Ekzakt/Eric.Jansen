@@ -11,7 +11,7 @@
                 @foreach (var playlist in Model.Items)
                 {
                     <div class="col col-12">
-                        <iframe src="@playlist.Uri" width="100%" height="@((int)playlist.Size)" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                        <iframe src="@playlist.Uri" width="100%" height="@((int)playlist.Size)" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture" loading="lazy"></iframe>
                     </div>
                 }
                 </div>
