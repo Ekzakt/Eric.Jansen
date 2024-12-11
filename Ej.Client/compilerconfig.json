@@ -21,14 +21,17 @@
     }
   },
   {
-    "outputFile": "wwwroot/js/karus.moneymaker.min.js",
-    "inputFile": "wwwroot/js/karus.moneymaker.js",
+    "outputFile": "wwwroot/js/karus.moneycounter.min.js",
+    "inputFile": "wwwroot/js/karus.moneycounter.js",
     "minify": {
       "enabled": true
     }
   },
   {
-    "outputFile": "wwwroot/js/karus.moneycounter.es5.js",
-    "inputFile": "wwwroot/js/karus.moneycounter.js"
+    "outputFile": "wwwroot/js/karus.countergame.min.js",
+    "inputFile": "wwwroot/js/karus.countergame.js",
+    "minify": {
+      "enabled": true
+    }
   }
 ]
