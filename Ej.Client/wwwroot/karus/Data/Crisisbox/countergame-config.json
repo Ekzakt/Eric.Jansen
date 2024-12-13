@@ -8,11 +8,11 @@
       "colors": [
         {
           "name": "Red",
-          "hex": "#FF0000"
+          "hex": "#ff0000"
         },
         {
           "name": "Blue",
-          "hex": "#0000FF"
+          "hex": "#00a9ff"
         }
       ]
     },
@@ -23,11 +23,11 @@
       "colors": [
         {
           "name": "Green",
-          "hex": "#00FF00"
+          "hex": "#66B032"
         },
         {
           "name": "Yellow",
-          "hex": "#FFFF00"
+          "hex": "#ffc500"
         }
       ]
     },
