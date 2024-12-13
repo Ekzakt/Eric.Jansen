@@ -32,13 +32,20 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="counterModal" tabindex="-1" aria-labelledby="counterModalLabel" aria-hidden="true">
+<div class="modal fade" id="counterGameModel" tabindex="-1" aria-labelledby="counterGameModelLabel" aria-hidden="true">
     <div class="modal-dialog modal-fullscreen">
         <div class="modal-content">
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            <div class="modal-body clickable">
-                <div class="svg-container d-flex flex-wrap justify-content-center"></div>
-                <div class="counter-display d-flex flex-wrap justify-content-center">Count: <span id="countDisplay">0</span></div>
+            <div class="modal-header">
+                <h5>Counter Game</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="svg-container d-flex flex-wrap justify-content-center my-5"></div>
+                <div class="counter-display d-flex flex-wrap justify-content-center"><span id="countDisplay">0 / 0</span></div>
+            </div>
+            <div class="modal-footer">
+                <button id="resetGameFullScreen" class="btn btn-primary">Reset</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Sluiten</button>
             </div>
         </div>
     </div>
@@ -49,6 +56,7 @@
     document.addEventListener('DOMContentLoaded', function () {
 
         var counterGameEl = document.getElementById("karus_countergame");
+
         if (!counterGameEl) {
             return;
         }
@@ -62,35 +70,47 @@
         fetch('/karus/data/crisisbox/countergame-config.json')
             .then(response => response.json())
             .then(data => {
-                // Populate max counts
+
                 const maxCountGroup = document.getElementById('maxCountGroup');
+
+                // Populate max count
                 data.maxCounts.forEach(count => {
+
                     const input = document.createElement('input');
                     const label = document.createElement('label');
                     const id = `max${count}`;
+
                     input.type = 'radio';
                     input.id = id;
                     input.name = 'maxCount';
                     input.value = count;
+
                     label.setAttribute('for', id);
                     label.textContent = count;
+
                     maxCountGroup.appendChild(input);
                     maxCountGroup.appendChild(label);
                 });
 
                 // Populate game types
                 const countTypeGroup = document.getElementById('countTypeGroup');
+
                 gameTypes = {};
+
                 data.gameTypes.forEach(type => {
+
                     const input = document.createElement('input');
                     const label = document.createElement('label');
                     const id = type.type;
+
                     input.type = 'radio';
                     input.id = id;
                     input.name = 'countType';
                     input.value = type.type;
+
                     label.setAttribute('for', id);
                     label.textContent = type.label;
+
                     countTypeGroup.appendChild(input);
                     countTypeGroup.appendChild(label);
 
@@ -99,32 +119,44 @@
                 });
             });
 
+
         document.getElementById('maxCountGroup').addEventListener('change', (event) => {
+
             maxCount = parseInt(event.target.value);
             checkStartGameEnabled();
         });
 
+
         document.getElementById('countTypeGroup').addEventListener('change', (event) => {
+
             countType = event.target.value;
+
             const colorSection = document.getElementById('colorSection');
             const colorGroup = document.getElementById('colorGroup');
-            selectedColor = null;
-
-            colorGroup.innerHTML = '';
             const colors = gameTypes[countType]?.colors || [];
+
+            selectedColor = null;
+            colorGroup.innerHTML = '';
+
             if (colors.length > 0) {
+
                 colorSection.style.display = 'block';
+
                 colors.forEach(color => {
+
                     const circle = document.createElement('div');
+
                     circle.className = 'color-circle';
                     circle.style.backgroundColor = color.hex;
                     circle.title = color.name;
+
                     circle.addEventListener('click', () => {
                         document.querySelectorAll('.color-circle').forEach(c => c.classList.remove('selected'));
                         circle.classList.add('selected');
                         selectedColor = color.hex;
                         checkStartGameEnabled();
                     });
+
                     colorGroup.appendChild(circle);
                 });
             } else {
@@ -133,55 +165,69 @@
             checkStartGameEnabled();
         });
 
+
         function checkStartGameEnabled() {
+
             const startGameBtn = document.getElementById('startGame');
             const requiresColor = gameTypes[countType]?.colors?.length > 0;
+
             startGameBtn.disabled = !(maxCount && countType && (!requiresColor || selectedColor));
         }
 
+
         document.getElementById('startGame').addEventListener('click', () => {
+
             const svgContainer = document.querySelector('.svg-container');
             const countDisplay = document.getElementById('countDisplay');
 
             currentCount = 0;
 
             svgContainer.innerHTML = '';
-            countDisplay.textContent = currentCount;
+            countDisplay.textContent = currentCount + ' / ' + maxCount;
 
             for (let i = 0; i < maxCount; i++) {
+
                 const img = document.createElement('img');
+
                 img.src = `/karus/data/crisisbox/${gameTypes[countType].svg}`;
                 img.dataset.index = i;
                 img.classList.add('svg-icon');
-                if (selectedColor) {
-                    img.style.filter = `drop-shadow(0 0 5px ${selectedColor})`;
-                }
-                else
-                {
-                    img.style.filter = 'drop-shadow(0 0 5px white)';
-                }
+                img.style.padding = '0.6rem';
+
                 svgContainer.appendChild(img);
             }
 
-            const modal = new bootstrap.Modal(document.getElementById('counterModal'));
+            const modal = new bootstrap.Modal(document.getElementById('counterGameModel'));
             modal.show();
         });
 
         // Handle modal clicks
         document.querySelector('.modal-body').addEventListener('click', (event) => {
+
             if (currentCount < maxCount && !event.target.classList.contains('btn-close')) {
+
                 currentCount++;
-                document.getElementById('countDisplay').textContent = currentCount;
+                document.getElementById('countDisplay').textContent = currentCount + ' / ' + maxCount;
 
                 // Update icon style
                 const svgIcons = document.querySelectorAll('.svg-container img');
-                if (svgIcons[currentCount - 1]) {
-                    svgIcons[currentCount - 1].classList.add('clicked');
+                const svgIcon = svgIcons[currentCount - 1];
+
+                if (svgIcon) {
+                    
+                    if (selectedColor) {
+                        svgIcon.style.filter = `drop-shadow(0 0 5px ${selectedColor})`;
+                    }
+                    else
+                    {
+                        svgIcon.style.filter = 'drop-shadow(0 0 5px white)';
+                    }
                 }
             }
         });
 
         document.getElementById('resetGame').addEventListener('click', () => {
+
             maxCount = null;
             countType = null;
             currentCount = 0;
@@ -193,8 +239,24 @@
 
             document.getElementById('startGame').disabled = true;
             document.querySelector('.svg-container').innerHTML = '';
-            document.getElementById('countDisplay').textContent = '0';
+            document.getElementById('countDisplay').textContent = '0 / 0';
             document.getElementById('colorSection').style.display = 'none';
         });
+
+
+        document.getElementById('resetGameFullScreen').addEventListener('click', () => {
+
+            const svgIcons = document.querySelectorAll('.svg-container img');
+
+            currentCount = 0;
+
+            svgIcons.forEach(icon => {
+                icon.style.filter = '';
+            });
+
+            document.getElementById('countDisplay').textContent = '0 / 0';
+
+        });
+
     });
 </script>
