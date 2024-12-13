@@ -6,7 +6,8 @@ using Ej.Infrastructure.Constants;
 using Ej.Infrastructure.Queueing;
 using Ej.Infrastructure.ScopedServices;
 using Ej.Infrastructure.Services;
-using Ej.Karus.Extenstions;
+using Ej.Karus.Contracts;
+using Ej.Karus.Extensions;
 using Ej.Karus.Services;
 using Ekzakt.EmailSender.Smtp.Configuration;
 using Ekzakt.EmailTemplateProvider.Io.Configuration;
@@ -24,7 +25,11 @@ builder.Services.AddHttpContextAccessor();
 builder.Services
     .AddControllersWithViews(mvcOptions =>
         mvcOptions.ModelValidatorProviders.Clear())
-    .AddViewLocalization();
+    .AddViewLocalization()
+    .AddRazorOptions(razorOptions =>
+    {
+        razorOptions.ViewLocationExpanders.Add(new KarusViewLocationExpander());
+    });
 
 builder.Services.AddEkzaktFileManagerAzure();
 builder.Services.AddEkzaktEmailTemplateProviderIo();
@@ -41,8 +46,12 @@ builder.Services.AddScoped<ITenantService, TenantService>();
 builder.Services.AddScoped<IQueueService, QueueService>();
 builder.Services.AddScoped<ICultureManager, CultureManager>();
 builder.Services.AddScoped<IFileReader, FileReader>();
-builder.Services.AddScoped<IOpdrachtValuesService, OpdrachtValuesService>();
-builder.Services.AddScoped<IWaardenboomValuesService, WaardenboomValuesService>();
+builder.Services.AddScoped<IBalansItemsService, BalansItemsService>();
+builder.Services.AddScoped<IOpdrachtItemsService, OpdrachtItemsService>();
+builder.Services.AddScoped<IWaardenboomItemsService, WaardenboomItemsService>();
+builder.Services.AddScoped<ISpotifyService, SpotifyService>();
+builder.Services.AddScoped<IEmergencyContactsService, EmergencyContactsService>();
+builder.Services.AddScoped<IQuotesService, QuotesService>();
 
 builder.Services.AddHostedService<ContactFormQueueBgService>();
 builder.Services.AddHostedService<EmailBgService>();
@@ -88,7 +97,7 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapControllerRoute(
-    name: "default", 
+    name: "default",
     pattern: "{culture=en-us}/{controller=Home}/{action=Index}/{id?}",
     constraints: new { culture = new CultureRouteConstraint() });
 

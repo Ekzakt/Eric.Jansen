@@ -1,17 +1,28 @@
-@model List<OpdrachtValue>
+﻿@{
+    Layout = "~/Views/Shared/_Karus_Layout.cshtml";
+}
 
-<h2>@ViewData["Title"]</h2>
+@model List<OpdrachtItem>
 
-<section class="karus">
+<h1>Opdrachten</h1>
+<p>By Eric Jansen</p>
+
+<section class="karus_tasks">
+
     <div class="container p-0">
-        <div class="row g g-3 row-cols-1 row-cols-lg-2">
+
+        <div class="row g-4 row-cols-1 row-cols-lg-2">
+
             @foreach (var opdrachtValue in Model)
             {
                 <div class="col">
-                    <div class="card">
+                    <div class="card task">
                         <div class="row">
                             <div class="col-4 col-md-3 col-lg-4">
-                                <img src="@opdrachtValue.CardImageUri" class="card-img" alt="@opdrachtValue.Name">
+                                @if (!string.IsNullOrEmpty(opdrachtValue.CardImageUri))
+                                {
+                                    <img src="@opdrachtValue.CardImageUri" class="card-img img-fluid p-4" alt="@opdrachtValue.Name">
+                                }
                             </div>
                             <div class="col-8 col-md-9 col-lg-8">
                                 <div class="card-body">

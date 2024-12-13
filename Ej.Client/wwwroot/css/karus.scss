@@ -1,15 +1,146 @@
-﻿.karus {
+﻿$karus-advantages-bg: #5D9C59;
+$karus-advantages-color: white;
+$karus-disadvantages-bg: #DF2E38;
+$karus-disadvantages-color: white;
+$karus-waardenboomvalue-color: $karus-advantages-bg;
+$karus-waardenboomvalue-transition-color: $karus-disadvantages-bg;
+$karus-body-bg: #080000;
+$karus-body-color: var(--bs-gray-400);
+
+
+/*--------------------------------------------------------------
+# GENERAL
+--------------------------------------------------------------*/
+body, html {
+    background-color: $karus-body-bg;
+    color: $karus-body-color;
+}
+
+body {
+    font-family: var(--bs-body-font-family);
+    font-size: 1.1rem;
+    font-weight: lighter;
+}
+
+.header {
+    text-align: center;
+
+    p.by {
+        font-weight: lighter;
+        font-size: smaller;
+    }
+
+    img.display-1 {
+        max-width: 320px;
+        width: 100%;
+        height: auto;
+    }
+}
+
+p {
+    line-height: 1.6rem;
+}
+
+li {
+    line-height: 1.8rem;
+}
+
+h1 {
+    text-align: center;
+    font-weight: lighter;
+    margin-bottom: 4rem;
+}
+h1:has(+ p) {
+    margin-bottom: 0rem;
+}
+h1 + p {
+    margin-bottom: 4rem;
+    text-align: center;
+    font-size: smaller;
+}
+
+h2 {
+    font-weight: lighter;
+    margin-bottom: 1.5rem;
+}
+
+h3 {
+    font-weight: lighter;
+    margin-bottom: 1.1rem;
+}
+
+h6 {
+    font-weight: lighter;
+}
+
+.modal {
+
+    .modal-content {
+        background-color: var(--bs-gray-900);
+    }
+
+    .modal-header {
+
+        h5 {
+            margin-bottom: 0;
+        }
+    }
+}
+
+/*--------------------------------------------------------------
+# FOOTER
+--------------------------------------------------------------*/
+.footer {
+    font-size: 0.75rem;
+    flex-shrink: 0;
+    text-align: center;
+}
+
+footer > p > a {
+    background-color: inherit;
+    color: inherit;
+    text-decoration: none;
+    font-weight: inherit;
+}
+
+/*--------------------------------------------------------------
+# TASKS (INDEX)
+--------------------------------------------------------------*/
+.karus_tasks {
+
+    .card.task {
+        transition: transform 0.3s ease;
+
+        h5 {
+            a {
+                color: $karus-body-color;
+                text-decoration: none;
+            }
+        }
+    }
+
+    .card.task:hover {
+        transform: scale(1.02);
+    }
+}
+
+
+/*--------------------------------------------------------------
+# WAARDENBOOM
+--------------------------------------------------------------*/
+.karus_waardenboom {
+
     text {
         cursor: pointer;
         font-weight: bolder;
         font-size: 4rem;
-        fill: #7CFC00;
+        fill: $karus-waardenboomvalue-color;
         text-anchor: middle;
         border: 100px;
     }
 
     text:hover {
-        fill: red;
+        fill: $karus-waardenboomvalue-transition-color;
         transition-duration: 0.5s;
     }
 
@@ -17,25 +148,315 @@
         transition-duration: 1s
     }
 
-    .card {
-        transition: transform 0.3s ease;
+    .waardenboom_value {
+        p:first-of-type {
+            font-weight: bolder;
+            margin-bottom: 0.5rem;
+            background-color: red;
+        }
 
-        h5 {
-            a {
-                color: black;
-            }
+        p:last-of-type {
+            margin-bottom: 2rem;
+        }
+    }
+}
+
+
+/*--------------------------------------------------------------
+# CIRKEL VAN VERANDERING
+--------------------------------------------------------------*/
+.karus_cirkelvanverandering {
+
+    img {
+        margin: 3rem 0;
+    }
+}
+
+.karus_fasen_van_verandering {
+
+    h2 + p, section {
+        margin-bottom: 3rem;
+    }
+
+    section:last-child {
+        margin-bottom: 0;
+    }
+}
+
+
+/*--------------------------------------------------------------
+# BALANS
+--------------------------------------------------------------*/
+.karus_balans {
+
+    section {
+        margin-bottom: 5rem;
+    }
+
+    section:last-child {
+        margin-bottom: 0;
+    }
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+
+        li {
+            position: relative;
+            padding-left: 28px;
+        }
+
+        li i {
+            position: absolute;
+            left: 0;
+            top: 0;
         }
     }
 
-    .card:hover {
-        transform: scale(1.02);
+
+    .voor-en-nadelen {
+
+        .accordion-item {
+
+            .accordion-button.advantages:not(.collapsed) {
+                color: $karus-advantages-color;
+                background-color: $karus-advantages-bg;
+            }
+
+            .accordion-button.advantages.collapsed {
+                color: $karus-advantages-color;
+                background-color: $karus-advantages-bg;
+            }
+
+            .accordion-button.disadvantages {
+                color: $karus-disadvantages-color;
+                background-color: $karus-disadvantages-bg;
+            }
+
+            .accordion-body {
+                background-color: $karus-body-bg;
+                color: $karus-body-color;
+            }
+        }
+
+        ul.advantages li i {
+            color: $karus-advantages-bg;
+        }
+
+        ul.disadvantages li i {
+            color: $karus-disadvantages-bg;
+        }
+    }
+
+
+    .mijn-balans {
+        .mijnbalans-item {
+            margin-bottom: 2.75rem;
+
+            p:last-of-type {
+                margin-bottom: 2.25rem;
+            }
+        }
     }
 }
 
-.waardenboom_value p:first-of-type {
-    font-weight: bolder;
-    margin-bottom: 0.5rem;
+
+/*--------------------------------------------------------------
+# CRISISBOX
+--------------------------------------------------------------*/
+.karus_crisisbox {
+    h5 {
+        margin-bottom: 1.2rem;
+        text-align: center;
+    }
 }
-.waardenboom_value p:last-of-type {
-    margin-bottom: 2rem;
+
+
+/*--------------------------------------------------------------
+# CRISISBOX EMERGENCY CONTACTS
+--------------------------------------------------------------*/
+.karus_emergency_contacts {
+
+    a {
+        text-decoration: none;
+    }
+
+    a:hover {
+        font-weight: bolder;
+    }
+
+    img {
+        transition: transform 0.1s ease;
+    }
+
+    img:hover {
+        transform: scale(1.7);
+    }
+
+    .contact-name {
+        margin: 0;
+        text-decoration: none;
+    }
+
+    a {
+        color: #fff;
+    }
+}
+
+
+/*--------------------------------------------------------------
+# CRISISBOX MONEYCOUNTER
+--------------------------------------------------------------*/
+.karus_moneycounter {
+
+    img {
+        max-width: 70%;
+        margin-bottom: 1rem;
+    }
+
+    .no-x {
+        div.time {
+            font-size: smaller;
+            line-height: 1.2rem;
+        }
+
+        div.euro {
+            font-size: larger;
+            font-weight: bolder;
+        }
+    }
+
+    .total {
+        font-size: 2rem;
+        font-weight: bolder;
+    }
+}
+
+
+/*--------------------------------------------------------------
+# CRISISBOX SPOTIFY PLAYLIST
+--------------------------------------------------------------*/
+.karus_spotify_playlist {
+
+}
+
+
+/*--------------------------------------------------------------
+# CRISISBOX FLITSKAART
+--------------------------------------------------------------*/
+.karus_flitskaart {
+
+}
+
+/*--------------------------------------------------------------
+# CRISISBOX QUOTES
+--------------------------------------------------------------*/
+.karus_quotes {
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+
+        li {
+            position: relative;
+            padding-left: 40px;
+            line-height: inherit;
+            margin-bottom: 2rem;
+
+            .quote-text {
+                font-style: italic;
+            }
+
+            .quote-signature {
+                display: block;
+                text-align: right;
+                font-size: small;
+                font-style: italic;
+                font-weight: bold;
+            }
+        }
+
+        li:last-child {
+            margin-bottom: 0;
+        }
+
+        li i {
+            color: lightgrey;
+            font-size: 2rem;
+            position: absolute;
+            left: 0;
+            top: -20px;
+        }
+    }
+}
+
+/*--------------------------------------------------------------
+# CRISISBOX COUNTER GAME
+--------------------------------------------------------------*/
+.karus_countergame {
+
+    .radio-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .radio-group label {
+        display: inline-block;
+        padding: 10px 20px;
+        border: 2px solid transparent;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        background-color: #f8f9fa;
+        transition: all 0.3s;
+    }
+
+    .radio-group label:hover {
+        background-color: #e9ecef;
+    }
+
+    .radio-group input[type="radio"] {
+        display: none;
+    }
+
+    .radio-group input[type="radio"]:checked + label {
+        border-color: #0d6efd;
+        background-color: #dce9ff;
+        color: #0d6efd;
+    }
+
+    .color-group {
+        display: flex;
+        gap: 10px;
+    }
+
+    .color-circle {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        cursor: pointer;
+        border: 2px solid transparent;
+        transition: all 0.3s;
+    }
+
+    .color-circle:hover {
+        border-color: #0d6efd;
+    }
+
+    .color-circle.selected {
+        border-color: #0d6efd;
+    }
+
+    .modal-body {
+        cursor: pointer;
+    }
+
+    .counter-display {
+        font-size: 2rem;
+        font-weight: bold;
+        margin-top: 1rem;
+    }
 }

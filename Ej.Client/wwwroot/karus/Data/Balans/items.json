@@ -1,0 +1,99 @@
+[
+  {
+    "Id": 1,
+    "Title": "Voordelen van gebruik",
+    "CssClass": "advantages",
+    "ShortTermValues": [
+      "Milde euforie, voor een uur of twee",
+      "Socialer",
+      "Meer genieten van activiteiten voor zover die er zijn (reizen)",
+      "Angst-remmend of reducerend",
+      "Meer verbonden voelen (erbij horen) maar meer vroeger want ik herval altijd stiekem tot het te laat is en toch uitkomt"
+    ],
+    "LongTermValues": [
+      "Geen"
+    ]
+  },
+  {
+    "Id": 2,
+    "Title": "Nadelen van gebruik",
+    "CssClass": "disadvantages",
+    "ShortTermValues": [
+      "Controleverlies",
+      "Onverantwoorde risico's nemen",
+      "Auto's in de prak rijden",
+      "Politionele / juridische problemen (rijbewijs verliezen",
+      "Scherp van tong zijn",
+      "Berichtjes",
+      "Overgeven",
+      "Verlies van discipline",
+      "Verlies van controle",
+      "Melancholisch worden",
+      "Angst- en paniek aanvallen",
+      "Stemmingswisselingen",
+      "Blackouts"
+    ],
+    "LongTermValues": [
+      "Mogelijk verlies van vrienden",
+      "Geen eetlust meer / overgeven",
+      "Slechte beslissingen nemen",
+      "Geconfronteerd worden met escapisme",
+      "Angst- en paniek aanvallen",
+      "Zwarte of toch donkergrijze gedachten",
+      "Gezondheid, fitheid die acheruit gaat",
+      "Melangolisch worden",
+      "Stemmingswisselinigen",
+      "Afgewezen en weggeduwd worden",
+      "Geïsoleerd raken en gevangen voelen",
+      "Schrijven dat niet meer lukt, alleen hoofdletters",
+      "Tremor",
+      "Verplichtingen niet meer kunnen en zelfs niet meer willen nakomen",
+      "Depressief worden",
+      "Onbewust leven",
+      "Vaag worden van herinneringen, of zelfs geen herinneringen meer hebben (blackouts)",
+      "Ongecontroleerde emoties"
+    ]
+  },
+  {
+    "Id": 3,
+    "Title": "Voordelen van stoppen",
+    "CssClass": "advantages",
+    "ShortTermValues": [
+      "Terug helder worden",
+      "Betere / normale eetlust want veel afvallen",
+      "Geen tremor meer",
+      "Aversie die opkomt"
+    ],
+    "LongTermValues": [
+      "Gelukkig zijn, of toch het gevoel hebben van gelukkig te zijn",
+      "Terug kunnen reizen",
+      "Mijn online services eindelijk lanceren / zaak uitbouwen",
+      "Herstel van vertrouwen, hopelijk",
+      "Niet meer ontgoochelen",
+      "Rijbewijs",
+      "Financiële stabiliteit, weg van invaliditeit",
+      "Bewust leven",
+      "Herinneringen vasthouden",
+      "Alle tegenstellingen van de nadelen"
+    ]
+  },
+  {
+    "Id": 4,
+    "Title": "Nadelen van stoppen",
+    "CssClass": "disadvantages",
+    "ShortTermValues": [
+      "Vluchtgedrag: niemand willen zien",
+      "Schaamte",
+      "Schuldgevoel",
+      "Craving mogelijk voor de rest van m'n leven",
+      "Altijd alert blijven, energie die naar ergens anders zou kunnen gegaan zijn",
+      "Tijdens herstelperiode (nu dus): een mislukkeling, waardeloos, leeg en toch wel wat eenzaam voelen"
+    ],
+    "LongTermValues": [
+      "Herstellen van vertrouwen",
+      "Aversie die wegebt",
+      "Craving"
+    ]
+  }
+]
+

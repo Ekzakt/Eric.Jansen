@@ -1,0 +1,262 @@
+﻿@{
+}
+
+<div class="card karus_countergame" id="karus_countergame">
+    <div class="card-body">
+        <h5>Counter Game</h5>
+
+        <div class="mb-4 text-center">
+            <h6>Choose the Maximum Items to Count</h6>
+            <div class="radio-group d-flex justify-content-center" id="maxCountGroup"></div>
+        </div>
+
+        <!-- Step 2: Choose the Type of Things to Count -->
+        <div class="mb-4 text-center">
+            <h6>Choose the Type of Things to Count</h6>
+            <div class="radio-group d-flex justify-content-center" id="countTypeGroup"></div>
+        </div>
+
+        <!-- Step 3: Choose Color (Optional) -->
+        <div class="mb-4 text-center" id="colorSection" style="display: none;">
+            <h6>Choose a Color</h6>
+            <div class="color-group d-flex justify-content-center" id="colorGroup"></div>
+        </div>
+
+        <div class="text-center">
+            <button id="startGame" class="btn btn-primary" disabled>Start Game</button>
+            <button id="resetGame" class="btn btn-secondary">Reset</button>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="counterGameModel" tabindex="-1" aria-labelledby="counterGameModelLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5>Counter Game</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="svg-container d-flex flex-wrap justify-content-center my-5"></div>
+                <div class="counter-display d-flex flex-wrap justify-content-center"><span id="countDisplay">0 / 0</span></div>
+            </div>
+            <div class="modal-footer">
+                <button id="resetGameFullScreen" class="btn btn-primary">Reset</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Sluiten</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+        var counterGameEl = document.getElementById("karus_countergame");
+
+        if (!counterGameEl) {
+            return;
+        }
+
+        let maxCount = null;
+        let countType = null;
+        let currentCount = 0;
+        let selectedColor = null;
+        let gameTypes = {};
+
+        fetch('/karus/data/crisisbox/countergame-config.json')
+            .then(response => response.json())
+            .then(data => {
+
+                const maxCountGroup = document.getElementById('maxCountGroup');
+
+                // Populate max count
+                data.maxCounts.forEach(count => {
+
+                    const input = document.createElement('input');
+                    const label = document.createElement('label');
+                    const id = `max${count}`;
+
+                    input.type = 'radio';
+                    input.id = id;
+                    input.name = 'maxCount';
+                    input.value = count;
+
+                    label.setAttribute('for', id);
+                    label.textContent = count;
+
+                    maxCountGroup.appendChild(input);
+                    maxCountGroup.appendChild(label);
+                });
+
+                // Populate game types
+                const countTypeGroup = document.getElementById('countTypeGroup');
+
+                gameTypes = {};
+
+                data.gameTypes.forEach(type => {
+
+                    const input = document.createElement('input');
+                    const label = document.createElement('label');
+                    const id = type.type;
+
+                    input.type = 'radio';
+                    input.id = id;
+                    input.name = 'countType';
+                    input.value = type.type;
+
+                    label.setAttribute('for', id);
+                    label.textContent = type.label;
+
+                    countTypeGroup.appendChild(input);
+                    countTypeGroup.appendChild(label);
+
+                    // Save SVG and colors
+                    gameTypes[type.type] = { svg: type.svg, colors: type.colors };
+                });
+            });
+
+
+        document.getElementById('maxCountGroup').addEventListener('change', (event) => {
+
+            maxCount = parseInt(event.target.value);
+            checkStartGameEnabled();
+        });
+
+
+        document.getElementById('countTypeGroup').addEventListener('change', (event) => {
+
+            countType = event.target.value;
+
+            const colorSection = document.getElementById('colorSection');
+            const colorGroup = document.getElementById('colorGroup');
+            const colors = gameTypes[countType]?.colors || [];
+
+            selectedColor = null;
+            colorGroup.innerHTML = '';
+
+            if (colors.length > 0) {
+
+                colorSection.style.display = 'block';
+
+                colors.forEach(color => {
+
+                    const circle = document.createElement('div');
+
+                    circle.className = 'color-circle';
+                    circle.style.backgroundColor = color.hex;
+                    circle.title = color.name;
+
+                    circle.addEventListener('click', () => {
+                        document.querySelectorAll('.color-circle').forEach(c => c.classList.remove('selected'));
+                        circle.classList.add('selected');
+                        selectedColor = color.hex;
+                        checkStartGameEnabled();
+                    });
+
+                    colorGroup.appendChild(circle);
+                });
+            } else {
+                colorSection.style.display = 'none';
+            }
+            checkStartGameEnabled();
+        });
+
+
+        function checkStartGameEnabled() {
+
+            const startGameBtn = document.getElementById('startGame');
+            const requiresColor = gameTypes[countType]?.colors?.length > 0;
+
+            startGameBtn.disabled = !(maxCount && countType && (!requiresColor || selectedColor));
+        }
+
+
+        document.getElementById('startGame').addEventListener('click', () => {
+
+            const svgContainer = document.querySelector('.svg-container');
+            const countDisplay = document.getElementById('countDisplay');
+
+            currentCount = 0;
+
+            svgContainer.innerHTML = '';
+            countDisplay.textContent = currentCount + ' / ' + maxCount;
+
+            for (let i = 0; i < maxCount; i++) {
+
+                const img = document.createElement('img');
+
+                img.src = `/karus/data/crisisbox/${gameTypes[countType].svg}`;
+                img.dataset.index = i;
+                img.classList.add('svg-icon');
+                img.style.padding = '0.6rem';
+
+                svgContainer.appendChild(img);
+            }
+
+            const modal = new bootstrap.Modal(document.getElementById('counterGameModel'));
+            modal.show();
+        });
+
+        // Handle modal clicks
+        document.querySelector('.modal-body').addEventListener('click', (event) => {
+
+            if (currentCount < maxCount && !event.target.classList.contains('btn-close')) {
+
+                currentCount++;
+                document.getElementById('countDisplay').textContent = currentCount + ' / ' + maxCount;
+
+                // Update icon style
+                const svgIcons = document.querySelectorAll('.svg-container img');
+                const svgIcon = svgIcons[currentCount - 1];
+
+                if (svgIcon) {
+                    
+                    if (selectedColor) {
+                        svgIcon.style.filter = `drop-shadow(0 0 5px ${selectedColor})`;
+                    }
+                    else
+                    {
+                        svgIcon.style.filter = 'drop-shadow(0 0 5px white)';
+                    }
+                }
+            }
+        });
+
+        document.getElementById('resetGame').addEventListener('click', () => {
+
+            maxCount = null;
+            countType = null;
+            currentCount = 0;
+            selectedColor = null;
+
+            document.querySelectorAll('input[type="radio"]').forEach((radio) => {
+                radio.checked = false;
+            });
+
+            document.getElementById('startGame').disabled = true;
+            document.querySelector('.svg-container').innerHTML = '';
+            document.getElementById('countDisplay').textContent = '0 / 0';
+            document.getElementById('colorSection').style.display = 'none';
+        });
+
+
+        document.getElementById('resetGameFullScreen').addEventListener('click', () => {
+
+            const svgIcons = document.querySelectorAll('.svg-container img');
+
+            currentCount = 0;
+
+            svgIcons.forEach(icon => {
+                icon.style.filter = '';
+            });
+
+            document.getElementById('countDisplay').textContent = '0 / 0';
+
+        });
+
+    });
+</script>

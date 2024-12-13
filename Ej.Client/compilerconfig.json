@@ -12,5 +12,26 @@
     "minify": {
       "enabled": true
     }
+  },
+  {
+    "outputFile": "wwwroot/js/ericjansen.min.js",
+    "inputFile": "wwwroot/js/ericjansen.js",
+    "minify": {
+      "enabled": true
+    }
+  },
+  {
+    "outputFile": "wwwroot/js/karus.moneycounter.min.js",
+    "inputFile": "wwwroot/js/karus.moneycounter.js",
+    "minify": {
+      "enabled": true
+    }
+  },
+  {
+    "outputFile": "wwwroot/js/karus.countergame.min.js",
+    "inputFile": "wwwroot/js/karus.countergame.js",
+    "minify": {
+      "enabled": true
+    }
   }
 ]

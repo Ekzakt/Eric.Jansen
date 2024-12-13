@@ -34,6 +34,8 @@ public class RedirectionMiddleWare
         // No fragments means 404
         if (uriFragments.Count == 0)
         {
+            _logger.LogInformation("No fragments found in request path. Redirecting to 404 page. {Path}.", context.Request.Path);
+
             context.Response.Redirect($"/{CultureInfo.CurrentCulture.Name}/error/404");
             return;
         }

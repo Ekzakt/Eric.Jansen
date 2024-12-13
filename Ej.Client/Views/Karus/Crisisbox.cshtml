@@ -1,6 +1,39 @@
-<h2>@ViewData["Title"]</h2>
+@{
+    Layout = "~/Views/Shared/_Karus_Layout.cshtml";
+}
+
+@model CrisisboxViewModel
+
+<h1>@ViewData["Title"]</h1>
 <p>@ViewData["SubTitle"]</p>
 
-<section class="karus">
+<section class="karus karus_crisisbox">
+
+    <div class="container p-0">
+        <div class="row g-4" data-masonry='{"percentPosition": true }'>
+            <div class="col col-12 col-md-6">
+                <partial name="_Crisisbox_MoneyCounter" />
+            </div>
+            <div class="col col-12 col-md-6">
+                <partial name="_Crisisbox_EmergencyContacts" 
+                         model="@Model.EmergencyContacts" />
+            </div>
+            <div class="col col-12 col-md-6">
+                <partial name="_Crisisbox_Spotify_Items" 
+                         model="@Model.SpotifyMusic" />
+            </div>
+            <div class="col col-12 col-md-6">
+                <partial name="_Crisisbox_Spotify_Items" 
+                         model="@Model.SpotifyShows" />
+            </div>
+            <div class="col col-12 col-md-6">
+                <partial name="_Crisisbox_Quotes"
+                         model="@Model.Quotes" />
+            </div>
+            <div class="col col-12 col-md-6">
+                <partial name="_Crisisbox_CounterGame" />
+            </div>
+        </div>
+    </div>
 
 </section>
