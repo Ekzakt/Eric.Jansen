@@ -1,12 +1,17 @@
 ﻿@using Ej.Karus.Extensions;
 
 @model List<Quote>
+
 @{
 }
 
 <div class="card karus_quotes">
     <div class="card-body">
-        <h5>Inspirational Quotes</h5>
+        <h5 class="ps-4">
+            Inspirational Quotes
+            <i class="bi bi-fullscreen float-end" style="cursor: pointer;" role="link"></i>
+            <i title="Refresh" class="bi bi-arrow-clockwise float-end me-2" role="link"></i>
+        </h5>
         @if (Model?.Count > 0)
         {
             <ul>

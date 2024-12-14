@@ -10,6 +10,7 @@ public class SpotifyService : ISpotifyService
     private readonly ILogger<SpotifyService> _logger;
     private readonly IFileReader _fileReader;
 
+
     public SpotifyService(
         ILogger<SpotifyService> logger, 
         IFileReader fileReader)

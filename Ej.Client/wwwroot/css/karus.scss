@@ -460,3 +460,15 @@ footer > p > a {
         margin-top: 1rem;
     }
 }
+
+/*--------------------------------------------------------------
+# CRISISBOX PHOTOS
+--------------------------------------------------------------*/
+.karus_photos {
+
+    .center-cropped {
+        width: 150px; 
+        height: 150px; 
+        object-fit: cover;
+    }
+}

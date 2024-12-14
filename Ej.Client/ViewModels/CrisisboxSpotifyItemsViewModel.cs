@@ -2,7 +2,7 @@
 
 #nullable disable
 
-public class CrisisboxSpotifyItemViewModel : IViewModelBase
+public class CrisisboxSpotifyItemsViewModel : ICrisisboxViewModelBase<SpotifyItem>
 {
     public string Title { get; init; }
 
