@@ -12,7 +12,9 @@ public class KarusViewLocationExpander : IViewLocationExpander
     {
         var customLocations = new[]
         {
-            "/Views/Karus/Shared/{0}.cshtml"
+            "/Views/Karus/Shared/{0}.cshtml",
+            "/Views/Karus/{1}/{0}.cshtml",
+
         };
 
         return customLocations.Concat(viewLocations);

@@ -87,6 +87,14 @@ h6 {
     }
 }
 
+.card {
+    .card-title {
+        display: flex;
+        flex-shrink: 0;
+        justify-content: space-between;
+    }
+}
+
 /*--------------------------------------------------------------
 # FOOTER
 --------------------------------------------------------------*/
@@ -122,6 +130,8 @@ footer > p > a {
     .card.task:hover {
         transform: scale(1.02);
     }
+
+
 }
 
 
@@ -287,7 +297,7 @@ footer > p > a {
     }
 
     img {
-        transition: transform 0.1s ease;
+        transition: transform 0.2s ease;
     }
 
     img:hover {
@@ -482,6 +492,38 @@ footer > p > a {
 --------------------------------------------------------------*/
 .karus_emergency_plans {
 
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+
+        li {
+            position: relative;
+            padding-left: 35px;
+            line-height: inherit;
+            margin-bottom: 2rem;
+        }
+
+        li:last-child {
+            margin-bottom: 0;
+        }
+
+        li i {
+            color: #d64410;
+            font-size: 1.5rem;
+            position: absolute;
+            left: 0;
+            top: -0.3rem;
+        }
+
+        li i {
+            transition: transform 0.4s ease;
+        }
+
+        li:hover i {
+            transform: scale(1.2);
+        }
+    }
 }
 
 
@@ -489,5 +531,7 @@ footer > p > a {
 # CRISISBOX H.A.L.T.
 --------------------------------------------------------------*/
 .karus_halt {
-
+    li {
+        
+    }
 }
