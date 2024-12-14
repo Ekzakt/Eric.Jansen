@@ -147,7 +147,10 @@ namespace Ej.Client.Controllers
             var output = new CrisisboxPhotosViewModel 
             {
                 Title = $"{photoType} Photos",
-                Items = photos.Where(x => x.Type == photoType).ToList() ?? []
+                Items = photos
+                    .Where(x => x.Type == photoType)
+                    .Take(6)
+                    .ToList() ?? []
             };
 
             return output;
