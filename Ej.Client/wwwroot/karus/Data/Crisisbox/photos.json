@@ -1,0 +1,137 @@
+[
+  {
+    "Filename": "barcelona-2015-01.jpg",
+    "Description": "Barcelona 2015",
+    "Type": "happy"
+  },
+  {
+    "Filename": "bredene-aan-zee-2010-01.jpg",
+    "Description": "Plopsaland",
+    "Type": "happy"
+  },
+  {
+    "Filename": "colombia-2019-01.jpg",
+    "Description": "Bogotá, Colombia",
+    "Type": "happy"
+  },
+  {
+    "Filename": "colombia-2019-02.jpg",
+    "Description": "Bogotá, Colombia",
+    "Type": "sad"
+  },
+  {
+    "Filename": "colombia-2019-03.jpg",
+    "Description": "Colombia",
+    "Type": "happy"
+  },
+  {
+    "Filename": "duffel-2021-01.jpg",
+    "Description": "Eerste opname, Duffel",
+    "Type": "happy"
+  },
+  {
+    "Filename": "frankrijk-2008-01.jpg",
+    "Description": "La Douce France",
+    "Type": "happy"
+  },
+  {
+    "Filename": "frankrijk-2011-01.jpg",
+    "Description": "La Douce France",
+    "Type": "happy"
+  },
+  {
+    "Filename": "frankrijk-2011-02.jpg",
+    "Description": "La Douce France",
+    "Type": "happy"
+  },
+  {
+    "Filename": "home-01.jpg",
+    "Description": "Home",
+    "Type": "sad"
+  },
+  {
+    "Filename": "home-02.jpg",
+    "Description": "Home",
+    "Type": "sad"
+  },
+  {
+    "Filename": "ikke-01.jpg",
+    "Description": "Me",
+    "Type": "happy"
+  },
+  {
+    "Filename": "ikke-02.jpg",
+    "Description": "Me",
+    "Type": "happy"
+  },
+  {
+    "Filename": "ikke-03.jpg",
+    "Description": "Me",
+    "Type": "happy"
+  },
+  {
+    "Filename": "ikke-work-2016-01.jpg",
+    "Description": "Me",
+    "Type": "sad"
+  },
+  {
+    "Filename": "opa.jpg",
+    "Description": "Opa Mie",
+    "Type": "caring"
+  },
+  {
+    "Filename": "samothraki-2004-01.jpg",
+    "Description": "Samothraki, Greece",
+    "Type": "sad"
+  },
+  {
+    "Filename": "samothraki-2004-01.jpg",
+    "Description": "Samothraki, Greece",
+    "Type": "happy"
+  },
+  {
+    "Filename": "samothraki-2005-01.jpg",
+    "Description": "Samothraki, Greece",
+    "Type": "sad"
+  },
+  {
+    "Filename": "samothraki-2005-02.jpg",
+    "Description": "Samothraki, Greece",
+    "Type": "caring"
+  },
+  {
+    "Filename": "samothraki-2013-01.jpg",
+    "Description": "Samothraki, Greece",
+    "Type": "happy"
+  },
+  {
+    "Filename": "samothraki-2013-02.jpg",
+    "Description": "Samothraki, Greece",
+    "Type": "sad"
+  },
+  {
+    "Filename": "samothraki-2013-03.jpg",
+    "Description": "Samothraki, Greece",
+    "Type": "sad"
+  },
+  {
+    "Filename": "tenerife-2016-01.jpg",
+    "Description": "Tenerife, Gran Canaria",
+    "Type": "sad"
+  },
+  {
+    "Filename": "thailand-2016-01.jpg",
+    "Description": "Thailand",
+    "Type": "sad"
+  },
+  {
+    "Filename": "tsjechië-2006-01.jpg",
+    "Description": "Tsjechië",
+    "Type": "happy"
+  },
+  {
+    "Filename": "uganda-2019-01.jpg",
+    "Description": "Uganda",
+    "Type": "sad"
+  }
+]

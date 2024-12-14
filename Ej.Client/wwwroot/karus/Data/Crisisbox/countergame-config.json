@@ -13,6 +13,10 @@
         {
           "name": "Blue",
           "hex": "#00a9ff"
+        },
+        {
+          "name": "Green",
+          "hex": "#66b032"
         }
       ]
     },
@@ -23,7 +27,7 @@
       "colors": [
         {
           "name": "Green",
-          "hex": "#66B032"
+          "hex": "#66b032"
         },
         {
           "name": "Yellow",

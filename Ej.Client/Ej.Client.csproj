@@ -46,6 +46,10 @@
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
+    <Content Update="wwwroot\karus\Data\Crisisbox\photos.json">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
     <Content Update="wwwroot\karus\Data\Crisisbox\countergame-config.json">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
@@ -57,6 +61,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="wwwroot\karus\Crisisbox\" />
     <Folder Include="wwwroot\karus\Data\CirkelVanVerandering\" />
     <Folder Include="wwwroot\karus\Assets\" />
   </ItemGroup>
