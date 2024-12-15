@@ -361,6 +361,7 @@ footer > p > a {
     img {
         max-width: 70%;
         margin-bottom: 1rem;
+        filter: box-shadow(0 4px 6px rgba(0, 0, 0, 0.5));
     }
 
     .no-x {
@@ -499,6 +500,23 @@ footer > p > a {
 # CRISISBOX H.A.L.T.
 --------------------------------------------------------------*/
 .karus_halt {
+    .halt-initial {
+        width: 3rem; /* Circle diameter */
+        height: 3rem; /* Circle diameter */
+        background-color: $karus-r-color; /* Circle background color */
+        color: white; /* Text color inside the circle */
+        border-radius: 50%; /* Makes it a circle */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.5rem; /* Adjust as needed for the text size */
+        font-weight: bolder; /* Bold text in the circle */
+        text-transform: uppercase; /* Ensure initials are uppercase */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+    }
+
+    .halt-initial:hover {
+    }
 }
 
 /*--------------------------------------------------------------
