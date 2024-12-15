@@ -10,12 +10,9 @@ document.addEventListener('DOMContentLoaded', function () {
     var startDateDrinking = new Date('2024-11-24T19:00:00'); // Your no-drinking start date
     var dailyExpenseSmoking = 10; // Amount spent on smoking daily in Euros
     var dailyExpenseDrinking = 15; // Amount spent on drinking daily in Euros
-    var animationDuration = 0.6; // Animation duration in seconds
+    var animationDuration = 1.75; // Animation duration in seconds
 
     // Get elements
-    var smokingImage = document.querySelector('#no-smoking img');
-    var drinkingImage = document.querySelector('#no-drinking img');
-
     var smokingTimeElem = document.querySelector('#no-smoking .time');
     var smokingEuroElem = document.querySelector('#no-smoking .euro');
 
@@ -39,19 +36,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Grand Total
     var totalMoneySaved = totalMoneySmoking + totalMoneyDrinking;
-
-    // Animate image rotations (4 full rotations)
-    gsap.to(smokingImage, {
-        rotation: 360 * 4,
-        duration: animationDuration,
-        ease: "linear"
-    });
-
-    gsap.to(drinkingImage, {
-        rotation: 360 * 4,
-        duration: animationDuration,
-        ease: "linear"
-    });
 
     // Create counter objects
     var smokingTimeCounter = { val: 0 };
