@@ -10,5 +10,5 @@ public class EmergencyContact : BaseModel
 
     public string PhoneNumber { get; set; }
 
-    public string ImageUri { get; set; }
+    public string Filename { get; set; }
 }

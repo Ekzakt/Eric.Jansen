@@ -1,0 +1,21 @@
+﻿@model CrisisboxPhotosViewModel
+
+<div class="card karus_photos">
+    <div class="card-body text-center">
+        <h5>@Model.Title</h5>
+        <div class="container m-0 p-0">
+
+            @if (Model.Items.Count > 0)
+            {
+                <div class="row g-3 data-masonry='{" percentPosition": true }'">
+                    @foreach (var photo in Model.Items)
+                    {
+                        <div class="col col-4">
+                            <img src="~/karus/data/crisisbox/photos/@photo.FileName" class="img-thumbnail center-cropped" alt="@photo.Description" />
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+</div>

@@ -1,6 +1,5 @@
 using Ej.Client.ViewModels;
 using Ej.Karus.Contracts;
-using Ej.Karus.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Ej.Client.Controllers
@@ -13,6 +12,7 @@ namespace Ej.Client.Controllers
         private ISpotifyService _spotifyService;
         private IEmergencyContactsService _emergencyContactsService;
         private IQuotesService _quotesService;
+        private IPhotosService _photosService;
 
 
         public KarusController(
@@ -21,7 +21,8 @@ namespace Ej.Client.Controllers
             IBalansItemsService balansItemsService,
             ISpotifyService spotifyService,
             IEmergencyContactsService emergencyContactsService,
-            IQuotesService quotesService)
+            IQuotesService quotesService,
+            IPhotosService photosService)
         {
             _waardenboomItemsService = waardenboomItemsService;
             _opdrachtItemsService = opdrachtItemsService;
@@ -29,6 +30,7 @@ namespace Ej.Client.Controllers
             _spotifyService = spotifyService;
             _emergencyContactsService = emergencyContactsService;
             _quotesService = quotesService;
+            _photosService = photosService;
         }
 
 
@@ -56,25 +58,29 @@ namespace Ej.Client.Controllers
         [Route("{culture:culture}/karus/crisisbox")]
         public async Task<IActionResult> Crisisbox()
         {
+            // TODO: Abstract this further as done with photos.
+
             var spotifyItems = await _spotifyService.GetItemsAsync();
             var emergencyContacts = await _emergencyContactsService.GetEmergencyContactsAsync();
             var quotes = await _quotesService.GetRandomQuotesAsync();
+            var photos = await _photosService.GetPhotosAsync();
 
-            var spotifyMusic = new CrisisboxSpotifyItemViewModel();
-            var spotifyShows = new CrisisboxSpotifyItemViewModel();
+            var spotifyMusic = new CrisisboxSpotifyItemsViewModel();
+            var spotifyShows = new CrisisboxSpotifyItemsViewModel();
+            
 
             ViewData["Title"] = "Crisisbox";
             ViewData["SubTitle"] = await SetViewBagSubTitle(nameof(Crisisbox));
 
             if (spotifyItems is not null)
             {
-                spotifyMusic = new CrisisboxSpotifyItemViewModel 
+                spotifyMusic = new CrisisboxSpotifyItemsViewModel 
                 {
                     Title = "Spotify Music",
                     Items = spotifyItems.Where(x => x.Type != SpotifyItemType.show).ToList() ?? []
                 };
 
-                spotifyShows = new CrisisboxSpotifyItemViewModel
+                spotifyShows = new CrisisboxSpotifyItemsViewModel
                 {
                     Title = "Spotify Podcasts",
                     Items = spotifyItems.Where(x => x.Type == SpotifyItemType.show).ToList() ?? []
@@ -85,7 +91,10 @@ namespace Ej.Client.Controllers
                 SpotifyMusic = spotifyMusic, 
                 SpotifyShows = spotifyShows,
                 Quotes = quotes ?? [],
-                EmergencyContacts = emergencyContacts ?? []
+                EmergencyContacts = emergencyContacts ?? [],
+                SadPhotos = GetCrisisboxPhotosViewModel(photos, PhotoType.Sad),
+                HappyPhotos = GetCrisisboxPhotosViewModel(photos, PhotoType.Happy),
+                CaringPhotos = GetCrisisboxPhotosViewModel(photos, PhotoType.Caring)
             });
         }
 
@@ -132,6 +141,20 @@ namespace Ej.Client.Controllers
             return subTitle ?? string.Empty;
         }
 
+
+        public CrisisboxPhotosViewModel GetCrisisboxPhotosViewModel(List<Photo> photos, PhotoType photoType)
+        {
+            var output = new CrisisboxPhotosViewModel 
+            {
+                Title = $"{photoType} Photos",
+                Items = photos
+                    .Where(x => x.Type == photoType)
+                    .Take(6)
+                    .ToList() ?? []
+            };
+
+            return output;
+        }
         #endregion
     }
 }

@@ -1,9 +1,8 @@
-﻿@{
-}
-
-<div class="card karus_countergame" id="karus_countergame">
+﻿<div class="card karus_countergame" id="karus_countergame">
     <div class="card-body">
-        <h5>Counter Game</h5>
+        <div class="card-title">
+            <h5>Counter Game</h5>
+        </div>
 
         <div class="mb-4 text-center">
             <h6>Choose the Maximum Items to Count</h6>
@@ -189,7 +188,7 @@
 
                 const img = document.createElement('img');
 
-                img.src = `/karus/data/crisisbox/${gameTypes[countType].svg}`;
+                img.src = `/karus/data/crisisbox/countergame/${gameTypes[countType].svg}`;
                 img.dataset.index = i;
                 img.classList.add('svg-icon');
                 img.style.padding = '0.6rem';
