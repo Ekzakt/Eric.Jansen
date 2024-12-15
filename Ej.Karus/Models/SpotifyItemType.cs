@@ -1,6 +1,4 @@
-﻿using System.Runtime.Serialization;
-
-namespace Ej.Karus.Models;
+﻿namespace Ej.Karus.Models;
 
 /// <summary>
 /// Represents the type of a Spotify item. 

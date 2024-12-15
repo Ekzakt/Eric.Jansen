@@ -1,19 +1,16 @@
 ﻿@model CrisisboxSpotifyItemsViewModel
 
-<div class="card karus_spotify_playlist">
-    <div class="card-body text-center">
+<div class="card karus_spotify_items">
+    <div class="card-body">
         <h5>@Model.Title</h5>
-        <div class="container m-0 p-0">
 
-            @if (Model.Items.Count > 0)
+        <div class="container m-0 p-0">
+            @foreach (var playlist in Model.Items)
             {
-                <div class="row g-3">
-                @foreach (var playlist in Model.Items)
-                {
-                    <div class="col col-12">
-                        <iframe src="@playlist.Uri" width="100%" height="@((int)playlist.Size)" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture" loading="lazy"></iframe>
-                    </div>
-                }
+                <div class="d-flex mb-3 spotify-item">
+                    <div class="me-2 spotify-item-icon"><i class="bi bi-music-note-beamed"></i></div>
+                    <div class="spotify-item-nam pt-1">@playlist.Name</div>
+                    <div class="ms-auto spotify-item-play"><a href="@playlist.Uri" title="@playlist.Name" target="_blank"><i class="bi bi-play-circle-fill"></i></a></div>
                 </div>
             }
         </div>

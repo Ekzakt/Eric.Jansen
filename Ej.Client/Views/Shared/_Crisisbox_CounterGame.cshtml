@@ -150,6 +150,7 @@
                     circle.title = color.name;
 
                     circle.addEventListener('click', () => {
+
                         document.querySelectorAll('.color-circle').forEach(c => c.classList.remove('selected'));
                         circle.classList.add('selected');
                         selectedColor = color.hex;

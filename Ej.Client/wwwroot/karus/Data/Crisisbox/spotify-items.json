@@ -1,30 +1,27 @@
 [
   {
-    "Id": "5OgDixGzWv9UnxRc5xBx2N",
-    "Name": "Phil Collins",
-    "Type": "playlist",
-    "Size": "small"
+    "Id": 1,
+    "Uri": "https://open.spotify.com/playlist/5OgDixGzWv9UnxRc5xBx2N?si=80f9f8d700494b0c",
+    "Name": "Phil Collins: Greatest Hits & Best Songs",
+    "Type": "playlist"
   },
   {
-    "Id": "4X54O57AkqCyZeHwTfKrnx",
-    "Name": "Tim Cools",
-    "Type": "show",
-    "Size": "small"
+    "Id": 2,
+    "Uri": "https://open.spotify.com/show/4X54O57AkqCyZeHwTfKrnx?si=76af015fd72d42c3",
+    "Name": "Tim Cools, Verslaving in Verbinding",
+    "Type": "show"
   },
   {
-    "Id": "4T6wWDVbZQGfLWnrmql4il",
-    "Name": "Rixke",
-    "Type": "playlist",
-    "Size": "small"
+    "Id": 3,
+    "Uri": "https://open.spotify.com/playlist/4T6wWDVbZQGfLWnrmql4il?si=a077e85d48404f96",
+    "Name": "Rixke's Playlist",
+    "Type": "playlist"
   },
   {
-    "Id": "3Tb2684yMgcllPvlZ0Ypt1",
-    "Name": "Samothraki 1986",
+    "Id": 4,
+    "Uri": "https://open.spotify.com/playlist/3Tb2684yMgcllPvlZ0Ypt1?si=2aa2c1f4675c4fb3",
+    "Name": "Playlist Samothraki 1986",
     "Type": "playlist",
-    "Size": "large",
     "Sortnumber": 1
   }
 ]
-
-
-
