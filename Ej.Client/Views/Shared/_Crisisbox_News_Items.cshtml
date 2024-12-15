@@ -1,0 +1,32 @@
+﻿@{
+    var newsItems = new List<NewsItem> 
+    {
+        new NewsItem { ImageFilename = "francis_aerts.webp", Uri = "https://www.hln.be/temse/enige-wat-ik-weet-is-dat-ik-wakker-werd-in-politiecel-twee-jaar-na-dodelijke-aanrijding-wacht-familie-van-francis-16-nog-op-antwoorden~a72d9d77/" },
+        new NewsItem { ImageFilename = "jurgen.webp", Uri = "https://www.hln.be/sint-niklaas/hoe-ex-verslaafde-jurgen-53-tweede-kans-kreeg-in-detentiehuis-vier-of-vijf-flessen-wijn-per-dag-het-was-geen-uitzondering-in-mijn-vroegere-leven~a20f7d96/" },
+        new NewsItem { ImageFilename = "neen_leren_zeggen.webp", Uri = "https://www.hln.be/gezond-en-gelukkig/ga-niet-uitweiden-of-jezelf-verontschuldigen-experts-geven-de-techniek-om-vlotter-neen-te-zeggen~af9bb89a/" }
+    };
+}
+
+<div class="card karus_news_items">
+    <div class="card-body">
+        <div class="card-title">
+            <h5>News</h5>
+            <i class="bi bi-fullscreen float-end" style="cursor: pointer;" role="link"></i>
+        </div>
+        @if (newsItems?.Count > 0)
+        {
+            <div class="container m-0 p-0">
+                <div class="row">
+                    @foreach (var item in newsItems)
+                    {
+                        <div class="col col-4">
+                            <a href="@item.Uri" target="_blank" title="@item.Title">
+                                <img src="~/karus/data/crisisbox/news/@item.ImageFilename" alt="News" class="img-fluid" />
+                            </a>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</div>
