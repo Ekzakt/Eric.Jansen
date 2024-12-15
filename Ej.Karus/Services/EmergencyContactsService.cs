@@ -21,7 +21,7 @@ public class EmergencyContactsService : IEmergencyContactsService
     public async Task<List<EmergencyContact>> GetEmergencyContactsAsync()
     {
         var emergencyContacts = new List<EmergencyContact>();
-        var jsonData = await _fileReader.ReadWebroothPathFileAsync("crisisbox", "emergencycontacts.json");
+        var jsonData = await _fileReader.ReadWebroothPathFileAsync("crisisbox", "emergency-contacts.json");
 
         if (string.IsNullOrEmpty(jsonData))
         {

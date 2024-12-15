@@ -1,24 +1,24 @@
 [
   {
-    "Filename": "emergencycontact-joke.webp",
+    "ImageFilename": "emergencycontact-joke.webp",
     "Name": "Joke",
     "PhoneNumber": "32477971857",
     "SortNumber": 40
   },
   {
-    "Filename": "emergencycontact-bart.webp",
+    "ImageFilename": "emergencycontact-bart.webp",
     "Name": "Bart",
     "PhoneNumber": "32491171817",
     "SortNumber": 20
   },
   {
-    "Filename": "emergencycontact-ann.webp",
+    "ImageFilename": "emergencycontact-ann.webp",
     "Name": "Ann",
     "PhoneNumber": "32468264636",
     "SortNumber": 30
   },
   {
-    "Filename": "emergencycontact-karus.webp",
+    "ImageFilename": "emergencycontact-karus.webp",
     "Name": "Karus",
     "PhoneNumber": "32495511254",
     "SortNumber": 10

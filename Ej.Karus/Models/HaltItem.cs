@@ -4,11 +4,11 @@ namespace Ej.Karus.Models;
 
 #nullable disable
 
-public class EmergencyContact : BaseModel
+public class HaltItem : BaseModel
 {
     public string Name { get; set; }
 
-    public string PhoneNumber { get; set; }
-
     public string ImageFilename { get; set; }
+
+    public string Description { get; set; }
 }
