@@ -12,7 +12,6 @@ $karus-s-color: #c10053;
 $karus-body-bg: #080000;
 $karus-body-color: var(--bs-gray-400);
 
-
 /*--------------------------------------------------------------
 # GENERAL
 --------------------------------------------------------------*/
@@ -55,9 +54,11 @@ h1 {
     font-weight: lighter;
     margin-bottom: 4rem;
 }
+
 h1:has(+ p) {
     margin-bottom: 0rem;
 }
+
 h1 + p {
     margin-bottom: 4rem;
     text-align: center;
@@ -79,15 +80,14 @@ h6 {
 }
 
 .modal {
-
     .modal-content {
         background-color: var(--bs-gray-900);
     }
 
     .modal-header {
-
         h5 {
             margin-bottom: 0;
+            font-weight: lighter;
         }
     }
 }
@@ -120,7 +120,6 @@ footer > p > a {
 # TASKS (INDEX)
 --------------------------------------------------------------*/
 .karus_tasks {
-
     .card.task {
         transition: transform 0.3s ease;
 
@@ -135,16 +134,12 @@ footer > p > a {
     .card.task:hover {
         transform: scale(1.02);
     }
-
-
 }
-
 
 /*--------------------------------------------------------------
 # WAARDENBOOM
 --------------------------------------------------------------*/
 .karus_waardenboom {
-
     text {
         cursor: pointer;
         font-weight: bolder;
@@ -160,7 +155,7 @@ footer > p > a {
     }
 
     text:not(:hover) {
-        transition-duration: 1s
+        transition-duration: 1s;
     }
 
     .waardenboom_value {
@@ -176,19 +171,16 @@ footer > p > a {
     }
 }
 
-
 /*--------------------------------------------------------------
 # CIRKEL VAN VERANDERING
 --------------------------------------------------------------*/
 .karus_cirkelvanverandering {
-
     img {
         margin: 3rem 0;
     }
 }
 
 .karus_fasen_van_verandering {
-
     h2 + p, section {
         margin-bottom: 3rem;
     }
@@ -198,12 +190,10 @@ footer > p > a {
     }
 }
 
-
 /*--------------------------------------------------------------
 # BALANS
 --------------------------------------------------------------*/
 .karus_balans {
-
     section {
         margin-bottom: 5rem;
     }
@@ -229,11 +219,8 @@ footer > p > a {
         }
     }
 
-
     .voor-en-nadelen {
-
         .accordion-item {
-
             .accordion-button.advantages:not(.collapsed) {
                 color: $karus-advantages-color;
                 background-color: $karus-advantages-bg;
@@ -264,7 +251,6 @@ footer > p > a {
         }
     }
 
-
     .mijn-balans {
         .mijnbalans-item {
             margin-bottom: 2.75rem;
@@ -276,7 +262,6 @@ footer > p > a {
     }
 }
 
-
 /*--------------------------------------------------------------
 # CRISISBOX
 --------------------------------------------------------------*/
@@ -287,12 +272,10 @@ footer > p > a {
     }
 }
 
-
 /*--------------------------------------------------------------
 # CRISISBOX EMERGENCY CONTACTS
 --------------------------------------------------------------*/
 .karus_emergency_contacts {
-
     a {
         text-decoration: none;
     }
@@ -317,51 +300,6 @@ footer > p > a {
     a {
         color: #fff;
     }
-}
-
-
-/*--------------------------------------------------------------
-# CRISISBOX MONEYCOUNTER
---------------------------------------------------------------*/
-.karus_moneycounter {
-
-    img {
-        max-width: 70%;
-        margin-bottom: 1rem;
-    }
-
-    .no-x {
-        div.time {
-            font-size: smaller;
-            line-height: 1.2rem;
-        }
-
-        div.euro {
-            font-size: larger;
-            font-weight: bolder;
-        }
-    }
-
-    .total {
-        font-size: 2rem;
-        font-weight: bolder;
-    }
-}
-
-
-/*--------------------------------------------------------------
-# CRISISBOX SPOTIFY PLAYLIST
---------------------------------------------------------------*/
-.karus_spotify_playlist {
-
-}
-
-
-/*--------------------------------------------------------------
-# CRISISBOX FLITSKAART
---------------------------------------------------------------*/
-.karus_flitskaart {
-
 }
 
 
@@ -408,132 +346,161 @@ footer > p > a {
         }
 
         li:hover i {
-            transform: scale(1.2);
+            transform: scale(1.3);
         }
     }
-    /*--------------------------------------------------------------
-# CRISISBOX COUNTER GAME
+}
+
+
+/*--------------------------------------------------------------
+# CRISISBOX MONEYCOUNTER
 --------------------------------------------------------------*/
-    .karus_countergame {
+.karus_moneycounter {
+    img {
+        max-width: 70%;
+        margin-bottom: 1rem;
+    }
 
-        .radio-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
+    .no-x {
+        div.time {
+            font-size: smaller;
+            line-height: 1.2rem;
         }
 
-        .radio-group label {
-            display: inline-block;
-            padding: 10px 20px;
-            border: 2px solid transparent;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            background-color: #f8f9fa;
-            transition: all 0.3s;
-        }
-
-        .radio-group label:hover {
-            background-color: #e9ecef;
-        }
-
-        .radio-group input[type="radio"] {
-            display: none;
-        }
-
-        .radio-group input[type="radio"]:checked + label {
-            border-color: #0d6efd;
-            background-color: #dce9ff;
-            color: #0d6efd;
-        }
-
-        .color-group {
-            display: flex;
-            gap: 10px;
-        }
-
-        .color-circle {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            cursor: pointer;
-            border: 2px solid transparent;
-            transition: all 0.3s;
-        }
-
-        .color-circle:hover {
-            border-color: #0d6efd;
-        }
-
-        .color-circle.selected {
-            border-color: #0d6efd;
-        }
-
-        .modal-body {
-            cursor: pointer;
-        }
-
-        .counter-display {
-            font-size: 2rem;
-            font-weight: bold;
-            margin-top: 1rem;
+        div.euro {
+            font-size: larger;
+            font-weight: bolder;
         }
     }
-    /*--------------------------------------------------------------
+
+    .total {
+        font-size: 2rem;
+        font-weight: bolder;
+    }
+}
+
+/*--------------------------------------------------------------
 # CRISISBOX PHOTOS
 --------------------------------------------------------------*/
-    .karus_photos {
-
-        .center-cropped {
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
-        }
+.karus_photos {
+    .center-cropped {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
     }
-    /*--------------------------------------------------------------
+}
+
+/*--------------------------------------------------------------
 # CRISISBOX EMERGENCY PLANS
 --------------------------------------------------------------*/
-    .karus_emergency_plans {
+.karus_emergency_plans {
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
 
-        ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
+        li {
+            position: relative;
+            padding-left: 35px;
+            line-height: inherit;
+            margin-bottom: 2rem;
+        }
 
-            li {
-                position: relative;
-                padding-left: 35px;
-                line-height: inherit;
-                margin-bottom: 2rem;
-            }
+        li:last-child {
+            margin-bottom: 0;
+        }
 
-            li:last-child {
-                margin-bottom: 0;
-            }
+        li i {
+            color: $karus-r-color;
+            font-size: 1.5rem;
+            position: absolute;
+            left: 0;
+            top: -0.3rem;
+            transition: transform 0.4s ease;
+        }
 
-            li i {
-                color: $karus-r-color;
-                font-size: 1.5rem;
-                position: absolute;
-                left: 0;
-                top: -0.3rem;
-                transition: transform 0.4s ease;
-            }
-
-            li:hover i {
-                transform: scale(1.2);
-            }
+        li:hover i {
+            transform: scale(1.3);
         }
     }
-    /*--------------------------------------------------------------
+}
+
+/*--------------------------------------------------------------
+# CRISISBOX COUNTER GAME
+--------------------------------------------------------------*/
+.karus_countergame {
+    .radio-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .radio-group label {
+        display: inline-block;
+        padding: 10px 20px;
+        border: 2px solid transparent;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        background-color: #f8f9fa;
+        transition: all 0.3s;
+    }
+
+    .radio-group label:hover {
+        background-color: #e9ecef;
+    }
+
+    .radio-group input[type="radio"] {
+        display: none;
+    }
+
+    .radio-group input[type="radio"]:checked + label {
+        border-color: #0d6efd;
+        background-color: #dce9ff;
+        color: #0d6efd;
+    }
+
+    .color-group {
+        display: flex;
+        gap: 10px;
+    }
+
+    .color-circle {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        cursor: pointer;
+        border: 2px solid transparent;
+        transition: all 0.3s;
+    }
+
+    .color-circle:hover {
+        border-color: #0d6efd;
+    }
+
+    .color-circle.selected {
+        border-color: #0d6efd;
+    }
+
+    .modal-body {
+        cursor: pointer;
+    }
+
+    .counter-display {
+        font-size: 2rem;
+        font-weight: bold;
+        margin-top: 1rem;
+    }
+}
+
+/*--------------------------------------------------------------
 # CRISISBOX H.A.L.T.
 --------------------------------------------------------------*/
-    .karus_halt {
-        li {
-        }
-    }
-    /*--------------------------------------------------------------
+.karus_halt {
+}
+
+/*--------------------------------------------------------------
 # CRISISBOX NEWS ITEMS
 --------------------------------------------------------------*/
-    .karus_news_items {
-    }
+.karus_news_items {
+}
