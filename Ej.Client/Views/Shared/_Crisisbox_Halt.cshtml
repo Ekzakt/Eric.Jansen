@@ -11,10 +11,11 @@
 <div class="card karus_halt">
     <div class="card-body">
         <h5>H.A.L.T.</h5>
+        <h6 class="text-center">Mogelijke triggers voor gebruik</h6>
         <div>
             @foreach (var item in halt)
             {
-                <div class="d-flex align-items-start mb-3">
+                <div class="d-flex align-items-start mb-3 halt-item">
                     <!-- Circle -->
                     <div class="halt-initial me-3 flex-shrink-0">@item.GetInitial()</div>
 
