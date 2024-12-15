@@ -4,6 +4,11 @@ $karus-disadvantages-bg: #DF2E38;
 $karus-disadvantages-color: white;
 $karus-waardenboomvalue-color: $karus-advantages-bg;
 $karus-waardenboomvalue-transition-color: $karus-disadvantages-bg;
+$karus-k-color: #c90045;
+$karus-a-color: #c80214;
+$karus-r-color: #d64410;
+$karus-u-color: #af0529;
+$karus-s-color: #c10053;
 $karus-body-bg: #080000;
 $karus-body-color: var(--bs-gray-400);
 
@@ -394,151 +399,141 @@ footer > p > a {
         }
 
         li i {
-            color: lightgrey;
+            transition: transform 0.4s ease;
+            color: $karus-r-color;
             font-size: 2rem;
             position: absolute;
             left: 0;
             top: -20px;
-        }
-    }
-}
-
-
-/*--------------------------------------------------------------
-# CRISISBOX COUNTER GAME
---------------------------------------------------------------*/
-.karus_countergame {
-
-    .radio-group {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-    }
-
-    .radio-group label {
-        display: inline-block;
-        padding: 10px 20px;
-        border: 2px solid transparent;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 16px;
-        background-color: #f8f9fa;
-        transition: all 0.3s;
-    }
-
-    .radio-group label:hover {
-        background-color: #e9ecef;
-    }
-
-    .radio-group input[type="radio"] {
-        display: none;
-    }
-
-    .radio-group input[type="radio"]:checked + label {
-        border-color: #0d6efd;
-        background-color: #dce9ff;
-        color: #0d6efd;
-    }
-
-    .color-group {
-        display: flex;
-        gap: 10px;
-    }
-
-    .color-circle {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        cursor: pointer;
-        border: 2px solid transparent;
-        transition: all 0.3s;
-    }
-
-    .color-circle:hover {
-        border-color: #0d6efd;
-    }
-
-    .color-circle.selected {
-        border-color: #0d6efd;
-    }
-
-    .modal-body {
-        cursor: pointer;
-    }
-
-    .counter-display {
-        font-size: 2rem;
-        font-weight: bold;
-        margin-top: 1rem;
-    }
-}
-
-
-/*--------------------------------------------------------------
-# CRISISBOX PHOTOS
---------------------------------------------------------------*/
-.karus_photos {
-
-    .center-cropped {
-        width: 150px; 
-        height: 150px; 
-        object-fit: cover;
-    }
-}
-
-
-/*--------------------------------------------------------------
-# CRISISBOX EMERGENCY PLANS
---------------------------------------------------------------*/
-.karus_emergency_plans {
-
-    ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-
-        li {
-            position: relative;
-            padding-left: 35px;
-            line-height: inherit;
-            margin-bottom: 2rem;
-        }
-
-        li:last-child {
-            margin-bottom: 0;
-        }
-
-        li i {
-            color: #d64410;
-            font-size: 1.5rem;
-            position: absolute;
-            left: 0;
-            top: -0.3rem;
-        }
-
-        li i {
-            transition: transform 0.4s ease;
         }
 
         li:hover i {
             transform: scale(1.2);
         }
     }
-}
+    /*--------------------------------------------------------------
+# CRISISBOX COUNTER GAME
+--------------------------------------------------------------*/
+    .karus_countergame {
 
+        .radio-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
 
-/*--------------------------------------------------------------
+        .radio-group label {
+            display: inline-block;
+            padding: 10px 20px;
+            border: 2px solid transparent;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            background-color: #f8f9fa;
+            transition: all 0.3s;
+        }
+
+        .radio-group label:hover {
+            background-color: #e9ecef;
+        }
+
+        .radio-group input[type="radio"] {
+            display: none;
+        }
+
+        .radio-group input[type="radio"]:checked + label {
+            border-color: #0d6efd;
+            background-color: #dce9ff;
+            color: #0d6efd;
+        }
+
+        .color-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .color-circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .color-circle:hover {
+            border-color: #0d6efd;
+        }
+
+        .color-circle.selected {
+            border-color: #0d6efd;
+        }
+
+        .modal-body {
+            cursor: pointer;
+        }
+
+        .counter-display {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+    }
+    /*--------------------------------------------------------------
+# CRISISBOX PHOTOS
+--------------------------------------------------------------*/
+    .karus_photos {
+
+        .center-cropped {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+        }
+    }
+    /*--------------------------------------------------------------
+# CRISISBOX EMERGENCY PLANS
+--------------------------------------------------------------*/
+    .karus_emergency_plans {
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+
+            li {
+                position: relative;
+                padding-left: 35px;
+                line-height: inherit;
+                margin-bottom: 2rem;
+            }
+
+            li:last-child {
+                margin-bottom: 0;
+            }
+
+            li i {
+                color: $karus-r-color;
+                font-size: 1.5rem;
+                position: absolute;
+                left: 0;
+                top: -0.3rem;
+                transition: transform 0.4s ease;
+            }
+
+            li:hover i {
+                transform: scale(1.2);
+            }
+        }
+    }
+    /*--------------------------------------------------------------
 # CRISISBOX H.A.L.T.
 --------------------------------------------------------------*/
-.karus_halt {
-    li {
-        
+    .karus_halt {
+        li {
+        }
     }
-}
-
-
-/*--------------------------------------------------------------
+    /*--------------------------------------------------------------
 # CRISISBOX NEWS ITEMS
 --------------------------------------------------------------*/
-.karus_news_items {
-}
+    .karus_news_items {
+    }
