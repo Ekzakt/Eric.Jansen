@@ -1,8 +1,6 @@
 ﻿<div class="card karus_countergame" id="karus_countergame">
     <div class="card-body">
-        <div class="card-title">
-            <h5>Counter Game</h5>
-        </div>
+         <h5>Counter Game</h5>
 
         <div class="mb-4 text-center">
             <h6>Choose the Maximum Items to Count</h6>
@@ -38,9 +36,11 @@
                 <h5>Counter Game</h5>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <div class="svg-container d-flex flex-wrap justify-content-center my-5"></div>
-                <div class="counter-display d-flex flex-wrap justify-content-center"><span id="countDisplay">0 / 0</span></div>
+            <div class="modal-body d-flex justify-content-center align-items-center">
+                <div class="container text-center">
+                    <div class="svg-container d-flex flex-wrap justify-content-center my-5"></div>
+                    <div class="counter-display"><span id="countDisplay">0 / 0</span></div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button id="resetGameFullScreen" class="btn btn-primary">Reset</button>
@@ -254,7 +254,7 @@
                 icon.style.filter = '';
             });
 
-            document.getElementById('countDisplay').textContent = '0 / 0';
+            document.getElementById('countDisplay').textContent = '0 / ' + maxCount;
 
         });
 

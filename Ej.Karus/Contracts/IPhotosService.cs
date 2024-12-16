@@ -4,5 +4,5 @@ namespace Ej.Karus.Contracts;
 
 public interface IPhotosService
 {
-    Task<List<Photo>> GetPhotosAsync();
+    Task<List<Photo>> GetPhotosAsync(PhotoType? type = null);
 }

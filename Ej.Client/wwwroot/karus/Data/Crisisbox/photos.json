@@ -12,11 +12,12 @@
   {
     "Filename": "colombia-2019-01.jpg",
     "Description": "Bogotá, Colombia",
-    "Type": "happy"
+    "Type": "happy",
+    "IsInvisible": true
   },
   {
     "Filename": "colombia-2019-02.jpg",
-    "Description": "Bogotá, Colombia",
+    "Description": "Omvergereden in Colombia",
     "Type": "sad"
   },
   {
@@ -26,7 +27,7 @@
   },
   {
     "Filename": "duffel-2021-01.jpg",
-    "Description": "Eerste opname, Duffel",
+    "Description": "Na enkele maanden opname, PZ Duffel",
     "Type": "happy"
   },
   {
@@ -46,12 +47,12 @@
   },
   {
     "Filename": "home-01.jpg",
-    "Description": "Home",
+    "Description": "Home-party",
     "Type": "sad"
   },
   {
     "Filename": "home-02.jpg",
-    "Description": "Home",
+    "Description": "De gevolgen van de home-party",
     "Type": "sad"
   },
   {
@@ -72,7 +73,8 @@
   {
     "Filename": "ikke-work-2016-01.jpg",
     "Description": "Me",
-    "Type": "sad"
+    "Type": "sad",
+    "IsInvisible": true
   },
   {
     "Filename": "opa.jpg",
@@ -82,17 +84,14 @@
   {
     "Filename": "samothraki-2004-01.jpg",
     "Description": "Samothraki, Greece",
-    "Type": "sad"
-  },
-  {
-    "Filename": "samothraki-2004-01.jpg",
-    "Description": "Samothraki, Greece",
-    "Type": "happy"
+    "Type": "sad",
+    "IsInvisible": true
   },
   {
     "Filename": "samothraki-2005-01.jpg",
     "Description": "Samothraki, Greece",
-    "Type": "sad"
+    "Type": "sad",
+    "IsInvisible": true
   },
   {
     "Filename": "samothraki-2005-02.jpg",
@@ -102,26 +101,28 @@
   {
     "Filename": "samothraki-2013-01.jpg",
     "Description": "Samothraki, Greece",
-    "Type": "happy"
+    "Type": "happy",
+    "IsInvisible": true
   },
   {
     "Filename": "samothraki-2013-02.jpg",
-    "Description": "Samothraki, Greece",
+    "Description": "Blinkend en rood van de zon of van de kater?",
     "Type": "sad"
   },
   {
     "Filename": "samothraki-2013-03.jpg",
-    "Description": "Samothraki, Greece",
+    "Description": "Kater?",
     "Type": "sad"
   },
   {
     "Filename": "tenerife-2016-01.jpg",
     "Description": "Tenerife, Gran Canaria",
-    "Type": "sad"
+    "Type": "sad",
+    "IsInvisible": true
   },
   {
     "Filename": "thailand-2016-01.jpg",
-    "Description": "Thailand",
+    "Description": "Van de kaart",
     "Type": "sad"
   },
   {
@@ -131,7 +132,12 @@
   },
   {
     "Filename": "uganda-2019-01.jpg",
-    "Description": "Uganda",
+    "Description": "Geen idee van wat er aan de hand is",
     "Type": "sad"
+  },
+  {
+    "Filename": "mie-01.jpg",
+    "Description": "Mie",
+    "Type": "caring"
   }
 ]
