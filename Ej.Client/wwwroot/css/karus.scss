@@ -354,7 +354,7 @@ footer > p > a {
             font-size: 2rem;
             position: absolute;
             left: 0;
-            top: -20px;
+            top: -1rem;
         }
 
         li:hover i {
@@ -396,10 +396,15 @@ footer > p > a {
 # CRISISBOX PHOTOS
 --------------------------------------------------------------*/
 .karus_photos {
-    .center-cropped {
-        width: 150px;
-        height: 150px;
-        object-fit: cover;
+    img {
+        filter: grayscale(80%);
+        transition: filter 0.3s ease;
+        transition: transform 0.2s ease;
+    }
+
+    img:hover {
+        filter: none;
+        transform: scale(1.015);
     }
 }
 
@@ -420,7 +425,7 @@ footer > p > a {
         }
 
         li:last-child {
-            margin-bottom: 0;
+            margin-bottom: 0.75rem;
         }
 
         li i {
@@ -511,22 +516,26 @@ footer > p > a {
 --------------------------------------------------------------*/
 .karus_halt {
 
+    .halt-item {
+        margin-bottom: 2rem;
+    }
+
     .halt-item:last-child {
-        padding-bottom: 0;
+        margin-bottom: 0.75rem;
     }
 
     .halt-initial {
-        width: 3rem; /* Circle diameter */
-        height: 3rem; /* Circle diameter */
-        background-color: $karus-r-color; /* Circle background color */
-        color: white; /* Text color inside the circle */
-        border-radius: 50%; /* Makes it a circle */
+        width: 3rem;
+        height: 3rem;
+        background-color: $karus-r-color;
+        color: white;
+        border-radius: 50%;
         display: flex;
         justify-content: center;
         align-items: center;
-        font-size: 1.5rem; /* Adjust as needed for the text size */
-        font-weight: bolder; /* Bold text in the circle */
-        text-transform: uppercase; /* Ensure initials are uppercase */
+        font-size: 1.5rem;
+        font-weight: bolder;
+        text-transform: uppercase;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
     }
 }

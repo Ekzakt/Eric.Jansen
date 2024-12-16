@@ -13,23 +13,23 @@
 
         <div class="row g-4 row-cols-1 row-cols-lg-2">
 
-            @foreach (var opdrachtValue in Model)
+            @foreach (var opdrachtItem in Model)
             {
                 <div class="col">
                     <div class="card task">
                         <div class="row">
                             <div class="col-4 col-md-3 col-lg-4">
-                                @if (!string.IsNullOrEmpty(opdrachtValue.CardImageUri))
+                                @if (!string.IsNullOrEmpty(opdrachtItem.CardImageUri))
                                 {
-                                    <img src="@opdrachtValue.CardImageUri" class="card-img img-fluid p-4" alt="@opdrachtValue.Name">
+                                    <img src="@opdrachtItem.CardImageUri" class="card-img img-fluid p-4" alt="@opdrachtItem.Name">
                                 }
                             </div>
                             <div class="col-8 col-md-9 col-lg-8">
                                 <div class="card-body">
-                                    <h5 class="card-title"><a class="stretched-link" asp-controller="Karus" asp-action="@opdrachtValue.ControllerAction" asp-route-culture="@CultureInfo.CurrentCulture.Name" title="@opdrachtValue.Name">@opdrachtValue.Name</a></h5>
-                                    @if (!string.IsNullOrEmpty(opdrachtValue.Description))
+                                    <h5 class="card-title"><a class="stretched-link" asp-controller="Karus" asp-action="@opdrachtItem.ControllerAction" asp-route-culture="@CultureInfo.CurrentCulture.Name" title="@opdrachtItem.Name">@opdrachtItem.Name</a></h5>
+                                    @if (!string.IsNullOrEmpty(opdrachtItem.Description))
                                     {
-                                        <p class="card-text">@opdrachtValue.Description</p>
+                                        <p class="card-text">@opdrachtItem.Description</p>
                                     }
                                 </div>
                             </div>

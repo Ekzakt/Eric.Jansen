@@ -7,11 +7,13 @@
 
             @if (Model.Items.Count > 0)
             {
-                <div class="row g-3 data-masonry='{" percentPosition": true }'">
+                <div class="row g-3">
                     @foreach (var photo in Model.Items)
                     {
                         <div class="col col-4">
-                            <img src="~/karus/data/crisisbox/photos/@photo.FileName" class="img-thumbnail center-cropped" alt="@photo.Description" />
+                            <a asp-controller="Crisisbox" asp-action="Photos" asp-route-culture="@CultureInfo.CurrentCulture.Name" asp-route-type="@photo.Type" title="@photo.Description">
+                                <img src="https://pz-ej-stage.b-cdn.net/karus/crisisbox/photos/@photo.FileName?class=thb" class="img-fluid rounded" alt="@photo.Description" />
+                            </a>
                         </div>
                     }
                 </div>

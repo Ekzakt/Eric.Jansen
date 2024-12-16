@@ -1,5 +1,5 @@
 {
-  "maxCounts": [ 5, 10, 20, 50, 100 ],
+  "maxCounts": [ 5, 10, 20, 50 ],
   "gameTypes": [
     {
       "type": "people",

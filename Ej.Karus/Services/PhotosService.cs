@@ -20,7 +20,7 @@ public class PhotosService : IPhotosService
     }
 
 
-    public async Task<List<Photo>> GetPhotosAsync()
+    public async Task<List<Photo>> GetPhotosAsync(PhotoType? type = null)
     {
         var photos = new List<Photo>();
         var jsonData = await _fileReader.ReadWebroothPathFileAsync("crisisbox", "photos.json");
@@ -36,6 +36,11 @@ public class PhotosService : IPhotosService
         {
             _logger.LogWarning("Failed to deserialize photos.");
             return [];
+        }
+
+        if (type is not null)
+        {
+            photos = [.. photos.Where(x => x.Type == type)];
         }
 
         photos = [.. photos
