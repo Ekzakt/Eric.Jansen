@@ -12,7 +12,7 @@
                     {
                         <div class="col col-4">
                             <a asp-controller="Crisisbox" asp-action="Photos" asp-route-culture="@CultureInfo.CurrentCulture.Name" asp-route-type="@photo.Type" title="@photo.Description">
-                                <img src="https://pz-ej-stage.b-cdn.net/karus/crisisbox/photos/@photo.FileName?class=thb" class="img-fluid rounded" alt="@photo.Description" />
+                                <img src="@photo.GetPhotoUri("thb")" class="img-fluid rounded" alt="@photo.Description" />
                             </a>
                         </div>
                     }

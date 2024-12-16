@@ -1,4 +1,5 @@
-﻿using Ej.Karus.Contracts;
+﻿using Ej.Client.ViewModels;
+using Ej.Karus.Contracts;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Ej.Client.Controllers;
@@ -25,6 +26,12 @@ public class CrisisboxController : Controller
     {
         var photos = await _photosService.GetPhotosAsync(type);
 
-        return View();
+        var output = new CrisisboxPhotosViewModel
+        {
+            Title = $"{type} Photos",
+            Items = photos
+        };
+
+        return View(output);
     }
 }

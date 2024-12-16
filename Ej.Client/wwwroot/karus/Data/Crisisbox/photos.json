@@ -72,7 +72,8 @@
   {
     "Filename": "ikke-work-2016-01.jpg",
     "Description": "Me",
-    "Type": "sad"
+    "Type": "sad",
+    "IsInvisible": true
   },
   {
     "Filename": "opa.jpg",
@@ -102,7 +103,8 @@
   {
     "Filename": "samothraki-2013-01.jpg",
     "Description": "Samothraki, Greece",
-    "Type": "happy"
+    "Type": "happy",
+    "IsInvisible": true
   },
   {
     "Filename": "samothraki-2013-02.jpg",
