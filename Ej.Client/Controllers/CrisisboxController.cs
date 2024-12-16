@@ -7,17 +7,23 @@ namespace Ej.Client.Controllers;
 public class CrisisboxController : Controller
 {
     private IPhotosService _photosService;
+    private IQuotesService _quotesService;
 
-    public CrisisboxController(IPhotosService photosService)
+    public CrisisboxController(
+        IPhotosService photosService, 
+        IQuotesService quotesService)
     {
         _photosService = photosService;
+        _quotesService = quotesService;
     }
 
 
     [Route("{culture:culture}/karus/crisisbox/quotes")]
-    public IActionResult Quotes()
+    public async Task<IActionResult> Quotes()
     {
-        return View();
+        var quotes = await _quotesService.GetQuotesAsync();
+
+        return View(quotes ?? []);
     }
 
 

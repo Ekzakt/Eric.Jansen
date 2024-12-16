@@ -5,7 +5,6 @@
 @model List<OpdrachtItem>
 
 <h1>Opdrachten</h1>
-<p>By Eric Jansen</p>
 
 <section class="karus_tasks">
 
@@ -24,7 +23,7 @@
                                     <img src="@opdrachtItem.CardImageUri" class="card-img img-fluid p-4" alt="@opdrachtItem.Name">
                                 }
                             </div>
-                            <div class="col-8 col-md-9 col-lg-8">
+                            <div class="col-8 col-md-9 col-lg-8" style="margin-left: -2.6rem;">
                                 <div class="card-body">
                                     <h5 class="card-title"><a class="stretched-link" asp-controller="Karus" asp-action="@opdrachtItem.ControllerAction" asp-route-culture="@CultureInfo.CurrentCulture.Name" title="@opdrachtItem.Name">@opdrachtItem.Name</a></h5>
                                     @if (!string.IsNullOrEmpty(opdrachtItem.Description))

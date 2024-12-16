@@ -13,6 +13,12 @@ $karus-body-bg: #080000;
 $karus-body-color: var(--bs-gray-400);
 $karus-icon-fontsize: 1.5rem;
 $karus-icon-transition: transform 0.4s ease;
+$karus-img-transition-transform: transform 0.2s ease;
+$karus-img-transition-filter: filter 0.3s ease;
+$karus-img-filter: grayscale(90%);
+$karus-img-filter-none: none;
+$karus-img-transform-scale: scale(1.015);
+
 
 /*--------------------------------------------------------------
 # GENERAL
@@ -157,7 +163,7 @@ h6 {
 
         h5 {
             a {
-                color: $karus-body-color;
+                color: var(--bs-gray-700);
                 text-decoration: none;
             }
         }
@@ -417,14 +423,14 @@ h6 {
 --------------------------------------------------------------*/
 .karus_photos {
     img {
-        filter: grayscale(80%);
-        transition: filter 0.3s ease;
-        transition: transform 0.2s ease;
+        filter: $karus-img-filter;
+        transition: $karus-img-transition-filter;
+        transition: $karus-img-transition-transform;
     }
 
     img:hover {
-        filter: none;
-        transform: scale(1.015);
+        filter: $karus-img-filter-none;
+        transform: $karus-img-transform-scale;
     }
 }
 
@@ -564,6 +570,16 @@ h6 {
 # CRISISBOX NEWS ITEMS
 --------------------------------------------------------------*/
 .karus_news_items {
+    img {
+        filter: $karus-img-filter;
+        transition: $karus-img-transition-filter;
+        transition: $karus-img-transition-transform;
+    }
+
+    img:hover {
+        filter: $karus-img-filter-none;
+        transform: $karus-img-transform-scale;
+    }
 }
 
 /*--------------------------------------------------------------
@@ -603,11 +619,30 @@ h6 {
 --------------------------------------------------------------*/
 .crisisbox_flitskaart {
     img {
-        filter: grayscale(80%);
-        transition: filter 0.3s ease;
+        filter: $karus-img-filter;
+        transition: $karus-img-transition-filter;
+        transition: $karus-img-transition-transform;
     }
 
     img:hover {
-        filter: none;
+        filter: $karus-img-filter-none;
+        transform: $karus-img-transform-scale;
+    }
+}
+
+
+/*--------------------------------------------------------------
+# CRISISBOX YOUTUBE
+--------------------------------------------------------------*/
+.crisisbox_youtube {
+    img {
+        filter: $karus-img-filter;
+        transition: $karus-img-transition-filter;
+        transition: $karus-img-transition-transform;
+    }
+
+    img:hover {
+        filter: $karus-img-filter-none;
+        transform: $karus-img-transform-scale;
     }
 }
