@@ -1,0 +1,40 @@
+﻿@model CrisisboxPhotosViewModel
+
+@{
+    Layout = "~/Views/Shared/_Karus_Layout_Fullscreen.cshtml";
+
+    ViewBag.Title = Model.Title;
+}
+
+<div id="carouselPhotos" class="carousel slide">
+    <div class="carousel-indicators">
+
+        @for (int x = 0; x < Model.Items.Count; x++)
+        {
+            <button type="button" data-bs-target="#carouselPhotos" data-bs-slide-to="@x" class="@(x == 0 ? "active" : string.Empty)" aria-current="@(x == 0 ? true : false)" aria-label="Slide @(x + 1)"></button>
+        }
+    </div>
+    <div class="carousel-inner text-center">
+        @for (int x = 0; x < Model.Items.Count; x++)
+        {
+            <div class="carousel-item @(x == 0 ? "active" : string.Empty)" >
+                <img src="@Model.Items[x].GetPhotoUri("carousel")"
+                     class="d-block mx-auto img-fluid"
+                     style="max-height: 100%; max-width: 100%;"
+                     alt="@Model.Items[x].Description">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>@Model.Items[x].Description</h5>
+                </div>
+            </div>
+        }
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselPhotos" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselPhotos" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
