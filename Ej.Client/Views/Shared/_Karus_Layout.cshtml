@@ -74,7 +74,20 @@
         <script src="~/js/js.cookie.min.js" asp-append-version="true"></script>
         <script src="~/js/karus.moneycounter.min.js" asp-append-version="true"></script>
         
+        <script>
 
+        if (document.getElementById("karus_countergame")) {
+        
+            Promise.all(Array.from(document.images)
+                .filter(img => !img.complete)
+                .map(img => new Promise(resolve => { img.onload = img.onerror = resolve; })))
+                .then(() => {
+                 var msnry = new Masonry('.mansory-grid');
+                     msnry.layout();
+                });
+        }
+            
+        </script>
     </body>
 
 </html>
