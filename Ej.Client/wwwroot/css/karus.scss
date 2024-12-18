@@ -1,31 +1,63 @@
-﻿$karus-advantages-bg: #5D9C59;
-$karus-advantages-color: white;
-$karus-disadvantages-bg: #DF2E38;
-$karus-disadvantages-color: white;
-$karus-waardenboomvalue-color: $karus-advantages-bg;
-$karus-waardenboomvalue-transition-color: $karus-disadvantages-bg;
-$karus-k-color: #c90045;
-$karus-a-color: #c80214;
-$karus-r-color: #d64410;
-$karus-u-color: #af0529;
-$karus-s-color: #c10053;
-$karus-body-bg: #080000;
-$karus-body-color: var(--bs-gray-400);
-$karus-icon-fontsize: 1.5rem;
-$karus-icon-transition: transform 0.4s ease;
-$karus-img-transition-transform: transform 0.2s ease;
-$karus-img-transition-filter: filter 0.3s ease;
-$karus-img-filter: grayscale(90%);
-$karus-img-filter-none: none;
-$karus-img-transform-scale: scale(1.015);
+﻿:root {
+    --ks-k-color: #c90045;
+    --ks-a-color: #c80214;
+    --ks-r-color: #d64410;
+    --ks-u-color: #af0529;
+    --ks-s-color: #c10053;
+}
+
+$ks-advantages-bg: #5c9c59;
+$ks-advantages-color: white;
+$ks-disadvantages-bg: #dF2e38;
+$ks-disadvantages-color: white;
+$ks-waardenboomvalue-color: $ks-advantages-bg;
+$ks-waardenboomvalue-transition-color: $ks-disadvantages-bg;
+$ks-body-bg: #080000;
+$ks-body-color: var(--bs-gray-400);
+$ks-icon-fontsize: 1.5rem;
+$ks-icon-transition: transform 0.4s ease;
+$ks-img-transition-transform: transform 0.2s ease;
+$ks-img-transition-filter: filter 0.3s ease;
+$ks-img-filter: grayscale(90%);
+$ks-img-filter-none: none;
+$ks-img-transform-scale: scale(1.015);
 
 
 /*--------------------------------------------------------------
 # GENERAL
 --------------------------------------------------------------*/
+$ks-k-color: var(--ks-k-color);
+$ks-a-color: var(--ks-a-color);
+$ks-r-color: var(--ks-r-color);
+$ks-u-color: var(--ks-u-color);
+$ks-s-color: var(--ks-s-color);
+
+.btn-primary {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: var(--ks-r-color);
+    --bs-btn-border-color: #d64410;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #b1360d;
+    --bs-btn-hover-border-color: #a6300b;
+    --bs-btn-focus-shadow-rgb: 214, 68, 16;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #a6300b;
+    --bs-btn-active-border-color: #942c0a;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: #d64410;
+    --bs-btn-disabled-border-color: #d64410;
+}
+
+.ks-k-color { color: $ks-k-color }
+.ks-a-color { color: $ks-a-color }
+.ks-r-color { color: $ks-r-color }
+.ks-u-color { color: $ks-u-color }
+.ks-s-color { color: $ks-s-color }
+
 body, html {
-    background-color: $karus-body-bg;
-    color: $karus-body-color;
+    background-color: $ks-body-bg;
+    color: $ks-body-color;
 }
 
 body {
@@ -42,31 +74,16 @@ body {
         font-size: smaller;
     }
 
-    img.display-1 {
-        max-width: 320px;
-        width: 100%;
-        height: auto;
+    img {
+        width: clamp(220px, 30vw, 300px);
+        background-image: url('../karus/assets/karus-logo.svg');
+        background-size: cover;
+        background-position: center;
     }
-}
 
-.karus-k-color {
-    color: $karus-k-color;
-}
-
-.karus-a-color {
-    color: $karus-a-color;
-}
-
-.karus-r-color {
-    color: $karus-r-color;
-}
-
-.karus-u-color {
-    color: $karus-u-color;
-}
-
-.karus-s-color {
-    color: $karus-s-color;
+    .by span {
+        font-size: clamp(0.75rem, 2vw, 1rem);
+    }
 }
 
 p {
@@ -81,16 +98,16 @@ h1 {
     text-align: center;
     font-weight: lighter;
     margin-bottom: 4rem;
-}
 
-h1:has(+ p) {
-    margin-bottom: 0rem;
-}
+    &:has(+ p) {
+        margin-bottom: 0rem;
+    }
 
-h1 + p {
-    margin-bottom: 4rem;
-    text-align: center;
-    font-size: smaller;
+    & + p {
+        margin-bottom: 4rem;
+        text-align: center;
+        font-size: smaller;
+    }
 }
 
 h2 {
@@ -126,6 +143,7 @@ h6 {
             margin-bottom: 1.4rem;
             font-size: smaller;
         }
+
         h5:has(+ h6) {
             margin-bottom: 0.5rem;
         }
@@ -138,6 +156,7 @@ h6 {
     }
 }
 
+
 /*--------------------------------------------------------------
 # FOOTER
 --------------------------------------------------------------*/
@@ -145,14 +164,15 @@ h6 {
     font-size: 0.75rem;
     flex-shrink: 0;
     text-align: center;
+
+    & > p > a {
+        background-color: inherit;
+        color: inherit;
+        text-decoration: none;
+        font-weight: inherit;
+    }
 }
 
-.footer > p > a {
-    background-color: inherit;
-    color: inherit;
-    text-decoration: none;
-    font-weight: inherit;
-}
 
 /*--------------------------------------------------------------
 # TASKS (INDEX)
@@ -185,18 +205,18 @@ h6 {
         cursor: pointer;
         font-weight: bolder;
         font-size: 4rem;
-        fill: $karus-waardenboomvalue-color;
+        fill: $ks-waardenboomvalue-color;
         text-anchor: middle;
         border: 100px;
-    }
 
-    text:hover {
-        fill: $karus-waardenboomvalue-transition-color;
-        transition-duration: 0.5s;
-    }
+        &:hover {
+            fill: $ks-waardenboomvalue-transition-color;
+            transition-duration: 0.3s;
+        }
 
-    text:not(:hover) {
-        transition-duration: 1s;
+        &:not(:hover) {
+            transition-duration: 1s;
+        }
     }
 
     .waardenboom_value {
@@ -215,7 +235,7 @@ h6 {
 /*--------------------------------------------------------------
 # CIRKEL VAN VERANDERING
 --------------------------------------------------------------*/
-.karus_cirkelvanverandering {
+.karus_cirkel_van_verandering {
     img {
         margin: 3rem 0;
     }
@@ -237,10 +257,10 @@ h6 {
 .karus_balans {
     section {
         margin-bottom: 5rem;
-    }
 
-    section:last-child {
-        margin-bottom: 0;
+        &:last-child {
+            margin-bottom: 0;
+        }
     }
 
     ul {
@@ -251,44 +271,46 @@ h6 {
         li {
             position: relative;
             padding-left: 28px;
-        }
 
-        li i {
-            position: absolute;
-            left: 0;
-            top: 0;
+            & i {
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
         }
     }
 
     .voor-en-nadelen {
         .accordion-item {
             .accordion-button.advantages:not(.collapsed) {
-                color: $karus-advantages-color;
-                background-color: $karus-advantages-bg;
+                color: $ks-advantages-color;
+                background-color: $ks-advantages-bg;
             }
 
             .accordion-button.advantages.collapsed {
-                color: $karus-advantages-color;
-                background-color: $karus-advantages-bg;
+                color: $ks-advantages-color;
+                background-color: $ks-advantages-bg;
             }
 
             .accordion-button.disadvantages {
-                color: $karus-disadvantages-color;
-                background-color: $karus-disadvantages-bg;
+                color: $ks-disadvantages-color;
+                background-color: $ks-disadvantages-bg;
             }
 
             .accordion-body {
-                background-color: $karus-body-bg;
-                color: $karus-body-color;
+                background-color: $ks-body-bg;
+                color: $ks-body-color;
             }
         }
 
-        ul.advantages li i {
-            color: $karus-advantages-bg;
-        }
+        ul {
+            &.advantages li i {
+                color: $ks-advantages-bg;
+            }
 
-        ul.disadvantages li i {
-            color: $karus-disadvantages-bg;
+            &.disadvantages li i {
+                color: $ks-disadvantages-bg;
+            }
         }
     }
 
@@ -319,18 +341,18 @@ h6 {
 .karus_emergency_contacts {
     a {
         text-decoration: none;
-    }
 
-    a:hover {
-        font-weight: bolder;
+        &:hover {
+            font-weight: bolder;
+        }
     }
 
     img {
         transition: transform 0.2s ease;
-    }
 
-    img:hover {
-        transform: scale(1.7);
+        &:hover {
+            transform: scale(1.7);
+        }
     }
 
     .contact-name {
@@ -371,23 +393,23 @@ h6 {
                 font-style: italic;
                 font-weight: bold;
             }
-        }
 
-        li:last-child {
-            margin-bottom: 0;
-        }
+            &:last-child {
+                margin-bottom: 0;
+            }
 
-        li i {
-            transition: transform 0.4s ease;
-            color: $karus-r-color;
-            font-size: 2rem;
-            position: absolute;
-            left: 0;
-            top: -1rem;
-        }
+            & i {
+                transition: transform 0.4s ease;
+                color: $ks-r-color;
+                font-size: 2rem;
+                position: absolute;
+                left: 0;
+                top: -1rem;
+            }
 
-        li:hover i {
-            transform: scale(1.3);
+            &:hover i {
+                transform: scale(1.3);
+            }
         }
     }
 }
@@ -426,14 +448,14 @@ h6 {
 --------------------------------------------------------------*/
 .karus_photos {
     img {
-        filter: $karus-img-filter;
-        transition: $karus-img-transition-filter;
-        transition: $karus-img-transition-transform;
-    }
+        filter: $ks-img-filter;
+        transition: $ks-img-transition-filter;
+        transition: $ks-img-transition-transform;
 
-    img:hover {
-        filter: $karus-img-filter-none;
-        transform: $karus-img-transform-scale;
+        &:hover {
+            filter: $ks-img-filter-none;
+            transform: $ks-img-transform-scale;
+        }
     }
 }
 
@@ -451,23 +473,23 @@ h6 {
             padding-left: 35px;
             line-height: inherit;
             margin-bottom: 2rem;
-        }
 
-        li:last-child {
-            margin-bottom: 0.75rem;
-        }
+            &:last-child {
+                margin-bottom: 0.75rem;
+            }
 
-        li i {
-            color: $karus-r-color;
-            font-size: 1.5rem;
-            position: absolute;
-            left: 0;
-            top: -0.3rem;
-            transition: transform 0.4s ease;
-        }
+            & i {
+                color: $ks-r-color;
+                font-size: 1.5rem;
+                position: absolute;
+                left: 0;
+                top: -0.3rem;
+                transition: transform 0.4s ease;
+            }
 
-        li:hover i {
-            transform: scale(1.3);
+            &:hover i {
+                transform: scale(1.3);
+            }
         }
     }
 }
@@ -480,31 +502,31 @@ h6 {
         display: flex;
         flex-wrap: wrap;
         gap: 10px;
-    }
 
-    .radio-group label {
-        display: inline-block;
-        padding: 10px 20px;
-        border: 2px solid transparent;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 16px;
-        background-color: #f8f9fa;
-        transition: all 0.3s;
-    }
+        & label {
+            display: inline-block;
+            padding: 10px 20px;
+            border: 2px solid transparent;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            background-color: #f8f9fa;
+            transition: all 0.3s;
 
-    .radio-group label:hover {
-        background-color: #e9ecef;
-    }
+            &:hover {
+                background-color: #e9ecef;
+            }
+        }
 
-    .radio-group input[type="radio"] {
-        display: none;
-    }
+        & input[type="radio"] {
+            display: none;
 
-    .radio-group input[type="radio"]:checked + label {
-        border-color: #0d6efd;
-        background-color: #dce9ff;
-        color: #0d6efd;
+            &:checked + label {
+                border-color: #0d6efd;
+                background-color: #dce9ff;
+                color: #0d6efd;
+            }
+        }
     }
 
     .color-group {
@@ -519,18 +541,14 @@ h6 {
         cursor: pointer;
         border: 2px solid transparent;
         transition: all 0.3s;
-    }
 
-    .color-circle:hover {
-        border-color: #0d6efd;
-    }
+        &:hover {
+            border-color: #0d6efd;
+        }
 
-    .color-circle.selected {
-        border-color: #0d6efd;
-    }
-
-    .modal-body {
-        cursor: pointer;
+        &.selected {
+            border-color: #0d6efd;
+        }
     }
 
     .counter-display {
@@ -547,16 +565,16 @@ h6 {
 
     .halt-item {
         margin-bottom: 2rem;
-    }
 
-    .halt-item:last-child {
-        margin-bottom: 0.75rem;
+        &:last-child {
+            margin-bottom: 0.75rem;
+        }
     }
 
     .halt-initial {
         width: 3rem;
         height: 3rem;
-        background-color: $karus-r-color;
+        background-color: $ks-r-color;
         color: white;
         border-radius: 50%;
         display: flex;
@@ -574,14 +592,14 @@ h6 {
 --------------------------------------------------------------*/
 .karus_news_items {
     img {
-        filter: $karus-img-filter;
-        transition: $karus-img-transition-filter;
-        transition: $karus-img-transition-transform;
-    }
+        filter: $ks-img-filter;
+        transition: $ks-img-transition-filter;
+        transition: $ks-img-transition-transform;
 
-    img:hover {
-        filter: $karus-img-filter-none;
-        transform: $karus-img-transform-scale;
+        &:hover {
+            filter: $ks-img-filter-none;
+            transform: $ks-img-transform-scale;
+        }
     }
 }
 
@@ -592,27 +610,27 @@ h6 {
 
     .spotify-item {
 
+        &:last-child {
+            margin-bottom: 0 !important;
+            padding-bottom: 0;
+        }
+
         .spotify-item-icon {
 
             i {
-                color: $karus-r-color;
-                font-size: $karus-icon-fontsize;
+                color: $ks-r-color;
+                font-size: $ks-icon-fontsize;
                 left: 0;
                 top: -0.3rem;
-                transition: $karus-icon-transition;
+                transition: $ks-icon-transition;
             }
         }
     }
 
-    .spotify-item:last-child {
-        margin-bottom: 0 !important;
-        padding-bottom: 0;
-    }
-
     .spotify-item-play i {
-        color: $karus-r-color;
-        font-size: $karus-icon-fontsize;
-        transition: $karus-icon-transition;
+        color: $ks-r-color;
+        font-size: $ks-icon-fontsize;
+        transition: $ks-icon-transition;
     }
 }
 
@@ -620,16 +638,16 @@ h6 {
 /*--------------------------------------------------------------
 # CRISISBOX FLITSKAART
 --------------------------------------------------------------*/
-.crisisbox_flitskaart {
+.karus_flitskaart {
     img {
-        filter: $karus-img-filter;
-        transition: $karus-img-transition-filter;
-        transition: $karus-img-transition-transform;
-    }
+        filter: $ks-img-filter;
+        transition: $ks-img-transition-filter;
+        transition: $ks-img-transition-transform;
 
-    img:hover {
-        filter: $karus-img-filter-none;
-        transform: $karus-img-transform-scale;
+        &:hover {
+            filter: $ks-img-filter-none;
+            transform: $ks-img-transform-scale;
+        }
     }
 }
 
@@ -637,15 +655,15 @@ h6 {
 /*--------------------------------------------------------------
 # CRISISBOX YOUTUBE
 --------------------------------------------------------------*/
-.crisisbox_youtube {
+.karus_youtube {
     img {
-        filter: $karus-img-filter;
-        transition: $karus-img-transition-filter;
-        transition: $karus-img-transition-transform;
-    }
+        filter: $ks-img-filter;
+        transition: $ks-img-transition-filter;
+        transition: $ks-img-transition-transform;
 
-    img:hover {
-        filter: $karus-img-filter-none;
-        transform: $karus-img-transform-scale;
+        &:hover {
+            filter: $ks-img-filter-none;
+            transform: $ks-img-transform-scale;
+        }
     }
 }
