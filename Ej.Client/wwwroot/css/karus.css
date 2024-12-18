@@ -1,1 +1,529 @@
-﻿
+﻿:root {
+  --ks-k-color: #c90045;
+  --ks-a-color: #c80214;
+  --ks-r-color: #d64410;
+  --ks-u-color: #af0529;
+  --ks-s-color: #c10053;
+}
+
+/*--------------------------------------------------------------
+# GENERAL
+--------------------------------------------------------------*/
+.btn-primary {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: var(--ks-r-color);
+  --bs-btn-border-color: #d64410;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #b1360d;
+  --bs-btn-hover-border-color: #a6300b;
+  --bs-btn-focus-shadow-rgb: 214, 68, 16;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #a6300b;
+  --bs-btn-active-border-color: #942c0a;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #fff;
+  --bs-btn-disabled-bg: #d64410;
+  --bs-btn-disabled-border-color: #d64410;
+}
+
+.ks-k-color {
+  color: var(--ks-k-color);
+}
+
+.ks-a-color {
+  color: var(--ks-a-color);
+}
+
+.ks-r-color {
+  color: var(--ks-r-color);
+}
+
+.ks-u-color {
+  color: var(--ks-u-color);
+}
+
+.ks-s-color {
+  color: var(--ks-s-color);
+}
+
+body, html {
+  background-color: #080000;
+  color: var(--bs-gray-400);
+}
+
+body {
+  font-family: var(--bs-body-font-family);
+  font-size: 1.1rem;
+  font-weight: lighter;
+}
+
+.header {
+  text-align: center;
+}
+.header p.by {
+  font-weight: lighter;
+  font-size: smaller;
+}
+.header img {
+  width: clamp(220px, 30vw, 300px);
+  background-image: url("../karus/assets/karus-logo.svg");
+  background-size: cover;
+  background-position: center;
+}
+.header .by span {
+  font-size: clamp(0.75rem, 2vw, 1rem);
+}
+
+p {
+  line-height: 1.6rem;
+}
+
+li {
+  line-height: 1.8rem;
+}
+
+h1 {
+  text-align: center;
+  font-weight: lighter;
+  margin-bottom: 4rem;
+}
+h1:has(+ p) {
+  margin-bottom: 0rem;
+}
+h1 + p {
+  margin-bottom: 4rem;
+  text-align: center;
+  font-size: smaller;
+}
+
+h2 {
+  font-weight: lighter;
+  margin-bottom: 1.5rem;
+}
+
+h3 {
+  font-weight: lighter;
+  margin-bottom: 1.1rem;
+}
+
+h6 {
+  font-weight: lighter;
+}
+
+.modal .modal-content {
+  background-color: var(--bs-gray-900);
+}
+.modal .modal-header h5 {
+  margin-bottom: 0;
+  font-weight: lighter;
+}
+
+.card .card-body h5 + h6 {
+  margin-bottom: 1.4rem;
+  font-size: smaller;
+}
+.card .card-body h5:has(+ h6) {
+  margin-bottom: 0.5rem;
+}
+.card .card-title {
+  display: flex;
+  flex-shrink: 0;
+  justify-content: space-between;
+}
+
+/*--------------------------------------------------------------
+# FOOTER
+--------------------------------------------------------------*/
+.footer {
+  font-size: 0.75rem;
+  flex-shrink: 0;
+  text-align: center;
+}
+.footer > p > a {
+  background-color: inherit;
+  color: inherit;
+  text-decoration: none;
+  font-weight: inherit;
+}
+
+/*--------------------------------------------------------------
+# TASKS (INDEX)
+--------------------------------------------------------------*/
+.karus_tasks .card.task {
+  transition: transform 0.3s ease;
+}
+.karus_tasks .card.task h5 {
+  font-size: 1.5rem;
+  font-weight: bolder;
+}
+.karus_tasks .card.task h5 a {
+  color: var(--bs-gray-700);
+  text-decoration: none;
+}
+.karus_tasks .card.task:hover {
+  transform: scale(1.02);
+}
+
+/*--------------------------------------------------------------
+# WAARDENBOOM
+--------------------------------------------------------------*/
+.karus_waardenboom text {
+  cursor: pointer;
+  font-weight: bolder;
+  font-size: 4rem;
+  fill: #5c9c59;
+  text-anchor: middle;
+  border: 100px;
+}
+.karus_waardenboom text:hover {
+  fill: #dF2e38;
+  transition-duration: 0.3s;
+}
+.karus_waardenboom text:not(:hover) {
+  transition-duration: 1s;
+}
+.karus_waardenboom .waardenboom_value p:first-of-type {
+  font-weight: bolder;
+  margin-bottom: 0.5rem;
+  background-color: red;
+}
+.karus_waardenboom .waardenboom_value p:last-of-type {
+  margin-bottom: 2rem;
+}
+
+/*--------------------------------------------------------------
+# CIRKEL VAN VERANDERING
+--------------------------------------------------------------*/
+.karus_cirkel_van_verandering img {
+  margin: 3rem 0;
+}
+
+.karus_fasen_van_verandering h2 + p, .karus_fasen_van_verandering section {
+  margin-bottom: 3rem;
+}
+.karus_fasen_van_verandering section:last-child {
+  margin-bottom: 0;
+}
+
+/*--------------------------------------------------------------
+# BALANS
+--------------------------------------------------------------*/
+.karus_balans section {
+  margin-bottom: 5rem;
+}
+.karus_balans section:last-child {
+  margin-bottom: 0;
+}
+.karus_balans ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.karus_balans ul li {
+  position: relative;
+  padding-left: 28px;
+}
+.karus_balans ul li i {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.karus_balans .voor-en-nadelen .accordion-item .accordion-button.advantages:not(.collapsed) {
+  color: white;
+  background-color: #5c9c59;
+}
+.karus_balans .voor-en-nadelen .accordion-item .accordion-button.advantages.collapsed {
+  color: white;
+  background-color: #5c9c59;
+}
+.karus_balans .voor-en-nadelen .accordion-item .accordion-button.disadvantages {
+  color: white;
+  background-color: #dF2e38;
+}
+.karus_balans .voor-en-nadelen .accordion-item .accordion-body {
+  background-color: #080000;
+  color: var(--bs-gray-400);
+}
+.karus_balans .voor-en-nadelen ul.advantages li i {
+  color: #5c9c59;
+}
+.karus_balans .voor-en-nadelen ul.disadvantages li i {
+  color: #dF2e38;
+}
+.karus_balans .mijn-balans .mijnbalans-item {
+  margin-bottom: 2.75rem;
+}
+.karus_balans .mijn-balans .mijnbalans-item p:last-of-type {
+  margin-bottom: 2.25rem;
+}
+
+/*--------------------------------------------------------------
+# CRISISBOX
+--------------------------------------------------------------*/
+.karus_crisisbox h5 {
+  margin-bottom: 1.2rem;
+  text-align: center;
+}
+
+/*--------------------------------------------------------------
+# CRISISBOX EMERGENCY CONTACTS
+--------------------------------------------------------------*/
+.karus_emergency_contacts a {
+  text-decoration: none;
+}
+.karus_emergency_contacts a:hover {
+  font-weight: bolder;
+}
+.karus_emergency_contacts img {
+  transition: transform 0.2s ease;
+}
+.karus_emergency_contacts img:hover {
+  transform: scale(1.7);
+}
+.karus_emergency_contacts .contact-name {
+  margin: 0;
+  text-decoration: none;
+}
+.karus_emergency_contacts a {
+  color: #fff;
+}
+
+/*--------------------------------------------------------------
+# CRISISBOX QUOTES
+--------------------------------------------------------------*/
+.karus_quotes ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.karus_quotes ul li {
+  position: relative;
+  padding-left: 40px;
+  line-height: inherit;
+  margin-bottom: 2rem;
+}
+.karus_quotes ul li .quote-text {
+  font-style: italic;
+}
+.karus_quotes ul li .quote-signature {
+  display: block;
+  text-align: right;
+  font-size: small;
+  font-style: italic;
+  font-weight: bold;
+}
+.karus_quotes ul li:last-child {
+  margin-bottom: 0;
+}
+.karus_quotes ul li i {
+  transition: transform 0.4s ease;
+  color: var(--ks-r-color);
+  font-size: 2rem;
+  position: absolute;
+  left: 0;
+  top: -1rem;
+}
+.karus_quotes ul li:hover i {
+  transform: scale(1.3);
+}
+
+/*--------------------------------------------------------------
+# CRISISBOX MONEYCOUNTER
+--------------------------------------------------------------*/
+.karus_moneycounter img {
+  max-width: 70%;
+  margin-bottom: 1rem;
+  filter: box-shadow(0 4px 6px rgba(0, 0, 0, 0.5));
+}
+.karus_moneycounter .no-x div.time {
+  font-size: smaller;
+  line-height: 1.2rem;
+}
+.karus_moneycounter .no-x div.euro {
+  font-size: larger;
+  font-weight: bolder;
+}
+.karus_moneycounter .total {
+  font-size: 2rem;
+  font-weight: bolder;
+}
+
+/*--------------------------------------------------------------
+# CRISISBOX PHOTOS
+--------------------------------------------------------------*/
+.karus_photos img {
+  filter: grayscale(90%);
+  transition: filter 0.3s ease;
+  transition: transform 0.2s ease;
+}
+.karus_photos img:hover {
+  filter: none;
+  transform: scale(1.015);
+}
+
+/*--------------------------------------------------------------
+# CRISISBOX EMERGENCY PLANS
+--------------------------------------------------------------*/
+.karus_emergency_plans ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.karus_emergency_plans ul li {
+  position: relative;
+  padding-left: 35px;
+  line-height: inherit;
+  margin-bottom: 2rem;
+}
+.karus_emergency_plans ul li:last-child {
+  margin-bottom: 0.75rem;
+}
+.karus_emergency_plans ul li i {
+  color: var(--ks-r-color);
+  font-size: 1.5rem;
+  position: absolute;
+  left: 0;
+  top: -0.3rem;
+  transition: transform 0.4s ease;
+}
+.karus_emergency_plans ul li:hover i {
+  transform: scale(1.3);
+}
+
+/*--------------------------------------------------------------
+# CRISISBOX COUNTER GAME
+--------------------------------------------------------------*/
+.karus_countergame .radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.karus_countergame .radio-group label {
+  display: inline-block;
+  padding: 10px 20px;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  background-color: #f8f9fa;
+  transition: all 0.3s;
+}
+.karus_countergame .radio-group label:hover {
+  background-color: #e9ecef;
+}
+.karus_countergame .radio-group input[type=radio] {
+  display: none;
+}
+.karus_countergame .radio-group input[type=radio]:checked + label {
+  border-color: #0d6efd;
+  background-color: #dce9ff;
+  color: #0d6efd;
+}
+.karus_countergame .color-group {
+  display: flex;
+  gap: 10px;
+}
+.karus_countergame .color-circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.3s;
+}
+.karus_countergame .color-circle:hover {
+  border-color: #0d6efd;
+}
+.karus_countergame .color-circle.selected {
+  border-color: #0d6efd;
+}
+.karus_countergame .counter-display {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+/*--------------------------------------------------------------
+# CRISISBOX HALT
+--------------------------------------------------------------*/
+.karus_halt .halt-item {
+  margin-bottom: 2rem;
+}
+.karus_halt .halt-item:last-child {
+  margin-bottom: 0.75rem;
+}
+.karus_halt .halt-initial {
+  width: 3rem;
+  height: 3rem;
+  background-color: var(--ks-r-color);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: bolder;
+  text-transform: uppercase;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+}
+
+/*--------------------------------------------------------------
+# CRISISBOX NEWS ITEMS
+--------------------------------------------------------------*/
+.karus_news_items img {
+  filter: grayscale(90%);
+  transition: filter 0.3s ease;
+  transition: transform 0.2s ease;
+}
+.karus_news_items img:hover {
+  filter: none;
+  transform: scale(1.015);
+}
+
+/*--------------------------------------------------------------
+# CRISISBOX SPOTIFY-ITEMS
+--------------------------------------------------------------*/
+.karus_spotify_items .spotify-item:last-child {
+  margin-bottom: 0 !important;
+  padding-bottom: 0;
+}
+.karus_spotify_items .spotify-item .spotify-item-icon i {
+  color: var(--ks-r-color);
+  font-size: 1.5rem;
+  left: 0;
+  top: -0.3rem;
+  transition: transform 0.4s ease;
+}
+.karus_spotify_items .spotify-item-play i {
+  color: var(--ks-r-color);
+  font-size: 1.5rem;
+  transition: transform 0.4s ease;
+}
+
+/*--------------------------------------------------------------
+# CRISISBOX FLITSKAART
+--------------------------------------------------------------*/
+.karus_flitskaart img {
+  filter: grayscale(90%);
+  transition: filter 0.3s ease;
+  transition: transform 0.2s ease;
+}
+.karus_flitskaart img:hover {
+  filter: none;
+  transform: scale(1.015);
+}
+
+/*--------------------------------------------------------------
+# CRISISBOX YOUTUBE
+--------------------------------------------------------------*/
+.karus_youtube img {
+  filter: grayscale(90%);
+  transition: filter 0.3s ease;
+  transition: transform 0.2s ease;
+}
+.karus_youtube img:hover {
+  filter: none;
+  transform: scale(1.015);
+}
+
+/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22file:///C:/Users/EricJansen/source/repos/Ekzakt/Eric.Jansen/Ej.Client/wwwroot/css/karus.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%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%22%7D */
