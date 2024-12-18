@@ -7,10 +7,13 @@
     }
   },
   {
-    "outputFile": "wwwroot/css/karus.min.css",
+    "outputFile": "wwwroot/css/karus.css",
     "inputFile": "wwwroot/css/karus.scss",
     "minify": {
       "enabled": true
+    },
+    "options": {
+      "sourceMap": true
     }
   },
   {
@@ -33,5 +36,9 @@
     "minify": {
       "enabled": true
     }
+  },
+  {
+    "outputFile": "wwwroot/css/karus-boostrap.css",
+    "inputFile": "wwwroot/css/karus-boostrap.scss"
   }
 ]
