@@ -48,7 +48,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="wwwroot\css\karus\" />
         <Folder Include="wwwroot\karus\Data\CirkelVanVerandering\" />
         <Folder Include="wwwroot\karus\Assets\" />
     </ItemGroup>

@@ -12,7 +12,7 @@ public class HomeController : BaseController
     private IHtmlLocalizer<HomeController> _localizer;
 
     public HomeController(
-        IOptions<CultureOptions> cultureOptions, 
+        IOptions<CultureOptions> cultureOptions,
         ITenantProvider tenantProvider,
         IHtmlLocalizer<HomeController> localizer) : base(cultureOptions)
     {
@@ -34,7 +34,7 @@ public class HomeController : BaseController
 
         ViewBag.PageTitle = _localizer["__View_Index_PageTitle"].Value;
         ViewBag.Content = _localizer["__View_Index_Content"].Value;
-        ViewBag.TenantName = _tenantProvider.Tenant?.Name;  
+        ViewBag.TenantName = _tenantProvider.Tenant?.Name;
 
         return View();
     }
@@ -55,5 +55,17 @@ public class HomeController : BaseController
         ViewBag.Content = new StringReplacer().ReplaceTenantProperties(_tenantProvider.Tenant!, content);
 
         return View("Privacy");
+    }
+
+
+    [Route("{culture:culture}/ip")]
+    public IActionResult IpAddress()
+    {
+        ViewData["Title"] = _localizer["__View_Ip_Title"];
+
+        ViewBag.Content = _localizer["__View_Ip_Content"].Value;
+        ViewBag.IpAddress = HttpContext.Connection.RemoteIpAddress?.ToString();
+
+        return View("ip");
     }
 }

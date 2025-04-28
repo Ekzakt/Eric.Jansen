@@ -149,6 +149,12 @@
   <data name="__View_Index_Title" xml:space="preserve">
     <value>Home</value>
   </data>
+  <data name="__View_Ip_Content" xml:space="preserve">
+    <value>Je ip adres is:</value>
+  </data>
+  <data name="__View_Ip_Title" xml:space="preserve">
+    <value>IP Adres</value>
+  </data>
   <data name="__View_Privacy_Content" xml:space="preserve">
     <value>&lt;p&gt;
     Ik, {{Tenant_Name}}, ben toegewijd aan het beschermen van de privacy van bezoekers van mijn website, &lt;a href="/nl" title="{{Tenant_HostName}}"&gt;{{Tenant_HostName}}&lt;/a&gt;. Dit Privacybeleid schetst de soorten informatie die ik verzamel van bezoekers van mijn website, hoe ik die informatie gebruik en uw rechten met betrekking tot uw persoonlijke gegevens. Dit Privacybeleid is in overeenstemming met de Algemene Verordening Gegevensbescherming (AVG) van de EU, beter bekend onder de Engelse term GDPR.
