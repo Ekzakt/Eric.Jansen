@@ -2,14 +2,9 @@
 
 namespace Ej.Client.Middlewares;
 
-public class TenantDetectorMiddleware
+public class TenantDetectorMiddleware(RequestDelegate next)
 {
-    private readonly RequestDelegate _next;
-
-    public TenantDetectorMiddleware(RequestDelegate next)
-    {
-        _next = next ?? throw new ArgumentNullException(nameof(next));
-    }
+    private readonly RequestDelegate _next = next ?? throw new ArgumentNullException(nameof(next));
 
     public async Task InvokeAsync(HttpContext context, ITenantProvider tenantProvider)
     {
